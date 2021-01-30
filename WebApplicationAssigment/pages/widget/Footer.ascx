@@ -51,7 +51,7 @@
                   <p><i class="fas fa-headphones-alt text-primary"></i> 
                       <span class="artshop-footer-style">+6018-392-7135</span>
                   </p>
-                  <p><i class="fas fa-headphones-alt text-primary"></i> 
+                  <p><i class="fas fa-envelope text-primary"></i> 
                       <span class="artshop-footer-style">+6018-392-7135</span>
                   </p>
                   <p><i class="fas fa-headphones-alt text-primary"></i> 
