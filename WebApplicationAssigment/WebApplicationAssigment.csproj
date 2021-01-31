@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\image\background\sky-bg.jpg" />
     <Content Include="pages\main\Splash.html" />
     <Content Include="pages\widget\comment.ascx" />
     <Content Include="pages\widget\Footer.ascx" />
@@ -164,7 +165,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="assets\" />
     <Folder Include="modal\" />
     <Folder Include="pages\_limSK\" />
   </ItemGroup>
@@ -199,19 +199,6 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
-
-
-
-  
-  <Target Name="CopyRoslynFiles" AfterTargets="AfterBuild" Condition="!$(Disable_CopyWebApplication) And '$(OutDir)' != '$(OutputPath)'">
-	<ItemGroup>
-	  <RoslynFiles Include="$(CscToolPath)\*" />
-	</ItemGroup>
-	<MakeDir Directories="$(WebProjectOutputDir)\bin\roslyn" />
-	<Copy SourceFiles="@(RoslynFiles)" DestinationFolder="$(WebProjectOutputDir)\bin\roslyn" SkipUnchangedFiles="true" Retries="$(CopyRetryCount)" RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)" />
-	</Target>
-  
-
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
@@ -220,5 +207,4 @@
   </Target>
 
   -->
-  
 </Project>
