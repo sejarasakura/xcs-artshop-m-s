@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\image\background\CompanyLogo.png" />
     <Content Include="assets\image\background\sky-bg.jpg" />
     <Content Include="pages\main\Splash.html" />
     <Content Include="pages\widget\comment.ascx" />
@@ -76,6 +77,7 @@
     <Content Include="pages\widget\Profile.ascx" />
     <Content Include="pages\widget\ProfilePicture.ascx" />
     <Content Include="pages\widget\Sidemap.ascx" />
+    <Content Include="pages\widget\StartPage.ascx" />
     <Content Include="pages\__test\WebForm1.aspx" />
     <Content Include="Web.config" />
     <Content Include="web\lib\css\extensions.css" />
@@ -145,6 +147,13 @@
     <Compile Include="pages\widget\Sidemap.ascx.designer.cs">
       <DependentUpon>Sidemap.ascx</DependentUpon>
     </Compile>
+    <Compile Include="pages\widget\StartPage.ascx.cs">
+      <DependentUpon>StartPage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\widget\StartPage.ascx.designer.cs">
+      <DependentUpon>StartPage.ascx</DependentUpon>
+    </Compile>
     <Compile Include="pages\__test\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -199,15 +208,13 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
-
-<Target Name="CopyRoslynFiles" AfterTargets="AfterBuild" Condition="!$(Disable_CopyWebApplication) And '$(OutDir)' != '$(OutputPath)'">
-	<ItemGroup>
-	  <RoslynFiles Include="$(CscToolPath)\*" />
-	</ItemGroup>
-	<MakeDir Directories="$(WebProjectOutputDir)\bin\roslyn" />
-	<Copy SourceFiles="@(RoslynFiles)" DestinationFolder="$(WebProjectOutputDir)\bin\roslyn" SkipUnchangedFiles="true" Retries="$(CopyRetryCount)" RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)" />
-	</Target>
-
+  <Target Name="CopyRoslynFiles" AfterTargets="AfterBuild" Condition="!$(Disable_CopyWebApplication) And '$(OutDir)' != '$(OutputPath)'">
+    <ItemGroup>
+      <RoslynFiles Include="$(CscToolPath)\*" />
+    </ItemGroup>
+    <MakeDir Directories="$(WebProjectOutputDir)\bin\roslyn" />
+    <Copy SourceFiles="@(RoslynFiles)" DestinationFolder="$(WebProjectOutputDir)\bin\roslyn" SkipUnchangedFiles="true" Retries="$(CopyRetryCount)" RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)" />
+  </Target>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
