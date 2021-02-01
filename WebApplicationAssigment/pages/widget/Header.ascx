@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Header.ascx.cs" Inherits="WebApplicationAssigment.pages.widget.Header" %>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav id="project_navbar" class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">
         <img src="../../assets/image/background/CompanyLogo.png " class="d-inline-block align-top" width="90" height="64">
     </a>
@@ -9,7 +9,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mx-auto">
+        <ul class="navbar-nav mx-auto mk">
             <%--   <li class="nav-item active">
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>--%>
@@ -41,7 +41,3 @@
         </form>
     </div>
 </nav>
-
-
-
-
