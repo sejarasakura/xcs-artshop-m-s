@@ -1,5 +1,12 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Header.ascx.cs" Inherits="WebApplicationAssigment.pages.widget.Header" %>
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+<header>
+    <nav>
+=======
+>>>>>>> Stashed changes
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">
         <img src="../../assets/image/background/CompanyLogo.png " class="d-inline-block align-top" width="90" height="64">
@@ -26,10 +33,17 @@
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+<<<<<<< Updated upstream
                     <a class="dropdown-item" href="#">Login</a>
                     <a class="dropdown-item mt-2" href="#">Shopping Cart</a>
                 </div>
             </li>
+=======
+                    <a class="dropdown-item" href="~/pages/profile/LoginScreen.aspx" ID="loginLink" runat="server">Login</a>
+                    <a class="dropdown-item mt-2" href="#">Shopping Cart</a>
+                </div>
+            </li> 
+>>>>>>> Stashed changes
             <li class="nav-item">
                 <a class="nav-link font-weight-light" href="#">Contact Us</a>
             </li>
@@ -44,4 +58,8 @@
 
 
 
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 
