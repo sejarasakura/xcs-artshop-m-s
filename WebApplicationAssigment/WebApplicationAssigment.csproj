@@ -175,7 +175,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="modal\" />
-    <Folder Include="pages\_limSK\" />
+    <Folder Include="pages\admin\content\" />
+    <Folder Include="pages\admin\dashboard\" />
+    <Folder Include="pages\admin\master\" />
+    <Folder Include="pages\admin\widget\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
