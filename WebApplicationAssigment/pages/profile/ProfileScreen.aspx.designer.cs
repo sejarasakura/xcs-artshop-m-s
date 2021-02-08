@@ -15,12 +15,20 @@ namespace WebApplicationAssigment.pages.profile
     {
 
         /// <summary>
+<<<<<<< Updated upstream
         /// Profile control.
+=======
+        /// profilemou control.
+>>>>>>> Stashed changes
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+<<<<<<< Updated upstream
         protected global::WebApplicationAssigment.pages.widget.Profile Profile;
+=======
+        protected global::WebApplicationAssigment.pages.widget.profilemou profilemou;
+>>>>>>> Stashed changes
     }
 }

@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="StartPage.ascx.cs" Inherits="WebApplicationAssigment.pages.widget.StartPage" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="StartPage.ascx.cs"  %>
 
  <div class="tatsu-action-backgorund-sk tatsu-section  tatsu-bg-overlay   tatsu-clearfix" data-title="" data-headerscheme="background--dark">
     <div class="tatsu-section-pad clearfix" data-padding="{&quot;d&quot;:&quot;120px 0px 120px 0px&quot;}" data-padding-top="120px" style="padding-top: 222px;">

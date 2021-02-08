@@ -11,7 +11,16 @@ namespace WebApplicationAssigment.pages.@__test
 {
 
 
-    public partial class WebForm1
+    public partial class RegisterScreen
     {
+
+        /// <summary>
+        /// Register control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebApplicationAssigment.pages.widget.Register Register;
     }
 }

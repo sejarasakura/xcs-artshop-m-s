@@ -3,18 +3,22 @@
 =======
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
 <%@ Register Src="~/pages/widget/LoginNav.ascx" TagPrefix="uc1" TagName="LoginNav" %>
+>>>>>>> Stashed changes
+=======
+
 >>>>>>> Stashed changes
 
 >>>>>>> Stashed changes
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content >
 
-
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <<<<<<< Updated upstream
 =======
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
     
 <%@ Register Src="~/pages/widget/LoginNav.ascx" TagPrefix="uc1" TagName="LoginNav" %>
@@ -23,6 +27,13 @@
 
 =======
     <uc1:loginnav runat="server" id="LoginNav" />
+>>>>>>> Stashed changes
+=======
+
+<%@ Register Src="~/pages/widget/LoginNav.ascx" TagPrefix="uc1" TagName="LoginNav" %>
+
+    <uc1:loginnav runat="server" id="LoginNav" />
+
 >>>>>>> Stashed changes
 >>>>>>> Stashed changes
 </asp:Content>

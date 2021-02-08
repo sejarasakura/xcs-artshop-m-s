@@ -3,9 +3,16 @@
 <<<<<<< Updated upstream
 =======
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <header>
     <nav>
 =======
+=======
+
+
+ 
+
+>>>>>>> Stashed changes
 >>>>>>> Stashed changes
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">
@@ -16,20 +23,20 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mx-auto">
+       
             <%--   <li class="nav-item active">
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>--%>
-            <li class="nav-item">
+            
                 <a class="nav-link" href="#">Painting</a>
-            </li>
-            <li class="nav-item">
+            
+            
                 <a class="nav-link" href="#">Drawing</a>
-            </li>
-            <li class="nav-item">
+            
+            
                 <a class="nav-link" href="#">News</a>
-            </li>
-            <li class="nav-item dropdown">
+            
+           
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -45,21 +52,40 @@
             </li> 
 >>>>>>> Stashed changes
             <li class="nav-item">
-                <a class="nav-link font-weight-light" href="#">Contact Us</a>
-            </li>
+=======
 
-        </ul>
+                    <a class="dropdown-item" href="#">Login</a>
+                    <a class="dropdown-item mt-2" href="#">Shopping Cart</a>
+                </div>
+            
+
+                    <a class="dropdown-item" href="~/pages/profile/LoginScreen.aspx" ID="loginLink" runat="server">Login</a>
+                    <a class="dropdown-item mt-2" href="#">Shopping Cart</a>
+                </div>
+           
+
+            
+>>>>>>> Stashed changes
+                <a class="nav-link font-weight-light" href="#">Contact Us</a>
+            
+
+        
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search..." aria-label="Search">
             <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
         </form>
-    </div>
+    
 </nav>
 
 
 
 <<<<<<< Updated upstream
 =======
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+
+
 >>>>>>> Stashed changes
 >>>>>>> Stashed changes
 

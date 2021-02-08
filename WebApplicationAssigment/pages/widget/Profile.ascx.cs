@@ -8,11 +8,7 @@ using System.Web.UI.WebControls;
 { public partial class Profile : System.Web.UI.UserControl
     { protected void Page_Load(object sender, EventArgs e)
         {
-            int i = 0;
-            if (i == 0)
-            {
-                Console.Out.Write(i);
-            }
+
         }
     }
 }

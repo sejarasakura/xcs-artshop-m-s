@@ -70,28 +70,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\image\background\CompanyLogo.png" />
-    <Content Include="assets\image\background\sky-bg.jpg" />
     <Content Include="pages\main\Splash.html" />
-<<<<<<< Updated upstream
+
     <Content Include="pages\profile\LoginScreen.aspx" />
-=======
-<<<<<<< Updated upstream
-=======
+
+
     <Content Include="pages\profile\LoginScreen.aspx" />
     <Content Include="pages\profile\ProfileScreen.aspx" />
     <Content Include="pages\profile\RegisterScreen.aspx" />
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+
+
+
     <Content Include="pages\widget\comment.ascx" />
     <Content Include="pages\widget\Footer.ascx" />
     <Content Include="pages\widget\Header.ascx" />
     <Content Include="pages\widget\LoginNav.ascx" />
     <Content Include="pages\widget\Profile.ascx" />
+    <Content Include="pages\widget\profilemou.ascx" />
     <Content Include="pages\widget\ProfilePicture.ascx" />
     <Content Include="pages\widget\Register.ascx" />
     <Content Include="pages\widget\Sidemap.ascx" />
-    <Content Include="pages\widget\StartPage.ascx" />
+    <Content Include="pages\__test\LoginScreen.aspx" />
+    <Content Include="pages\__test\RegisterScreen.aspx" />
     <Content Include="pages\__test\WebForm1.aspx" />
     <Content Include="Web.config" />
     <Content Include="web\lib\css\extensions.css" />
@@ -116,11 +116,11 @@
     <Compile Include="pages\master\Master.Master.designer.cs">
       <DependentUpon>Master.Master</DependentUpon>
     </Compile>
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
+
+
+
+
+
     <Compile Include="pages\profile\LoginScreen.aspx.cs">
       <DependentUpon>LoginScreen.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -128,8 +128,11 @@
     <Compile Include="pages\profile\LoginScreen.aspx.designer.cs">
       <DependentUpon>LoginScreen.aspx</DependentUpon>
     </Compile>
-<<<<<<< Updated upstream
-=======
+
+
+
+
+
     <Compile Include="pages\profile\ProfileScreen.aspx.cs">
       <DependentUpon>ProfileScreen.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -144,8 +147,8 @@
     <Compile Include="pages\profile\RegisterScreen.aspx.designer.cs">
       <DependentUpon>RegisterScreen.aspx</DependentUpon>
     </Compile>
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+Updated upstream
+
     <Compile Include="pages\widget\comment.ascx.cs">
       <DependentUpon>comment.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -181,6 +184,13 @@
     <Compile Include="pages\widget\Profile.ascx.designer.cs">
       <DependentUpon>Profile.ascx</DependentUpon>
     </Compile>
+    <Compile Include="pages\widget\profilemou.ascx.cs">
+      <DependentUpon>profilemou.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\widget\profilemou.ascx.designer.cs">
+      <DependentUpon>profilemou.ascx</DependentUpon>
+    </Compile>
     <Compile Include="pages\widget\ProfilePicture.ascx.cs">
       <DependentUpon>ProfilePicture.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -202,12 +212,19 @@
     <Compile Include="pages\widget\Sidemap.ascx.designer.cs">
       <DependentUpon>Sidemap.ascx</DependentUpon>
     </Compile>
-    <Compile Include="pages\widget\StartPage.ascx.cs">
-      <DependentUpon>StartPage.ascx</DependentUpon>
+    <Compile Include="pages\__test\LoginScreen.aspx.cs">
+      <DependentUpon>LoginScreen.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="pages\widget\StartPage.ascx.designer.cs">
-      <DependentUpon>StartPage.ascx</DependentUpon>
+    <Compile Include="pages\__test\LoginScreen.aspx.designer.cs">
+      <DependentUpon>LoginScreen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\__test\RegisterScreen.aspx.cs">
+      <DependentUpon>RegisterScreen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\__test\RegisterScreen.aspx.designer.cs">
+      <DependentUpon>RegisterScreen.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\__test\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
@@ -233,6 +250,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="assets\" />
     <Folder Include="modal\" />
     <Folder Include="pages\_limSK\" />
   </ItemGroup>
@@ -269,13 +287,14 @@
     <Error Condition="!Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets'))" />
   </Target>
-<<<<<<< Updated upstream
+Updated upstream
+Updated upstream
   <Target Name="CopyRoslynFiles" AfterTargets="AfterBuild" Condition="!$(Disable_CopyWebApplication) And '$(OutDir)' != '$(OutputPath)'">
 =======
   
-<<<<<<< Updated upstream
+ Updated upstream
   <Target Name="CopyRoslynFiles" AfterTargets="AfterBuild" Condition="!$(Disable_CopyWebApplication) And '$(OutDir)' != '$(OutputPath)'">
-<<<<<<< Updated upstream
+ Updated upstream
 	<ItemGroup>
 	  <RoslynFiles Include="$(CscToolPath)\*" />
 	</ItemGroup>
@@ -288,23 +307,24 @@
   
 =======
 >>>>>>> Stashed changes
+>>>>>>> Stashed changes
     <ItemGroup>
       <RoslynFiles Include="$(CscToolPath)\*" />
     </ItemGroup>
     <MakeDir Directories="$(WebProjectOutputDir)\bin\roslyn" />
     <Copy SourceFiles="@(RoslynFiles)" DestinationFolder="$(WebProjectOutputDir)\bin\roslyn" SkipUnchangedFiles="true" Retries="$(CopyRetryCount)" RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)" />
   </Target>
-<<<<<<< Updated upstream
+ Updated upstream
+ Updated upstream
 =======
   <Import Project="..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets" Condition="Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets')" />
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+
+
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
   <Target Name="AfterBuild">
   </Target>
-
   -->
 </Project>
