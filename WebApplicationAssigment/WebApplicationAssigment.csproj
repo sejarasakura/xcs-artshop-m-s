@@ -78,11 +78,16 @@
     <Content Include="pages\profile\ProfileScreen.aspx" />
     <Content Include="pages\profile\RegisterScreen.aspx" />
 
+<<<<<<< HEAD
 =======
     <Content Include="pages\profile\LoginScreen.aspx" />
 >>>>>>> parent of b977ac4... register
 =======
 >>>>>>> parent of 2cc2e2e... login
+=======
+
+
+>>>>>>> parent of 145db7f... project
     <Content Include="pages\widget\comment.ascx" />
     <Content Include="pages\widget\Footer.ascx" />
     <Content Include="pages\widget\Header.ascx" />
@@ -114,6 +119,14 @@
       <DependentUpon>Master.Master</DependentUpon>
     </Compile>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+
+
+
+
+>>>>>>> parent of 145db7f... project
     <Compile Include="pages\profile\LoginScreen.aspx.cs">
       <DependentUpon>LoginScreen.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -122,6 +135,14 @@
       <DependentUpon>LoginScreen.aspx</DependentUpon>
     </Compile>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+
+
+
+
+>>>>>>> parent of 145db7f... project
     <Compile Include="pages\profile\ProfileScreen.aspx.cs">
       <DependentUpon>ProfileScreen.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -136,10 +157,15 @@
     <Compile Include="pages\profile\RegisterScreen.aspx.designer.cs">
       <DependentUpon>RegisterScreen.aspx</DependentUpon>
     </Compile>
+<<<<<<< HEAD
 =======
 >>>>>>> parent of b977ac4... register
 =======
 >>>>>>> parent of 2cc2e2e... login
+=======
+Updated upstream
+
+>>>>>>> parent of 145db7f... project
     <Compile Include="pages\widget\comment.ascx.cs">
       <DependentUpon>comment.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -266,11 +292,18 @@
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
+=======
+Updated upstream
+Updated upstream
+>>>>>>> parent of 145db7f... project
   <Target Name="CopyRoslynFiles" AfterTargets="AfterBuild" Condition="!$(Disable_CopyWebApplication) And '$(OutDir)' != '$(OutputPath)'">
-
+=======
+  
+ Updated upstream
   <Target Name="CopyRoslynFiles" AfterTargets="AfterBuild" Condition="!$(Disable_CopyWebApplication) And '$(OutDir)' != '$(OutputPath)'">
-
+ Updated upstream
 	<ItemGroup>
 	  <RoslynFiles Include="$(CscToolPath)\*" />
 	</ItemGroup>
@@ -278,8 +311,17 @@
 	<Copy SourceFiles="@(RoslynFiles)" DestinationFolder="$(WebProjectOutputDir)\bin\roslyn" SkipUnchangedFiles="true" Retries="$(CopyRetryCount)" RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)" />
 	</Target>
 =======
+<<<<<<< HEAD
   <Target Name="CopyRoslynFiles" AfterTargets="AfterBuild" Condition="!$(Disable_CopyWebApplication) And '$(OutDir)' != '$(OutputPath)'">
 >>>>>>> parent of b977ac4... register
+=======
+  
+>>>>>>> Stashed changes
+  
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
+>>>>>>> parent of 145db7f... project
     <ItemGroup>
       <RoslynFiles Include="$(CscToolPath)\*" />
     </ItemGroup>
@@ -287,6 +329,12 @@
     <Copy SourceFiles="@(RoslynFiles)" DestinationFolder="$(WebProjectOutputDir)\bin\roslyn" SkipUnchangedFiles="true" Retries="$(CopyRetryCount)" RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)" />
   </Target>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+ Updated upstream
+ Updated upstream
+=======
+>>>>>>> parent of 145db7f... project
   <Import Project="..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets" Condition="Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets')" />
 
 
