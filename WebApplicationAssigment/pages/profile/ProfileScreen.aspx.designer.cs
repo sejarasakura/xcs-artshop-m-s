@@ -7,20 +7,28 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplicationAssigment.pages.widget
+namespace WebApplicationAssigment.pages.profile
 {
 
 
-    public partial class Header
+    public partial class ProfileScreen
     {
 
         /// <summary>
-        /// loginLink control.
+<<<<<<< Updated upstream
+        /// Profile control.
+=======
+        /// profilemou control.
+>>>>>>> Stashed changes
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor loginLink;
+<<<<<<< Updated upstream
+        protected global::WebApplicationAssigment.pages.widget.Profile Profile;
+=======
+        protected global::WebApplicationAssigment.pages.widget.profilemou profilemou;
+>>>>>>> Stashed changes
     }
 }
