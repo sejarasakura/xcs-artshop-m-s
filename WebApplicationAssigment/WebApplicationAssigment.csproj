@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="pages\main\Splash.html" />
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     <Content Include="pages\profile\LoginScreen.aspx" />
 
@@ -80,6 +81,8 @@
 =======
     <Content Include="pages\profile\LoginScreen.aspx" />
 >>>>>>> parent of b977ac4... register
+=======
+>>>>>>> parent of 2cc2e2e... login
     <Content Include="pages\widget\comment.ascx" />
     <Content Include="pages\widget\Footer.ascx" />
     <Content Include="pages\widget\Header.ascx" />
@@ -110,6 +113,7 @@
     <Compile Include="pages\master\Master.Master.designer.cs">
       <DependentUpon>Master.Master</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="pages\profile\LoginScreen.aspx.cs">
       <DependentUpon>LoginScreen.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -134,6 +138,8 @@
     </Compile>
 =======
 >>>>>>> parent of b977ac4... register
+=======
+>>>>>>> parent of 2cc2e2e... login
     <Compile Include="pages\widget\comment.ascx.cs">
       <DependentUpon>comment.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
