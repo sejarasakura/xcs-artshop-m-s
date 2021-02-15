@@ -79,8 +79,6 @@
     <Content Include="pages\profile\ProfileScreen.aspx" />
     <Content Include="pages\profile\RegisterScreen.aspx" />
 
-
-
     <Content Include="pages\widget\comment.ascx" />
     <Content Include="pages\widget\Footer.ascx" />
     <Content Include="pages\widget\Header.ascx" />
@@ -116,11 +114,6 @@
     <Compile Include="pages\master\Master.Master.designer.cs">
       <DependentUpon>Master.Master</DependentUpon>
     </Compile>
-
-
-
-
-
     <Compile Include="pages\profile\LoginScreen.aspx.cs">
       <DependentUpon>LoginScreen.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -128,11 +121,6 @@
     <Compile Include="pages\profile\LoginScreen.aspx.designer.cs">
       <DependentUpon>LoginScreen.aspx</DependentUpon>
     </Compile>
-
-
-
-
-
     <Compile Include="pages\profile\ProfileScreen.aspx.cs">
       <DependentUpon>ProfileScreen.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -147,8 +135,6 @@
     <Compile Include="pages\profile\RegisterScreen.aspx.designer.cs">
       <DependentUpon>RegisterScreen.aspx</DependentUpon>
     </Compile>
-Updated upstream
-
     <Compile Include="pages\widget\comment.ascx.cs">
       <DependentUpon>comment.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -287,36 +273,23 @@ Updated upstream
     <Error Condition="!Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets'))" />
   </Target>
-Updated upstream
-Updated upstream
+
   <Target Name="CopyRoslynFiles" AfterTargets="AfterBuild" Condition="!$(Disable_CopyWebApplication) And '$(OutDir)' != '$(OutputPath)'">
-=======
-  
- Updated upstream
+
   <Target Name="CopyRoslynFiles" AfterTargets="AfterBuild" Condition="!$(Disable_CopyWebApplication) And '$(OutDir)' != '$(OutputPath)'">
- Updated upstream
+
 	<ItemGroup>
 	  <RoslynFiles Include="$(CscToolPath)\*" />
 	</ItemGroup>
 	<MakeDir Directories="$(WebProjectOutputDir)\bin\roslyn" />
 	<Copy SourceFiles="@(RoslynFiles)" DestinationFolder="$(WebProjectOutputDir)\bin\roslyn" SkipUnchangedFiles="true" Retries="$(CopyRetryCount)" RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)" />
 	</Target>
-=======
-  
->>>>>>> Stashed changes
-  
-=======
->>>>>>> Stashed changes
->>>>>>> Stashed changes
     <ItemGroup>
       <RoslynFiles Include="$(CscToolPath)\*" />
     </ItemGroup>
     <MakeDir Directories="$(WebProjectOutputDir)\bin\roslyn" />
     <Copy SourceFiles="@(RoslynFiles)" DestinationFolder="$(WebProjectOutputDir)\bin\roslyn" SkipUnchangedFiles="true" Retries="$(CopyRetryCount)" RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)" />
   </Target>
- Updated upstream
- Updated upstream
-=======
   <Import Project="..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets" Condition="Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets')" />
 
 
