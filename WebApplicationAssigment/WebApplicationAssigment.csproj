@@ -1,5 +1,4 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props" Condition="Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -24,8 +23,6 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
-    <DockerLaunchUrl>http://{ServiceIPAddress}</DockerLaunchUrl>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -71,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="pages\main\Splash.html" />
+<<<<<<< HEAD
 
     <Content Include="pages\profile\LoginScreen.aspx" />
 
@@ -79,6 +77,9 @@
     <Content Include="pages\profile\ProfileScreen.aspx" />
     <Content Include="pages\profile\RegisterScreen.aspx" />
 
+=======
+    <Content Include="pages\profile\LoginScreen.aspx" />
+>>>>>>> parent of b977ac4... register
     <Content Include="pages\widget\comment.ascx" />
     <Content Include="pages\widget\Footer.ascx" />
     <Content Include="pages\widget\Header.ascx" />
@@ -86,7 +87,6 @@
     <Content Include="pages\widget\Profile.ascx" />
     <Content Include="pages\widget\profilemou.ascx" />
     <Content Include="pages\widget\ProfilePicture.ascx" />
-    <Content Include="pages\widget\Register.ascx" />
     <Content Include="pages\widget\Sidemap.ascx" />
     <Content Include="pages\__test\LoginScreen.aspx" />
     <Content Include="pages\__test\RegisterScreen.aspx" />
@@ -94,15 +94,11 @@
     <Content Include="Web.config" />
     <Content Include="web\lib\css\extensions.css" />
     <Content Include="web\lib\css\lib.css" />
-    <Content Include="web\lib\css\login.css" />
     <Content Include="web\lib\css\main.css" />
     <Content Include="web\lib\css\shop.css" />
     <Content Include="web\lib\js\helpers.js" />
     <Content Include="web\lib\js\lib.js" />
-    <Content Include="web\lib\js\login.js" />
     <Content Include="web\lib\js\main.js" />
-    <Content Include="web\lib\js\profile.js" />
-    <Content Include="web\lib\js\register.js" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="commons\Constant.cs" />
@@ -121,6 +117,7 @@
     <Compile Include="pages\profile\LoginScreen.aspx.designer.cs">
       <DependentUpon>LoginScreen.aspx</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="pages\profile\ProfileScreen.aspx.cs">
       <DependentUpon>ProfileScreen.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -135,6 +132,8 @@
     <Compile Include="pages\profile\RegisterScreen.aspx.designer.cs">
       <DependentUpon>RegisterScreen.aspx</DependentUpon>
     </Compile>
+=======
+>>>>>>> parent of b977ac4... register
     <Compile Include="pages\widget\comment.ascx.cs">
       <DependentUpon>comment.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -184,13 +183,6 @@
     <Compile Include="pages\widget\ProfilePicture.ascx.designer.cs">
       <DependentUpon>ProfilePicture.ascx</DependentUpon>
     </Compile>
-    <Compile Include="pages\widget\Register.ascx.cs">
-      <DependentUpon>Register.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\widget\Register.ascx.designer.cs">
-      <DependentUpon>Register.ascx</DependentUpon>
-    </Compile>
     <Compile Include="pages\widget\Sidemap.ascx.cs">
       <DependentUpon>Sidemap.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -222,10 +214,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Dockerfile" />
-    <None Include=".dockerignore">
-      <DependentUpon>Dockerfile</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <Content Include="pages\master\Master.Master" />
     <None Include="Web.Debug.config">
@@ -270,9 +258,8 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.props'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets'))" />
   </Target>
+<<<<<<< HEAD
 
   <Target Name="CopyRoslynFiles" AfterTargets="AfterBuild" Condition="!$(Disable_CopyWebApplication) And '$(OutDir)' != '$(OutputPath)'">
 
@@ -284,15 +271,21 @@
 	<MakeDir Directories="$(WebProjectOutputDir)\bin\roslyn" />
 	<Copy SourceFiles="@(RoslynFiles)" DestinationFolder="$(WebProjectOutputDir)\bin\roslyn" SkipUnchangedFiles="true" Retries="$(CopyRetryCount)" RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)" />
 	</Target>
+=======
+  <Target Name="CopyRoslynFiles" AfterTargets="AfterBuild" Condition="!$(Disable_CopyWebApplication) And '$(OutDir)' != '$(OutputPath)'">
+>>>>>>> parent of b977ac4... register
     <ItemGroup>
       <RoslynFiles Include="$(CscToolPath)\*" />
     </ItemGroup>
     <MakeDir Directories="$(WebProjectOutputDir)\bin\roslyn" />
     <Copy SourceFiles="@(RoslynFiles)" DestinationFolder="$(WebProjectOutputDir)\bin\roslyn" SkipUnchangedFiles="true" Retries="$(CopyRetryCount)" RetryDelayMilliseconds="$(CopyRetryDelayMilliseconds)" />
   </Target>
+<<<<<<< HEAD
   <Import Project="..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets" Condition="Exists('..\packages\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.1.10.9\build\Microsoft.VisualStudio.Azure.Containers.Tools.Targets.targets')" />
 
 
+=======
+>>>>>>> parent of b977ac4... register
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
