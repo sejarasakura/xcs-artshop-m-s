@@ -74,6 +74,7 @@
     <Content Include="pages\main\ArtShop\ShoppingCart.aspx" />
     <Content Include="pages\main\Splash.html" />
     <Content Include="pages\widget\comment.ascx" />
+    <Content Include="pages\widget\EndPages.ascx" />
     <Content Include="pages\widget\Footer.ascx" />
     <Content Include="pages\widget\Header.ascx" />
     <Content Include="pages\widget\LoginNav.ascx" />
@@ -128,6 +129,13 @@
     </Compile>
     <Compile Include="pages\widget\comment.ascx.designer.cs">
       <DependentUpon>comment.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\widget\EndPages.ascx.cs">
+      <DependentUpon>EndPages.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\widget\EndPages.ascx.designer.cs">
+      <DependentUpon>EndPages.ascx</DependentUpon>
     </Compile>
     <Compile Include="pages\widget\Footer.ascx.cs">
       <DependentUpon>Footer.ascx</DependentUpon>
