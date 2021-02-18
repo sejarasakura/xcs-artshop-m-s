@@ -1,5 +1,4 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="LoginNav.ascx.cs" Inherits="WebApplicationAssigment.pages.widget.LoginNav" %>
-<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="LoginNav.ascx.cs" Inherits="WebApplicationAssigment.pages.widget.LoginNav" %>
 <link href="../../web/lib/css/login.css" rel="stylesheet" />
 
 

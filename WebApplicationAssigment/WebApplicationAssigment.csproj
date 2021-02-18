@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="assets\image\background\CompanyLogo.png" />
     <Content Include="assets\image\background\sky-bg.jpg" />
+    <Content Include="pages\main\Artist\content\WebForm1.aspx" />
     <Content Include="pages\main\ArtShop\ArtShop_Customer.aspx" />
     <Content Include="pages\main\ArtShop\ArtShop_Staff.aspx" />
     <Content Include="pages\main\ArtShop\ShoppingCart.aspx" />
@@ -95,6 +96,13 @@
   <ItemGroup>
     <Compile Include="commons\Constant.cs" />
     <Compile Include="commons\Validation.cs" />
+    <Compile Include="pages\main\Artist\content\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\Artist\content\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pages\main\ArtShop\ArtShop_Customer.aspx.cs">
       <DependentUpon>ArtShop_Customer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

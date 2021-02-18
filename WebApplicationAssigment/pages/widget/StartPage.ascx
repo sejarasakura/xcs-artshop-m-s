@@ -1,6 +1,14 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="StartPage.ascx.cs"  %>
+<script runat="server">
 
- <div class="tatsu-action-backgorund-sk tatsu-section  tatsu-bg-overlay   tatsu-clearfix" data-title="" data-headerscheme="background--dark">
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+</script>
+
+
+<div class="tatsu-action-backgorund-sk tatsu-section  tatsu-bg-overlay   tatsu-clearfix" data-title="" data-headerscheme="background--dark">
     <div class="tatsu-section-pad clearfix" data-padding="{&quot;d&quot;:&quot;120px 0px 120px 0px&quot;}" data-padding-top="120px" style="padding-top: 222px;">
         <div class="tatsu-row-wrap  tatsu-wrap tatsu-row-one-col tatsu-row-has-one-cols tatsu-medium-gutter tatsu-reg-cols  tatsu-clearfix tatsu-S1louSDNmQ">
             <div class="tatsu-row">
