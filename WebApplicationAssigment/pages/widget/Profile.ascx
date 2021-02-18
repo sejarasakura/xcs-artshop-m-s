@@ -266,14 +266,7 @@
               </div>
                
               </div><!--/tab-pane-->
-          </div><!--/tab-content-->
+          </div><!--/col-9-->
 
-        </div><!--/col-9-->
     </div><!--/row-->
-=======
-<<<<<<< Updated upstream
-=======
-
-halo no hao ma
->>>>>>> Stashed changes
->>>>>>> Stashed changes
+</div><!--/container-->

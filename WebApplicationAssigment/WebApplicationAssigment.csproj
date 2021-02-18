@@ -69,8 +69,12 @@
   <ItemGroup>
     <Content Include="assets\image\background\CompanyLogo.png" />
     <Content Include="assets\image\background\sky-bg.jpg" />
+    <Content Include="pages\main\ArtShop\ArtShop_Customer.aspx" />
+    <Content Include="pages\main\ArtShop\ArtShop_Staff.aspx" />
+    <Content Include="pages\main\ArtShop\ShoppingCart.aspx" />
     <Content Include="pages\main\Splash.html" />
     <Content Include="pages\widget\comment.ascx" />
+    <Content Include="pages\widget\EndPages.ascx" />
     <Content Include="pages\widget\Footer.ascx" />
     <Content Include="pages\widget\Header.ascx" />
     <Content Include="pages\widget\LoginNav.ascx" />
@@ -91,6 +95,27 @@
   <ItemGroup>
     <Compile Include="commons\Constant.cs" />
     <Compile Include="commons\Validation.cs" />
+    <Compile Include="pages\main\ArtShop\ArtShop_Customer.aspx.cs">
+      <DependentUpon>ArtShop_Customer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\ArtShop\ArtShop_Customer.aspx.designer.cs">
+      <DependentUpon>ArtShop_Customer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\ArtShop\ArtShop_Staff.aspx.cs">
+      <DependentUpon>ArtShop_Staff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\ArtShop\ArtShop_Staff.aspx.designer.cs">
+      <DependentUpon>ArtShop_Staff.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\ArtShop\ShoppingCart.aspx.cs">
+      <DependentUpon>ShoppingCart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\ArtShop\ShoppingCart.aspx.designer.cs">
+      <DependentUpon>ShoppingCart.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pages\master\Master.Master.cs">
       <DependentUpon>Master.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -104,6 +129,13 @@
     </Compile>
     <Compile Include="pages\widget\comment.ascx.designer.cs">
       <DependentUpon>comment.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\widget\EndPages.ascx.cs">
+      <DependentUpon>EndPages.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\widget\EndPages.ascx.designer.cs">
+      <DependentUpon>EndPages.ascx</DependentUpon>
     </Compile>
     <Compile Include="pages\widget\Footer.ascx.cs">
       <DependentUpon>Footer.ascx</DependentUpon>
