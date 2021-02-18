@@ -11,7 +11,7 @@ namespace WebApplicationAssigment.pages.main.ArtShop
 {
 
 
-    public partial class Register
+    public partial class Register_Staff
     {
 
         /// <summary>

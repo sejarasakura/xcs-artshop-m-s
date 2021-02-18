@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/pages/master/Master.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="WebApplicationAssigment.pages.main.ArtShop.Register" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/pages/master/Master.Master" AutoEventWireup="true" CodeBehind="Register_Staff.aspx.cs" Inherits="WebApplicationAssigment.pages.main.ArtShop.Register" %>
 
 <%@ Register Src="~/pages/widget/Staff/RegisterPage.ascx" TagPrefix="uc1" TagName="RegisterPage" %>
 
