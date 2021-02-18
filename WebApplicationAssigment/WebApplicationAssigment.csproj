@@ -78,7 +78,6 @@
     <Content Include="pages\widget\EndPages.ascx" />
     <Content Include="pages\widget\Footer.ascx" />
     <Content Include="pages\widget\Header.ascx" />
-    <Content Include="pages\widget\LoginNav.ascx" />
     <Content Include="pages\widget\Profile.ascx" />
     <Content Include="pages\widget\ProfilePicture.ascx" />
     <Content Include="pages\widget\Staff\RegisterPage.ascx" />
@@ -159,13 +158,6 @@
     </Compile>
     <Compile Include="pages\widget\Header.ascx.designer.cs">
       <DependentUpon>Header.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="pages\widget\LoginNav.ascx.cs">
-      <DependentUpon>LoginNav.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\widget\LoginNav.ascx.designer.cs">
-      <DependentUpon>LoginNav.ascx</DependentUpon>
     </Compile>
     <Compile Include="pages\widget\Profile.ascx.cs">
       <DependentUpon>Profile.ascx</DependentUpon>
