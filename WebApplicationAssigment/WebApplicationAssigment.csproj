@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="assets\image\background\CompanyLogo.png" />
     <Content Include="assets\image\background\sky-bg.jpg" />
+    <Content Include="assets\image\paypal.png" />
     <Content Include="pages\main\ArtShop\ArtShop_Customer.aspx" />
     <Content Include="pages\main\ArtShop\ArtShop_Staff.aspx" />
     <Content Include="pages\main\ArtShop\ShoppingCart.aspx" />
