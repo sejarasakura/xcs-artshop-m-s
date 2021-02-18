@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="RegisterPage.ascx.cs" Inherits="WebApplicationAssigment.pages.widget.RegisterPage" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="RegisterPage.ascx.cs" Inherits="WebApplicationAssigment.pages.widget.Staff.RegisterPage" %>
 
 <!DOCTYPE html>
 <html lang="en">

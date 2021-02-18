@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace WebApplicationAssigment.pages.widget
+namespace WebApplicationAssigment.pages.widget.Staff
 {
     public partial class RegisterPage : System.Web.UI.UserControl
     {
