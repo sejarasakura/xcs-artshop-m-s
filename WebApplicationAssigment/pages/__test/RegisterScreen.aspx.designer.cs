@@ -7,20 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplicationAssigment.pages.widget
+namespace WebApplicationAssigment.pages.@__test
 {
 
 
-    public partial class Header
+    public partial class RegisterScreen
     {
 
         /// <summary>
-        /// loginLink control.
+        /// Register control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor loginLink;
+        protected global::WebApplicationAssigment.pages.widget.Register Register;
     }
 }

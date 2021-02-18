@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplicationAssigment.pages.@__test {
-    
-    
-    public partial class WebForm1 {
-        
+namespace WebApplicationAssigment.pages.@__test
+{
+
+
+    public partial class WebForm1
+    {
+
         /// <summary>
         /// StartPage control.
         /// </summary>
@@ -19,6 +21,6 @@ namespace WebApplicationAssigment.pages.@__test {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::WebApplicationAssigment.pages.widget.StartPage StartPage;
+        protected global::System.Web.UI.UserControl StartPage;
     }
 }
