@@ -13,8 +13,6 @@ namespace WebApplicationAssigment.pages.@__test
 
     public partial class WebForm1
     {
-<<<<<<< Updated upstream
-=======
 
         /// <summary>
         /// StartPage control.
@@ -177,6 +175,5 @@ namespace WebApplicationAssigment.pages.@__test
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::WebApplicationAssigment.pages.widget.EndPages EndPages;
->>>>>>> Stashed changes
     }
 }
