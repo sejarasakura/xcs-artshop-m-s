@@ -1,7 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="EndPages.ascx.cs" Inherits="WebApplicationAssigment.pages.widget.EndPages" %>
 
 
-<div class="tatsu-ft7hhska0odyarsc tatsu-section  tatsu-bg-overlay   tatsu-clearfix" data-title="" data-headerscheme="background--dark">
+<div style="border-color:#FFF" class="tatsu-ft7hhska0odyarsc tatsu-section  tatsu-bg-overlay   tatsu-clearfix" data-title="" data-headerscheme="background--dark">
     <div class="tatsu-shape-divider tatsu-top-divider">
         <svg preserveAspectRatio="none"
             xmlns="http://www.w3.org/2000/svg" width="1920" height="217" viewBox="0 0 1920 217">
