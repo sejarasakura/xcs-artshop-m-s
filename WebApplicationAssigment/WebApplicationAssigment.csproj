@@ -73,6 +73,7 @@
     <Content Include="pages\main\ArtShop\ArtShop_Staff.aspx" />
     <Content Include="pages\main\ArtShop\ChangePassword_Staff.aspx" />
     <Content Include="pages\main\ArtShop\Customer\Login_Cust.aspx" />
+    <Content Include="pages\main\ArtShop\Customer\Register_Cust.aspx" />
     <Content Include="pages\main\ArtShop\Login_Staff.aspx" />
     <Content Include="pages\main\ArtShop\Logout_Staff.aspx" />
     <Content Include="pages\main\ArtShop\Profile_Staff.aspx" />
@@ -82,6 +83,7 @@
     <Content Include="pages\main\Splash.html" />
     <Content Include="pages\widget\comment.ascx" />
     <Content Include="pages\widget\Customer\LoginPageCust.ascx" />
+    <Content Include="pages\widget\Customer\RegisterPageCust.ascx" />
     <Content Include="pages\widget\EndPages.ascx" />
     <Content Include="pages\widget\Footer.ascx" />
     <Content Include="pages\widget\Header.ascx" />
@@ -134,6 +136,13 @@
     </Compile>
     <Compile Include="pages\main\ArtShop\Customer\Login_Cust.aspx.designer.cs">
       <DependentUpon>Login_Cust.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\ArtShop\Customer\Register_Cust.aspx.cs">
+      <DependentUpon>Register_Cust.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\ArtShop\Customer\Register_Cust.aspx.designer.cs">
+      <DependentUpon>Register_Cust.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\main\ArtShop\Login_Staff.aspx.cs">
       <DependentUpon>Login_Staff.aspx</DependentUpon>
@@ -197,6 +206,13 @@
     </Compile>
     <Compile Include="pages\widget\Customer\LoginPageCust.ascx.designer.cs">
       <DependentUpon>LoginPageCust.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\widget\Customer\RegisterPageCust.ascx.cs">
+      <DependentUpon>RegisterPageCust.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\widget\Customer\RegisterPageCust.ascx.designer.cs">
+      <DependentUpon>RegisterPageCust.ascx</DependentUpon>
     </Compile>
     <Compile Include="pages\widget\EndPages.ascx.cs">
       <DependentUpon>EndPages.ascx</DependentUpon>
