@@ -71,6 +71,7 @@
     <Content Include="assets\image\background\sky-bg.jpg" />
     <Content Include="pages\main\ArtShop\ArtShop_Customer.aspx" />
     <Content Include="pages\main\ArtShop\ArtShop_Staff.aspx" />
+    <Content Include="pages\main\ArtShop\ChangePassword_Staff.aspx" />
     <Content Include="pages\main\ArtShop\Login_Staff.aspx" />
     <Content Include="pages\main\ArtShop\Profile_Staff.aspx" />
     <Content Include="pages\main\ArtShop\Register_Staff.aspx" />
@@ -82,6 +83,7 @@
     <Content Include="pages\widget\Header.ascx" />
     <Content Include="pages\widget\Profile.ascx" />
     <Content Include="pages\widget\ProfilePicture.ascx" />
+    <Content Include="pages\widget\Staff\ChangePassPage.ascx" />
     <Content Include="pages\widget\Staff\LoginPage.ascx" />
     <Content Include="pages\widget\Staff\ProfilePage.ascx" />
     <Content Include="pages\widget\Staff\RegisterPage.ascx" />
@@ -113,6 +115,13 @@
     </Compile>
     <Compile Include="pages\main\ArtShop\ArtShop_Staff.aspx.designer.cs">
       <DependentUpon>ArtShop_Staff.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\ArtShop\ChangePassword_Staff.aspx.cs">
+      <DependentUpon>ChangePassword_Staff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\ArtShop\ChangePassword_Staff.aspx.designer.cs">
+      <DependentUpon>ChangePassword_Staff.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\main\ArtShop\Login_Staff.aspx.cs">
       <DependentUpon>Login_Staff.aspx</DependentUpon>
@@ -190,6 +199,13 @@
     </Compile>
     <Compile Include="pages\widget\ProfilePicture.ascx.designer.cs">
       <DependentUpon>ProfilePicture.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\widget\Staff\ChangePassPage.ascx.cs">
+      <DependentUpon>ChangePassPage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\widget\Staff\ChangePassPage.ascx.designer.cs">
+      <DependentUpon>ChangePassPage.ascx</DependentUpon>
     </Compile>
     <Compile Include="pages\widget\Staff\LoginPage.ascx.cs">
       <DependentUpon>LoginPage.ascx</DependentUpon>
