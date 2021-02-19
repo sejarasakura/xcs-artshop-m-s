@@ -103,7 +103,7 @@ $(document).ready(function(){
 	$('[data-toggle="tooltip"]').tooltip();
 	var actions = $("table td:last-child").html();
 	// Append table with add row form on add new button click
-    $(".add-new").click(function(){
+  /*  $(".add-new").click(function(){
 		$(this).attr("disabled", "disabled");
 		var index = $("table tbody tr:last-child").index();
         var row = '<tr>' +
@@ -115,7 +115,7 @@ $(document).ready(function(){
     	$("table").append(row);		
 		$("table tbody tr").eq(index + 1).find(".add, .edit").toggle();
         $('[data-toggle="tooltip"]').tooltip();
-    });
+    });*/
 	// Add row on add button click
 	$(document).on("click", ".add", function(){
 		var empty = false;
@@ -164,7 +164,7 @@ $(document).ready(function(){
             <div class="col-lg-11 mx-auto">
                 <div class="card border-0 shadow">
                     <div class="card-body p-5">
-                        <img src="../../assets/image/background/CompanyLogo.png " class="d-inline-block align-top" width="90" height="64">
+                        <img src="../../../assets/image/background/CompanyLogo.png " class="d-inline-block align-top" width="90" height="64">
                         <!-- Responsive table -->
                           <div class="table-responsive">
         <div class="table-wrapper" style="margin-top: 0px;margin-left: 0px;margin-right: 0px;margin-bottom: 0px;width: 890px;">
@@ -172,7 +172,7 @@ $(document).ready(function(){
                 <div class="row">
                     <div class="col-sm-8"><h2>Employee <b>Details</b></h2></div>
                     <div class="col-sm-4">
-                        <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
+                       <a href="https://localhost:44375/pages/main/Artist/content/AddNewArt.aspx"> <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button></a>
                     </div>
                 </div>
             </div>

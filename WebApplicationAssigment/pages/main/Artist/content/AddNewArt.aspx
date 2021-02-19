@@ -39,7 +39,8 @@
                 <input type="file" class="form-control-file" id="exampleFormControlFile1">
               </div>
               <div class="text-left">
-                  <button type="submit" class="btn btn-primary"> Add Art </button>
+
+                 <button type="submit" class="btn btn-primary"> <a href="<%= "https://" + HttpContext.Current.Request.Url.Authority+"/pages/main/Artist/content/ReadUpdateDeleteArt.aspx"%>"">Add Art</a> </button><!--https://localhost:44375/pages/main/Artist/content/ReadUpdateDeleteArt.aspx-->
                  
               </div>
           </form>
