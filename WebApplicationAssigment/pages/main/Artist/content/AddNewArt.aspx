@@ -17,7 +17,38 @@
   <div class="row">
       <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-3">
           <form id="contact-form" class="form" action="#" method="POST" role="form">
+             
+               <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+              <label for="usr">Discription:</label>
+                <asp:textbox 
+                    CssClass="form-control" 
+                    id="Discription" 
+                    placeholder = "Please enter description" 
+                    text = "" 
+                    rows= "4" 
+                    mode= "multiline" 
+                    runat="server" /> 
+                  <asp:RequiredFieldValidator 
+                      CssClass="alert alert-danger"
+                      runat="server" 
+                      id="RequiredFieldValidator4" 
+                      controltovalidate="Discription" 
+                      errormessage="Please enter your description!" />
+                    <asp:RegularExpressionValidator 
+                        CssClass="alert alert-danger"
+                        Display = "Dynamic" 
+                        ControlToValidate = "Discription" 
+                        ID="RegularExpressionValidator6" 
+                        ValidationExpression = "[\s\S]{0,250}$" 
+                        runat="server" 
+                        ErrorMessage="The description only accept max 250 word only" />
+            </div>
+        </div>
+    </div>
               <div class="form-group">
+              
                   <label class="form-label" for="name">Your Name :</label><br><br>
                   <input type="text" class="form-control" id="name" name="name" placeholder="Your name" tabindex="1" required>
               </div>                            
