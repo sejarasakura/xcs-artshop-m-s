@@ -21,6 +21,6 @@ namespace WebApplicationAssigment.pages.main.ArtShop
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::WebApplicationAssigment.pages.widget.RegisterPage RegisterPage;
+        protected global::WebApplicationAssigment.pages.widget.Staff.RegisterPage RegisterPage;
     }
 }
