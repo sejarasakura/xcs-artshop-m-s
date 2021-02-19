@@ -71,6 +71,8 @@
     <Content Include="assets\image\background\sky-bg.jpg" />
     <Content Include="pages\main\ArtShop\ArtShop_Customer.aspx" />
     <Content Include="pages\main\ArtShop\ArtShop_Staff.aspx" />
+    <Content Include="pages\main\ArtShop\Login_Staff.aspx" />
+    <Content Include="pages\main\ArtShop\Profile_Staff.aspx" />
     <Content Include="pages\main\ArtShop\Register_Staff.aspx" />
     <Content Include="pages\main\ArtShop\ShoppingCart.aspx" />
     <Content Include="pages\main\Splash.html" />
@@ -81,6 +83,7 @@
     <Content Include="pages\widget\Profile.ascx" />
     <Content Include="pages\widget\ProfilePicture.ascx" />
     <Content Include="pages\widget\Staff\LoginPage.ascx" />
+    <Content Include="pages\widget\Staff\ProfilePage.ascx" />
     <Content Include="pages\widget\Staff\RegisterPage.ascx" />
     <Content Include="pages\widget\Sidemap.ascx" />
     <Content Include="pages\widget\StartPage.ascx" />
@@ -110,6 +113,20 @@
     </Compile>
     <Compile Include="pages\main\ArtShop\ArtShop_Staff.aspx.designer.cs">
       <DependentUpon>ArtShop_Staff.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\ArtShop\Login_Staff.aspx.cs">
+      <DependentUpon>Login_Staff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\ArtShop\Login_Staff.aspx.designer.cs">
+      <DependentUpon>Login_Staff.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\ArtShop\Profile_Staff.aspx.cs">
+      <DependentUpon>Profile_Staff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\ArtShop\Profile_Staff.aspx.designer.cs">
+      <DependentUpon>Profile_Staff.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\main\ArtShop\Register_Staff.aspx.cs">
       <DependentUpon>Register_Staff.aspx</DependentUpon>
@@ -180,6 +197,13 @@
     </Compile>
     <Compile Include="pages\widget\Staff\LoginPage.ascx.designer.cs">
       <DependentUpon>LoginPage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\widget\Staff\ProfilePage.ascx.cs">
+      <DependentUpon>ProfilePage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\widget\Staff\ProfilePage.ascx.designer.cs">
+      <DependentUpon>ProfilePage.ascx</DependentUpon>
     </Compile>
     <Compile Include="pages\widget\Staff\RegisterPage.ascx.cs">
       <DependentUpon>RegisterPage.ascx</DependentUpon>
