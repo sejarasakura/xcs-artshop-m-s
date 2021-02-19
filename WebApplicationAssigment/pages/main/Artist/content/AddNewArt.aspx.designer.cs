@@ -13,14 +13,5 @@ namespace WebApplicationAssigment.pages.main.Artist.content
 
     public partial class WebForm1
     {
-
-        /// <summary>
-        /// StartPage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UserControl StartPage;
     }
 }
