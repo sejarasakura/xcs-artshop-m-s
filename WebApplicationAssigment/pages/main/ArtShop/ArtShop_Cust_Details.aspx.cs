@@ -5,14 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace WebApplicationAssigment.pages.widget
+namespace WebApplicationAssigment.pages.main.ArtShop
 {
-    public partial class Header : System.Web.UI.UserControl
+    public partial class ArtShop_Cust_Details : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           
-        }
 
+        }
     }
 }

@@ -1,8 +1,15 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Header.ascx.cs" Inherits="WebApplicationAssigment.pages.widget.Header" %>
 
 <nav id="project_navbar" class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <script type="text/javascript">
+        function painting_submitclick() {
+            window.location = "../main/ArtShop/ArtShop_Customer.aspx";
+        }
+    </script>
+
     <a class="navbar-brand" href="#">
-        <img src="../../assets/image/background/CompanyLogo.png " class="d-inline-block align-top" width="90" height="64">
+        <img src="../../assets/image/background/CompanyLogo.png" class="d-inline-block align-top" width="90" height="64">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -13,7 +20,7 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>--%>
             <li class="nav-item">
-                <a class="nav-link" href="#">Painting</a>
+                <a class="nav-link" href="#" id="painting" onclick="return painting_submitclick()";>Painting</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Drawing</a>
