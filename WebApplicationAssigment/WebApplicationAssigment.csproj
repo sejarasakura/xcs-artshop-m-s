@@ -172,6 +172,7 @@
     </Compile>
     <Compile Include="pages\main\Artist\widget\title.ascx.designer.cs">
       <DependentUpon>title.ascx</DependentUpon>
+    </Compile>
     <Compile Include="modal\Art.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -412,6 +413,7 @@
     </Compile>
     <Compile Include="pages\main\ArtShop\Register_Staff.aspx.designer.cs">
       <DependentUpon>Register_Staff.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pages\main\ArtShop\ArtShop_Staff_Details.aspx.cs">
       <DependentUpon>ArtShop_Staff_Details.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
