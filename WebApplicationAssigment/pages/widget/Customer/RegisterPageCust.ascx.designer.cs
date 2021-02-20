@@ -8,9 +8,9 @@
 //------------------------------------------------------------------------------
 
 
-namespace WebApplicationAssigment.pages.widget
+namespace WebApplicationAssigment.pages.widget.Customer
 {
-    public partial class LoginNav
+    public partial class RegisterPageCust
     {
     }
 }
