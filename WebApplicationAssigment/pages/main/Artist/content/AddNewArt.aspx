@@ -16,15 +16,13 @@
   </div>
   <div class="row">
       <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-3">
-          <form id="contact-form" class="form" action="#" method="POST" role="form">
-             
                <div class="row">
         <div class="col-md-12">
             <div class="form-group">
               <label for="usr">Discription:</label>
                 <asp:textbox 
                     CssClass="form-control" 
-                    id="Discription" 
+                    id="discription" 
                     placeholder = "Please enter description" 
                     text = "" 
                     rows= "4" 
@@ -74,7 +72,6 @@
                  <button type="submit" class="btn btn-primary"> <a href="<%= "https://" + HttpContext.Current.Request.Url.Authority+"/pages/main/Artist/content/ReadUpdateDeleteArt.aspx"%>"">Add Art</a> </button><!--https://localhost:44375/pages/main/Artist/content/ReadUpdateDeleteArt.aspx-->
                  
               </div>
-          </form>
       </div>
   </div>
 </div>

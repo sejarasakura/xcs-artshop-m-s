@@ -10,7 +10,6 @@
     <uc1:StartPage runat="server" ID="StartPage" />
     <div class="container">
 
-    <form id="card_pay" runat="server">
         
     <div class="card">
         <div class="card-header">
@@ -182,7 +181,6 @@
                 ID="Button1" />
         </div>
     </div>
-    </form>
     </div>
     <uc1:EndPages runat="server" ID="EndPages" />
 

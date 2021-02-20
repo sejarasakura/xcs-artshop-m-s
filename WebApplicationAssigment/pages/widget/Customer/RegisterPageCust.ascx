@@ -28,7 +28,6 @@
 	               	</div>
 	            </div> 
 				<div class="main-login main-center">
-					<form class="form-horizontal" method="post" action="#">
 						
 						<div class="form-group">
 							<label for="name" class="cols-sm-2 control-label">Role</label>
@@ -106,7 +105,6 @@
 						<div class="login-register">
 				            <a href="index.php">Login</a>
 				         </div>
-					</form>
 				</div>
 			</div>
 		</div>
