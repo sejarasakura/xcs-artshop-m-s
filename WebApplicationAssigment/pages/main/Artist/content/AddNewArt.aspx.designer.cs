@@ -15,13 +15,13 @@ namespace WebApplicationAssigment.pages.main.Artist.content
     {
 
         /// <summary>
-        /// Discription control.
+        /// discription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Discription;
+        protected global::System.Web.UI.WebControls.TextBox discription;
 
         /// <summary>
         /// RequiredFieldValidator4 control.
