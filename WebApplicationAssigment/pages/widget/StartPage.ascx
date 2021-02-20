@@ -1,6 +1,6 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="StartPage.ascx.cs"  %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="StartPage.ascx.cs"  Inherits="WebApplicationAssigment.pages.widget.StartPage"  %>
 
- <div class="tatsu-action-backgorund-sk tatsu-section  tatsu-bg-overlay   tatsu-clearfix" data-title="" data-headerscheme="background--dark">
+ <div style="border-color:#FFF" class="tatsu-action-backgorund-sk tatsu-section  tatsu-bg-overlay   tatsu-clearfix" data-title="" data-headerscheme="background--dark">
     <div class="tatsu-section-pad clearfix" data-padding="{&quot;d&quot;:&quot;120px 0px 120px 0px&quot;}" data-padding-top="120px" style="padding-top: 222px;">
         <div class="tatsu-row-wrap  tatsu-wrap tatsu-row-one-col tatsu-row-has-one-cols tatsu-medium-gutter tatsu-reg-cols  tatsu-clearfix tatsu-S1louSDNmQ">
             <div class="tatsu-row">
@@ -19,7 +19,7 @@
                                     </div>
                                 </div>
                                 <div class="tatsu-module tatsu-normal-button tatsu-button-wrap align-block block-center">
-                                    <a class="tatsu-shortcode mediumbtn tatsu-button left-icon circular bg-animation-none" href="#" style="" aria-label="Learn More" data-gdpr-atts="{}">Learn More</a>
+                                    <a style="background-color:#FFF" class="tatsu-shortcode mediumbtn tatsu-button left-icon circular bg-animation-none" href="#" style="" aria-label="Learn More" data-gdpr-atts="{}">Learn More</a>
                                 </div>
                             </div>
                         </div>
