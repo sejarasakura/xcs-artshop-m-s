@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace WebApplicationAssigment.pages.profile
+namespace WebApplicationAssigment.pages.main.ArtShop
 {
-    public partial class LoginScreen : System.Web.UI.Page
+    public partial class ArtShop_Cust_Details : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

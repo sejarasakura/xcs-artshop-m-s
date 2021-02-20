@@ -13,5 +13,10 @@ namespace WebApplicationAssigment.pages.main.ArtShop
         {
 
         }
+
+        protected void btnSubmit_OnClick(object sender, EventArgs e)
+        {
+            Response.Redirect("ArtShop_Cust_Details.aspx");
+        }
     }
 }
