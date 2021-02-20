@@ -75,6 +75,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\image\Art\one.jpg" />
+    <Content Include="pages\main\Artist\content\AddNewArt.aspx" />
+    <Content Include="pages\main\Artist\content\ReadUpdateDeleteArt.aspx" />
+    <Content Include="pages\main\Artist\content\ViewArtSales.aspx" />
+    <Content Include="pages\main\Artist\widget\title.ascx" />
     <Content Include="App_Data\ArtShop.mdf" />
     <Content Include="App_Data\ArtShop_log.ldf">
       <DependentUpon>ArtShop.mdf</DependentUpon>
@@ -140,6 +145,33 @@
   <ItemGroup>
     <Compile Include="commons\Constant.cs" />
     <Compile Include="commons\Validation.cs" />
+    <Compile Include="pages\main\Artist\content\AddNewArt.aspx.cs">
+      <DependentUpon>AddNewArt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\Artist\content\AddNewArt.aspx.designer.cs">
+      <DependentUpon>AddNewArt.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\Artist\content\ReadUpdateDeleteArt.aspx.cs">
+      <DependentUpon>ReadUpdateDeleteArt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\Artist\content\ReadUpdateDeleteArt.aspx.designer.cs">
+      <DependentUpon>ReadUpdateDeleteArt.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\Artist\content\ViewArtSales.aspx.cs">
+      <DependentUpon>ViewArtSales.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\Artist\content\ViewArtSales.aspx.designer.cs">
+      <DependentUpon>ViewArtSales.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\Artist\widget\title.ascx.cs">
+      <DependentUpon>title.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\Artist\widget\title.ascx.designer.cs">
+      <DependentUpon>title.ascx</DependentUpon>
     <Compile Include="modal\Art.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
