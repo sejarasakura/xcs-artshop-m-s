@@ -1,15 +1,8 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Header.ascx.cs" Inherits="WebApplicationAssigment.pages.widget.Header" %>
 
-<nav id="project_navbar" class="navbar navbar-expand-lg navbar-light bg-light">
-
-    <script type="text/javascript">
-        function painting_submitclick() {
-            window.location = "../main/ArtShop/ArtShop_Customer.aspx";
-        }
-    </script>
-
+<nav id="project_navbar" class="navbar navbar-expand-lg navbar-light" style="background-color: transparent">
     <a class="navbar-brand" href="#">
-        <img src="../../assets/image/background/CompanyLogo.png" class="d-inline-block align-top" width="90" height="64">
+        <img src="../../assets/image/background/CompanyLogo.png " class="d-inline-block align-top" width="90" height="64">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -20,7 +13,7 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>--%>
             <li class="nav-item">
-                <a class="nav-link" href="#" id="painting" onclick="return painting_submitclick()";>Painting</a>
+                <a class="nav-link" href="#">Painting</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Drawing</a>
@@ -46,4 +39,43 @@
             <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
+    <div class="header-content" style="width:1px">
+    </div>
 </nav>
+
+
+<style>
+    .header-content {
+        padding: 16px;
+    }
+
+    .header-sticky {
+        position: fixed;
+        background-color: #f8f9fa!important;
+        top: 0;
+        width: 100%;
+    }
+
+    .header-sticky + .header-content {
+        padding-top: 60px;
+    }
+        
+    #project_navbar{
+        z-index: 100000;
+    }
+</style>
+
+<script>
+    window.onscroll = function () { myFunction() };
+
+    var navbar = document.getElementById("project_navbar");
+    var sticky = navbar.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset > sticky) {
+            navbar.classList.add("header-sticky")
+        } else {
+            navbar.classList.remove("header-sticky");
+        }
+    }
+</script>
