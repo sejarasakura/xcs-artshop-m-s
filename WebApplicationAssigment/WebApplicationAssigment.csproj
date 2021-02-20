@@ -141,6 +141,9 @@
     <Content Include="web\lib\js\helpers.js" />
     <Content Include="web\lib\js\lib.js" />
     <Content Include="web\lib\js\main.js" />
+    <Content Include="assets\image\testing\img1.jpg" />
+    <Content Include="assets\image\testing\img2.jpg" />
+    <Content Include="assets\image\testing\img3.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="commons\Constant.cs" />
@@ -564,7 +567,9 @@
     <Content Include="modal\Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
     </Content>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="pages\master\Master.Master" />
     <Content Include="pages\main\admin\master\Admin.Master" />
     <None Include="Web.Debug.config">

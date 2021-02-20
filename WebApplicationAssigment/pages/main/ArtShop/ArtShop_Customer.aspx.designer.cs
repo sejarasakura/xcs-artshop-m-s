@@ -11,5 +11,14 @@ namespace WebApplicationAssigment.pages.main.ArtShop {
     
     
     public partial class ArtShop_Customer {
+        
+        /// <summary>
+        /// details control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button details;
     }
 }
