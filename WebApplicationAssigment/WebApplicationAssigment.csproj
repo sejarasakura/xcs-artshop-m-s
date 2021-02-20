@@ -69,6 +69,12 @@
   <ItemGroup>
     <Content Include="assets\image\background\CompanyLogo.png" />
     <Content Include="assets\image\background\sky-bg.jpg" />
+    <Content Include="assets\image\paypal.png" />
+    <Content Include="pages\main\admin\content\PaymentDetails.aspx" />
+    <Content Include="pages\main\admin\content\EwallateDetails.aspx" />
+    <Content Include="pages\main\admin\content\UserPages.aspx" />
+    <Content Include="pages\main\admin\dashboard\AdminDashboard.aspx" />
+    <Content Include="pages\main\admin\widget\AdminNav.ascx" />
     <Content Include="pages\main\ArtShop\ArtShop_Customer.aspx" />
     <Content Include="pages\main\ArtShop\ArtShop_Staff.aspx" />
     <Content Include="pages\main\ArtShop\ShoppingCart.aspx" />
@@ -95,6 +101,48 @@
   <ItemGroup>
     <Compile Include="commons\Constant.cs" />
     <Compile Include="commons\Validation.cs" />
+    <Compile Include="pages\main\admin\content\PaymentDetails.aspx.cs">
+      <DependentUpon>PaymentDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\admin\content\PaymentDetails.aspx.designer.cs">
+      <DependentUpon>PaymentDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\admin\content\EwallateDetails.aspx.cs">
+      <DependentUpon>EwallateDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\admin\content\EwallateDetails.aspx.designer.cs">
+      <DependentUpon>EwallateDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\admin\content\UserPages.aspx.cs">
+      <DependentUpon>UserPages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\admin\content\UserPages.aspx.designer.cs">
+      <DependentUpon>UserPages.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\admin\dashboard\AdminDashboard.aspx.cs">
+      <DependentUpon>AdminDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\admin\dashboard\AdminDashboard.aspx.designer.cs">
+      <DependentUpon>AdminDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\admin\master\Admin.Master.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\admin\master\Admin.Master.designer.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\admin\widget\AdminNav.ascx.cs">
+      <DependentUpon>AdminNav.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\admin\widget\AdminNav.ascx.designer.cs">
+      <DependentUpon>AdminNav.ascx</DependentUpon>
+    </Compile>
     <Compile Include="pages\main\ArtShop\ArtShop_Customer.aspx.cs">
       <DependentUpon>ArtShop_Customer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -198,6 +246,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="pages\master\Master.Master" />
+    <Content Include="pages\main\admin\master\Admin.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -207,10 +256,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="modal\" />
-    <Folder Include="pages\admin\content\" />
-    <Folder Include="pages\admin\dashboard\" />
-    <Folder Include="pages\admin\master\" />
-    <Folder Include="pages\admin\widget\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
