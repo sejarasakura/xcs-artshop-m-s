@@ -49,7 +49,6 @@
           <div class="tab-content">
             <div class="tab-pane active" id="home">
                 <hr>
-                  <form class="form" action="##" method="post" id="registrationForm">
                       <div class="form-group">
                           
                           <div class="col-xs-6">
@@ -114,7 +113,6 @@
                                	<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
                             </div>
                       </div>
-              	</form>
               
               <hr>
               
@@ -124,7 +122,6 @@
                <h2></h2>
                
                <hr>
-                  <form class="form" action="##" method="post" id="registrationForm">
                       <div class="form-group">
                           
                           <div class="col-xs-6">
@@ -189,14 +186,12 @@
                                	<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
                             </div>
                       </div>
-              	</form>
                
              </div><!--/tab-pane-->
              <div class="tab-pane" id="settings">
             		
                	
                   <hr>
-                  <form class="form" action="##" method="post" id="registrationForm">
                       <div class="form-group">
                           
                           <div class="col-xs-6">
@@ -261,7 +256,6 @@
                                	<!--<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>-->
                             </div>
                       </div>
-              	</form>
               </div>
                
               </div><!--/tab-pane-->
