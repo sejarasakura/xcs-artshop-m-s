@@ -1,5 +1,5 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Profile.ascx.cs" Inherits="WebApplicationAssigment.pages.widget.Profile" %>
-
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ProfilePage.ascx.cs" Inherits="WebApplicationAssigment.pages.widget.Staff.ProfilePage" %>
+<!DOCTYPE html>
 <div class="container bootstrap snippet">
     <div class="row">
   		<div class="col-sm-10"><h1>User name</h1></div>

@@ -106,16 +106,30 @@
     <Content Include="pages\main\ArtShop\ArtShop_Customer.aspx" />
     <Content Include="pages\main\ArtShop\ArtShop_Cust_Details.aspx" />
     <Content Include="pages\main\ArtShop\ArtShop_Staff.aspx" />
+    <Content Include="pages\main\ArtShop\ChangePassword_Staff.aspx" />
+    <Content Include="pages\main\ArtShop\Customer\Login_Cust.aspx" />
+    <Content Include="pages\main\ArtShop\Customer\Register_Cust.aspx" />
+    <Content Include="pages\main\ArtShop\Login_Staff.aspx" />
+    <Content Include="pages\main\ArtShop\Logout_Staff.aspx" />
+    <Content Include="pages\main\ArtShop\Profile_Staff.aspx" />
+    <Content Include="pages\main\ArtShop\Register_Staff.aspx" />
     <Content Include="pages\main\ArtShop\ArtShop_Staff_Details.aspx" />
     <Content Include="pages\main\ArtShop\ShoppingCart.aspx" />
+    <Content Include="pages\main\ArtShop\SiteMapPage.aspx" />
     <Content Include="pages\main\Splash.html" />
     <Content Include="pages\widget\comment.ascx" />
+    <Content Include="pages\widget\Customer\LoginPageCust.ascx" />
+    <Content Include="pages\widget\Customer\RegisterPageCust.ascx" />
     <Content Include="pages\widget\EndPages.ascx" />
     <Content Include="pages\widget\Footer.ascx" />
     <Content Include="pages\widget\Header.ascx" />
-    <Content Include="pages\widget\LoginNav.ascx" />
     <Content Include="pages\widget\Profile.ascx" />
     <Content Include="pages\widget\ProfilePicture.ascx" />
+    <Content Include="pages\widget\Staff\ChangePassPage.ascx" />
+    <Content Include="pages\widget\Staff\LoginPage.ascx" />
+    <Content Include="pages\widget\Staff\LogoutPage.ascx" />
+    <Content Include="pages\widget\Staff\ProfilePage.ascx" />
+    <Content Include="pages\widget\Staff\RegisterPage.ascx" />
     <Content Include="pages\widget\Sidemap.ascx" />
     <Content Include="pages\widget\StartPage.ascx" />
     <Content Include="pages\__test\WebForm1.aspx" />
@@ -350,6 +364,54 @@
     <Compile Include="pages\main\ArtShop\ArtShop_Staff.aspx.designer.cs">
       <DependentUpon>ArtShop_Staff.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pages\main\ArtShop\ChangePassword_Staff.aspx.cs">
+      <DependentUpon>ChangePassword_Staff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\ArtShop\ChangePassword_Staff.aspx.designer.cs">
+      <DependentUpon>ChangePassword_Staff.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\ArtShop\Customer\Login_Cust.aspx.cs">
+      <DependentUpon>Login_Cust.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\ArtShop\Customer\Login_Cust.aspx.designer.cs">
+      <DependentUpon>Login_Cust.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\ArtShop\Customer\Register_Cust.aspx.cs">
+      <DependentUpon>Register_Cust.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\ArtShop\Customer\Register_Cust.aspx.designer.cs">
+      <DependentUpon>Register_Cust.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\ArtShop\Login_Staff.aspx.cs">
+      <DependentUpon>Login_Staff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\ArtShop\Login_Staff.aspx.designer.cs">
+      <DependentUpon>Login_Staff.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\ArtShop\Logout_Staff.aspx.cs">
+      <DependentUpon>Logout_Staff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\ArtShop\Logout_Staff.aspx.designer.cs">
+      <DependentUpon>Logout_Staff.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\ArtShop\Profile_Staff.aspx.cs">
+      <DependentUpon>Profile_Staff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\ArtShop\Profile_Staff.aspx.designer.cs">
+      <DependentUpon>Profile_Staff.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\ArtShop\Register_Staff.aspx.cs">
+      <DependentUpon>Register_Staff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\ArtShop\Register_Staff.aspx.designer.cs">
+      <DependentUpon>Register_Staff.aspx</DependentUpon>
     <Compile Include="pages\main\ArtShop\ArtShop_Staff_Details.aspx.cs">
       <DependentUpon>ArtShop_Staff_Details.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -364,6 +426,13 @@
     <Compile Include="pages\main\ArtShop\ShoppingCart.aspx.designer.cs">
       <DependentUpon>ShoppingCart.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pages\main\ArtShop\SiteMapPage.aspx.cs">
+      <DependentUpon>SiteMapPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\ArtShop\SiteMapPage.aspx.designer.cs">
+      <DependentUpon>SiteMapPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pages\master\Master.Master.cs">
       <DependentUpon>Master.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -377,6 +446,20 @@
     </Compile>
     <Compile Include="pages\widget\comment.ascx.designer.cs">
       <DependentUpon>comment.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\widget\Customer\LoginPageCust.ascx.cs">
+      <DependentUpon>LoginPageCust.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\widget\Customer\LoginPageCust.ascx.designer.cs">
+      <DependentUpon>LoginPageCust.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\widget\Customer\RegisterPageCust.ascx.cs">
+      <DependentUpon>RegisterPageCust.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\widget\Customer\RegisterPageCust.ascx.designer.cs">
+      <DependentUpon>RegisterPageCust.ascx</DependentUpon>
     </Compile>
     <Compile Include="pages\widget\EndPages.ascx.cs">
       <DependentUpon>EndPages.ascx</DependentUpon>
@@ -399,13 +482,6 @@
     <Compile Include="pages\widget\Header.ascx.designer.cs">
       <DependentUpon>Header.ascx</DependentUpon>
     </Compile>
-    <Compile Include="pages\widget\LoginNav.ascx.cs">
-      <DependentUpon>LoginNav.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\widget\LoginNav.ascx.designer.cs">
-      <DependentUpon>LoginNav.ascx</DependentUpon>
-    </Compile>
     <Compile Include="pages\widget\Profile.ascx.cs">
       <DependentUpon>Profile.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -419,6 +495,41 @@
     </Compile>
     <Compile Include="pages\widget\ProfilePicture.ascx.designer.cs">
       <DependentUpon>ProfilePicture.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\widget\Staff\ChangePassPage.ascx.cs">
+      <DependentUpon>ChangePassPage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\widget\Staff\ChangePassPage.ascx.designer.cs">
+      <DependentUpon>ChangePassPage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\widget\Staff\LoginPage.ascx.cs">
+      <DependentUpon>LoginPage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\widget\Staff\LoginPage.ascx.designer.cs">
+      <DependentUpon>LoginPage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\widget\Staff\LogoutPage.ascx.cs">
+      <DependentUpon>LogoutPage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\widget\Staff\LogoutPage.ascx.designer.cs">
+      <DependentUpon>LogoutPage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\widget\Staff\ProfilePage.ascx.cs">
+      <DependentUpon>ProfilePage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\widget\Staff\ProfilePage.ascx.designer.cs">
+      <DependentUpon>ProfilePage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\widget\Staff\RegisterPage.ascx.cs">
+      <DependentUpon>RegisterPage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\widget\Staff\RegisterPage.ascx.designer.cs">
+      <DependentUpon>RegisterPage.ascx</DependentUpon>
     </Compile>
     <Compile Include="pages\widget\Sidemap.ascx.cs">
       <DependentUpon>Sidemap.ascx</DependentUpon>
