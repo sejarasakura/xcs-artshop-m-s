@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Header.ascx.cs" Inherits="WebApplicationAssigment.pages.widget.Header" %>
 
-<nav id="project_navbar" class="navbar navbar-expand-lg navbar-light bg-light">
+<nav id="project_navbar" class="navbar navbar-expand-lg navbar-light" style="background-color: transparent">
     <a class="navbar-brand" href="#">
         <img src="../../assets/image/background/CompanyLogo.png " class="d-inline-block align-top" width="90" height="64">
     </a>
@@ -35,9 +35,48 @@
             </li>
 
         </ul>
-        <form class="form-inline my-2 my-lg-0">
+        <div class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search..." aria-label="Search">
             <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-        </form>
+        </div>
+    </div>
+    <div class="header-content" style="width:1px">
     </div>
 </nav>
+
+
+<style>
+    .header-content {
+        padding: 16px;
+    }
+
+    .header-sticky {
+        position: fixed;
+        background-color: #f8f9fa!important;
+        top: 0;
+        width: 100%;
+    }
+
+    .header-sticky + .header-content {
+        padding-top: 60px;
+    }
+        
+    #project_navbar{
+        z-index: 100000;
+    }
+</style>
+
+<script>
+    window.onscroll = function () { myFunction() };
+
+    var navbar = document.getElementById("project_navbar");
+    var sticky = navbar.offsetTop;
+
+    function myFunction() {
+        if (window.pageYOffset > sticky) {
+            navbar.classList.add("header-sticky")
+        } else {
+            navbar.classList.remove("header-sticky");
+        }
+    }
+</script>
