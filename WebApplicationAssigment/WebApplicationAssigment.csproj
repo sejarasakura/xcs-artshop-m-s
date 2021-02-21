@@ -106,16 +106,8 @@
     <Content Include="pages\main\ArtShop\ArtShop_Customer.aspx" />
     <Content Include="pages\main\ArtShop\ArtShop_Cust_Details.aspx" />
     <Content Include="pages\main\ArtShop\ArtShop_Staff.aspx" />
-    <Content Include="pages\main\ArtShop\ChangePassword_Staff.aspx" />
-    <Content Include="pages\main\ArtShop\Customer\Login_Cust.aspx" />
-    <Content Include="pages\main\ArtShop\Customer\Register_Cust.aspx" />
-    <Content Include="pages\main\ArtShop\Login_Staff.aspx" />
-    <Content Include="pages\main\ArtShop\Logout_Staff.aspx" />
-    <Content Include="pages\main\ArtShop\Profile_Staff.aspx" />
-    <Content Include="pages\main\ArtShop\Register_Staff.aspx" />
     <Content Include="pages\main\ArtShop\ArtShop_Staff_Details.aspx" />
     <Content Include="pages\main\ArtShop\ShoppingCart.aspx" />
-    <Content Include="pages\main\ArtShop\SiteMapPage.aspx" />
     <Content Include="pages\main\Splash.html" />
     <Content Include="pages\widget\comment.ascx" />
     <Content Include="pages\widget\Customer\LoginPageCust.ascx" />
@@ -365,55 +357,6 @@
     <Compile Include="pages\main\ArtShop\ArtShop_Staff.aspx.designer.cs">
       <DependentUpon>ArtShop_Staff.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pages\main\ArtShop\ChangePassword_Staff.aspx.cs">
-      <DependentUpon>ChangePassword_Staff.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\main\ArtShop\ChangePassword_Staff.aspx.designer.cs">
-      <DependentUpon>ChangePassword_Staff.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="pages\main\ArtShop\Customer\Login_Cust.aspx.cs">
-      <DependentUpon>Login_Cust.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\main\ArtShop\Customer\Login_Cust.aspx.designer.cs">
-      <DependentUpon>Login_Cust.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="pages\main\ArtShop\Customer\Register_Cust.aspx.cs">
-      <DependentUpon>Register_Cust.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\main\ArtShop\Customer\Register_Cust.aspx.designer.cs">
-      <DependentUpon>Register_Cust.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="pages\main\ArtShop\Login_Staff.aspx.cs">
-      <DependentUpon>Login_Staff.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\main\ArtShop\Login_Staff.aspx.designer.cs">
-      <DependentUpon>Login_Staff.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="pages\main\ArtShop\Logout_Staff.aspx.cs">
-      <DependentUpon>Logout_Staff.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\main\ArtShop\Logout_Staff.aspx.designer.cs">
-      <DependentUpon>Logout_Staff.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="pages\main\ArtShop\Profile_Staff.aspx.cs">
-      <DependentUpon>Profile_Staff.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\main\ArtShop\Profile_Staff.aspx.designer.cs">
-      <DependentUpon>Profile_Staff.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="pages\main\ArtShop\Register_Staff.aspx.cs">
-      <DependentUpon>Register_Staff.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\main\ArtShop\Register_Staff.aspx.designer.cs">
-      <DependentUpon>Register_Staff.aspx</DependentUpon>
-    </Compile>
     <Compile Include="pages\main\ArtShop\ArtShop_Staff_Details.aspx.cs">
       <DependentUpon>ArtShop_Staff_Details.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -427,13 +370,6 @@
     </Compile>
     <Compile Include="pages\main\ArtShop\ShoppingCart.aspx.designer.cs">
       <DependentUpon>ShoppingCart.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="pages\main\ArtShop\SiteMapPage.aspx.cs">
-      <DependentUpon>SiteMapPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\main\ArtShop\SiteMapPage.aspx.designer.cs">
-      <DependentUpon>SiteMapPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\master\Master.Master.cs">
       <DependentUpon>Master.Master</DependentUpon>
