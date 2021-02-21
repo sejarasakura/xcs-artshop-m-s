@@ -14,9 +14,12 @@ namespace WebApplicationAssigment.modal
     
     public partial class PaymentDetail
     {
-        public int id { get; set; }
-        public Nullable<int> art_id { get; set; }
+        public int payment_id { get; set; }
+        public int art_id { get; set; }
         public Nullable<bool> availability { get; set; }
         public Nullable<System.DateTime> add_date { get; set; }
+    
+        public virtual Art Art { get; set; }
+        public virtual Payment Payment { get; set; }
     }
 }

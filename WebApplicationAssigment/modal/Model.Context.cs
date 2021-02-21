@@ -28,6 +28,7 @@ namespace WebApplicationAssigment.modal
         }
     
         public virtual DbSet<Art> Arts { get; set; }
+        public virtual DbSet<Artist> Artists { get; set; }
         public virtual DbSet<aspnet_Applications> aspnet_Applications { get; set; }
         public virtual DbSet<aspnet_Membership> aspnet_Membership { get; set; }
         public virtual DbSet<aspnet_Paths> aspnet_Paths { get; set; }
@@ -40,25 +41,14 @@ namespace WebApplicationAssigment.modal
         public virtual DbSet<aspnet_WebEvent_Events> aspnet_WebEvent_Events { get; set; }
         public virtual DbSet<Card> Cards { get; set; }
         public virtual DbSet<Cart> Carts { get; set; }
+        public virtual DbSet<CartDetail> CartDetails { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<ChangePassword> ChangePasswords { get; set; }
+        public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
         public virtual DbSet<PaymentDetail> PaymentDetails { get; set; }
         public virtual DbSet<PayPal> PayPals { get; set; }
         public virtual DbSet<PublicBank> PublicBanks { get; set; }
-        public virtual DbSet<Artist> Artists { get; set; }
-        public virtual DbSet<CartDetail> CartDetails { get; set; }
-        public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Staff> Staffs { get; set; }
-        public virtual DbSet<vw_aspnet_Applications> vw_aspnet_Applications { get; set; }
-        public virtual DbSet<vw_aspnet_MembershipUsers> vw_aspnet_MembershipUsers { get; set; }
-        public virtual DbSet<vw_aspnet_Profiles> vw_aspnet_Profiles { get; set; }
-        public virtual DbSet<vw_aspnet_Roles> vw_aspnet_Roles { get; set; }
-        public virtual DbSet<vw_aspnet_Users> vw_aspnet_Users { get; set; }
-        public virtual DbSet<vw_aspnet_UsersInRoles> vw_aspnet_UsersInRoles { get; set; }
-        public virtual DbSet<vw_aspnet_WebPartState_Paths> vw_aspnet_WebPartState_Paths { get; set; }
-        public virtual DbSet<vw_aspnet_WebPartState_Shared> vw_aspnet_WebPartState_Shared { get; set; }
-        public virtual DbSet<vw_aspnet_WebPartState_User> vw_aspnet_WebPartState_User { get; set; }
     
         public virtual ObjectResult<string> aspnet_AnyDataInTables(Nullable<int> tablesToCheck)
         {
