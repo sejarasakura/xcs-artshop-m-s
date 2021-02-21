@@ -12,12 +12,12 @@ namespace WebApplicationAssigment.modal
     using System;
     using System.Collections.Generic;
     
-    public partial class Category
+    public partial class PaymentMethod
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Category()
+        public PaymentMethod()
         {
-            this.Arts = new HashSet<Art>();
+            this.Payments = new HashSet<Payment>();
         }
     
         public int id { get; set; }
@@ -25,6 +25,6 @@ namespace WebApplicationAssigment.modal
         public string description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Art> Arts { get; set; }
+        public virtual ICollection<Payment> Payments { get; set; }
     }
 }
