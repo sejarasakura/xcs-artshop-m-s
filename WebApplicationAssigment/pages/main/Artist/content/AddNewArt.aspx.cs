@@ -4,14 +4,24 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebApplicationAssigment.modal;
+
+
 
 namespace WebApplicationAssigment.pages.main.Artist.content
 {
-    public partial class WebForm1 : System.Web.UI.Page
+    public partial class AddNewArt : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            
+        
+        }
 
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            Art art = new Art();
+            art.description = this.TitleText.Text;
         }
     }
 }

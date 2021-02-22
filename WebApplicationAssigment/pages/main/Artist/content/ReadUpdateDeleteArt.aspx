@@ -16,7 +16,7 @@
     <style>
 body {
     color: #404E67;
-    background: #F5F7FA;
+    background: #F5F7FA; 
    
 }
 .table-wrapper {
@@ -172,7 +172,12 @@ $(document).ready(function(){
                 <div class="row">
                     <div class="col-sm-8"><h2>Employee <b>Details</b></h2></div>
                     <div class="col-sm-4">
-                       <a href="https://localhost:44375/pages/main/Artist/content/AddNewArt.aspx"> <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button></a>
+                        
+
+<a href="<%= "https://" + HttpContext.Current.Request.Url.Authority+"/pages/main/Artist/content/AddNewArt.aspx"%>""> 
+    <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button></a>
+                        <a href="<%= "https://" + HttpContext.Current.Request.Url.Authority+"/pages/main/Artist/content/ViewArtSales.aspx"%>"" >
+    <button type="button" class="btn btn-secondary add-new" style="">         Back</button></a> 
                     </div>
                 </div>
             </div>

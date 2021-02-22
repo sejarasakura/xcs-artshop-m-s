@@ -73,8 +73,11 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+ <img src="../../assets/image/background/CompanyLogo.png " class="d-inline-block align-top" width="130" height="100"><br />
+    <a href="<%= "https://" + HttpContext.Current.Request.Url.Authority+"/pages/main/Artist/content/ReadUpdateDeleteArt.aspx"%>"">
+        <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Update Art</button></a>
 
-<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<div id="chartContainer" style="height: 300px; width: 70%;    margin-left: 200px;"></div>
 <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
     </asp:content>
