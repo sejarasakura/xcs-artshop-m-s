@@ -27,6 +27,8 @@ namespace WebApplicationAssigment.modal
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<aspnet_SchemaVersions> aspnet_SchemaVersions { get; set; }
+        public virtual DbSet<aspnet_WebEvent_Events> aspnet_WebEvent_Events { get; set; }
         public virtual DbSet<Art> Arts { get; set; }
         public virtual DbSet<Artist> Artists { get; set; }
         public virtual DbSet<aspnet_Applications> aspnet_Applications { get; set; }
@@ -36,9 +38,7 @@ namespace WebApplicationAssigment.modal
         public virtual DbSet<aspnet_PersonalizationPerUser> aspnet_PersonalizationPerUser { get; set; }
         public virtual DbSet<aspnet_Profile> aspnet_Profile { get; set; }
         public virtual DbSet<aspnet_Roles> aspnet_Roles { get; set; }
-        public virtual DbSet<aspnet_SchemaVersions> aspnet_SchemaVersions { get; set; }
         public virtual DbSet<aspnet_Users> aspnet_Users { get; set; }
-        public virtual DbSet<aspnet_WebEvent_Events> aspnet_WebEvent_Events { get; set; }
         public virtual DbSet<Card> Cards { get; set; }
         public virtual DbSet<Cart> Carts { get; set; }
         public virtual DbSet<CartDetail> CartDetails { get; set; }
@@ -46,7 +46,9 @@ namespace WebApplicationAssigment.modal
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
         public virtual DbSet<PaymentDetail> PaymentDetails { get; set; }
+        public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
         public virtual DbSet<PayPal> PayPals { get; set; }
+        public virtual DbSet<Position> Positions { get; set; }
         public virtual DbSet<PublicBank> PublicBanks { get; set; }
         public virtual DbSet<Staff> Staffs { get; set; }
     

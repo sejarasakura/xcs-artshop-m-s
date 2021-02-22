@@ -228,6 +228,14 @@
           <Property Name="availability" Type="bit" />
           <Property Name="add_date" Type="date" />
         </EntityType>
+        <EntityType Name="PaymentMethod">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
         <EntityType Name="PayPals">
           <Key>
             <PropertyRef Name="paypal_id" />
@@ -237,6 +245,14 @@
           <Property Name="name" Type="nvarchar" MaxLength="20" />
           <Property Name="amount" Type="decimal" Precision="19" Scale="4" />
           <Property Name="password" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="PublicBank">
           <Key>
@@ -485,6 +501,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Payment__payment__43D61337">
+          <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="0..1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethod">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="payment_method_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__PaymentDe__art_i__3F115E1A">
           <End Role="Art" Type="Self.Art" Multiplicity="1" />
           <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
@@ -506,6 +534,18 @@
             </Principal>
             <Dependent Role="PaymentDetails">
               <PropertyRef Name="payment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Staff__position___4F47C5E3">
+          <End Role="Position" Type="Self.Position" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="position_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -873,7 +913,9 @@
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentDetails" EntityType="Self.PaymentDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PayPals" EntityType="Self.PayPals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PublicBank" EntityType="Self.PublicBank" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Art__artist_id__3B40CD36" Association="Self.FK__Art__artist_id__3B40CD36">
@@ -952,6 +994,10 @@
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Payment" EntitySet="Payment" />
           </AssociationSet>
+          <AssociationSet Name="FK__Payment__payment__43D61337" Association="Self.FK__Payment__payment__43D61337">
+            <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
           <AssociationSet Name="FK__PaymentDe__art_i__3F115E1A" Association="Self.FK__PaymentDe__art_i__3F115E1A">
             <End Role="Art" EntitySet="Art" />
             <End Role="PaymentDetails" EntitySet="PaymentDetails" />
@@ -959,6 +1005,10 @@
           <AssociationSet Name="FK__PaymentDe__payme__3E1D39E1" Association="Self.FK__PaymentDe__payme__3E1D39E1">
             <End Role="Payment" EntitySet="Payment" />
             <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Staff__position___4F47C5E3" Association="Self.FK__Staff__position___4F47C5E3">
+            <End Role="Position" EntitySet="Position" />
+            <End Role="Staff" EntitySet="Staff" />
           </AssociationSet>
           <AssociationSet Name="FK__Staff__UserId__1EA48E88" Association="Self.FK__Staff__UserId__1EA48E88">
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
@@ -1301,6 +1351,8 @@
             <Parameter Name="ExceptionType" Mode="In" Type="String" />
             <Parameter Name="Details" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="aspnet_SchemaVersions" EntityType="ArtShopModel.aspnet_SchemaVersions" />
+          <EntitySet Name="aspnet_WebEvent_Events" EntityType="ArtShopModel.aspnet_WebEvent_Events" />
           <EntitySet Name="Arts" EntityType="ArtShopModel.Art" />
           <EntitySet Name="Artists" EntityType="ArtShopModel.Artist" />
           <EntitySet Name="aspnet_Applications" EntityType="ArtShopModel.aspnet_Applications" />
@@ -1310,9 +1362,7 @@
           <EntitySet Name="aspnet_PersonalizationPerUser" EntityType="ArtShopModel.aspnet_PersonalizationPerUser" />
           <EntitySet Name="aspnet_Profile" EntityType="ArtShopModel.aspnet_Profile" />
           <EntitySet Name="aspnet_Roles" EntityType="ArtShopModel.aspnet_Roles" />
-          <EntitySet Name="aspnet_SchemaVersions" EntityType="ArtShopModel.aspnet_SchemaVersions" />
           <EntitySet Name="aspnet_Users" EntityType="ArtShopModel.aspnet_Users" />
-          <EntitySet Name="aspnet_WebEvent_Events" EntityType="ArtShopModel.aspnet_WebEvent_Events" />
           <EntitySet Name="Cards" EntityType="ArtShopModel.Card" />
           <EntitySet Name="Carts" EntityType="ArtShopModel.Cart" />
           <EntitySet Name="CartDetails" EntityType="ArtShopModel.CartDetail" />
@@ -1320,9 +1370,27 @@
           <EntitySet Name="Customers" EntityType="ArtShopModel.Customer" />
           <EntitySet Name="Payments" EntityType="ArtShopModel.Payment" />
           <EntitySet Name="PaymentDetails" EntityType="ArtShopModel.PaymentDetail" />
+          <EntitySet Name="PaymentMethods" EntityType="ArtShopModel.PaymentMethod" />
           <EntitySet Name="PayPals" EntityType="ArtShopModel.PayPal" />
+          <EntitySet Name="Positions" EntityType="ArtShopModel.Position" />
           <EntitySet Name="PublicBanks" EntityType="ArtShopModel.PublicBank" />
           <EntitySet Name="Staffs" EntityType="ArtShopModel.Staff" />
+          <AssociationSet Name="FK__Art__artist_id__3B40CD36" Association="ArtShopModel.FK__Art__artist_id__3B40CD36">
+            <End Role="Artist" EntitySet="Artists" />
+            <End Role="Art" EntitySet="Arts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Art__category_id__3A4CA8FD" Association="ArtShopModel.FK__Art__category_id__3A4CA8FD">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Art" EntitySet="Arts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CartDetai__art_i__40F9A68C" Association="ArtShopModel.FK__CartDetai__art_i__40F9A68C">
+            <End Role="Art" EntitySet="Arts" />
+            <End Role="CartDetail" EntitySet="CartDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__art_i__3F115E1A" Association="ArtShopModel.FK__PaymentDe__art_i__3F115E1A">
+            <End Role="Art" EntitySet="Arts" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK__Artist__UserId__1CBC4616" Association="ArtShopModel.FK__Artist__UserId__1CBC4616">
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
             <End Role="Artist" EntitySet="Artists" />
@@ -1371,26 +1439,6 @@
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
             <End Role="Staff" EntitySet="Staffs" />
           </AssociationSet>
-          <AssociationSet Name="aspnet_UsersInRoles" Association="ArtShopModel.aspnet_UsersInRoles">
-            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
-            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Art__artist_id__3B40CD36" Association="ArtShopModel.FK__Art__artist_id__3B40CD36">
-            <End Role="Artist" EntitySet="Artists" />
-            <End Role="Art" EntitySet="Arts" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Art__category_id__3A4CA8FD" Association="ArtShopModel.FK__Art__category_id__3A4CA8FD">
-            <End Role="Category" EntitySet="Categories" />
-            <End Role="Art" EntitySet="Arts" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CartDetai__art_i__40F9A68C" Association="ArtShopModel.FK__CartDetai__art_i__40F9A68C">
-            <End Role="Art" EntitySet="Arts" />
-            <End Role="CartDetail" EntitySet="CartDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PaymentDe__art_i__3F115E1A" Association="ArtShopModel.FK__PaymentDe__art_i__3F115E1A">
-            <End Role="Art" EntitySet="Arts" />
-            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
-          </AssociationSet>
           <AssociationSet Name="FK__Cart__user_id__3C34F16F" Association="ArtShopModel.FK__Cart__user_id__3C34F16F">
             <End Role="Customer" EntitySet="Customers" />
             <End Role="Cart" EntitySet="Carts" />
@@ -1403,11 +1451,23 @@
             <End Role="Customer" EntitySet="Customers" />
             <End Role="Payment" EntitySet="Payments" />
           </AssociationSet>
+          <AssociationSet Name="FK__Payment__payment__43D61337" Association="ArtShopModel.FK__Payment__payment__43D61337">
+            <End Role="PaymentMethod" EntitySet="PaymentMethods" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
           <AssociationSet Name="FK__PaymentDe__payme__3E1D39E1" Association="ArtShopModel.FK__PaymentDe__payme__3E1D39E1">
             <End Role="Payment" EntitySet="Payments" />
             <End Role="PaymentDetail" EntitySet="PaymentDetails" />
           </AssociationSet>
-        </EntityContainer>
+          <AssociationSet Name="FK__Staff__position___4F47C5E3" Association="ArtShopModel.FK__Staff__position___4F47C5E3">
+            <End Role="Position" EntitySet="Positions" />
+            <End Role="Staff" EntitySet="Staffs" />
+          </AssociationSet>
+          <AssociationSet Name="aspnet_UsersInRoles" Association="ArtShopModel.aspnet_UsersInRoles">
+            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+          </AssociationSet>
+          </EntityContainer>
         <ComplexType Name="aspnet_Membership_GetPassword_Result">
           <Property Type="String" Name="Column1" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="Column2" Nullable="true" />
@@ -1457,6 +1517,35 @@
           <Property Type="String" Name="Column1" Nullable="false" MaxLength="1" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="256" />
         </ComplexType>
+        <EntityType Name="aspnet_SchemaVersions">
+          <Key>
+            <PropertyRef Name="Feature" />
+            <PropertyRef Name="CompatibleSchemaVersion" />
+          </Key>
+          <Property Name="Feature" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CompatibleSchemaVersion" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IsCurrentVersion" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnet_WebEvent_Events">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="EventId" Type="String" Nullable="false" MaxLength="32" FixedLength="true" Unicode="false" />
+          <Property Name="EventTimeUtc" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EventTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EventType" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EventSequence" Type="Decimal" Nullable="false" Precision="19" Scale="0" />
+          <Property Name="EventOccurrence" Type="Decimal" Nullable="false" Precision="19" Scale="0" />
+          <Property Name="EventCode" Type="Int32" Nullable="false" />
+          <Property Name="EventDetailCode" Type="Int32" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationPath" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationVirtualPath" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="MachineName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="RequestUrl" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Name="ExceptionType" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="Art">
           <Key>
             <PropertyRef Name="id" />
@@ -1483,8 +1572,8 @@
           <Property Name="description" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="signature" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="aspnet_Users" Relationship="ArtShopModel.FK__Artist__UserId__1CBC4616" FromRole="Artist" ToRole="aspnet_Users" />
           <NavigationProperty Name="Arts" Relationship="ArtShopModel.FK__Art__artist_id__3B40CD36" FromRole="Artist" ToRole="Art" />
+          <NavigationProperty Name="aspnet_Users" Relationship="ArtShopModel.FK__Artist__UserId__1CBC4616" FromRole="Artist" ToRole="aspnet_Users" />
         </EntityType>
         <EntityType Name="aspnet_Applications">
           <Key>
@@ -1583,15 +1672,6 @@
           <NavigationProperty Name="aspnet_Applications" Relationship="ArtShopModel.FK__aspnet_Ro__Appli__59063A47" FromRole="aspnet_Roles" ToRole="aspnet_Applications" />
           <NavigationProperty Name="aspnet_Users" Relationship="ArtShopModel.aspnet_UsersInRoles" FromRole="aspnet_Roles" ToRole="aspnet_Users" />
         </EntityType>
-        <EntityType Name="aspnet_SchemaVersions">
-          <Key>
-            <PropertyRef Name="Feature" />
-            <PropertyRef Name="CompatibleSchemaVersion" />
-          </Key>
-          <Property Name="Feature" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="CompatibleSchemaVersion" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="IsCurrentVersion" Type="Boolean" Nullable="false" />
-        </EntityType>
         <EntityType Name="aspnet_Users">
           <Key>
             <PropertyRef Name="UserId" />
@@ -1611,26 +1691,6 @@
           <NavigationProperty Name="Customer" Relationship="ArtShopModel.FK__Customer__UserId__1AD3FDA4" FromRole="aspnet_Users" ToRole="Customer" />
           <NavigationProperty Name="Staff" Relationship="ArtShopModel.FK__Staff__UserId__1EA48E88" FromRole="aspnet_Users" ToRole="Staff" />
           <NavigationProperty Name="aspnet_Roles" Relationship="ArtShopModel.aspnet_UsersInRoles" FromRole="aspnet_Users" ToRole="aspnet_Roles" />
-        </EntityType>
-        <EntityType Name="aspnet_WebEvent_Events">
-          <Key>
-            <PropertyRef Name="EventId" />
-          </Key>
-          <Property Name="EventId" Type="String" Nullable="false" MaxLength="32" FixedLength="true" Unicode="false" />
-          <Property Name="EventTimeUtc" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="EventTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="EventType" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="EventSequence" Type="Decimal" Nullable="false" Precision="19" Scale="0" />
-          <Property Name="EventOccurrence" Type="Decimal" Nullable="false" Precision="19" Scale="0" />
-          <Property Name="EventCode" Type="Int32" Nullable="false" />
-          <Property Name="EventDetailCode" Type="Int32" Nullable="false" />
-          <Property Name="Message" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
-          <Property Name="ApplicationPath" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="ApplicationVirtualPath" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="MachineName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="RequestUrl" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
-          <Property Name="ExceptionType" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Card">
           <Key>
@@ -1699,6 +1759,7 @@
           <Property Name="payment_status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="customer_id" Type="Guid" Nullable="false" />
           <NavigationProperty Name="Customer" Relationship="ArtShopModel.FK__Payment__custome__3D2915A8" FromRole="Payment" ToRole="Customer" />
+          <NavigationProperty Name="PaymentMethod" Relationship="ArtShopModel.FK__Payment__payment__43D61337" FromRole="Payment" ToRole="PaymentMethod" />
           <NavigationProperty Name="PaymentDetails" Relationship="ArtShopModel.FK__PaymentDe__payme__3E1D39E1" FromRole="Payment" ToRole="PaymentDetail" />
         </EntityType>
         <EntityType Name="PaymentDetail">
@@ -1713,6 +1774,15 @@
           <NavigationProperty Name="Art" Relationship="ArtShopModel.FK__PaymentDe__art_i__3F115E1A" FromRole="PaymentDetail" ToRole="Art" />
           <NavigationProperty Name="Payment" Relationship="ArtShopModel.FK__PaymentDe__payme__3E1D39E1" FromRole="PaymentDetail" ToRole="Payment" />
         </EntityType>
+        <EntityType Name="PaymentMethod">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Payments" Relationship="ArtShopModel.FK__Payment__payment__43D61337" FromRole="PaymentMethod" ToRole="Payment" />
+        </EntityType>
         <EntityType Name="PayPal">
           <Key>
             <PropertyRef Name="paypal_id" />
@@ -1722,6 +1792,15 @@
           <Property Name="name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="amount" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Staffs" Relationship="ArtShopModel.FK__Staff__position___4F47C5E3" FromRole="Position" ToRole="Staff" />
         </EntityType>
         <EntityType Name="PublicBank">
           <Key>
@@ -1742,7 +1821,56 @@
           <Property Name="position_id" Type="Int32" Nullable="false" />
           <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="aspnet_Users" Relationship="ArtShopModel.FK__Staff__UserId__1EA48E88" FromRole="Staff" ToRole="aspnet_Users" />
+          <NavigationProperty Name="Position" Relationship="ArtShopModel.FK__Staff__position___4F47C5E3" FromRole="Staff" ToRole="Position" />
         </EntityType>
+        <Association Name="FK__Art__artist_id__3B40CD36">
+          <End Type="ArtShopModel.Artist" Role="Artist" Multiplicity="1" />
+          <End Type="ArtShopModel.Art" Role="Art" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artist">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Art">
+              <PropertyRef Name="artist_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Art__category_id__3A4CA8FD">
+          <End Type="ArtShopModel.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="ArtShopModel.Art" Role="Art" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Art">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CartDetai__art_i__40F9A68C">
+          <End Type="ArtShopModel.Art" Role="Art" Multiplicity="1" />
+          <End Type="ArtShopModel.CartDetail" Role="CartDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Art">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CartDetail">
+              <PropertyRef Name="art_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentDe__art_i__3F115E1A">
+          <End Type="ArtShopModel.Art" Role="Art" Multiplicity="1" />
+          <End Type="ArtShopModel.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Art">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PaymentDetail">
+              <PropertyRef Name="art_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Artist__UserId__1CBC4616">
           <End Type="ArtShopModel.aspnet_Users" Role="aspnet_Users" Multiplicity="1" />
           <End Type="ArtShopModel.Artist" Role="Artist" Multiplicity="0..1" />
@@ -1887,58 +2015,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="aspnet_UsersInRoles">
-          <End Type="ArtShopModel.aspnet_Roles" Role="aspnet_Roles" Multiplicity="*" />
-          <End Type="ArtShopModel.aspnet_Users" Role="aspnet_Users" Multiplicity="*" />
-        </Association>
-        <Association Name="FK__Art__artist_id__3B40CD36">
-          <End Type="ArtShopModel.Artist" Role="Artist" Multiplicity="1" />
-          <End Type="ArtShopModel.Art" Role="Art" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Artist">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Art">
-              <PropertyRef Name="artist_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Art__category_id__3A4CA8FD">
-          <End Type="ArtShopModel.Category" Role="Category" Multiplicity="0..1" />
-          <End Type="ArtShopModel.Art" Role="Art" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Art">
-              <PropertyRef Name="category_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__CartDetai__art_i__40F9A68C">
-          <End Type="ArtShopModel.Art" Role="Art" Multiplicity="1" />
-          <End Type="ArtShopModel.CartDetail" Role="CartDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Art">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="CartDetail">
-              <PropertyRef Name="art_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PaymentDe__art_i__3F115E1A">
-          <End Type="ArtShopModel.Art" Role="Art" Multiplicity="1" />
-          <End Type="ArtShopModel.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Art">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="PaymentDetail">
-              <PropertyRef Name="art_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Cart__user_id__3C34F16F">
           <End Type="ArtShopModel.Customer" Role="Customer" Multiplicity="1" />
           <End Type="ArtShopModel.Cart" Role="Cart" Multiplicity="*" />
@@ -1975,6 +2051,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Payment__payment__43D61337">
+          <End Type="ArtShopModel.PaymentMethod" Role="PaymentMethod" Multiplicity="0..1" />
+          <End Type="ArtShopModel.Payment" Role="Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethod">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="payment_method_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__PaymentDe__payme__3E1D39E1">
           <End Type="ArtShopModel.Payment" Role="Payment" Multiplicity="1" />
           <End Type="ArtShopModel.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
@@ -1987,7 +2075,23 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="FK__Staff__position___4F47C5E3">
+          <End Type="ArtShopModel.Position" Role="Position" Multiplicity="1" />
+          <End Type="ArtShopModel.Staff" Role="Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="position_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="aspnet_UsersInRoles">
+          <End Type="ArtShopModel.aspnet_Roles" Role="aspnet_Roles" Multiplicity="*" />
+          <End Type="ArtShopModel.aspnet_Users" Role="aspnet_Users" Multiplicity="*" />
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -2115,6 +2219,36 @@
             </ResultMapping>
           </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="aspnet_WebEvent_LogEvent" FunctionName="ArtShopModel.Store.aspnet_WebEvent_LogEvent" />
+          <EntitySetMapping Name="aspnet_SchemaVersions">
+            <EntityTypeMapping TypeName="ArtShopModel.aspnet_SchemaVersions">
+              <MappingFragment StoreEntitySet="aspnet_SchemaVersions">
+                <ScalarProperty Name="IsCurrentVersion" ColumnName="IsCurrentVersion" />
+                <ScalarProperty Name="CompatibleSchemaVersion" ColumnName="CompatibleSchemaVersion" />
+                <ScalarProperty Name="Feature" ColumnName="Feature" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnet_WebEvent_Events">
+            <EntityTypeMapping TypeName="ArtShopModel.aspnet_WebEvent_Events">
+              <MappingFragment StoreEntitySet="aspnet_WebEvent_Events">
+                <ScalarProperty Name="Details" ColumnName="Details" />
+                <ScalarProperty Name="ExceptionType" ColumnName="ExceptionType" />
+                <ScalarProperty Name="RequestUrl" ColumnName="RequestUrl" />
+                <ScalarProperty Name="MachineName" ColumnName="MachineName" />
+                <ScalarProperty Name="ApplicationVirtualPath" ColumnName="ApplicationVirtualPath" />
+                <ScalarProperty Name="ApplicationPath" ColumnName="ApplicationPath" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="EventDetailCode" ColumnName="EventDetailCode" />
+                <ScalarProperty Name="EventCode" ColumnName="EventCode" />
+                <ScalarProperty Name="EventOccurrence" ColumnName="EventOccurrence" />
+                <ScalarProperty Name="EventSequence" ColumnName="EventSequence" />
+                <ScalarProperty Name="EventType" ColumnName="EventType" />
+                <ScalarProperty Name="EventTime" ColumnName="EventTime" />
+                <ScalarProperty Name="EventTimeUtc" ColumnName="EventTimeUtc" />
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Arts">
             <EntityTypeMapping TypeName="ArtShopModel.Art">
               <MappingFragment StoreEntitySet="Art">
@@ -2229,15 +2363,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="aspnet_SchemaVersions">
-            <EntityTypeMapping TypeName="ArtShopModel.aspnet_SchemaVersions">
-              <MappingFragment StoreEntitySet="aspnet_SchemaVersions">
-                <ScalarProperty Name="IsCurrentVersion" ColumnName="IsCurrentVersion" />
-                <ScalarProperty Name="CompatibleSchemaVersion" ColumnName="CompatibleSchemaVersion" />
-                <ScalarProperty Name="Feature" ColumnName="Feature" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="aspnet_Users">
             <EntityTypeMapping TypeName="ArtShopModel.aspnet_Users">
               <MappingFragment StoreEntitySet="aspnet_Users">
@@ -2248,27 +2373,6 @@
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="aspnet_WebEvent_Events">
-            <EntityTypeMapping TypeName="ArtShopModel.aspnet_WebEvent_Events">
-              <MappingFragment StoreEntitySet="aspnet_WebEvent_Events">
-                <ScalarProperty Name="Details" ColumnName="Details" />
-                <ScalarProperty Name="ExceptionType" ColumnName="ExceptionType" />
-                <ScalarProperty Name="RequestUrl" ColumnName="RequestUrl" />
-                <ScalarProperty Name="MachineName" ColumnName="MachineName" />
-                <ScalarProperty Name="ApplicationVirtualPath" ColumnName="ApplicationVirtualPath" />
-                <ScalarProperty Name="ApplicationPath" ColumnName="ApplicationPath" />
-                <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="EventDetailCode" ColumnName="EventDetailCode" />
-                <ScalarProperty Name="EventCode" ColumnName="EventCode" />
-                <ScalarProperty Name="EventOccurrence" ColumnName="EventOccurrence" />
-                <ScalarProperty Name="EventSequence" ColumnName="EventSequence" />
-                <ScalarProperty Name="EventType" ColumnName="EventType" />
-                <ScalarProperty Name="EventTime" ColumnName="EventTime" />
-                <ScalarProperty Name="EventTimeUtc" ColumnName="EventTimeUtc" />
-                <ScalarProperty Name="EventId" ColumnName="EventId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2346,6 +2450,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PaymentMethods">
+            <EntityTypeMapping TypeName="ArtShopModel.PaymentMethod">
+              <MappingFragment StoreEntitySet="PaymentMethod">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="PayPals">
             <EntityTypeMapping TypeName="ArtShopModel.PayPal">
               <MappingFragment StoreEntitySet="PayPals">
@@ -2354,6 +2467,15 @@
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="paypal_id" ColumnName="paypal_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Positions">
+            <EntityTypeMapping TypeName="ArtShopModel.Position">
+              <MappingFragment StoreEntitySet="Position">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2386,7 +2508,7 @@
               <ScalarProperty Name="RoleId" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

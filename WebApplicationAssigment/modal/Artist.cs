@@ -26,8 +26,8 @@ namespace WebApplicationAssigment.modal
         public byte[] signature { get; set; }
         public byte[] picture { get; set; }
     
-        public virtual aspnet_Users aspnet_Users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Art> Arts { get; set; }
+        public virtual aspnet_Users aspnet_Users { get; set; }
     }
 }
