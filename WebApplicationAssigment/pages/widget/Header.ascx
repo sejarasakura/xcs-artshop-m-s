@@ -9,11 +9,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mx-auto mk">
-            <%--   <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>--%>
             <li class="nav-item">
-                <a class="nav-link" href="#">Painting</a>
+                <a class="nav-link" href="<%= "https://" + HttpContext.Current.Request.Url.Authority%>/pages/main/ArtShop/ArtShop_Customer.aspx">Painting</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Drawing</a>
@@ -27,7 +24,7 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Login</a>
                     <a class="dropdown-item mt-2" href="#">Shopping Cart</a>
-                    <a class="dropdown-item mt-3" href="">Logout</a>
+                    <a class="dropdown-item mt-3" href="#">Logout</a>
                 </div>
             </li>
             <li class="nav-item">

@@ -10,16 +10,14 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="artist_id" Type="int" Nullable="false" />
           <Property Name="image" Type="nvarchar(max)" Nullable="false" />
           <Property Name="price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="date" Type="nvarchar(max)" Nullable="false" />
           <Property Name="title" Type="nvarchar(max)" Nullable="false" />
           <Property Name="description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="category_id" Type="int" />
+          <Property Name="artist_id" Type="uniqueidentifier" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.Artist' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Artist">
           <Key>
             <PropertyRef Name="UserId" />
@@ -177,18 +175,17 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="user_id" Type="int" />
           <Property Name="relation" Type="nvarchar" MaxLength="20" />
           <Property Name="remark" Type="nvarchar" MaxLength="100" />
+          <Property Name="user_id" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.CartDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="CartDetails">
           <Key>
             <PropertyRef Name="cart_id" />
+            <PropertyRef Name="art_id" />
           </Key>
           <Property Name="cart_id" Type="int" Nullable="false" />
-          <Property Name="art_id" Type="int" />
+          <Property Name="art_id" Type="int" Nullable="false" />
           <Property Name="availability" Type="int" />
           <Property Name="add_date" Type="date" />
         </EntityType>
@@ -200,16 +197,6 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="description" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <EntityType Name="ChangePasswords">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="user_id" Type="int" />
-          <Property Name="temp_password" Type="nvarchar" MaxLength="20" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.Customer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="UserId" />
@@ -229,15 +216,25 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="tax_change" Type="float" />
           <Property Name="payment_date" Type="date" />
           <Property Name="payment_status" Type="nvarchar" MaxLength="10" />
+          <Property Name="customer_id" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="PaymentDetails">
+          <Key>
+            <PropertyRef Name="payment_id" />
+            <PropertyRef Name="art_id" />
+          </Key>
+          <Property Name="payment_id" Type="int" Nullable="false" />
+          <Property Name="art_id" Type="int" Nullable="false" />
+          <Property Name="availability" Type="bit" />
+          <Property Name="add_date" Type="date" />
+        </EntityType>
+        <EntityType Name="PaymentMethod">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="art_id" Type="int" />
-          <Property Name="availability" Type="bit" />
-          <Property Name="add_date" Type="date" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="PayPals">
           <Key>
@@ -249,6 +246,14 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="amount" Type="decimal" Precision="19" Scale="4" />
           <Property Name="password" Type="nvarchar" MaxLength="20" />
         </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
         <EntityType Name="PublicBank">
           <Key>
             <PropertyRef Name="bank_account" />
@@ -259,13 +264,9 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="amount" Type="decimal" Precision="19" Scale="4" />
           <Property Name="password" Type="nvarchar" MaxLength="20" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.Staff' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Staff">
           <Key>
             <PropertyRef Name="UserId" />
-            <PropertyRef Name="priority" />
-            <PropertyRef Name="position_id" />
           </Key>
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="priority" Type="int" Nullable="false" />
@@ -273,154 +274,35 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="picture" Type="varbinary(max)" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.vw_aspnet_Applications' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="vw_aspnet_Applications">
-          <Key>
-            <PropertyRef Name="ApplicationName" />
-            <PropertyRef Name="LoweredApplicationName" />
-            <PropertyRef Name="ApplicationId" />
-          </Key>
-          <Property Name="ApplicationName" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="LoweredApplicationName" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Description" Type="nvarchar" MaxLength="256" />
-        </EntityType>
+warning 6002: The table/view 'C:\USERS\TTZEH\ONEDRIVE\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.vw_aspnet_Applications' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.vw_aspnet_MembershipUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="vw_aspnet_MembershipUsers">
-          <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="PasswordFormat" />
-            <PropertyRef Name="IsApproved" />
-            <PropertyRef Name="IsLockedOut" />
-            <PropertyRef Name="CreateDate" />
-            <PropertyRef Name="LastLoginDate" />
-            <PropertyRef Name="LastPasswordChangedDate" />
-            <PropertyRef Name="LastLockoutDate" />
-            <PropertyRef Name="FailedPasswordAttemptCount" />
-            <PropertyRef Name="FailedPasswordAttemptWindowStart" />
-            <PropertyRef Name="FailedPasswordAnswerAttemptCount" />
-            <PropertyRef Name="FailedPasswordAnswerAttemptWindowStart" />
-            <PropertyRef Name="ApplicationId" />
-            <PropertyRef Name="UserName" />
-            <PropertyRef Name="IsAnonymous" />
-            <PropertyRef Name="LastActivityDate" />
-          </Key>
-          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="PasswordFormat" Type="int" Nullable="false" />
-          <Property Name="MobilePIN" Type="nvarchar" MaxLength="16" />
-          <Property Name="Email" Type="nvarchar" MaxLength="256" />
-          <Property Name="LoweredEmail" Type="nvarchar" MaxLength="256" />
-          <Property Name="PasswordQuestion" Type="nvarchar" MaxLength="256" />
-          <Property Name="PasswordAnswer" Type="nvarchar" MaxLength="128" />
-          <Property Name="IsApproved" Type="bit" Nullable="false" />
-          <Property Name="IsLockedOut" Type="bit" Nullable="false" />
-          <Property Name="CreateDate" Type="datetime" Nullable="false" />
-          <Property Name="LastLoginDate" Type="datetime" Nullable="false" />
-          <Property Name="LastPasswordChangedDate" Type="datetime" Nullable="false" />
-          <Property Name="LastLockoutDate" Type="datetime" Nullable="false" />
-          <Property Name="FailedPasswordAttemptCount" Type="int" Nullable="false" />
-          <Property Name="FailedPasswordAttemptWindowStart" Type="datetime" Nullable="false" />
-          <Property Name="FailedPasswordAnswerAttemptCount" Type="int" Nullable="false" />
-          <Property Name="FailedPasswordAnswerAttemptWindowStart" Type="datetime" Nullable="false" />
-          <Property Name="Comment" Type="ntext" />
-          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="MobileAlias" Type="nvarchar" MaxLength="16" />
-          <Property Name="IsAnonymous" Type="bit" Nullable="false" />
-          <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
-        </EntityType>
+warning 6002: The table/view 'C:\USERS\TTZEH\ONEDRIVE\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.vw_aspnet_MembershipUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.vw_aspnet_Profiles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="vw_aspnet_Profiles">
-          <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="LastUpdatedDate" />
-          </Key>
-          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
-          <Property Name="DataSize" Type="int" />
-        </EntityType>
+warning 6002: The table/view 'C:\USERS\TTZEH\ONEDRIVE\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.vw_aspnet_Profiles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.vw_aspnet_Roles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="vw_aspnet_Roles">
-          <Key>
-            <PropertyRef Name="ApplicationId" />
-            <PropertyRef Name="RoleId" />
-            <PropertyRef Name="RoleName" />
-            <PropertyRef Name="LoweredRoleName" />
-          </Key>
-          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="RoleName" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="LoweredRoleName" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="Description" Type="nvarchar" MaxLength="256" />
-        </EntityType>
+warning 6002: The table/view 'C:\USERS\TTZEH\ONEDRIVE\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.vw_aspnet_Roles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.vw_aspnet_Users' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="vw_aspnet_Users">
-          <Key>
-            <PropertyRef Name="ApplicationId" />
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="UserName" />
-            <PropertyRef Name="LoweredUserName" />
-            <PropertyRef Name="IsAnonymous" />
-            <PropertyRef Name="LastActivityDate" />
-          </Key>
-          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="LoweredUserName" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="MobileAlias" Type="nvarchar" MaxLength="16" />
-          <Property Name="IsAnonymous" Type="bit" Nullable="false" />
-          <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
-        </EntityType>
+warning 6002: The table/view 'C:\USERS\TTZEH\ONEDRIVE\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.vw_aspnet_Users' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.vw_aspnet_UsersInRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="vw_aspnet_UsersInRoles">
-          <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="RoleId" />
-          </Key>
-          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
-        </EntityType>
+warning 6002: The table/view 'C:\USERS\TTZEH\ONEDRIVE\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.vw_aspnet_UsersInRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.vw_aspnet_WebPartState_Paths' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="vw_aspnet_WebPartState_Paths">
-          <Key>
-            <PropertyRef Name="ApplicationId" />
-            <PropertyRef Name="PathId" />
-            <PropertyRef Name="Path" />
-            <PropertyRef Name="LoweredPath" />
-          </Key>
-          <Property Name="ApplicationId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="PathId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Path" Type="nvarchar" MaxLength="256" Nullable="false" />
-          <Property Name="LoweredPath" Type="nvarchar" MaxLength="256" Nullable="false" />
-        </EntityType>
+warning 6002: The table/view 'C:\USERS\TTZEH\ONEDRIVE\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.vw_aspnet_WebPartState_Paths' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.vw_aspnet_WebPartState_Shared' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="vw_aspnet_WebPartState_Shared">
-          <Key>
-            <PropertyRef Name="PathId" />
-            <PropertyRef Name="LastUpdatedDate" />
-          </Key>
-          <Property Name="PathId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="DataSize" Type="int" />
-          <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
-        </EntityType>
+warning 6002: The table/view 'C:\USERS\TTZEH\ONEDRIVE\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.vw_aspnet_WebPartState_Shared' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.vw_aspnet_WebPartState_User' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="vw_aspnet_WebPartState_User">
-          <Key>
-            <PropertyRef Name="LastUpdatedDate" />
-          </Key>
-          <Property Name="PathId" Type="uniqueidentifier" />
-          <Property Name="UserId" Type="uniqueidentifier" />
-          <Property Name="DataSize" Type="int" />
-          <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
-        </EntityType>
+warning 6002: The table/view 'C:\USERS\TTZEH\ONEDRIVE\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.vw_aspnet_WebPartState_User' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <Association Name="FK__Art__artist_id__31B762FC">
+          <End Role="Artist" Type="Self.Artist" Multiplicity="0..1" />
+          <End Role="Art" Type="Self.Art" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artist">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Art">
+              <PropertyRef Name="artist_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Artist__UserId__1CBC4616">
           <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="1" />
           <End Role="Artist" Type="Self.Artist" Multiplicity="0..1" />
@@ -565,6 +447,42 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Cart__user_id__32AB8735">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CartDetai__art_i__37703C52">
+          <End Role="Art" Type="Self.Art" Multiplicity="1" />
+          <End Role="CartDetails" Type="Self.CartDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Art">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CartDetails">
+              <PropertyRef Name="art_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CartDetai__cart___367C1819">
+          <End Role="Cart" Type="Self.Cart" Multiplicity="1" />
+          <End Role="CartDetails" Type="Self.CartDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cart">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CartDetails">
+              <PropertyRef Name="cart_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Customer__UserId__1AD3FDA4">
           <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="1" />
           <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
@@ -577,9 +495,69 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Payment__custome__339FAB6E">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Payment__payment__2FCF1A8A">
+          <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="0..1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethod">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="payment_method_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentDe__art_i__3587F3E0">
+          <End Role="Art" Type="Self.Art" Multiplicity="1" />
+          <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Art">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="art_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentDe__payme__3493CFA7">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
+          <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="payment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Staff__position___3A4CA8FD">
+          <End Role="Position" Type="Self.Position" Multiplicity="1" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="position_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Staff__UserId__1EA48E88">
           <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="1" />
-          <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
+          <End Role="Staff" Type="Self.Staff" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="aspnet_Users">
               <PropertyRef Name="UserId" />
@@ -922,6 +900,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
         </Function>
         <EntityContainer Name="ArtShopModelStoreContainer">
           <EntitySet Name="Art" EntityType="Self.Art" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Artist" EntityType="Self.Artist" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="aspnet_Applications" EntityType="Self.aspnet_Applications" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="aspnet_Membership" EntityType="Self.aspnet_Membership" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="aspnet_Paths" EntityType="Self.aspnet_Paths" Schema="dbo" store:Type="Tables" />
@@ -935,136 +914,20 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <EntitySet Name="aspnet_WebEvent_Events" EntityType="Self.aspnet_WebEvent_Events" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cards" EntityType="Self.Cards" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CartDetails" EntityType="Self.CartDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ChangePasswords" EntityType="Self.ChangePasswords" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentDetails" EntityType="Self.PaymentDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PayPals" EntityType="Self.PayPals" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PublicBank" EntityType="Self.PublicBank" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Artist" EntityType="Self.Artist" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Artist].[UserId] AS [UserId], 
-    [Artist].[birthday_date] AS [birthday_date], 
-    [Artist].[description] AS [description], 
-    [Artist].[signature] AS [signature], 
-    [Artist].[picture] AS [picture]
-    FROM [dbo].[Artist] AS [Artist]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="CartDetails" EntityType="Self.CartDetails" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [CartDetails].[cart_id] AS [cart_id], 
-    [CartDetails].[art_id] AS [art_id], 
-    [CartDetails].[availability] AS [availability], 
-    [CartDetails].[add_date] AS [add_date]
-    FROM [dbo].[CartDetails] AS [CartDetails]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Customer" EntityType="Self.Customer" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Customer].[UserId] AS [UserId], 
-    [Customer].[birthday_date] AS [birthday_date], 
-    [Customer].[membership] AS [membership], 
-    [Customer].[picture] AS [picture]
-    FROM [dbo].[Customer] AS [Customer]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Staff" EntityType="Self.Staff" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Staff].[UserId] AS [UserId], 
-    [Staff].[priority] AS [priority], 
-    [Staff].[position_id] AS [position_id], 
-    [Staff].[picture] AS [picture]
-    FROM [dbo].[Staff] AS [Staff]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="vw_aspnet_Applications" EntityType="Self.vw_aspnet_Applications" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [vw_aspnet_Applications].[ApplicationName] AS [ApplicationName], 
-    [vw_aspnet_Applications].[LoweredApplicationName] AS [LoweredApplicationName], 
-    [vw_aspnet_Applications].[ApplicationId] AS [ApplicationId], 
-    [vw_aspnet_Applications].[Description] AS [Description]
-    FROM [dbo].[vw_aspnet_Applications] AS [vw_aspnet_Applications]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="vw_aspnet_MembershipUsers" EntityType="Self.vw_aspnet_MembershipUsers" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [vw_aspnet_MembershipUsers].[UserId] AS [UserId], 
-    [vw_aspnet_MembershipUsers].[PasswordFormat] AS [PasswordFormat], 
-    [vw_aspnet_MembershipUsers].[MobilePIN] AS [MobilePIN], 
-    [vw_aspnet_MembershipUsers].[Email] AS [Email], 
-    [vw_aspnet_MembershipUsers].[LoweredEmail] AS [LoweredEmail], 
-    [vw_aspnet_MembershipUsers].[PasswordQuestion] AS [PasswordQuestion], 
-    [vw_aspnet_MembershipUsers].[PasswordAnswer] AS [PasswordAnswer], 
-    [vw_aspnet_MembershipUsers].[IsApproved] AS [IsApproved], 
-    [vw_aspnet_MembershipUsers].[IsLockedOut] AS [IsLockedOut], 
-    [vw_aspnet_MembershipUsers].[CreateDate] AS [CreateDate], 
-    [vw_aspnet_MembershipUsers].[LastLoginDate] AS [LastLoginDate], 
-    [vw_aspnet_MembershipUsers].[LastPasswordChangedDate] AS [LastPasswordChangedDate], 
-    [vw_aspnet_MembershipUsers].[LastLockoutDate] AS [LastLockoutDate], 
-    [vw_aspnet_MembershipUsers].[FailedPasswordAttemptCount] AS [FailedPasswordAttemptCount], 
-    [vw_aspnet_MembershipUsers].[FailedPasswordAttemptWindowStart] AS [FailedPasswordAttemptWindowStart], 
-    [vw_aspnet_MembershipUsers].[FailedPasswordAnswerAttemptCount] AS [FailedPasswordAnswerAttemptCount], 
-    [vw_aspnet_MembershipUsers].[FailedPasswordAnswerAttemptWindowStart] AS [FailedPasswordAnswerAttemptWindowStart], 
-    [vw_aspnet_MembershipUsers].[Comment] AS [Comment], 
-    [vw_aspnet_MembershipUsers].[ApplicationId] AS [ApplicationId], 
-    [vw_aspnet_MembershipUsers].[UserName] AS [UserName], 
-    [vw_aspnet_MembershipUsers].[MobileAlias] AS [MobileAlias], 
-    [vw_aspnet_MembershipUsers].[IsAnonymous] AS [IsAnonymous], 
-    [vw_aspnet_MembershipUsers].[LastActivityDate] AS [LastActivityDate]
-    FROM [dbo].[vw_aspnet_MembershipUsers] AS [vw_aspnet_MembershipUsers]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="vw_aspnet_Profiles" EntityType="Self.vw_aspnet_Profiles" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [vw_aspnet_Profiles].[UserId] AS [UserId], 
-    [vw_aspnet_Profiles].[LastUpdatedDate] AS [LastUpdatedDate], 
-    [vw_aspnet_Profiles].[DataSize] AS [DataSize]
-    FROM [dbo].[vw_aspnet_Profiles] AS [vw_aspnet_Profiles]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="vw_aspnet_Roles" EntityType="Self.vw_aspnet_Roles" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [vw_aspnet_Roles].[ApplicationId] AS [ApplicationId], 
-    [vw_aspnet_Roles].[RoleId] AS [RoleId], 
-    [vw_aspnet_Roles].[RoleName] AS [RoleName], 
-    [vw_aspnet_Roles].[LoweredRoleName] AS [LoweredRoleName], 
-    [vw_aspnet_Roles].[Description] AS [Description]
-    FROM [dbo].[vw_aspnet_Roles] AS [vw_aspnet_Roles]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="vw_aspnet_Users" EntityType="Self.vw_aspnet_Users" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [vw_aspnet_Users].[ApplicationId] AS [ApplicationId], 
-    [vw_aspnet_Users].[UserId] AS [UserId], 
-    [vw_aspnet_Users].[UserName] AS [UserName], 
-    [vw_aspnet_Users].[LoweredUserName] AS [LoweredUserName], 
-    [vw_aspnet_Users].[MobileAlias] AS [MobileAlias], 
-    [vw_aspnet_Users].[IsAnonymous] AS [IsAnonymous], 
-    [vw_aspnet_Users].[LastActivityDate] AS [LastActivityDate]
-    FROM [dbo].[vw_aspnet_Users] AS [vw_aspnet_Users]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="vw_aspnet_UsersInRoles" EntityType="Self.vw_aspnet_UsersInRoles" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [vw_aspnet_UsersInRoles].[UserId] AS [UserId], 
-    [vw_aspnet_UsersInRoles].[RoleId] AS [RoleId]
-    FROM [dbo].[vw_aspnet_UsersInRoles] AS [vw_aspnet_UsersInRoles]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="vw_aspnet_WebPartState_Paths" EntityType="Self.vw_aspnet_WebPartState_Paths" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [vw_aspnet_WebPartState_Paths].[ApplicationId] AS [ApplicationId], 
-    [vw_aspnet_WebPartState_Paths].[PathId] AS [PathId], 
-    [vw_aspnet_WebPartState_Paths].[Path] AS [Path], 
-    [vw_aspnet_WebPartState_Paths].[LoweredPath] AS [LoweredPath]
-    FROM [dbo].[vw_aspnet_WebPartState_Paths] AS [vw_aspnet_WebPartState_Paths]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="vw_aspnet_WebPartState_Shared" EntityType="Self.vw_aspnet_WebPartState_Shared" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [vw_aspnet_WebPartState_Shared].[PathId] AS [PathId], 
-    [vw_aspnet_WebPartState_Shared].[DataSize] AS [DataSize], 
-    [vw_aspnet_WebPartState_Shared].[LastUpdatedDate] AS [LastUpdatedDate]
-    FROM [dbo].[vw_aspnet_WebPartState_Shared] AS [vw_aspnet_WebPartState_Shared]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="vw_aspnet_WebPartState_User" EntityType="Self.vw_aspnet_WebPartState_User" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [vw_aspnet_WebPartState_User].[PathId] AS [PathId], 
-    [vw_aspnet_WebPartState_User].[UserId] AS [UserId], 
-    [vw_aspnet_WebPartState_User].[DataSize] AS [DataSize], 
-    [vw_aspnet_WebPartState_User].[LastUpdatedDate] AS [LastUpdatedDate]
-    FROM [dbo].[vw_aspnet_WebPartState_User] AS [vw_aspnet_WebPartState_User]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Art__artist_id__31B762FC" Association="Self.FK__Art__artist_id__31B762FC">
+            <End Role="Artist" EntitySet="Artist" />
+            <End Role="Art" EntitySet="Art" />
+          </AssociationSet>
           <AssociationSet Name="FK__Artist__UserId__1CBC4616" Association="Self.FK__Artist__UserId__1CBC4616">
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
             <End Role="Artist" EntitySet="Artist" />
@@ -1113,9 +976,41 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
             <End Role="aspnet_UsersInRoles" EntitySet="aspnet_UsersInRoles" />
           </AssociationSet>
+          <AssociationSet Name="FK__Cart__user_id__32AB8735" Association="Self.FK__Cart__user_id__32AB8735">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CartDetai__art_i__37703C52" Association="Self.FK__CartDetai__art_i__37703C52">
+            <End Role="Art" EntitySet="Art" />
+            <End Role="CartDetails" EntitySet="CartDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CartDetai__cart___367C1819" Association="Self.FK__CartDetai__cart___367C1819">
+            <End Role="Cart" EntitySet="Cart" />
+            <End Role="CartDetails" EntitySet="CartDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK__Customer__UserId__1AD3FDA4" Association="Self.FK__Customer__UserId__1AD3FDA4">
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
             <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Payment__custome__339FAB6E" Association="Self.FK__Payment__custome__339FAB6E">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Payment__payment__2FCF1A8A" Association="Self.FK__Payment__payment__2FCF1A8A">
+            <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+            <End Role="Payment" EntitySet="Payment" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__art_i__3587F3E0" Association="Self.FK__PaymentDe__art_i__3587F3E0">
+            <End Role="Art" EntitySet="Art" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__payme__3493CFA7" Association="Self.FK__PaymentDe__payme__3493CFA7">
+            <End Role="Payment" EntitySet="Payment" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Staff__position___3A4CA8FD" Association="Self.FK__Staff__position___3A4CA8FD">
+            <End Role="Position" EntitySet="Position" />
+            <End Role="Staff" EntitySet="Staff" />
           </AssociationSet>
           <AssociationSet Name="FK__Staff__UserId__1EA48E88" Association="Self.FK__Staff__UserId__1EA48E88">
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
@@ -1127,92 +1022,8 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
     <edmx:ConceptualModels>
       <Schema Namespace="ArtShopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="ArtShopEntities" annotation:LazyLoadingEnabled="true" >
-          <EntitySet Name="Arts" EntityType="ArtShopModel.Art" />
-          <EntitySet Name="aspnet_Applications" EntityType="ArtShopModel.aspnet_Applications" />
-          <EntitySet Name="aspnet_Membership" EntityType="ArtShopModel.aspnet_Membership" />
-          <EntitySet Name="aspnet_Paths" EntityType="ArtShopModel.aspnet_Paths" />
-          <EntitySet Name="aspnet_PersonalizationAllUsers" EntityType="ArtShopModel.aspnet_PersonalizationAllUsers" />
-          <EntitySet Name="aspnet_PersonalizationPerUser" EntityType="ArtShopModel.aspnet_PersonalizationPerUser" />
-          <EntitySet Name="aspnet_Profile" EntityType="ArtShopModel.aspnet_Profile" />
-          <EntitySet Name="aspnet_Roles" EntityType="ArtShopModel.aspnet_Roles" />
-          <EntitySet Name="aspnet_SchemaVersions" EntityType="ArtShopModel.aspnet_SchemaVersions" />
-          <EntitySet Name="aspnet_Users" EntityType="ArtShopModel.aspnet_Users" />
-          <EntitySet Name="aspnet_WebEvent_Events" EntityType="ArtShopModel.aspnet_WebEvent_Events" />
-          <EntitySet Name="Cards" EntityType="ArtShopModel.Card" />
-          <EntitySet Name="Carts" EntityType="ArtShopModel.Cart" />
-          <EntitySet Name="Categories" EntityType="ArtShopModel.Category" />
-          <EntitySet Name="ChangePasswords" EntityType="ArtShopModel.ChangePassword" />
-          <EntitySet Name="Payments" EntityType="ArtShopModel.Payment" />
-          <EntitySet Name="PaymentDetails" EntityType="ArtShopModel.PaymentDetail" />
-          <EntitySet Name="PayPals" EntityType="ArtShopModel.PayPal" />
-          <EntitySet Name="PublicBanks" EntityType="ArtShopModel.PublicBank" />
-          <EntitySet Name="Artists" EntityType="ArtShopModel.Artist" />
-          <EntitySet Name="CartDetails" EntityType="ArtShopModel.CartDetail" />
-          <EntitySet Name="Customers" EntityType="ArtShopModel.Customer" />
-          <EntitySet Name="Staffs" EntityType="ArtShopModel.Staff" />
-          <EntitySet Name="vw_aspnet_Applications" EntityType="ArtShopModel.vw_aspnet_Applications" />
-          <EntitySet Name="vw_aspnet_MembershipUsers" EntityType="ArtShopModel.vw_aspnet_MembershipUsers" />
-          <EntitySet Name="vw_aspnet_Profiles" EntityType="ArtShopModel.vw_aspnet_Profiles" />
-          <EntitySet Name="vw_aspnet_Roles" EntityType="ArtShopModel.vw_aspnet_Roles" />
-          <EntitySet Name="vw_aspnet_Users" EntityType="ArtShopModel.vw_aspnet_Users" />
-          <EntitySet Name="vw_aspnet_UsersInRoles" EntityType="ArtShopModel.vw_aspnet_UsersInRoles" />
-          <EntitySet Name="vw_aspnet_WebPartState_Paths" EntityType="ArtShopModel.vw_aspnet_WebPartState_Paths" />
-          <EntitySet Name="vw_aspnet_WebPartState_Shared" EntityType="ArtShopModel.vw_aspnet_WebPartState_Shared" />
-          <EntitySet Name="vw_aspnet_WebPartState_User" EntityType="ArtShopModel.vw_aspnet_WebPartState_User" />
-          <AssociationSet Name="FK__aspnet_Me__Appli__3A81B327" Association="ArtShopModel.FK__aspnet_Me__Appli__3A81B327">
-            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
-            <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
-          </AssociationSet>
-          <AssociationSet Name="FK__aspnet_Pa__Appli__6C190EBB" Association="ArtShopModel.FK__aspnet_Pa__Appli__6C190EBB">
-            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
-            <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
-          </AssociationSet>
-          <AssociationSet Name="FK__aspnet_Ro__Appli__59063A47" Association="ArtShopModel.FK__aspnet_Ro__Appli__59063A47">
-            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
-            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
-          </AssociationSet>
-          <AssociationSet Name="FK__aspnet_Us__Appli__2A4B4B5E" Association="ArtShopModel.FK__aspnet_Us__Appli__2A4B4B5E">
-            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
-            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-          </AssociationSet>
-          <AssociationSet Name="FK__aspnet_Me__UserI__3B75D760" Association="ArtShopModel.FK__aspnet_Me__UserI__3B75D760">
-            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-            <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
-          </AssociationSet>
-          <AssociationSet Name="FK__aspnet_Pe__PathI__71D1E811" Association="ArtShopModel.FK__aspnet_Pe__PathI__71D1E811">
-            <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
-            <End Role="aspnet_PersonalizationAllUsers" EntitySet="aspnet_PersonalizationAllUsers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__aspnet_Pe__PathI__75A278F5" Association="ArtShopModel.FK__aspnet_Pe__PathI__75A278F5">
-            <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
-            <End Role="aspnet_PersonalizationPerUser" EntitySet="aspnet_PersonalizationPerUser" />
-          </AssociationSet>
-          <AssociationSet Name="FK__aspnet_Pe__UserI__76969D2E" Association="ArtShopModel.FK__aspnet_Pe__UserI__76969D2E">
-            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-            <End Role="aspnet_PersonalizationPerUser" EntitySet="aspnet_PersonalizationPerUser" />
-          </AssociationSet>
-          <AssociationSet Name="FK__aspnet_Pr__UserI__4F7CD00D" Association="ArtShopModel.FK__aspnet_Pr__UserI__4F7CD00D">
-            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-            <End Role="aspnet_Profile" EntitySet="aspnet_Profile" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Artist__UserId__1CBC4616" Association="ArtShopModel.FK__Artist__UserId__1CBC4616">
-            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-            <End Role="Artist" EntitySet="Artists" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Customer__UserId__1AD3FDA4" Association="ArtShopModel.FK__Customer__UserId__1AD3FDA4">
-            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-            <End Role="Customer" EntitySet="Customers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Staff__UserId__1EA48E88" Association="ArtShopModel.FK__Staff__UserId__1EA48E88">
-            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-            <End Role="Staff" EntitySet="Staffs" />
-          </AssociationSet>
-          <AssociationSet Name="aspnet_UsersInRoles" Association="ArtShopModel.aspnet_UsersInRoles">
-            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
-            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-          </AssociationSet>
           <FunctionImport Name="aspnet_AnyDataInTables" ReturnType="Collection(String)">
-            <Parameter Name="TablesToCheck" Mode="In" Type="Int32" />
+          <Parameter Name="TablesToCheck" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="aspnet_Applications_CreateApplication">
             <Parameter Name="ApplicationName" Mode="In" Type="String" />
@@ -1467,17 +1278,17 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <Parameter Name="DeleteOnlyIfRoleIsEmpty" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="aspnet_Roles_GetAllRoles" ReturnType="Collection(String)">
-            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+          <Parameter Name="ApplicationName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="aspnet_Roles_RoleExists">
             <Parameter Name="ApplicationName" Mode="In" Type="String" />
             <Parameter Name="RoleName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="aspnet_Setup_RemoveAllRoleMembers">
-            <Parameter Name="name" Mode="In" Type="String" />
+          <Parameter Name="name" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="aspnet_Setup_RestorePermissions">
-            <Parameter Name="name" Mode="In" Type="String" />
+          <Parameter Name="name" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="aspnet_UnRegisterSchemaVersion">
             <Parameter Name="Feature" Mode="In" Type="String" />
@@ -1542,19 +1353,195 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <Parameter Name="ExceptionType" Mode="In" Type="String" />
             <Parameter Name="Details" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="Arts" EntityType="ArtShopModel.Art" />
+          <EntitySet Name="Artists" EntityType="ArtShopModel.Artist" />
+          <EntitySet Name="aspnet_Applications" EntityType="ArtShopModel.aspnet_Applications" />
+          <EntitySet Name="aspnet_Membership" EntityType="ArtShopModel.aspnet_Membership" />
+          <EntitySet Name="aspnet_Paths" EntityType="ArtShopModel.aspnet_Paths" />
+          <EntitySet Name="aspnet_PersonalizationAllUsers" EntityType="ArtShopModel.aspnet_PersonalizationAllUsers" />
+          <EntitySet Name="aspnet_PersonalizationPerUser" EntityType="ArtShopModel.aspnet_PersonalizationPerUser" />
+          <EntitySet Name="aspnet_Profile" EntityType="ArtShopModel.aspnet_Profile" />
+          <EntitySet Name="aspnet_Roles" EntityType="ArtShopModel.aspnet_Roles" />
+          <EntitySet Name="aspnet_SchemaVersions" EntityType="ArtShopModel.aspnet_SchemaVersions" />
+          <EntitySet Name="aspnet_Users" EntityType="ArtShopModel.aspnet_Users" />
+          <EntitySet Name="aspnet_WebEvent_Events" EntityType="ArtShopModel.aspnet_WebEvent_Events" />
+          <EntitySet Name="Cards" EntityType="ArtShopModel.Card" />
+          <EntitySet Name="Carts" EntityType="ArtShopModel.Cart" />
+          <EntitySet Name="CartDetails" EntityType="ArtShopModel.CartDetail" />
+          <EntitySet Name="Categories" EntityType="ArtShopModel.Category" />
+          <EntitySet Name="Customers" EntityType="ArtShopModel.Customer" />
+          <EntitySet Name="Payments" EntityType="ArtShopModel.Payment" />
+          <EntitySet Name="PaymentDetails" EntityType="ArtShopModel.PaymentDetail" />
+          <EntitySet Name="PaymentMethods" EntityType="ArtShopModel.PaymentMethod" />
+          <EntitySet Name="PayPals" EntityType="ArtShopModel.PayPal" />
+          <EntitySet Name="Positions" EntityType="ArtShopModel.Position" />
+          <EntitySet Name="PublicBanks" EntityType="ArtShopModel.PublicBank" />
+          <EntitySet Name="Staffs" EntityType="ArtShopModel.Staff" />
+          <AssociationSet Name="FK__Art__artist_id__31B762FC" Association="ArtShopModel.FK__Art__artist_id__31B762FC">
+            <End Role="Artist" EntitySet="Artists" />
+            <End Role="Art" EntitySet="Arts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CartDetai__art_i__37703C52" Association="ArtShopModel.FK__CartDetai__art_i__37703C52">
+            <End Role="Art" EntitySet="Arts" />
+            <End Role="CartDetail" EntitySet="CartDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__art_i__3587F3E0" Association="ArtShopModel.FK__PaymentDe__art_i__3587F3E0">
+            <End Role="Art" EntitySet="Arts" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Artist__UserId__1CBC4616" Association="ArtShopModel.FK__Artist__UserId__1CBC4616">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="Artist" EntitySet="Artists" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Me__Appli__3A81B327" Association="ArtShopModel.FK__aspnet_Me__Appli__3A81B327">
+            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+            <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Pa__Appli__6C190EBB" Association="ArtShopModel.FK__aspnet_Pa__Appli__6C190EBB">
+            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+            <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Ro__Appli__59063A47" Association="ArtShopModel.FK__aspnet_Ro__Appli__59063A47">
+            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Us__Appli__2A4B4B5E" Association="ArtShopModel.FK__aspnet_Us__Appli__2A4B4B5E">
+            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Me__UserI__3B75D760" Association="ArtShopModel.FK__aspnet_Me__UserI__3B75D760">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Pe__PathI__71D1E811" Association="ArtShopModel.FK__aspnet_Pe__PathI__71D1E811">
+            <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
+            <End Role="aspnet_PersonalizationAllUsers" EntitySet="aspnet_PersonalizationAllUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Pe__PathI__75A278F5" Association="ArtShopModel.FK__aspnet_Pe__PathI__75A278F5">
+            <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
+            <End Role="aspnet_PersonalizationPerUser" EntitySet="aspnet_PersonalizationPerUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Pe__UserI__76969D2E" Association="ArtShopModel.FK__aspnet_Pe__UserI__76969D2E">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_PersonalizationPerUser" EntitySet="aspnet_PersonalizationPerUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Pr__UserI__4F7CD00D" Association="ArtShopModel.FK__aspnet_Pr__UserI__4F7CD00D">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Profile" EntitySet="aspnet_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Customer__UserId__1AD3FDA4" Association="ArtShopModel.FK__Customer__UserId__1AD3FDA4">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Staff__UserId__1EA48E88" Association="ArtShopModel.FK__Staff__UserId__1EA48E88">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="Staff" EntitySet="Staffs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cart__user_id__32AB8735" Association="ArtShopModel.FK__Cart__user_id__32AB8735">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CartDetai__cart___367C1819" Association="ArtShopModel.FK__CartDetai__cart___367C1819">
+            <End Role="Cart" EntitySet="Carts" />
+            <End Role="CartDetail" EntitySet="CartDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Payment__custome__339FAB6E" Association="ArtShopModel.FK__Payment__custome__339FAB6E">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Payment__payment__2FCF1A8A" Association="ArtShopModel.FK__Payment__payment__2FCF1A8A">
+            <End Role="PaymentMethod" EntitySet="PaymentMethods" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__payme__3493CFA7" Association="ArtShopModel.FK__PaymentDe__payme__3493CFA7">
+            <End Role="Payment" EntitySet="Payments" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Staff__position___3A4CA8FD" Association="ArtShopModel.FK__Staff__position___3A4CA8FD">
+            <End Role="Position" EntitySet="Positions" />
+            <End Role="Staff" EntitySet="Staffs" />
+          </AssociationSet>
+          <AssociationSet Name="aspnet_UsersInRoles" Association="ArtShopModel.aspnet_UsersInRoles">
+            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+          </AssociationSet>
         </EntityContainer>
+        <ComplexType Name="aspnet_Membership_GetPassword_Result">
+          <Property Type="String" Name="Column1" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="Column2" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="aspnet_Membership_GetPasswordWithFormat_Result">
+          <Property Type="String" Name="Column1" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="Column2" Nullable="true" />
+          <Property Type="String" Name="Column3" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="Column4" Nullable="true" />
+          <Property Type="Int32" Name="Column5" Nullable="true" />
+          <Property Type="Boolean" Name="Column6" Nullable="true" />
+          <Property Type="DateTime" Name="Column7" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="Column8" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="aspnet_Membership_GetUserByName_Result">
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
+          <Property Type="String" Name="PasswordQuestion" Nullable="true" MaxLength="256" />
+          <Property Type="String" Name="Comment" Nullable="true" MaxLength="Max" />
+          <Property Type="Boolean" Name="IsApproved" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="LastLoginDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="LastActivityDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="LastPasswordChangedDate" Nullable="false" Precision="23" />
+          <Property Type="Guid" Name="UserId" Nullable="false" />
+          <Property Type="Boolean" Name="IsLockedOut" Nullable="false" />
+          <Property Type="DateTime" Name="LastLockoutDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="aspnet_Membership_GetUserByUserId_Result">
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
+          <Property Type="String" Name="PasswordQuestion" Nullable="true" MaxLength="256" />
+          <Property Type="String" Name="Comment" Nullable="true" MaxLength="Max" />
+          <Property Type="Boolean" Name="IsApproved" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="LastLoginDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="LastActivityDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="LastPasswordChangedDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="256" />
+          <Property Type="Boolean" Name="IsLockedOut" Nullable="false" />
+          <Property Type="DateTime" Name="LastLockoutDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="aspnet_Profile_GetProperties_Result">
+          <Property Type="String" Name="PropertyNames" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="PropertyValuesString" Nullable="false" MaxLength="Max" />
+          <Property Type="Binary" Name="PropertyValuesBinary" Nullable="false" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="aspnet_UsersInRoles_RemoveUsersFromRoles_Result">
+          <Property Type="String" Name="Column1" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="256" />
+        </ComplexType>
         <EntityType Name="Art">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="artist_id" Type="Int32" Nullable="false" />
           <Property Name="image" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
           <Property Name="date" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="category_id" Type="Int32" />
+          <Property Name="artist_id" Type="Guid" />
+          <NavigationProperty Name="Artist" Relationship="ArtShopModel.FK__Art__artist_id__31B762FC" FromRole="Art" ToRole="Artist" />
+          <NavigationProperty Name="CartDetails" Relationship="ArtShopModel.FK__CartDetai__art_i__37703C52" FromRole="Art" ToRole="CartDetail" />
+          <NavigationProperty Name="PaymentDetails" Relationship="ArtShopModel.FK__PaymentDe__art_i__3587F3E0" FromRole="Art" ToRole="PaymentDetail" />
+        </EntityType>
+        <EntityType Name="Artist">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="birthday_date" Type="DateTime" Precision="0" />
+          <Property Name="description" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="signature" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Arts" Relationship="ArtShopModel.FK__Art__artist_id__31B762FC" FromRole="Artist" ToRole="Art" />
+          <NavigationProperty Name="aspnet_Users" Relationship="ArtShopModel.FK__Artist__UserId__1CBC4616" FromRole="Artist" ToRole="aspnet_Users" />
         </EntityType>
         <EntityType Name="aspnet_Applications">
           <Key>
@@ -1673,13 +1660,13 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="MobileAlias" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
           <Property Name="IsAnonymous" Type="Boolean" Nullable="false" />
           <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Artist" Relationship="ArtShopModel.FK__Artist__UserId__1CBC4616" FromRole="aspnet_Users" ToRole="Artist" />
           <NavigationProperty Name="aspnet_Applications" Relationship="ArtShopModel.FK__aspnet_Us__Appli__2A4B4B5E" FromRole="aspnet_Users" ToRole="aspnet_Applications" />
           <NavigationProperty Name="aspnet_Membership" Relationship="ArtShopModel.FK__aspnet_Me__UserI__3B75D760" FromRole="aspnet_Users" ToRole="aspnet_Membership" />
           <NavigationProperty Name="aspnet_PersonalizationPerUser" Relationship="ArtShopModel.FK__aspnet_Pe__UserI__76969D2E" FromRole="aspnet_Users" ToRole="aspnet_PersonalizationPerUser" />
           <NavigationProperty Name="aspnet_Profile" Relationship="ArtShopModel.FK__aspnet_Pr__UserI__4F7CD00D" FromRole="aspnet_Users" ToRole="aspnet_Profile" />
-          <NavigationProperty Name="Artist" Relationship="ArtShopModel.FK__Artist__UserId__1CBC4616" FromRole="aspnet_Users" ToRole="Artist" />
           <NavigationProperty Name="Customer" Relationship="ArtShopModel.FK__Customer__UserId__1AD3FDA4" FromRole="aspnet_Users" ToRole="Customer" />
-          <NavigationProperty Name="Staffs" Relationship="ArtShopModel.FK__Staff__UserId__1EA48E88" FromRole="aspnet_Users" ToRole="Staff" />
+          <NavigationProperty Name="Staff" Relationship="ArtShopModel.FK__Staff__UserId__1EA48E88" FromRole="aspnet_Users" ToRole="Staff" />
           <NavigationProperty Name="aspnet_Roles" Relationship="ArtShopModel.aspnet_UsersInRoles" FromRole="aspnet_Users" ToRole="aspnet_Roles" />
         </EntityType>
         <EntityType Name="aspnet_WebEvent_Events">
@@ -1718,9 +1705,23 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="user_id" Type="Int32" />
           <Property Name="relation" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="remark" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="user_id" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="ArtShopModel.FK__Cart__user_id__32AB8735" FromRole="Cart" ToRole="Customer" />
+          <NavigationProperty Name="CartDetails" Relationship="ArtShopModel.FK__CartDetai__cart___367C1819" FromRole="Cart" ToRole="CartDetail" />
+        </EntityType>
+        <EntityType Name="CartDetail">
+          <Key>
+            <PropertyRef Name="cart_id" />
+            <PropertyRef Name="art_id" />
+          </Key>
+          <Property Name="cart_id" Type="Int32" Nullable="false" />
+          <Property Name="art_id" Type="Int32" Nullable="false" />
+          <Property Name="availability" Type="Int32" />
+          <Property Name="add_date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Art" Relationship="ArtShopModel.FK__CartDetai__art_i__37703C52" FromRole="CartDetail" ToRole="Art" />
+          <NavigationProperty Name="Cart" Relationship="ArtShopModel.FK__CartDetai__cart___367C1819" FromRole="CartDetail" ToRole="Cart" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -1730,13 +1731,17 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="ChangePassword">
+        <EntityType Name="Customer">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="UserId" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="user_id" Type="Int32" />
-          <Property Name="temp_password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="birthday_date" Type="DateTime" Precision="0" />
+          <Property Name="membership" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="aspnet_Users" Relationship="ArtShopModel.FK__Customer__UserId__1AD3FDA4" FromRole="Customer" ToRole="aspnet_Users" />
+          <NavigationProperty Name="Carts" Relationship="ArtShopModel.FK__Cart__user_id__32AB8735" FromRole="Customer" ToRole="Cart" />
+          <NavigationProperty Name="Payments" Relationship="ArtShopModel.FK__Payment__custome__339FAB6E" FromRole="Customer" ToRole="Payment" />
         </EntityType>
         <EntityType Name="Payment">
           <Key>
@@ -1748,15 +1753,31 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="tax_change" Type="Double" />
           <Property Name="payment_date" Type="DateTime" Precision="0" />
           <Property Name="payment_status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="customer_id" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="ArtShopModel.FK__Payment__custome__339FAB6E" FromRole="Payment" ToRole="Customer" />
+          <NavigationProperty Name="PaymentMethod" Relationship="ArtShopModel.FK__Payment__payment__2FCF1A8A" FromRole="Payment" ToRole="PaymentMethod" />
+          <NavigationProperty Name="PaymentDetails" Relationship="ArtShopModel.FK__PaymentDe__payme__3493CFA7" FromRole="Payment" ToRole="PaymentDetail" />
         </EntityType>
         <EntityType Name="PaymentDetail">
+          <Key>
+            <PropertyRef Name="payment_id" />
+            <PropertyRef Name="art_id" />
+          </Key>
+          <Property Name="payment_id" Type="Int32" Nullable="false" />
+          <Property Name="art_id" Type="Int32" Nullable="false" />
+          <Property Name="availability" Type="Boolean" />
+          <Property Name="add_date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Art" Relationship="ArtShopModel.FK__PaymentDe__art_i__3587F3E0" FromRole="PaymentDetail" ToRole="Art" />
+          <NavigationProperty Name="Payment" Relationship="ArtShopModel.FK__PaymentDe__payme__3493CFA7" FromRole="PaymentDetail" ToRole="Payment" />
+        </EntityType>
+        <EntityType Name="PaymentMethod">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="art_id" Type="Int32" />
-          <Property Name="availability" Type="Boolean" />
-          <Property Name="add_date" Type="DateTime" Precision="0" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Payments" Relationship="ArtShopModel.FK__Payment__payment__2FCF1A8A" FromRole="PaymentMethod" ToRole="Payment" />
         </EntityType>
         <EntityType Name="PayPal">
           <Key>
@@ -1768,6 +1789,15 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="amount" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="Position">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Staffs" Relationship="ArtShopModel.FK__Staff__position___3A4CA8FD" FromRole="Position" ToRole="Staff" />
+        </EntityType>
         <EntityType Name="PublicBank">
           <Key>
             <PropertyRef Name="bank_account" />
@@ -1778,179 +1808,65 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="amount" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Artist">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="birthday_date" Type="DateTime" Precision="0" />
-          <Property Name="description" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="signature" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="aspnet_Users" Relationship="ArtShopModel.FK__Artist__UserId__1CBC4616" FromRole="Artist" ToRole="aspnet_Users" />
-        </EntityType>
-        <EntityType Name="CartDetail">
-          <Key>
-            <PropertyRef Name="cart_id" />
-          </Key>
-          <Property Name="cart_id" Type="Int32" Nullable="false" />
-          <Property Name="art_id" Type="Int32" />
-          <Property Name="availability" Type="Int32" />
-          <Property Name="add_date" Type="DateTime" Precision="0" />
-        </EntityType>
-        <EntityType Name="Customer">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="birthday_date" Type="DateTime" Precision="0" />
-          <Property Name="membership" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="aspnet_Users" Relationship="ArtShopModel.FK__Customer__UserId__1AD3FDA4" FromRole="Customer" ToRole="aspnet_Users" />
-        </EntityType>
         <EntityType Name="Staff">
           <Key>
             <PropertyRef Name="UserId" />
-            <PropertyRef Name="priority" />
-            <PropertyRef Name="position_id" />
           </Key>
           <Property Name="UserId" Type="Guid" Nullable="false" />
           <Property Name="priority" Type="Int32" Nullable="false" />
           <Property Name="position_id" Type="Int32" Nullable="false" />
           <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="aspnet_Users" Relationship="ArtShopModel.FK__Staff__UserId__1EA48E88" FromRole="Staff" ToRole="aspnet_Users" />
+          <NavigationProperty Name="Position" Relationship="ArtShopModel.FK__Staff__position___3A4CA8FD" FromRole="Staff" ToRole="Position" />
         </EntityType>
-        <EntityType Name="vw_aspnet_Applications">
-          <Key>
-            <PropertyRef Name="ApplicationName" />
-            <PropertyRef Name="LoweredApplicationName" />
-            <PropertyRef Name="ApplicationId" />
-          </Key>
-          <Property Name="ApplicationName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="LoweredApplicationName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="vw_aspnet_MembershipUsers">
-          <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="PasswordFormat" />
-            <PropertyRef Name="IsApproved" />
-            <PropertyRef Name="IsLockedOut" />
-            <PropertyRef Name="CreateDate" />
-            <PropertyRef Name="LastLoginDate" />
-            <PropertyRef Name="LastPasswordChangedDate" />
-            <PropertyRef Name="LastLockoutDate" />
-            <PropertyRef Name="FailedPasswordAttemptCount" />
-            <PropertyRef Name="FailedPasswordAttemptWindowStart" />
-            <PropertyRef Name="FailedPasswordAnswerAttemptCount" />
-            <PropertyRef Name="FailedPasswordAnswerAttemptWindowStart" />
-            <PropertyRef Name="ApplicationId" />
-            <PropertyRef Name="UserName" />
-            <PropertyRef Name="IsAnonymous" />
-            <PropertyRef Name="LastActivityDate" />
-          </Key>
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="PasswordFormat" Type="Int32" Nullable="false" />
-          <Property Name="MobilePIN" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="LoweredEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="PasswordQuestion" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="PasswordAnswer" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
-          <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
-          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LastPasswordChangedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LastLockoutDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="FailedPasswordAttemptCount" Type="Int32" Nullable="false" />
-          <Property Name="FailedPasswordAttemptWindowStart" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="FailedPasswordAnswerAttemptCount" Type="Int32" Nullable="false" />
-          <Property Name="FailedPasswordAnswerAttemptWindowStart" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="MobileAlias" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
-          <Property Name="IsAnonymous" Type="Boolean" Nullable="false" />
-          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="vw_aspnet_Profiles">
-          <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="LastUpdatedDate" />
-          </Key>
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DataSize" Type="Int32" />
-        </EntityType>
-        <EntityType Name="vw_aspnet_Roles">
-          <Key>
-            <PropertyRef Name="ApplicationId" />
-            <PropertyRef Name="RoleId" />
-            <PropertyRef Name="RoleName" />
-            <PropertyRef Name="LoweredRoleName" />
-          </Key>
-          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
-          <Property Name="RoleId" Type="Guid" Nullable="false" />
-          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="LoweredRoleName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="vw_aspnet_Users">
-          <Key>
-            <PropertyRef Name="ApplicationId" />
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="UserName" />
-            <PropertyRef Name="LoweredUserName" />
-            <PropertyRef Name="IsAnonymous" />
-            <PropertyRef Name="LastActivityDate" />
-          </Key>
-          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="LoweredUserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="MobileAlias" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
-          <Property Name="IsAnonymous" Type="Boolean" Nullable="false" />
-          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="vw_aspnet_UsersInRoles">
-          <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="RoleId" />
-          </Key>
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="RoleId" Type="Guid" Nullable="false" />
-        </EntityType>
-        <EntityType Name="vw_aspnet_WebPartState_Paths">
-          <Key>
-            <PropertyRef Name="ApplicationId" />
-            <PropertyRef Name="PathId" />
-            <PropertyRef Name="Path" />
-            <PropertyRef Name="LoweredPath" />
-          </Key>
-          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
-          <Property Name="PathId" Type="Guid" Nullable="false" />
-          <Property Name="Path" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="LoweredPath" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="vw_aspnet_WebPartState_Shared">
-          <Key>
-            <PropertyRef Name="PathId" />
-            <PropertyRef Name="LastUpdatedDate" />
-          </Key>
-          <Property Name="PathId" Type="Guid" Nullable="false" />
-          <Property Name="DataSize" Type="Int32" />
-          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="vw_aspnet_WebPartState_User">
-          <Key>
-            <PropertyRef Name="LastUpdatedDate" />
-          </Key>
-          <Property Name="PathId" Type="Guid" />
-          <Property Name="UserId" Type="Guid" />
-          <Property Name="DataSize" Type="Int32" />
-          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
+        <Association Name="FK__Art__artist_id__31B762FC">
+          <End Type="ArtShopModel.Artist" Role="Artist" Multiplicity="0..1" />
+          <End Type="ArtShopModel.Art" Role="Art" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artist">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Art">
+              <PropertyRef Name="artist_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CartDetai__art_i__37703C52">
+          <End Type="ArtShopModel.Art" Role="Art" Multiplicity="1" />
+          <End Type="ArtShopModel.CartDetail" Role="CartDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Art">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CartDetail">
+              <PropertyRef Name="art_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentDe__art_i__3587F3E0">
+          <End Type="ArtShopModel.Art" Role="Art" Multiplicity="1" />
+          <End Type="ArtShopModel.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Art">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PaymentDetail">
+              <PropertyRef Name="art_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Artist__UserId__1CBC4616">
+          <End Type="ArtShopModel.aspnet_Users" Role="aspnet_Users" Multiplicity="1" />
+          <End Type="ArtShopModel.Artist" Role="Artist" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Artist">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__aspnet_Me__Appli__3A81B327">
           <End Type="ArtShopModel.aspnet_Applications" Role="aspnet_Applications" Multiplicity="1" />
           <End Type="ArtShopModel.aspnet_Membership" Role="aspnet_Membership" Multiplicity="*" />
@@ -2059,18 +1975,6 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Artist__UserId__1CBC4616">
-          <End Type="ArtShopModel.aspnet_Users" Role="aspnet_Users" Multiplicity="1" />
-          <End Type="ArtShopModel.Artist" Role="Artist" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="aspnet_Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Artist">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Customer__UserId__1AD3FDA4">
           <End Type="ArtShopModel.aspnet_Users" Role="aspnet_Users" Multiplicity="1" />
           <End Type="ArtShopModel.Customer" Role="Customer" Multiplicity="0..1" />
@@ -2085,7 +1989,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
         </Association>
         <Association Name="FK__Staff__UserId__1EA48E88">
           <End Type="ArtShopModel.aspnet_Users" Role="aspnet_Users" Multiplicity="1" />
-          <End Type="ArtShopModel.Staff" Role="Staff" Multiplicity="*" />
+          <End Type="ArtShopModel.Staff" Role="Staff" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="aspnet_Users">
               <PropertyRef Name="UserId" />
@@ -2095,76 +1999,232 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Cart__user_id__32AB8735">
+          <End Type="ArtShopModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="ArtShopModel.Cart" Role="Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CartDetai__cart___367C1819">
+          <End Type="ArtShopModel.Cart" Role="Cart" Multiplicity="1" />
+          <End Type="ArtShopModel.CartDetail" Role="CartDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cart">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="CartDetail">
+              <PropertyRef Name="cart_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Payment__custome__339FAB6E">
+          <End Type="ArtShopModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="ArtShopModel.Payment" Role="Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="customer_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Payment__payment__2FCF1A8A">
+          <End Type="ArtShopModel.PaymentMethod" Role="PaymentMethod" Multiplicity="0..1" />
+          <End Type="ArtShopModel.Payment" Role="Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentMethod">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="payment_method_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentDe__payme__3493CFA7">
+          <End Type="ArtShopModel.Payment" Role="Payment" Multiplicity="1" />
+          <End Type="ArtShopModel.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PaymentDetail">
+              <PropertyRef Name="payment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Staff__position___3A4CA8FD">
+          <End Type="ArtShopModel.Position" Role="Position" Multiplicity="1" />
+          <End Type="ArtShopModel.Staff" Role="Staff" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Position">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Staff">
+              <PropertyRef Name="position_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="aspnet_UsersInRoles">
           <End Type="ArtShopModel.aspnet_Roles" Role="aspnet_Roles" Multiplicity="*" />
           <End Type="ArtShopModel.aspnet_Users" Role="aspnet_Users" Multiplicity="*" />
         </Association>
-        <ComplexType Name="aspnet_Membership_GetPassword_Result">
-          <Property Type="String" Name="Column1" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="Column2" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="aspnet_Membership_GetPasswordWithFormat_Result">
-          <Property Type="String" Name="Column1" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="Column2" Nullable="true" />
-          <Property Type="String" Name="Column3" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="Column4" Nullable="true" />
-          <Property Type="Int32" Name="Column5" Nullable="true" />
-          <Property Type="Boolean" Name="Column6" Nullable="true" />
-          <Property Type="DateTime" Name="Column7" Nullable="true" Precision="23" />
-          <Property Type="DateTime" Name="Column8" Nullable="true" Precision="23" />
-        </ComplexType>
-        <ComplexType Name="aspnet_Membership_GetUserByName_Result">
-          <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
-          <Property Type="String" Name="PasswordQuestion" Nullable="true" MaxLength="256" />
-          <Property Type="String" Name="Comment" Nullable="true" MaxLength="Max" />
-          <Property Type="Boolean" Name="IsApproved" Nullable="false" />
-          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
-          <Property Type="DateTime" Name="LastLoginDate" Nullable="false" Precision="23" />
-          <Property Type="DateTime" Name="LastActivityDate" Nullable="false" Precision="23" />
-          <Property Type="DateTime" Name="LastPasswordChangedDate" Nullable="false" Precision="23" />
-          <Property Type="Guid" Name="UserId" Nullable="false" />
-          <Property Type="Boolean" Name="IsLockedOut" Nullable="false" />
-          <Property Type="DateTime" Name="LastLockoutDate" Nullable="false" Precision="23" />
-        </ComplexType>
-        <ComplexType Name="aspnet_Membership_GetUserByUserId_Result">
-          <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
-          <Property Type="String" Name="PasswordQuestion" Nullable="true" MaxLength="256" />
-          <Property Type="String" Name="Comment" Nullable="true" MaxLength="Max" />
-          <Property Type="Boolean" Name="IsApproved" Nullable="false" />
-          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
-          <Property Type="DateTime" Name="LastLoginDate" Nullable="false" Precision="23" />
-          <Property Type="DateTime" Name="LastActivityDate" Nullable="false" Precision="23" />
-          <Property Type="DateTime" Name="LastPasswordChangedDate" Nullable="false" Precision="23" />
-          <Property Type="String" Name="UserName" Nullable="false" MaxLength="256" />
-          <Property Type="Boolean" Name="IsLockedOut" Nullable="false" />
-          <Property Type="DateTime" Name="LastLockoutDate" Nullable="false" Precision="23" />
-        </ComplexType>
-        <ComplexType Name="aspnet_Profile_GetProperties_Result">
-          <Property Type="String" Name="PropertyNames" Nullable="false" MaxLength="Max" />
-          <Property Type="String" Name="PropertyValuesString" Nullable="false" MaxLength="Max" />
-          <Property Type="Binary" Name="PropertyValuesBinary" Nullable="false" MaxLength="Max" />
-        </ComplexType>
-        <ComplexType Name="aspnet_UsersInRoles_RemoveUsersFromRoles_Result">
-          <Property Type="String" Name="Column1" Nullable="false" MaxLength="1" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="256" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ArtShopModelStoreContainer" CdmEntityContainer="ArtShopEntities" >
+          <FunctionImportMapping FunctionImportName="aspnet_AnyDataInTables" FunctionName="ArtShopModel.Store.aspnet_AnyDataInTables" />
+          <FunctionImportMapping FunctionImportName="aspnet_Applications_CreateApplication" FunctionName="ArtShopModel.Store.aspnet_Applications_CreateApplication" />
+          <FunctionImportMapping FunctionImportName="aspnet_CheckSchemaVersion" FunctionName="ArtShopModel.Store.aspnet_CheckSchemaVersion" />
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_ChangePasswordQuestionAndAnswer" FunctionName="ArtShopModel.Store.aspnet_Membership_ChangePasswordQuestionAndAnswer" />
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_CreateUser" FunctionName="ArtShopModel.Store.aspnet_Membership_CreateUser" />
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_FindUsersByEmail" FunctionName="ArtShopModel.Store.aspnet_Membership_FindUsersByEmail" />
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_FindUsersByName" FunctionName="ArtShopModel.Store.aspnet_Membership_FindUsersByName" />
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_GetAllUsers" FunctionName="ArtShopModel.Store.aspnet_Membership_GetAllUsers" />
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_GetNumberOfUsersOnline" FunctionName="ArtShopModel.Store.aspnet_Membership_GetNumberOfUsersOnline" />
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_GetPassword" FunctionName="ArtShopModel.Store.aspnet_Membership_GetPassword">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ArtShopModel.aspnet_Membership_GetPassword_Result">
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="Column2" ColumnName="Column2" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_GetPasswordWithFormat" FunctionName="ArtShopModel.Store.aspnet_Membership_GetPasswordWithFormat">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ArtShopModel.aspnet_Membership_GetPasswordWithFormat_Result">
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="Column2" ColumnName="Column2" />
+                <ScalarProperty Name="Column3" ColumnName="Column3" />
+                <ScalarProperty Name="Column4" ColumnName="Column4" />
+                <ScalarProperty Name="Column5" ColumnName="Column5" />
+                <ScalarProperty Name="Column6" ColumnName="Column6" />
+                <ScalarProperty Name="Column7" ColumnName="Column7" />
+                <ScalarProperty Name="Column8" ColumnName="Column8" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_GetUserByEmail" FunctionName="ArtShopModel.Store.aspnet_Membership_GetUserByEmail" />
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_GetUserByName" FunctionName="ArtShopModel.Store.aspnet_Membership_GetUserByName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ArtShopModel.aspnet_Membership_GetUserByName_Result">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PasswordQuestion" ColumnName="PasswordQuestion" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+                <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_GetUserByUserId" FunctionName="ArtShopModel.Store.aspnet_Membership_GetUserByUserId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ArtShopModel.aspnet_Membership_GetUserByUserId_Result">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PasswordQuestion" ColumnName="PasswordQuestion" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+                <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_ResetPassword" FunctionName="ArtShopModel.Store.aspnet_Membership_ResetPassword" />
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_SetPassword" FunctionName="ArtShopModel.Store.aspnet_Membership_SetPassword" />
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_UnlockUser" FunctionName="ArtShopModel.Store.aspnet_Membership_UnlockUser" />
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_UpdateUser" FunctionName="ArtShopModel.Store.aspnet_Membership_UpdateUser" />
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_UpdateUserInfo" FunctionName="ArtShopModel.Store.aspnet_Membership_UpdateUserInfo" />
+          <FunctionImportMapping FunctionImportName="aspnet_Paths_CreatePath" FunctionName="ArtShopModel.Store.aspnet_Paths_CreatePath" />
+          <FunctionImportMapping FunctionImportName="aspnet_Personalization_GetApplicationId" FunctionName="ArtShopModel.Store.aspnet_Personalization_GetApplicationId" />
+          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAdministration_DeleteAllState" FunctionName="ArtShopModel.Store.aspnet_PersonalizationAdministration_DeleteAllState" />
+          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAdministration_FindState" FunctionName="ArtShopModel.Store.aspnet_PersonalizationAdministration_FindState" />
+          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAdministration_GetCountOfState" FunctionName="ArtShopModel.Store.aspnet_PersonalizationAdministration_GetCountOfState" />
+          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAdministration_ResetSharedState" FunctionName="ArtShopModel.Store.aspnet_PersonalizationAdministration_ResetSharedState" />
+          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAdministration_ResetUserState" FunctionName="ArtShopModel.Store.aspnet_PersonalizationAdministration_ResetUserState" />
+          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAllUsers_GetPageSettings" FunctionName="ArtShopModel.Store.aspnet_PersonalizationAllUsers_GetPageSettings" />
+          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAllUsers_ResetPageSettings" FunctionName="ArtShopModel.Store.aspnet_PersonalizationAllUsers_ResetPageSettings" />
+          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAllUsers_SetPageSettings" FunctionName="ArtShopModel.Store.aspnet_PersonalizationAllUsers_SetPageSettings" />
+          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationPerUser_GetPageSettings" FunctionName="ArtShopModel.Store.aspnet_PersonalizationPerUser_GetPageSettings" />
+          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationPerUser_ResetPageSettings" FunctionName="ArtShopModel.Store.aspnet_PersonalizationPerUser_ResetPageSettings" />
+          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationPerUser_SetPageSettings" FunctionName="ArtShopModel.Store.aspnet_PersonalizationPerUser_SetPageSettings" />
+          <FunctionImportMapping FunctionImportName="aspnet_Profile_DeleteInactiveProfiles" FunctionName="ArtShopModel.Store.aspnet_Profile_DeleteInactiveProfiles" />
+          <FunctionImportMapping FunctionImportName="aspnet_Profile_DeleteProfiles" FunctionName="ArtShopModel.Store.aspnet_Profile_DeleteProfiles" />
+          <FunctionImportMapping FunctionImportName="aspnet_Profile_GetNumberOfInactiveProfiles" FunctionName="ArtShopModel.Store.aspnet_Profile_GetNumberOfInactiveProfiles" />
+          <FunctionImportMapping FunctionImportName="aspnet_Profile_GetProfiles" FunctionName="ArtShopModel.Store.aspnet_Profile_GetProfiles" />
+          <FunctionImportMapping FunctionImportName="aspnet_Profile_GetProperties" FunctionName="ArtShopModel.Store.aspnet_Profile_GetProperties">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ArtShopModel.aspnet_Profile_GetProperties_Result">
+                <ScalarProperty Name="PropertyNames" ColumnName="PropertyNames" />
+                <ScalarProperty Name="PropertyValuesString" ColumnName="PropertyValuesString" />
+                <ScalarProperty Name="PropertyValuesBinary" ColumnName="PropertyValuesBinary" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="aspnet_Profile_SetProperties" FunctionName="ArtShopModel.Store.aspnet_Profile_SetProperties" />
+          <FunctionImportMapping FunctionImportName="aspnet_RegisterSchemaVersion" FunctionName="ArtShopModel.Store.aspnet_RegisterSchemaVersion" />
+          <FunctionImportMapping FunctionImportName="aspnet_Roles_CreateRole" FunctionName="ArtShopModel.Store.aspnet_Roles_CreateRole" />
+          <FunctionImportMapping FunctionImportName="aspnet_Roles_DeleteRole" FunctionName="ArtShopModel.Store.aspnet_Roles_DeleteRole" />
+          <FunctionImportMapping FunctionImportName="aspnet_Roles_GetAllRoles" FunctionName="ArtShopModel.Store.aspnet_Roles_GetAllRoles" />
+          <FunctionImportMapping FunctionImportName="aspnet_Roles_RoleExists" FunctionName="ArtShopModel.Store.aspnet_Roles_RoleExists" />
+          <FunctionImportMapping FunctionImportName="aspnet_Setup_RemoveAllRoleMembers" FunctionName="ArtShopModel.Store.aspnet_Setup_RemoveAllRoleMembers" />
+          <FunctionImportMapping FunctionImportName="aspnet_Setup_RestorePermissions" FunctionName="ArtShopModel.Store.aspnet_Setup_RestorePermissions" />
+          <FunctionImportMapping FunctionImportName="aspnet_UnRegisterSchemaVersion" FunctionName="ArtShopModel.Store.aspnet_UnRegisterSchemaVersion" />
+          <FunctionImportMapping FunctionImportName="aspnet_Users_CreateUser" FunctionName="ArtShopModel.Store.aspnet_Users_CreateUser" />
+          <FunctionImportMapping FunctionImportName="aspnet_Users_DeleteUser" FunctionName="ArtShopModel.Store.aspnet_Users_DeleteUser" />
+          <FunctionImportMapping FunctionImportName="aspnet_UsersInRoles_AddUsersToRoles" FunctionName="ArtShopModel.Store.aspnet_UsersInRoles_AddUsersToRoles" />
+          <FunctionImportMapping FunctionImportName="aspnet_UsersInRoles_FindUsersInRole" FunctionName="ArtShopModel.Store.aspnet_UsersInRoles_FindUsersInRole" />
+          <FunctionImportMapping FunctionImportName="aspnet_UsersInRoles_GetRolesForUser" FunctionName="ArtShopModel.Store.aspnet_UsersInRoles_GetRolesForUser" />
+          <FunctionImportMapping FunctionImportName="aspnet_UsersInRoles_GetUsersInRoles" FunctionName="ArtShopModel.Store.aspnet_UsersInRoles_GetUsersInRoles" />
+          <FunctionImportMapping FunctionImportName="aspnet_UsersInRoles_IsUserInRole" FunctionName="ArtShopModel.Store.aspnet_UsersInRoles_IsUserInRole" />
+          <FunctionImportMapping FunctionImportName="aspnet_UsersInRoles_RemoveUsersFromRoles" FunctionName="ArtShopModel.Store.aspnet_UsersInRoles_RemoveUsersFromRoles">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ArtShopModel.aspnet_UsersInRoles_RemoveUsersFromRoles_Result">
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="aspnet_WebEvent_LogEvent" FunctionName="ArtShopModel.Store.aspnet_WebEvent_LogEvent" />
           <EntitySetMapping Name="Arts">
             <EntityTypeMapping TypeName="ArtShopModel.Art">
               <MappingFragment StoreEntitySet="Art">
+                <ScalarProperty Name="artist_id" ColumnName="artist_id" />
                 <ScalarProperty Name="category_id" ColumnName="category_id" />
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="image" ColumnName="image" />
-                <ScalarProperty Name="artist_id" ColumnName="artist_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Artists">
+            <EntityTypeMapping TypeName="ArtShopModel.Artist">
+              <MappingFragment StoreEntitySet="Artist">
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="signature" ColumnName="signature" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="birthday_date" ColumnName="birthday_date" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2315,10 +2375,20 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <EntitySetMapping Name="Carts">
             <EntityTypeMapping TypeName="ArtShopModel.Cart">
               <MappingFragment StoreEntitySet="Cart">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="remark" ColumnName="remark" />
                 <ScalarProperty Name="relation" ColumnName="relation" />
-                <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CartDetails">
+            <EntityTypeMapping TypeName="ArtShopModel.CartDetail">
+              <MappingFragment StoreEntitySet="CartDetails">
+                <ScalarProperty Name="add_date" ColumnName="add_date" />
+                <ScalarProperty Name="availability" ColumnName="availability" />
+                <ScalarProperty Name="art_id" ColumnName="art_id" />
+                <ScalarProperty Name="cart_id" ColumnName="cart_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2331,18 +2401,20 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ChangePasswords">
-            <EntityTypeMapping TypeName="ArtShopModel.ChangePassword">
-              <MappingFragment StoreEntitySet="ChangePasswords">
-                <ScalarProperty Name="temp_password" ColumnName="temp_password" />
-                <ScalarProperty Name="user_id" ColumnName="user_id" />
-                <ScalarProperty Name="id" ColumnName="id" />
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="ArtShopModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="membership" ColumnName="membership" />
+                <ScalarProperty Name="birthday_date" ColumnName="birthday_date" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Payments">
             <EntityTypeMapping TypeName="ArtShopModel.Payment">
               <MappingFragment StoreEntitySet="Payment">
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
                 <ScalarProperty Name="payment_status" ColumnName="payment_status" />
                 <ScalarProperty Name="payment_date" ColumnName="payment_date" />
                 <ScalarProperty Name="tax_change" ColumnName="tax_change" />
@@ -2358,6 +2430,15 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
                 <ScalarProperty Name="add_date" ColumnName="add_date" />
                 <ScalarProperty Name="availability" ColumnName="availability" />
                 <ScalarProperty Name="art_id" ColumnName="art_id" />
+                <ScalarProperty Name="payment_id" ColumnName="payment_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentMethods">
+            <EntityTypeMapping TypeName="ArtShopModel.PaymentMethod">
+              <MappingFragment StoreEntitySet="PaymentMethod">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -2373,6 +2454,15 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Positions">
+            <EntityTypeMapping TypeName="ArtShopModel.Position">
+              <MappingFragment StoreEntitySet="Position">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="PublicBanks">
             <EntityTypeMapping TypeName="ArtShopModel.PublicBank">
               <MappingFragment StoreEntitySet="PublicBank">
@@ -2381,37 +2471,6 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
                 <ScalarProperty Name="bank_username" ColumnName="bank_username" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="bank_account" ColumnName="bank_account" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Artists">
-            <EntityTypeMapping TypeName="ArtShopModel.Artist">
-              <MappingFragment StoreEntitySet="Artist">
-                <ScalarProperty Name="picture" ColumnName="picture" />
-                <ScalarProperty Name="signature" ColumnName="signature" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="birthday_date" ColumnName="birthday_date" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CartDetails">
-            <EntityTypeMapping TypeName="ArtShopModel.CartDetail">
-              <MappingFragment StoreEntitySet="CartDetails">
-                <ScalarProperty Name="add_date" ColumnName="add_date" />
-                <ScalarProperty Name="availability" ColumnName="availability" />
-                <ScalarProperty Name="art_id" ColumnName="art_id" />
-                <ScalarProperty Name="cart_id" ColumnName="cart_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Customers">
-            <EntityTypeMapping TypeName="ArtShopModel.Customer">
-              <MappingFragment StoreEntitySet="Customer">
-                <ScalarProperty Name="picture" ColumnName="picture" />
-                <ScalarProperty Name="membership" ColumnName="membership" />
-                <ScalarProperty Name="birthday_date" ColumnName="birthday_date" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2425,115 +2484,6 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="vw_aspnet_Applications">
-            <EntityTypeMapping TypeName="ArtShopModel.vw_aspnet_Applications">
-              <MappingFragment StoreEntitySet="vw_aspnet_Applications">
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
-                <ScalarProperty Name="LoweredApplicationName" ColumnName="LoweredApplicationName" />
-                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vw_aspnet_MembershipUsers">
-            <EntityTypeMapping TypeName="ArtShopModel.vw_aspnet_MembershipUsers">
-              <MappingFragment StoreEntitySet="vw_aspnet_MembershipUsers">
-                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
-                <ScalarProperty Name="IsAnonymous" ColumnName="IsAnonymous" />
-                <ScalarProperty Name="MobileAlias" ColumnName="MobileAlias" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
-                <ScalarProperty Name="Comment" ColumnName="Comment" />
-                <ScalarProperty Name="FailedPasswordAnswerAttemptWindowStart" ColumnName="FailedPasswordAnswerAttemptWindowStart" />
-                <ScalarProperty Name="FailedPasswordAnswerAttemptCount" ColumnName="FailedPasswordAnswerAttemptCount" />
-                <ScalarProperty Name="FailedPasswordAttemptWindowStart" ColumnName="FailedPasswordAttemptWindowStart" />
-                <ScalarProperty Name="FailedPasswordAttemptCount" ColumnName="FailedPasswordAttemptCount" />
-                <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
-                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
-                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
-                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
-                <ScalarProperty Name="PasswordAnswer" ColumnName="PasswordAnswer" />
-                <ScalarProperty Name="PasswordQuestion" ColumnName="PasswordQuestion" />
-                <ScalarProperty Name="LoweredEmail" ColumnName="LoweredEmail" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="MobilePIN" ColumnName="MobilePIN" />
-                <ScalarProperty Name="PasswordFormat" ColumnName="PasswordFormat" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vw_aspnet_Profiles">
-            <EntityTypeMapping TypeName="ArtShopModel.vw_aspnet_Profiles">
-              <MappingFragment StoreEntitySet="vw_aspnet_Profiles">
-                <ScalarProperty Name="DataSize" ColumnName="DataSize" />
-                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vw_aspnet_Roles">
-            <EntityTypeMapping TypeName="ArtShopModel.vw_aspnet_Roles">
-              <MappingFragment StoreEntitySet="vw_aspnet_Roles">
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="LoweredRoleName" ColumnName="LoweredRoleName" />
-                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vw_aspnet_Users">
-            <EntityTypeMapping TypeName="ArtShopModel.vw_aspnet_Users">
-              <MappingFragment StoreEntitySet="vw_aspnet_Users">
-                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
-                <ScalarProperty Name="IsAnonymous" ColumnName="IsAnonymous" />
-                <ScalarProperty Name="MobileAlias" ColumnName="MobileAlias" />
-                <ScalarProperty Name="LoweredUserName" ColumnName="LoweredUserName" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vw_aspnet_UsersInRoles">
-            <EntityTypeMapping TypeName="ArtShopModel.vw_aspnet_UsersInRoles">
-              <MappingFragment StoreEntitySet="vw_aspnet_UsersInRoles">
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vw_aspnet_WebPartState_Paths">
-            <EntityTypeMapping TypeName="ArtShopModel.vw_aspnet_WebPartState_Paths">
-              <MappingFragment StoreEntitySet="vw_aspnet_WebPartState_Paths">
-                <ScalarProperty Name="LoweredPath" ColumnName="LoweredPath" />
-                <ScalarProperty Name="Path" ColumnName="Path" />
-                <ScalarProperty Name="PathId" ColumnName="PathId" />
-                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vw_aspnet_WebPartState_Shared">
-            <EntityTypeMapping TypeName="ArtShopModel.vw_aspnet_WebPartState_Shared">
-              <MappingFragment StoreEntitySet="vw_aspnet_WebPartState_Shared">
-                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
-                <ScalarProperty Name="DataSize" ColumnName="DataSize" />
-                <ScalarProperty Name="PathId" ColumnName="PathId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vw_aspnet_WebPartState_User">
-            <EntityTypeMapping TypeName="ArtShopModel.vw_aspnet_WebPartState_User">
-              <MappingFragment StoreEntitySet="vw_aspnet_WebPartState_User">
-                <ScalarProperty Name="LastUpdatedDate" ColumnName="LastUpdatedDate" />
-                <ScalarProperty Name="DataSize" ColumnName="DataSize" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="PathId" ColumnName="PathId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <AssociationSetMapping Name="aspnet_UsersInRoles" TypeName="ArtShopModel.aspnet_UsersInRoles" StoreEntitySet="aspnet_UsersInRoles">
             <EndProperty Name="aspnet_Users">
               <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -2542,128 +2492,6 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
               <ScalarProperty Name="RoleId" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="aspnet_AnyDataInTables" FunctionName="ArtShopModel.Store.aspnet_AnyDataInTables" />
-          <FunctionImportMapping FunctionImportName="aspnet_Applications_CreateApplication" FunctionName="ArtShopModel.Store.aspnet_Applications_CreateApplication" />
-          <FunctionImportMapping FunctionImportName="aspnet_CheckSchemaVersion" FunctionName="ArtShopModel.Store.aspnet_CheckSchemaVersion" />
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_ChangePasswordQuestionAndAnswer" FunctionName="ArtShopModel.Store.aspnet_Membership_ChangePasswordQuestionAndAnswer" />
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_CreateUser" FunctionName="ArtShopModel.Store.aspnet_Membership_CreateUser" />
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_FindUsersByEmail" FunctionName="ArtShopModel.Store.aspnet_Membership_FindUsersByEmail" />
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_FindUsersByName" FunctionName="ArtShopModel.Store.aspnet_Membership_FindUsersByName" />
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_GetAllUsers" FunctionName="ArtShopModel.Store.aspnet_Membership_GetAllUsers" />
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_GetNumberOfUsersOnline" FunctionName="ArtShopModel.Store.aspnet_Membership_GetNumberOfUsersOnline" />
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_GetPassword" FunctionName="ArtShopModel.Store.aspnet_Membership_GetPassword">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ArtShopModel.aspnet_Membership_GetPassword_Result">
-                <ScalarProperty Name="Column1" ColumnName="Column1" />
-                <ScalarProperty Name="Column2" ColumnName="Column2" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_GetPasswordWithFormat" FunctionName="ArtShopModel.Store.aspnet_Membership_GetPasswordWithFormat">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ArtShopModel.aspnet_Membership_GetPasswordWithFormat_Result">
-                <ScalarProperty Name="Column1" ColumnName="Column1" />
-                <ScalarProperty Name="Column2" ColumnName="Column2" />
-                <ScalarProperty Name="Column3" ColumnName="Column3" />
-                <ScalarProperty Name="Column4" ColumnName="Column4" />
-                <ScalarProperty Name="Column5" ColumnName="Column5" />
-                <ScalarProperty Name="Column6" ColumnName="Column6" />
-                <ScalarProperty Name="Column7" ColumnName="Column7" />
-                <ScalarProperty Name="Column8" ColumnName="Column8" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_GetUserByEmail" FunctionName="ArtShopModel.Store.aspnet_Membership_GetUserByEmail" />
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_GetUserByName" FunctionName="ArtShopModel.Store.aspnet_Membership_GetUserByName">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ArtShopModel.aspnet_Membership_GetUserByName_Result">
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="PasswordQuestion" ColumnName="PasswordQuestion" />
-                <ScalarProperty Name="Comment" ColumnName="Comment" />
-                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
-                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
-                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
-                <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_GetUserByUserId" FunctionName="ArtShopModel.Store.aspnet_Membership_GetUserByUserId">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ArtShopModel.aspnet_Membership_GetUserByUserId_Result">
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="PasswordQuestion" ColumnName="PasswordQuestion" />
-                <ScalarProperty Name="Comment" ColumnName="Comment" />
-                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
-                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
-                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
-                <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_ResetPassword" FunctionName="ArtShopModel.Store.aspnet_Membership_ResetPassword" />
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_SetPassword" FunctionName="ArtShopModel.Store.aspnet_Membership_SetPassword" />
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_UnlockUser" FunctionName="ArtShopModel.Store.aspnet_Membership_UnlockUser" />
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_UpdateUser" FunctionName="ArtShopModel.Store.aspnet_Membership_UpdateUser" />
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_UpdateUserInfo" FunctionName="ArtShopModel.Store.aspnet_Membership_UpdateUserInfo" />
-          <FunctionImportMapping FunctionImportName="aspnet_Paths_CreatePath" FunctionName="ArtShopModel.Store.aspnet_Paths_CreatePath" />
-          <FunctionImportMapping FunctionImportName="aspnet_Personalization_GetApplicationId" FunctionName="ArtShopModel.Store.aspnet_Personalization_GetApplicationId" />
-          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAdministration_DeleteAllState" FunctionName="ArtShopModel.Store.aspnet_PersonalizationAdministration_DeleteAllState" />
-          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAdministration_FindState" FunctionName="ArtShopModel.Store.aspnet_PersonalizationAdministration_FindState" />
-          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAdministration_GetCountOfState" FunctionName="ArtShopModel.Store.aspnet_PersonalizationAdministration_GetCountOfState" />
-          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAdministration_ResetSharedState" FunctionName="ArtShopModel.Store.aspnet_PersonalizationAdministration_ResetSharedState" />
-          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAdministration_ResetUserState" FunctionName="ArtShopModel.Store.aspnet_PersonalizationAdministration_ResetUserState" />
-          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAllUsers_GetPageSettings" FunctionName="ArtShopModel.Store.aspnet_PersonalizationAllUsers_GetPageSettings" />
-          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAllUsers_ResetPageSettings" FunctionName="ArtShopModel.Store.aspnet_PersonalizationAllUsers_ResetPageSettings" />
-          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAllUsers_SetPageSettings" FunctionName="ArtShopModel.Store.aspnet_PersonalizationAllUsers_SetPageSettings" />
-          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationPerUser_GetPageSettings" FunctionName="ArtShopModel.Store.aspnet_PersonalizationPerUser_GetPageSettings" />
-          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationPerUser_ResetPageSettings" FunctionName="ArtShopModel.Store.aspnet_PersonalizationPerUser_ResetPageSettings" />
-          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationPerUser_SetPageSettings" FunctionName="ArtShopModel.Store.aspnet_PersonalizationPerUser_SetPageSettings" />
-          <FunctionImportMapping FunctionImportName="aspnet_Profile_DeleteInactiveProfiles" FunctionName="ArtShopModel.Store.aspnet_Profile_DeleteInactiveProfiles" />
-          <FunctionImportMapping FunctionImportName="aspnet_Profile_DeleteProfiles" FunctionName="ArtShopModel.Store.aspnet_Profile_DeleteProfiles" />
-          <FunctionImportMapping FunctionImportName="aspnet_Profile_GetNumberOfInactiveProfiles" FunctionName="ArtShopModel.Store.aspnet_Profile_GetNumberOfInactiveProfiles" />
-          <FunctionImportMapping FunctionImportName="aspnet_Profile_GetProfiles" FunctionName="ArtShopModel.Store.aspnet_Profile_GetProfiles" />
-          <FunctionImportMapping FunctionImportName="aspnet_Profile_GetProperties" FunctionName="ArtShopModel.Store.aspnet_Profile_GetProperties">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ArtShopModel.aspnet_Profile_GetProperties_Result">
-                <ScalarProperty Name="PropertyNames" ColumnName="PropertyNames" />
-                <ScalarProperty Name="PropertyValuesString" ColumnName="PropertyValuesString" />
-                <ScalarProperty Name="PropertyValuesBinary" ColumnName="PropertyValuesBinary" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="aspnet_Profile_SetProperties" FunctionName="ArtShopModel.Store.aspnet_Profile_SetProperties" />
-          <FunctionImportMapping FunctionImportName="aspnet_RegisterSchemaVersion" FunctionName="ArtShopModel.Store.aspnet_RegisterSchemaVersion" />
-          <FunctionImportMapping FunctionImportName="aspnet_Roles_CreateRole" FunctionName="ArtShopModel.Store.aspnet_Roles_CreateRole" />
-          <FunctionImportMapping FunctionImportName="aspnet_Roles_DeleteRole" FunctionName="ArtShopModel.Store.aspnet_Roles_DeleteRole" />
-          <FunctionImportMapping FunctionImportName="aspnet_Roles_GetAllRoles" FunctionName="ArtShopModel.Store.aspnet_Roles_GetAllRoles" />
-          <FunctionImportMapping FunctionImportName="aspnet_Roles_RoleExists" FunctionName="ArtShopModel.Store.aspnet_Roles_RoleExists" />
-          <FunctionImportMapping FunctionImportName="aspnet_Setup_RemoveAllRoleMembers" FunctionName="ArtShopModel.Store.aspnet_Setup_RemoveAllRoleMembers" />
-          <FunctionImportMapping FunctionImportName="aspnet_Setup_RestorePermissions" FunctionName="ArtShopModel.Store.aspnet_Setup_RestorePermissions" />
-          <FunctionImportMapping FunctionImportName="aspnet_UnRegisterSchemaVersion" FunctionName="ArtShopModel.Store.aspnet_UnRegisterSchemaVersion" />
-          <FunctionImportMapping FunctionImportName="aspnet_Users_CreateUser" FunctionName="ArtShopModel.Store.aspnet_Users_CreateUser" />
-          <FunctionImportMapping FunctionImportName="aspnet_Users_DeleteUser" FunctionName="ArtShopModel.Store.aspnet_Users_DeleteUser" />
-          <FunctionImportMapping FunctionImportName="aspnet_UsersInRoles_AddUsersToRoles" FunctionName="ArtShopModel.Store.aspnet_UsersInRoles_AddUsersToRoles" />
-          <FunctionImportMapping FunctionImportName="aspnet_UsersInRoles_FindUsersInRole" FunctionName="ArtShopModel.Store.aspnet_UsersInRoles_FindUsersInRole" />
-          <FunctionImportMapping FunctionImportName="aspnet_UsersInRoles_GetRolesForUser" FunctionName="ArtShopModel.Store.aspnet_UsersInRoles_GetRolesForUser" />
-          <FunctionImportMapping FunctionImportName="aspnet_UsersInRoles_GetUsersInRoles" FunctionName="ArtShopModel.Store.aspnet_UsersInRoles_GetUsersInRoles" />
-          <FunctionImportMapping FunctionImportName="aspnet_UsersInRoles_IsUserInRole" FunctionName="ArtShopModel.Store.aspnet_UsersInRoles_IsUserInRole" />
-          <FunctionImportMapping FunctionImportName="aspnet_UsersInRoles_RemoveUsersFromRoles" FunctionName="ArtShopModel.Store.aspnet_UsersInRoles_RemoveUsersFromRoles">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ArtShopModel.aspnet_UsersInRoles_RemoveUsersFromRoles_Result">
-                <ScalarProperty Name="Column1" ColumnName="Column1" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="aspnet_WebEvent_LogEvent" FunctionName="ArtShopModel.Store.aspnet_WebEvent_LogEvent" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
