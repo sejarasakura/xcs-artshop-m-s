@@ -13,5 +13,10 @@ namespace WebApplicationAssigment.pages.main.Profile
         {
 
         }
+
+        protected void CreateUserWizard1_CreatedUser(object sender, EventArgs e)
+        {
+
+        }
     }
 }

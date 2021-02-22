@@ -99,7 +99,7 @@
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
     <Content Include="pages\main\admin\content\PaymentDetails.aspx" />
-    <Content Include="pages\main\admin\content\EwallateDetails.aspx" />
+    <Content Include="pages\main\admin\content\User.aspx" />
     <Content Include="pages\main\admin\content\UserPages.aspx" />
     <Content Include="pages\main\admin\dashboard\AdminDashboard.aspx" />
     <Content Include="pages\main\admin\widget\AdminNav.ascx" />
@@ -108,6 +108,8 @@
     <Content Include="pages\main\ArtShop\ArtShop_Staff.aspx" />
     <Content Include="pages\main\ArtShop\ArtShop_Staff_Details.aspx" />
     <Content Include="pages\main\ArtShop\ShoppingCart.aspx" />
+    <Content Include="pages\main\Profile\account\MyAccount.aspx" />
+    <Content Include="pages\main\Profile\account\Profile.aspx" />
     <Content Include="pages\main\Profile\Login.aspx" />
     <Content Include="pages\main\Profile\Register.aspx" />
     <Content Include="pages\main\Splash.html" />
@@ -118,7 +120,6 @@
     <Content Include="pages\widget\ProfilePicture.ascx" />
     <Content Include="pages\widget\Sidemap.ascx" />
     <Content Include="pages\widget\StartPage.ascx" />
-    <Content Include="pages\__test\WebForm1.aspx" />
     <Content Include="Web.config" />
     <Content Include="web\lib\css\extensions.css" />
     <Content Include="web\lib\css\lib.css" />
@@ -131,6 +132,79 @@
   <ItemGroup>
     <Compile Include="commons\Constant.cs" />
     <Compile Include="commons\Validation.cs" />
+    <Compile Include="modal\Art.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\Artist.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\aspnet_Applications.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\aspnet_Membership.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\aspnet_Paths.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\aspnet_PersonalizationAllUsers.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\aspnet_PersonalizationPerUser.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\aspnet_Profile.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\aspnet_Roles.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\aspnet_Users.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\Card.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\Cart.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\CartDetail.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\Category.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\Customer.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\Payment.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\PaymentDetail.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\PaymentMethod.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\PayPal.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\Position.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\PublicBank.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\Staff.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="pages\diagram_reader\CustomerProfilePicture.ashx.cs">
+      <DependentUpon>CustomerProfilePicture.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\diagram_reader\StaffProfilePicture.ashx.cs">
+      <DependentUpon>StaffProfilePicture.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\diagram_reader\XWebConfig.cs" />
     <Compile Include="pages\main\Artist\content\AddNewArt.aspx.cs">
       <DependentUpon>AddNewArt.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -159,18 +233,6 @@
     <Compile Include="pages\main\Artist\widget\title.ascx.designer.cs">
       <DependentUpon>title.ascx</DependentUpon>
     </Compile>
-    <Compile Include="modal\Art.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\Artist.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\aspnet_Applications.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\aspnet_Membership.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="modal\aspnet_Membership_GetPasswordWithFormat_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -183,49 +245,16 @@
     <Compile Include="modal\aspnet_Membership_GetUserByUserId_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="modal\aspnet_Paths.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\aspnet_PersonalizationAllUsers.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\aspnet_PersonalizationPerUser.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\aspnet_Profile.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="modal\aspnet_Profile_GetProperties_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="modal\aspnet_Roles.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="modal\aspnet_SchemaVersions.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\aspnet_Users.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="modal\aspnet_UsersInRoles_RemoveUsersFromRoles_Result.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="modal\aspnet_WebEvent_Events.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\Card.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\Cart.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\CartDetail.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\Category.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\Customer.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="modal\Model.Context.cs">
@@ -243,21 +272,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
-    <Compile Include="modal\Payment.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\PaymentDetail.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\PayPal.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\PublicBank.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\Staff.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="pages\main\admin\content\PaymentDetails.aspx.cs">
       <DependentUpon>PaymentDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -265,12 +279,12 @@
     <Compile Include="pages\main\admin\content\PaymentDetails.aspx.designer.cs">
       <DependentUpon>PaymentDetails.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pages\main\admin\content\EwallateDetails.aspx.cs">
-      <DependentUpon>EwallateDetails.aspx</DependentUpon>
+    <Compile Include="pages\main\admin\content\User.aspx.cs">
+      <DependentUpon>User.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="pages\main\admin\content\EwallateDetails.aspx.designer.cs">
-      <DependentUpon>EwallateDetails.aspx</DependentUpon>
+    <Compile Include="pages\main\admin\content\User.aspx.designer.cs">
+      <DependentUpon>User.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\main\admin\content\UserPages.aspx.cs">
       <DependentUpon>UserPages.aspx</DependentUpon>
@@ -334,6 +348,20 @@
     </Compile>
     <Compile Include="pages\main\ArtShop\ShoppingCart.aspx.designer.cs">
       <DependentUpon>ShoppingCart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\Profile\account\MyAccount.aspx.cs">
+      <DependentUpon>MyAccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\Profile\account\MyAccount.aspx.designer.cs">
+      <DependentUpon>MyAccount.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\Profile\account\Profile.aspx.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\Profile\account\Profile.aspx.designer.cs">
+      <DependentUpon>Profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\main\Profile\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -405,13 +433,6 @@
     <Compile Include="pages\widget\StartPage.ascx.designer.cs">
       <DependentUpon>StartPage.ascx</DependentUpon>
     </Compile>
-    <Compile Include="pages\__test\WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\__test\WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -425,6 +446,8 @@
     <None Include="packages.config" />
     <Content Include="pages\master\Master.Master" />
     <Content Include="pages\main\admin\master\Admin.Master" />
+    <Content Include="pages\diagram_reader\StaffProfilePicture.ashx" />
+    <Content Include="pages\diagram_reader\CustomerProfilePicture.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

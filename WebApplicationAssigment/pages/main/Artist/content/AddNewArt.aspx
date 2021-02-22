@@ -47,7 +47,7 @@
     </div>
               <div class="form-group">
               
-                  <label class="form-label" for="name">Your Name :</label><br><br>
+                  <label class="form-label" for="name">Art Name :</label><br><br>
                   <input type="text" class="form-control" id="name" name="name" placeholder="Your name" tabindex="1" required>
               </div>                            
               <div class="form-group">
