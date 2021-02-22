@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -22,6 +23,21 @@ namespace WebApplicationAssigment.pages.main.Artist.content
         {
             Art art = new Art();
             art.description = this.TitleText.Text;
+
+            using (ArtShopEntities db = new ArtShopEntities())
+            {
+                art.id = db.Arts.Last().id + 1;
+                try
+                {
+                    Art result = db.Arts.Add(art);
+                    string fileName = result.id + "-" + result.title;
+                    FileUpload.SaveAs(Server.MapPath("~/asset/image/Art/") + fileName);
+                }
+                catch (Exception x)
+                {
+                    Console.Out.WriteLine(x.Message);
+                }
+            }
         }
     }
 }
