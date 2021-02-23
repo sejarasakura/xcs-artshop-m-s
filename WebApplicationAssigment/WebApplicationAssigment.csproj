@@ -108,21 +108,26 @@
     <Content Include="pages\main\ArtShop\ArtShop_Staff.aspx" />
     <Content Include="pages\main\ArtShop\ArtShop_Staff_Details.aspx" />
     <Content Include="pages\main\ArtShop\ShoppingCart.aspx" />
-    <Content Include="pages\main\Profile\account\MyAccount.aspx" />
-    <Content Include="pages\main\Profile\account\Profile.aspx" />
-    <Content Include="pages\main\Profile\Login.aspx" />
-    <Content Include="pages\main\Profile\Register.aspx" />
+    <Content Include="pages\main\Authentication\ForgotPassword.aspx" />
+    <Content Include="pages\main\Authentication\Profile\MyAccount.aspx" />
+    <Content Include="pages\main\Authentication\Profile\Profile.aspx" />
+    <Content Include="pages\main\Authentication\Login.aspx" />
+    <Content Include="pages\main\Authentication\Register.aspx" />
     <Content Include="pages\main\Splash.html" />
     <Content Include="pages\widget\comment.ascx" />
+    <Content Include="pages\widget\EndPagesSM.ascx" />
     <Content Include="pages\widget\EndPages.ascx" />
     <Content Include="pages\widget\Footer.ascx" />
     <Content Include="pages\widget\Header.ascx" />
     <Content Include="pages\widget\ProfilePicture.ascx" />
     <Content Include="pages\widget\Sidemap.ascx" />
+    <Content Include="pages\widget\StartPageSM.ascx" />
     <Content Include="pages\widget\StartPage.ascx" />
+    <Content Include="pages\widget\SuccessMessageLarge.ascx" />
     <Content Include="Web.config" />
     <Content Include="web\lib\css\extensions.css" />
     <Content Include="web\lib\css\lib.css" />
+    <Content Include="web\lib\css\login.css" />
     <Content Include="web\lib\css\main.css" />
     <Content Include="web\lib\css\shop.css" />
     <Content Include="web\lib\js\helpers.js" />
@@ -349,32 +354,39 @@
     <Compile Include="pages\main\ArtShop\ShoppingCart.aspx.designer.cs">
       <DependentUpon>ShoppingCart.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pages\main\Profile\account\MyAccount.aspx.cs">
+    <Compile Include="pages\main\Authentication\ForgotPassword.aspx.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\Authentication\ForgotPassword.aspx.designer.cs">
+      <DependentUpon>ForgotPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\Authentication\Profile\MyAccount.aspx.cs">
       <DependentUpon>MyAccount.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="pages\main\Profile\account\MyAccount.aspx.designer.cs">
+    <Compile Include="pages\main\Authentication\Profile\MyAccount.aspx.designer.cs">
       <DependentUpon>MyAccount.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pages\main\Profile\account\Profile.aspx.cs">
+    <Compile Include="pages\main\Authentication\Profile\Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="pages\main\Profile\account\Profile.aspx.designer.cs">
+    <Compile Include="pages\main\Authentication\Profile\Profile.aspx.designer.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pages\main\Profile\Login.aspx.cs">
+    <Compile Include="pages\main\Authentication\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="pages\main\Profile\Login.aspx.designer.cs">
+    <Compile Include="pages\main\Authentication\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pages\main\Profile\Register.aspx.cs">
+    <Compile Include="pages\main\Authentication\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="pages\main\Profile\Register.aspx.designer.cs">
+    <Compile Include="pages\main\Authentication\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\master\Master.Master.cs">
@@ -390,6 +402,13 @@
     </Compile>
     <Compile Include="pages\widget\comment.ascx.designer.cs">
       <DependentUpon>comment.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\widget\EndPagesSM.ascx.cs">
+      <DependentUpon>EndPagesSM.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\widget\EndPagesSM.ascx.designer.cs">
+      <DependentUpon>EndPagesSM.ascx</DependentUpon>
     </Compile>
     <Compile Include="pages\widget\EndPages.ascx.cs">
       <DependentUpon>EndPages.ascx</DependentUpon>
@@ -426,12 +445,26 @@
     <Compile Include="pages\widget\Sidemap.ascx.designer.cs">
       <DependentUpon>Sidemap.ascx</DependentUpon>
     </Compile>
+    <Compile Include="pages\widget\StartPageSM.ascx.cs">
+      <DependentUpon>StartPageSM.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\widget\StartPageSM.ascx.designer.cs">
+      <DependentUpon>StartPageSM.ascx</DependentUpon>
+    </Compile>
     <Compile Include="pages\widget\StartPage.ascx.cs">
       <DependentUpon>StartPage.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="pages\widget\StartPage.ascx.designer.cs">
       <DependentUpon>StartPage.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\widget\SuccessMessageLarge.ascx.cs">
+      <DependentUpon>SuccessMessageLarge.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\widget\SuccessMessageLarge.ascx.designer.cs">
+      <DependentUpon>SuccessMessageLarge.ascx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
