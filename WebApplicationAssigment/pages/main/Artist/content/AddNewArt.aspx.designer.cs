@@ -15,22 +15,13 @@ namespace WebApplicationAssigment.pages.main.Artist.content
     {
 
         /// <summary>
-        /// addArtForm control.
+        /// ArtTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm addArtForm;
-
-        /// <summary>
-        /// TitleText control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TitleText;
+        protected global::System.Web.UI.WebControls.TextBox ArtTitle;
 
         /// <summary>
         /// RequiredFieldValidator1 control.
@@ -51,13 +42,13 @@ namespace WebApplicationAssigment.pages.main.Artist.content
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
 
         /// <summary>
-        /// Discription control.
+        /// ArtDiscription control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Discription;
+        protected global::System.Web.UI.WebControls.TextBox ArtDiscription;
 
         /// <summary>
         /// RequiredFieldValidator4 control.
@@ -78,13 +69,13 @@ namespace WebApplicationAssigment.pages.main.Artist.content
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator6;
 
         /// <summary>
-        /// Price control.
+        /// ArtPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox Price;
+        protected global::System.Web.UI.WebControls.TextBox ArtPrice;
 
         /// <summary>
         /// RequiredFieldValidator control.
@@ -105,13 +96,13 @@ namespace WebApplicationAssigment.pages.main.Artist.content
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator2;
 
         /// <summary>
-        /// DateCreation control.
+        /// ArtDateCreation control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox DateCreation;
+        protected global::System.Web.UI.WebControls.TextBox ArtDateCreation;
 
         /// <summary>
         /// RequiredFieldValidator6 control.

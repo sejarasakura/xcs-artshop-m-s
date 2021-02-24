@@ -22,11 +22,15 @@ namespace WebApplicationAssigment.pages.main.Artist.content
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             Art art = new Art();
-            art.description = this.TitleText.Text;
+            art.title = this.ArtTitle.Text;
+            art.description = this.ArtDiscription.Text;
+            art.date = this.ArtDateCreation.Text;
 
             using (ArtShopEntities db = new ArtShopEntities())
             {
-                art.id = db.Arts.Last().id + 1;
+                // art.id = db.Arts.Last().id + 1;
+                art.id = 1;
+               // art.artist_id = 1;
                 try
                 {
                     Art result = db.Arts.Add(art);
@@ -38,6 +42,7 @@ namespace WebApplicationAssigment.pages.main.Artist.content
                     Console.Out.WriteLine(x.Message);
                 }
             }
+            Response.Redirect("ViewArtSales.aspx");
         }
     }
 }
