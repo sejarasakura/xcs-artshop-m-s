@@ -77,8 +77,7 @@
     <a href="<%= "https://" + HttpContext.Current.Request.Url.Authority+"/pages/main/Artist/content/ReadUpdateDeleteArt.aspx"%>"">
         <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Update Art</button></a>
 
-<div id="chartContainer" style="height: 400px; width: 70%;    margin-left: 200px;"></div>
-    <p>aosjdao<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />asfaf</p>
+<div id="chartContainer" style="height: 300px; width: 70%;    margin-left: 200px;"></div>
 <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
     </asp:content>

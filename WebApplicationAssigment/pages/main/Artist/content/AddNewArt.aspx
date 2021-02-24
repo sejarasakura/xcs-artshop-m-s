@@ -3,15 +3,13 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-  
+    @model UsingMVC.Models.Art 
     <style>
         a{
             color: #f8f9fa;
         }
     </style>
 </asp:Content>
-
-
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
    <div class="container">
@@ -22,7 +20,7 @@
 
       </div>
   </div>
-
+<form id="addArtForm"  runat="server">
   <div class="row">
       <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-3">
        
@@ -34,7 +32,7 @@
               <label for="usr">Art Title:</label>
                 <asp:textbox 
                     CssClass="form-control" 
-                    id="ArtTitle" 
+                    id="TitleText" 
                     placeholder = "Please enter art title" 
                     text = "" 
                     rows= "1" 
@@ -44,12 +42,12 @@
                       CssClass="alert alert-danger"
                       runat="server" 
                       id="RequiredFieldValidator1" 
-                      controltovalidate="ArtTitle" 
+                      controltovalidate="TitleText" 
                       errormessage="Please enter your title!" />
                     <asp:RegularExpressionValidator 
                         CssClass="alert alert-danger"
                         Display = "Dynamic" 
-                        ControlToValidate = "ArtTitle" 
+                        ControlToValidate = "Discription" 
                         ID="RegularExpressionValidator1" 
                         ValidationExpression = "[\s\S]{10,150}$" 
                         runat="server" 
@@ -65,7 +63,7 @@
               <label for="usr">Discription:</label>
                 <asp:textbox
                     CssClass="form-control" 
-                    id="ArtDiscription" 
+                    id="Discription" 
                     placeholder = "Please enter description" 
                     text = "" 
                     rows= "4" 
@@ -75,12 +73,12 @@
                       CssClass="alert alert-danger"
                       runat="server" 
                       id="RequiredFieldValidator4" 
-                      controltovalidate="ArtDiscription" 
+                      controltovalidate="Discription" 
                       errormessage="Please enter your description!" />
                     <asp:RegularExpressionValidator 
                         CssClass="alert alert-danger"
                         Display = "Dynamic" 
-                        ControlToValidate = "ArtDiscription" 
+                        ControlToValidate = "Discription" 
                         ID="RegularExpressionValidator6" 
                         ValidationExpression = "[\s\S]{0,250}$" 
                         runat="server" 
@@ -96,7 +94,7 @@
               <label for="usr">Price :</label>
                 <asp:textbox 
                     CssClass="form-control" 
-                    id="ArtPrice" 
+                    id="Price" 
                     placeholder = "eg 99.9 or 99.99" 
                     text = "" 
                     runat="server" /> 
@@ -104,12 +102,12 @@
                       CssClass="alert alert-danger"
                       runat="server" 
                       id="RequiredFieldValidator" 
-                      controltovalidate="ArtPrice" 
+                      controltovalidate="Price" 
                       errormessage="Please enter the sales price!" />
                     <asp:RegularExpressionValidator 
                         CssClass="alert alert-danger"
                         Display = "Dynamic" 
-                        ControlToValidate = "ArtPrice" 
+                        ControlToValidate = "Price" 
                         ID="RegularExpressionValidator2" 
                         ValidationExpression = "^\d{0,8}(\.\d{1,2})?$" 
                         runat="server" 
@@ -126,14 +124,14 @@
                 <asp:textbox 
                     type="date" 
                     CssClass="form-control" 
-                    id="ArtDateCreation" 
+                    id="DateCreation" 
                     placeholder = "Please Enter date creation" 
                     runat="server" /> 
                   <asp:RequiredFieldValidator 
                       CssClass="alert alert-danger"
                       runat="server" 
                       id="RequiredFieldValidator6" 
-                      controltovalidate="ArtDateCreation" 
+                      controltovalidate="DateCreation" 
                       errormessage="Please enter date of creation!" />
             </div>
         </div>
@@ -185,7 +183,9 @@
 <asp:Image CssClass="center" ImageUrl="~/Class/ArtPicGetter.ashx?id=-1" ID="Image1" runat="server" length="700px" Width="500px" />  
           </div>
     </div>
-
+  
+</form>
+       
 </div>
 
 </asp:Content>
