@@ -181,6 +181,7 @@ $(document).ready(function(){
                     </div>
                 </div>
             </div>
+
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -207,7 +208,63 @@ $(document).ready(function(){
                     </tr>
                        
                 </tbody>
-            </table>
+            </table><br />
+            <!--gridview-->
+           
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" 
+                DataKeyNames="id" ForeColor="#333333" GridLines="None" Height="241px" Width="886px" 
+                OnSelectedIndexChanged="GridView1_SelectedIndexChanged" ShowHeaderWhenEmpty="True" DataSourceID="SqlDataSource1">
+                <AlternatingRowStyle BackColor="White" />
+              
+            <EmptyDataTemplate>
+    <span style="font-size: 12px; font-weight: bold; color: Blue;">No records are available matching your selected filter. Click on "Add" button to enter new data .. </span>               
+  </EmptyDataTemplate>
+           
+                <Columns>
+                    <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" />
+                    <asp:BoundField DataField="image" HeaderText="image" SortExpression="image" />
+                    <asp:BoundField DataField="title" HeaderText="title" SortExpression="title" />
+                    <asp:BoundField DataField="date" HeaderText="date" SortExpression="date" />
+                    <asp:BoundField DataField="description" HeaderText="description" SortExpression="description" />
+                    <asp:BoundField DataField="price" HeaderText="price" SortExpression="price" />
+                    <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+                </Columns>
+           
+                <EditRowStyle BackColor="#2461BF" />
+                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+                <RowStyle BackColor="#EFF3FB" />
+                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
+                <SortedAscendingCellStyle BackColor="#F5F7FB" />
+                <SortedAscendingHeaderStyle BackColor="#6D95E1" />
+                <SortedDescendingCellStyle BackColor="#E9EBEF" />
+                <SortedDescendingHeaderStyle BackColor="#4870BE" />
+            </asp:GridView>
+           
+            <br /><br />
+           
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [description], [title], [date], [price], [image], [id] FROM [Art]" DeleteCommand="DELETE FROM [Art] WHERE [id] = @id" InsertCommand="INSERT INTO [Art] ([description], [title], [date], [price], [image], [id]) VALUES (@description, @title, @date, @price, @image, @id)" UpdateCommand="UPDATE [Art] SET [description] = @description, [title] = @title, [date] = @date, [price] = @price, [image] = @image WHERE [id] = @id">
+                <DeleteParameters>
+                    <asp:Parameter Name="id" Type="Int32" />
+                </DeleteParameters>
+                <InsertParameters>
+                    <asp:Parameter Name="description" Type="String" />
+                    <asp:Parameter Name="title" Type="String" />
+                    <asp:Parameter Name="date" Type="String" />
+                    <asp:Parameter Name="price" Type="Decimal" />
+                    <asp:Parameter Name="image" Type="String" />
+                    <asp:Parameter Name="id" Type="Int32" />
+                </InsertParameters>
+                <UpdateParameters>
+                    <asp:Parameter Name="description" Type="String" />
+                    <asp:Parameter Name="title" Type="String" />
+                    <asp:Parameter Name="date" Type="String" />
+                    <asp:Parameter Name="price" Type="Decimal" />
+                    <asp:Parameter Name="image" Type="String" />
+                    <asp:Parameter Name="id" Type="Int32" />
+                </UpdateParameters>
+            </asp:SqlDataSource>
         </div>
     </div>
 </div>

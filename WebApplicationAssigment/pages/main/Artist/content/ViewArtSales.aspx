@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="View art Sales" Language="C#" MasterPageFile="~/pages/master/Master.Master" AutoEventWireup="true" CodeBehind="ViewArtSales.aspx.cs" Inherits="WebApplicationAssigment.pages.main.Artist.content.ViewArtSales" %>
 
+<%@ Register assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" namespace="System.Web.UI.DataVisualization.Charting" tagprefix="asp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script>
         window.onload = function () {
@@ -78,6 +80,19 @@
         <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Update Art</button></a>
 
 <div id="chartContainer" style="height: 300px; width: 70%;    margin-left: 200px;"></div>
+
+     
 <script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
 <script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
-    </asp:content>
+    <asp:Chart ID="Chart1" runat="server" Width="897px">
+        <series>
+            <asp:Series ChartArea="ChartArea1" Name="Series1">
+            </asp:Series>
+        </series>
+        <chartareas>
+            <asp:ChartArea Name="ChartArea1">
+            </asp:ChartArea>
+        </chartareas>
+    </asp:Chart>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
+</asp:content>

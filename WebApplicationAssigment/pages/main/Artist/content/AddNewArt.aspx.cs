@@ -22,8 +22,10 @@ namespace WebApplicationAssigment.pages.main.Artist.content
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             Art art = new Art();
-            art.description = this.TitleText.Text;
-
+            art.title = this.TitleText.Text;
+            art.description = this.Discription.Text;
+            art.date = this.DateCreation.Text;
+            art.price = decimal.Parse(this.Price.Text);
             using (ArtShopEntities db = new ArtShopEntities())
             {
                 art.id = db.Arts.Last().id + 1;
