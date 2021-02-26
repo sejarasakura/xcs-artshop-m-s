@@ -181,8 +181,8 @@ $(document).ready(function(){
                     </div>
                 </div>
             </div>
-
-            <table class="table table-bordered">
+<!--table-->
+     <!--       <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th style="width:85px">id</th>
@@ -208,7 +208,7 @@ $(document).ready(function(){
                     </tr>
                        
                 </tbody>
-            </table><br />
+            </table><br />   -->
             <!--gridview-->
            
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" 
@@ -217,7 +217,8 @@ $(document).ready(function(){
                 <AlternatingRowStyle BackColor="White" />
               
             <EmptyDataTemplate>
-    <span style="font-size: 12px; font-weight: bold; color: Blue;">No records are available matching your selected filter. Click on "Add" button to enter new data .. </span>               
+    <span style="font-size: 12px; font-weight: bold; color: Blue;">No records are available matching your selected
+        filter. Click on "Add New" button to enter new data .. </span>               
   </EmptyDataTemplate>
            
                 <Columns>
