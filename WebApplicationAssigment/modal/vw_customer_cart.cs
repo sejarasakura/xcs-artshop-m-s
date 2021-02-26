@@ -12,7 +12,6 @@ namespace WebApplicationAssigment.modal
     using System;
     using System.Collections.Generic;
     
-<<<<<<< HEAD:WebApplicationAssigment/modal/vw_customer_cart.cs
     public partial class vw_customer_cart
     {
         public string image { get; set; }
@@ -22,21 +21,5 @@ namespace WebApplicationAssigment.modal
         public Nullable<int> category_id { get; set; }
         public Nullable<int> availability { get; set; }
         public Nullable<System.DateTime> add_date { get; set; }
-=======
-    public partial class Position
-    {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Position()
-        {
-            this.Staffs = new HashSet<Staff>();
-        }
-    
-        public int id { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Staff> Staffs { get; set; }
->>>>>>> JIAN_TING:WebApplicationAssigment/modal/Position.cs
     }
 }

@@ -10,10 +10,12 @@
 namespace WebApplicationAssigment.modal
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class aspnet_UsersInRoles_RemoveUsersFromRoles_Result
+    public partial class vw_aspnet_WebPartState_Shared
     {
-        public string Column1 { get; set; }
-        public string Name { get; set; }
+        public System.Guid PathId { get; set; }
+        public Nullable<int> DataSize { get; set; }
+        public System.DateTime LastUpdatedDate { get; set; }
     }
 }

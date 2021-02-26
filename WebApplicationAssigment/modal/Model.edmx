@@ -273,14 +273,9 @@
           <Property Name="position_id" Type="int" Nullable="false" />
           <Property Name="picture" Type="varbinary(max)" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.UserExtension' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="UserExtension">
           <Key>
             <PropertyRef Name="UserId" />
-            <PropertyRef Name="first_name" />
-            <PropertyRef Name="last_name" />
-            <PropertyRef Name="gender" />
           </Key>
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="first_name" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -744,7 +739,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
         </Association>
         <Association Name="FK__UserExten__UserI__74794A92">
           <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="1" />
-          <End Role="UserExtension" Type="Self.UserExtension" Multiplicity="*" />
+          <End Role="UserExtension" Type="Self.UserExtension" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="aspnet_Users">
               <PropertyRef Name="UserId" />
@@ -1111,15 +1106,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PublicBank" EntityType="Self.PublicBank" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UserExtension" EntityType="Self.UserExtension" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [UserExtension].[UserId] AS [UserId], 
-    [UserExtension].[first_name] AS [first_name], 
-    [UserExtension].[last_name] AS [last_name], 
-    [UserExtension].[gender] AS [gender], 
-    [UserExtension].[picture] AS [picture]
-    FROM [dbo].[UserExtension] AS [UserExtension]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="UserExtension" EntityType="Self.UserExtension" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="vw_aspnet_Applications" EntityType="Self.vw_aspnet_Applications" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vw_aspnet_Applications].[ApplicationName] AS [ApplicationName], 

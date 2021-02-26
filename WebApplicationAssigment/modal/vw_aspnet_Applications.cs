@@ -10,10 +10,13 @@
 namespace WebApplicationAssigment.modal
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class aspnet_UsersInRoles_RemoveUsersFromRoles_Result
+    public partial class vw_aspnet_Applications
     {
-        public string Column1 { get; set; }
-        public string Name { get; set; }
+        public string ApplicationName { get; set; }
+        public string LoweredApplicationName { get; set; }
+        public System.Guid ApplicationId { get; set; }
+        public string Description { get; set; }
     }
 }
