@@ -51,6 +51,17 @@ namespace WebApplicationAssigment.modal
         public virtual DbSet<Position> Positions { get; set; }
         public virtual DbSet<PublicBank> PublicBanks { get; set; }
         public virtual DbSet<Staff> Staffs { get; set; }
+        public virtual DbSet<vw_aspnet_Applications> vw_aspnet_Applications { get; set; }
+        public virtual DbSet<vw_aspnet_MembershipUsers> vw_aspnet_MembershipUsers { get; set; }
+        public virtual DbSet<vw_aspnet_Profiles> vw_aspnet_Profiles { get; set; }
+        public virtual DbSet<vw_aspnet_Roles> vw_aspnet_Roles { get; set; }
+        public virtual DbSet<vw_aspnet_Users> vw_aspnet_Users { get; set; }
+        public virtual DbSet<vw_aspnet_UsersInRoles> vw_aspnet_UsersInRoles { get; set; }
+        public virtual DbSet<vw_aspnet_WebPartState_Paths> vw_aspnet_WebPartState_Paths { get; set; }
+        public virtual DbSet<vw_aspnet_WebPartState_Shared> vw_aspnet_WebPartState_Shared { get; set; }
+        public virtual DbSet<vw_aspnet_WebPartState_User> vw_aspnet_WebPartState_User { get; set; }
+        public virtual DbSet<UserExtension> UserExtensions { get; set; }
+        public virtual DbSet<vw_customer_cart> vw_customer_cart { get; set; }
     
         public virtual ObjectResult<string> aspnet_AnyDataInTables(Nullable<int> tablesToCheck)
         {

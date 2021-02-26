@@ -42,6 +42,15 @@ namespace WebApplicationAssigment.pages.main.Profile
         protected global::System.Web.UI.WebControls.CreateUserWizardStep CreateUserWizardStep1;
 
         /// <summary>
+        /// StepTwo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TemplatedWizardStep StepTwo;
+
+        /// <summary>
         /// CompleteWizardStep1 control.
         /// </summary>
         /// <remarks>

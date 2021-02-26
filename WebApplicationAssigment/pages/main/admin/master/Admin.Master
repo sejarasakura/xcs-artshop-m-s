@@ -23,7 +23,7 @@
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <div>
+    <form runat="server" id="adminForm">
         <uc1:AdminNav runat="server" ID="AdminNav" />
         <div style="margin-left:200px">
             <nav class="navbar navbar-default">
@@ -37,6 +37,6 @@
                 </asp:ContentPlaceHolder>
             </div>
         </div>
-    </div>
+    </form>
 </body>
 </html>

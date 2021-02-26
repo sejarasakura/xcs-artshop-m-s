@@ -7,7 +7,7 @@
     <asp:Login ID="Login1" runat="server" Width="100%" Height="100%">
         <LayoutTemplate>
             
-            <asp:Literal id="FailureText" runat="server"></asp:Literal>
+            <b class="text-danger"><asp:Literal id="FailureText" runat="server"></asp:Literal></b>
             <div id="logreg-forms" style="padding:20px;">
                 <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Sign in</h1>
                 <div class="social-login">
@@ -21,6 +21,7 @@
                 <br />
                 
                 <asp:Checkbox id="RememberMe" runat="server" Text=" Remember my login"></asp:Checkbox>
+
                 <asp:button CssClass="btn btn-success btn-block" type="submit" n id="Login" CommandName="Login" runat="server" Text="Sing In"></asp:button>
                 <a href="#" id="forgot_pswd">Forgot password?</a>
                 <hr>

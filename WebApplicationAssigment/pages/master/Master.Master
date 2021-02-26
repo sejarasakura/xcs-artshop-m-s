@@ -22,7 +22,6 @@
     <link href="<%= "https://" + HttpContext.Current.Request.Url.Authority%>/web/lib/css/extensions.css" rel="stylesheet" />
     <link href="<%= "https://" + HttpContext.Current.Request.Url.Authority%>/web/lib/css/shop.css" rel="stylesheet" />
     <script src="<%= "https://" + HttpContext.Current.Request.Url.Authority%>/web/lib/js/helpers.js"></script>
-    <script src="<%= "https://" + HttpContext.Current.Request.Url.Authority%>/web/lib/js/lib.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
   </head>
