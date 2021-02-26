@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9697cf9adc1a4f2895d1cdb3b425541c" Name="Diagram1" ZoomLevel="65" >
+      <Diagram DiagramId="9697cf9adc1a4f2895d1cdb3b425541c" Name="Diagram1" ZoomLevel="127" >
         <EntityTypeShape EntityType="ArtShopModel.ChangePassword" Width="1.5" PointX="6.75" PointY="3.75" />
         <EntityTypeShape EntityType="ArtShopModel.vw_aspnet_Applications" Width="1.5" PointX="9.75" PointY="7" />
         <EntityTypeShape EntityType="ArtShopModel.vw_aspnet_MembershipUsers" Width="1.5" PointX="11.375" PointY="0.75" />
@@ -62,9 +62,9 @@
         </AssociationConnector>
         <AssociationConnector Association="ArtShopModel.FK__Staff__position___4F47C5E3" />
         <AssociationConnector Association="ArtShopModel.aspnet_UsersInRoles" />
-        <EntityTypeShape EntityType="ArtShopModel.UserExtension" Width="1.5" PointX="7.625" PointY="7.25" />
         <EntityTypeShape EntityType="ArtShopModel.vw_customer_cart" Width="1.5" PointX="0.5" PointY="1.75" />
-        <AssociationConnector Association="ArtShopModel.FK__UserExten__UserI__74794A92" />
+        <EntityTypeShape EntityType="ArtShopModel.UserExtension" Width="1.5" PointX="7.5" PointY="6.25" />
+        <AssociationConnector Association="ArtShopModel.FK__UserExten__UserI__1B9317B3" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -194,12 +194,14 @@
                                 <div class="col-sm-12">
                                     <h2>Profiles</h2>
                                     <hr class="colorgraph">
-                                    <asp:Image CssClass="center img-circle"
-                                        ImageUrl="~/assets/image/profile.png"
-                                        ID="Image1"
-                                        runat="server"
-                                        length="100px"
-                                        Width="100px" />
+                                    <div style="margin: auto; padding: 10px; width:100px">
+                                        <asp:Image CssClass="img img-circle" 
+                                            ImageUrl="~/assets/image/profile.png"
+                                            ID="Image1"
+                                            runat="server"
+                                            length="100px"
+                                            Width="100px" />
+                                    </div>
                                     <div class="form-group">
 
                                         <div class="row">
@@ -255,7 +257,10 @@
 
                                         <!--Birthday Date-->
                                         <div class="row">
-                                            <div class="col-xs-12 col-sm-12">
+                                            <div class="col-xs-12 col-sm-4">
+                                                Birthday Date
+                                            </div>
+                                            <div class="col-xs-12 col-sm-8">
                                                 <asp:textbox 
                                                     type="date" 
                                                     CssClass="form-control" 
@@ -282,15 +287,14 @@
                                             });
                                         </script>
 
-                                        <div id="custExtensions" runat="server" visible="false">
+                                        <div id="custExtensions" runat="server" visible="true">
                                             <fieldset class="form-group border p-3">
                                                 <legend class="w-auto px-2"><sub>Customer Fields</sub></legend>
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <asp:DropDownList 
                                                             ID="ddlMembership" 
-                                                            runat="server"
-                                                            >
+                                                            runat="server">
                                                             <asp:ListItem Value="N">Normal Customer</asp:ListItem>
                                                             <asp:ListItem Value="S">Silver Member</asp:ListItem>
                                                             <asp:ListItem Value="G">Gold Member</asp:ListItem>
@@ -344,6 +348,7 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="pull-right" style="margin:10px">
                                                     <asp:CheckBox
+                                                        AutoPostBack="true" Checked="false"
                                                         OnCheckedChanged="ChckedChangedArt"
                                                         ID="ArtistOnly"
                                                         runat="server" />
@@ -352,6 +357,7 @@
 
                                                 <div class="pull-right" style="margin:10px">
                                                     <asp:CheckBox
+                                                        AutoPostBack="true" Checked="true"
                                                         OnCheckedChanged="ChckedChangedCustomer"
                                                         ID="CustomerOnly"
                                                         runat="server" />
