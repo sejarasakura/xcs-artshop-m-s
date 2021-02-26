@@ -7,20 +7,29 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplicationAssigment.pages.@__test
+namespace WebApplicationAssigment.pages.widget
 {
 
 
-    public partial class RegisterScreen
+    public partial class SuccessMessageLarge
     {
 
         /// <summary>
-        /// Register control.
+        /// htmlTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::WebApplicationAssigment.pages.widget.Register Register;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl htmlTitle;
+
+        /// <summary>
+        /// htmlDesc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl htmlDesc;
     }
 }

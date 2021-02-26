@@ -19,7 +19,7 @@
         color: rgba(132,137,145,1);
     }
 
-        .artshop-footer-style: hover {
+        .artshop-footer-style :hover {
             color: rgba(132,137,145,1);
             text-decoration: none;
         }

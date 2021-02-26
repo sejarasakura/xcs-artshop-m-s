@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace WebApplicationAssigment.pages.__test
+namespace WebApplicationAssigment.pages.main.Authentication
 {
-    public partial class RegisterScreen : System.Web.UI.Page
+    public partial class ForgotPassword : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
