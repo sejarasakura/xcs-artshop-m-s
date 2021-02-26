@@ -344,7 +344,7 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="pull-right" style="margin:10px">
                                                     <asp:CheckBox
-                                                         OnCheckedChanged="ChckedChangedArt"
+                                                        OnCheckedChanged="ChckedChangedArt"
                                                         ID="ArtistOnly"
                                                         runat="server" />
                                                     <span style="color: #888">Artist</span>
@@ -352,7 +352,7 @@
 
                                                 <div class="pull-right" style="margin:10px">
                                                     <asp:CheckBox
-                                                         OnCheckedChanged="ChckedChangedCustomer"
+                                                        OnCheckedChanged="ChckedChangedCustomer"
                                                         ID="CustomerOnly"
                                                         runat="server" />
                                                     <span style="color: #888">Customer</span>
