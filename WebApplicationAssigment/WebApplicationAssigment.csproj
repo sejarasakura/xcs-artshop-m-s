@@ -221,8 +221,14 @@
     <Content Include="assets\image\testing\img3.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="commons\ArtistSigniture.ashx.cs">
+      <DependentUpon>ArtistSigniture.ashx</DependentUpon>
+    </Compile>
     <Compile Include="commons\Constant.cs" />
-    <Compile Include="commons\Validation.cs" />
+    <Compile Include="commons\Functions.cs" />
+    <Compile Include="commons\UserProfilePicture.ashx.cs">
+      <DependentUpon>UserProfilePicture.ashx</DependentUpon>
+    </Compile>
     <Compile Include="modal\Art.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -659,6 +665,8 @@
     <Content Include="modal\Model.edmx.diagram">
       <DependentUpon>Model.edmx</DependentUpon>
     </Content>
+    <Content Include="commons\UserProfilePicture.ashx" />
+    <Content Include="commons\ArtistSigniture.ashx" />
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
