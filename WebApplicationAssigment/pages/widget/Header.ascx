@@ -23,7 +23,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#">Login</a>
-                    <a class="dropdown-item mt-2" href="#">Shopping Cart</a>
+                    <a class="dropdown-item mt-2" href="<%= "https://" + HttpContext.Current.Request.Url.Authority%>/pages/main/ArtShop/ShoppingCart.aspx">Shopping Cart</a>
                     <a class="dropdown-item mt-3" href="#">Logout</a>
                 </div>
             </li>

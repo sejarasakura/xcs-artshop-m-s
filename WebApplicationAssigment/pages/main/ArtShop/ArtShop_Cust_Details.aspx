@@ -16,7 +16,7 @@
                 <p class="mb-5"></p>
                 <p class="mb-5"></p>
                 <p class="mb-5"></p>
-                <asp:Button ID="Button1" Cssclass="align-self-end btn btn-warning mt-5" runat="server" Text="Add to Shopping Cart" OnClick="Button1_Click" />
+                <asp:Button ID="btnaddtocart" Cssclass="align-self-end btn btn-warning mt-5" runat="server" Text="Add to Shopping Cart" OnClick="btnaddtocart_Click" />
             </div>
         </div>
 
