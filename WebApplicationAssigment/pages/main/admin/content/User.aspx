@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/pages/main/admin/master/Admin.Master" AutoEventWireup="true" CodeBehind="EwallateDetails.aspx.cs" Inherits="WebApplicationAssigment.pages.main.admin.content.WebForm3" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/pages/main/admin/master/Admin.Master" AutoEventWireup="true" CodeBehind="User.aspx.cs" Inherits="WebApplicationAssigment.pages.main.admin.content.WebForm3" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -6,11 +6,11 @@
     <table id="datatable" class="stripe row-border order-column" style="width: 100%">
         <thead>
             <tr>
-                <th>Id.</th>
-                <th>Customer</th>
-                <th>Payment Method</th>
-                <th>Payment Status</th>
-                <th>Total Amount</th>
+                <th>user id</th>
+                <th>picture</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Ages</th>
                 <th>Payment Date</th>
             </tr>
         </thead>

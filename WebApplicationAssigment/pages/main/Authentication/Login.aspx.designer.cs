@@ -7,20 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplicationAssigment.pages.@__test
+namespace WebApplicationAssigment.pages.main.Profile
 {
 
 
-    public partial class LoginScreen
+    public partial class Login
     {
 
         /// <summary>
-        /// LoginNav control.
+        /// Login1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::WebApplicationAssigment.pages.widget.LoginNav LoginNav;
+        protected global::System.Web.UI.WebControls.Login Login1;
     }
 }

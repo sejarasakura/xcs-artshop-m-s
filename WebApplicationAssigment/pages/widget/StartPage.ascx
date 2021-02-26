@@ -19,7 +19,7 @@
                                     </div>
                                 </div>
                                 <div class="tatsu-module tatsu-normal-button tatsu-button-wrap align-block block-center">
-                                    <a style="background-color:#FFF" class="tatsu-shortcode mediumbtn tatsu-button left-icon circular bg-animation-none" href="#" style="" aria-label="Learn More" data-gdpr-atts="{}">Learn More</a>
+                                    <a style="background-color:#FFF" class="tatsu-shortcode mediumbtn tatsu-button left-icon circular bg-animation-none" href="#" aria-label="Learn More" data-gdpr-atts="{}">Learn More</a>
                                 </div>
                             </div>
                         </div>
