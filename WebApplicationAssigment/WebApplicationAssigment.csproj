@@ -145,6 +145,10 @@
     <Content Include="assets\image\Art\one.jpg" />
     <Content Include="assets\image\profile.png" />
     <Content Include="pages\main\admin\content\CreateRole.aspx" />
+    <Content Include="assets\image\Payment\onlinebanking.jpg" />
+    <Content Include="assets\image\Payment\paypal.jpg" />
+    <Content Include="assets\image\Payment\publicbank.png" />
+    <Content Include="assets\image\Payment\visamaster.jpg" />
     <Content Include="pages\main\Artist\content\AddNewArt.aspx" />
     <Content Include="pages\main\Artist\content\ReadUpdateDeleteArt.aspx" />
     <Content Include="pages\main\Artist\content\ViewArtSales.aspx" />
@@ -183,6 +187,14 @@
     <Content Include="pages\main\Authentication\Login.aspx" />
     <Content Include="pages\main\Authentication\Register.aspx" />
     <Content Include="pages\main\Splash.html" />
+    <Content Include="pages\Payment\CreditAndDebit.aspx" />
+    <Content Include="pages\Payment\DeliveryInformation.aspx" />
+    <Content Include="pages\Payment\OnlineBanking.aspx" />
+    <Content Include="pages\Payment\PaymentFailed.aspx" />
+    <Content Include="pages\Payment\PaymentSuccess.aspx" />
+    <Content Include="pages\Payment\Paypal.aspx" />
+    <Content Include="pages\Payment\SelectMethod.aspx" />
+    <Content Include="pages\Payment\PublicBank.aspx" />
     <Content Include="pages\widget\comment.ascx" />
     <Content Include="pages\widget\EndPagesSM.ascx" />
     <Content Include="pages\widget\EndPages.ascx" />
@@ -505,6 +517,62 @@
     </Compile>
     <Compile Include="pages\master\Master.Master.designer.cs">
       <DependentUpon>Master.Master</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Payment\CreditAndDebit.aspx.cs">
+      <DependentUpon>CreditAndDebit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Payment\CreditAndDebit.aspx.designer.cs">
+      <DependentUpon>CreditAndDebit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Payment\DeliveryInformation.aspx.cs">
+      <DependentUpon>DeliveryInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Payment\DeliveryInformation.aspx.designer.cs">
+      <DependentUpon>DeliveryInformation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Payment\OnlineBanking.aspx.cs">
+      <DependentUpon>OnlineBanking.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Payment\OnlineBanking.aspx.designer.cs">
+      <DependentUpon>OnlineBanking.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Payment\PaymentFailed.aspx.cs">
+      <DependentUpon>PaymentFailed.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Payment\PaymentFailed.aspx.designer.cs">
+      <DependentUpon>PaymentFailed.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Payment\PaymentSuccess.aspx.cs">
+      <DependentUpon>PaymentSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Payment\PaymentSuccess.aspx.designer.cs">
+      <DependentUpon>PaymentSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Payment\Paypal.aspx.cs">
+      <DependentUpon>Paypal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Payment\Paypal.aspx.designer.cs">
+      <DependentUpon>Paypal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Payment\SelectMethod.aspx.cs">
+      <DependentUpon>SelectMethod.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Payment\SelectMethod.aspx.designer.cs">
+      <DependentUpon>SelectMethod.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Payment\PublicBank.aspx.cs">
+      <DependentUpon>PublicBank.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Payment\PublicBank.aspx.designer.cs">
+      <DependentUpon>PublicBank.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\widget\comment.ascx.cs">
       <DependentUpon>comment.ascx</DependentUpon>
