@@ -5,10 +5,7 @@ using System.Web;
 
 namespace WebApplicationAssigment.commons
 {
-    public class Validation
+    public class Functions
     {
-        public static Validation instance = new Validation();
-        
-
     }
 }

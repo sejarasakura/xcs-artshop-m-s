@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -120,16 +122,19 @@ namespace WebApplicationAssigment.pages.main.Profile
 
                 if (artistCheckBox.Checked)
                 {
+                    Roles.AddUserToRole(CreateUserWizard1.UserName, "Artist");
                     db.Artists.Add(newArtist);
                 }
                 if (custCheckBox.Checked)
                 {
+                    Roles.AddUserToRole(CreateUserWizard1.UserName, "Customer");
                     db.Customers.Add(newCustomer);
                 }
 
                 db.SaveChanges();
             }
         }
+
 
     }
 }

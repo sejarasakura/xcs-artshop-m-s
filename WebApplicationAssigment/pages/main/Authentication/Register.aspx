@@ -148,7 +148,6 @@
                                                 <input type="checkbox" name="t_and_c" id="t_and_c" class="hidden" value="1">
                                                 I agree <strong class="label label-primary">Register</strong> to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> set out by this site, including our Cookie Use.
                                             </span>
-                                            &nbsp;&nbsp;&nbsp;
                                         </div>
                                     </div>
                                     <div class="text-danger">
@@ -244,8 +243,10 @@
 
                                         <!--Gender-->
                                         <div class="row">
-                                            <div class="col-md-12">
+                                            <div class="col-md-4">
                                                 Gender : 
+                                                </div>
+                                            <div class="col-md-8">
                                                 <div class="form-check-inline">
                                                     <asp:RadioButton ID="radioMale" runat="server" Text="Male" GroupName="gender" />
                                                 </div>
