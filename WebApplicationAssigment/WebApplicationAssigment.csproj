@@ -114,8 +114,13 @@
     <Content Include="pages\main\ArtShop\ShoppingCart.aspx" />
     <Content Include="pages\main\Splash.html" />
     <Content Include="pages\Payment\CreditAndDebit.aspx" />
+    <Content Include="pages\Payment\DeliveryInformation.aspx" />
     <Content Include="pages\Payment\OnlineBanking.aspx" />
+    <Content Include="pages\Payment\PaymentFailed.aspx" />
+    <Content Include="pages\Payment\PaymentSuccess.aspx" />
     <Content Include="pages\Payment\Paypal.aspx" />
+    <Content Include="pages\Payment\SelectMethod.aspx" />
+    <Content Include="pages\Payment\PublicBank.aspx" />
     <Content Include="pages\widget\comment.ascx" />
     <Content Include="pages\widget\Customer\LoginPageCust.ascx" />
     <Content Include="pages\widget\Customer\RegisterPageCust.ascx" />
@@ -144,6 +149,12 @@
   <ItemGroup>
     <Compile Include="commons\Constant.cs" />
     <Compile Include="commons\Validation.cs" />
+    <Compile Include="modal\PaymentMethod.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\Position.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="pages\main\Artist\content\AddNewArt.aspx.cs">
       <DependentUpon>AddNewArt.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -238,9 +249,6 @@
     <Compile Include="modal\Category.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="modal\ChangePassword.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="modal\Customer.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -272,33 +280,6 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="modal\Staff.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\vw_aspnet_Applications.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\vw_aspnet_MembershipUsers.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\vw_aspnet_Profiles.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\vw_aspnet_Roles.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\vw_aspnet_Users.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\vw_aspnet_UsersInRoles.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\vw_aspnet_WebPartState_Paths.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\vw_aspnet_WebPartState_Shared.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\vw_aspnet_WebPartState_User.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="pages\main\admin\content\PaymentDetails.aspx.cs">
@@ -392,6 +373,13 @@
     <Compile Include="pages\Payment\CreditAndDebit.aspx.designer.cs">
       <DependentUpon>CreditAndDebit.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pages\Payment\DeliveryInformation.aspx.cs">
+      <DependentUpon>DeliveryInformation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Payment\DeliveryInformation.aspx.designer.cs">
+      <DependentUpon>DeliveryInformation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pages\Payment\OnlineBanking.aspx.cs">
       <DependentUpon>OnlineBanking.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -399,12 +387,40 @@
     <Compile Include="pages\Payment\OnlineBanking.aspx.designer.cs">
       <DependentUpon>OnlineBanking.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pages\Payment\PaymentFailed.aspx.cs">
+      <DependentUpon>PaymentFailed.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Payment\PaymentFailed.aspx.designer.cs">
+      <DependentUpon>PaymentFailed.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Payment\PaymentSuccess.aspx.cs">
+      <DependentUpon>PaymentSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Payment\PaymentSuccess.aspx.designer.cs">
+      <DependentUpon>PaymentSuccess.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pages\Payment\Paypal.aspx.cs">
       <DependentUpon>Paypal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="pages\Payment\Paypal.aspx.designer.cs">
       <DependentUpon>Paypal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Payment\SelectMethod.aspx.cs">
+      <DependentUpon>SelectMethod.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Payment\SelectMethod.aspx.designer.cs">
+      <DependentUpon>SelectMethod.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Payment\PublicBank.aspx.cs">
+      <DependentUpon>PublicBank.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Payment\PublicBank.aspx.designer.cs">
+      <DependentUpon>PublicBank.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\widget\comment.ascx.cs">
       <DependentUpon>comment.ascx</DependentUpon>

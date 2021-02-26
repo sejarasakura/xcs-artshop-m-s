@@ -96,7 +96,8 @@
                 Style="margin-left: 20px"
                 Text="Login"
                 runat="server"
-                ID="Button1" />
+                ID="Button1"
+                PostBackUrl="~/pages/Payment/PublicBank.aspx"/>
         </div>
     </div>
     </div>
