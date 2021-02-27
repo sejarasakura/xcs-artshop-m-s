@@ -43,19 +43,7 @@ namespace WebApplicationAssigment.pages.main.ArtShop
                 );
                 if(carts.Count() <= 0)
                 {
-                    Cart newCart = new Cart();
-                    newCart.user_id = user_id;
-                    if (db.Carts.Count() == 0)
-                    {
-                        newCart.id = 1;
-                    }
-                    else
-                    {
-                        newCart.id = db.Carts.OrderByDescending(u => u.id).FirstOrDefault().id + 1;
-                    }
-                    db.Carts.Add(newCart);
-                    db.SaveChanges();
-                    cart = newCart;
+                    cart = Functions.CreateCart();
                 }
                 else
                 {
