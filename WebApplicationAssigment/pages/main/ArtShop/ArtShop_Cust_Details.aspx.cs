@@ -45,7 +45,7 @@ namespace WebApplicationAssigment.pages.main.ArtShop
                 {
                     Cart newCart = new Cart();
                     newCart.user_id = user_id;
-                    if(db.Carts.Count() == 0)
+                    if (db.Carts.Count() == 0)
                     {
                         newCart.id = 1;
                     }
