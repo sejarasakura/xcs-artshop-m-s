@@ -24,7 +24,7 @@
           </Key>
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="birthday_date" Type="date" />
-          <Property Name="description" Type="nvarchar" MaxLength="10" />
+          <Property Name="description" Type="nvarchar(max)" />
           <Property Name="signature" Type="varbinary(max)" />
           <Property Name="picture" Type="varbinary(max)" />
         </EntityType>
@@ -273,14 +273,9 @@
           <Property Name="position_id" Type="int" Nullable="false" />
           <Property Name="picture" Type="varbinary(max)" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.UserExtension' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="UserExtension">
           <Key>
             <PropertyRef Name="UserId" />
-            <PropertyRef Name="first_name" />
-            <PropertyRef Name="last_name" />
-            <PropertyRef Name="gender" />
           </Key>
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="first_name" Type="nvarchar" MaxLength="50" Nullable="false" />
@@ -742,9 +737,9 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserExten__UserI__74794A92">
+        <Association Name="FK__UserExten__UserI__1B9317B3">
           <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="1" />
-          <End Role="UserExtension" Type="Self.UserExtension" Multiplicity="*" />
+          <End Role="UserExtension" Type="Self.UserExtension" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="aspnet_Users">
               <PropertyRef Name="UserId" />
@@ -1111,15 +1106,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PublicBank" EntityType="Self.PublicBank" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UserExtension" EntityType="Self.UserExtension" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [UserExtension].[UserId] AS [UserId], 
-    [UserExtension].[first_name] AS [first_name], 
-    [UserExtension].[last_name] AS [last_name], 
-    [UserExtension].[gender] AS [gender], 
-    [UserExtension].[picture] AS [picture]
-    FROM [dbo].[UserExtension] AS [UserExtension]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="UserExtension" EntityType="Self.UserExtension" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="vw_aspnet_Applications" EntityType="Self.vw_aspnet_Applications" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vw_aspnet_Applications].[ApplicationName] AS [ApplicationName], 
@@ -1318,7 +1305,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
             <End Role="Staff" EntitySet="Staff" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserExten__UserI__74794A92" Association="Self.FK__UserExten__UserI__74794A92">
+          <AssociationSet Name="FK__UserExten__UserI__1B9317B3" Association="Self.FK__UserExten__UserI__1B9317B3">
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
             <End Role="UserExtension" EntitySet="UserExtension" />
           </AssociationSet>
@@ -1784,9 +1771,9 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <EntitySet Name="vw_aspnet_WebPartState_Paths" EntityType="ArtShopModel.vw_aspnet_WebPartState_Paths" />
           <EntitySet Name="vw_aspnet_WebPartState_Shared" EntityType="ArtShopModel.vw_aspnet_WebPartState_Shared" />
           <EntitySet Name="vw_aspnet_WebPartState_User" EntityType="ArtShopModel.vw_aspnet_WebPartState_User" />
-          <EntitySet Name="UserExtensions" EntityType="ArtShopModel.UserExtension" />
           <EntitySet Name="vw_customer_cart" EntityType="ArtShopModel.vw_customer_cart" />
-          <AssociationSet Name="FK__UserExten__UserI__74794A92" Association="ArtShopModel.FK__UserExten__UserI__74794A92">
+          <EntitySet Name="UserExtensions" EntityType="ArtShopModel.UserExtension" />
+          <AssociationSet Name="FK__UserExten__UserI__1B9317B3" Association="ArtShopModel.FK__UserExten__UserI__1B9317B3">
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
             <End Role="UserExtension" EntitySet="UserExtensions" />
           </AssociationSet>
@@ -1892,7 +1879,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           </Key>
           <Property Name="UserId" Type="Guid" Nullable="false" />
           <Property Name="birthday_date" Type="DateTime" Precision="0" />
-          <Property Name="description" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="signature" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Arts" Relationship="ArtShopModel.FK__Art__artist_id__3B40CD36" FromRole="Artist" ToRole="Art" />
@@ -2014,7 +2001,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <NavigationProperty Name="Customer" Relationship="ArtShopModel.FK__Customer__UserId__1AD3FDA4" FromRole="aspnet_Users" ToRole="Customer" />
           <NavigationProperty Name="Staff" Relationship="ArtShopModel.FK__Staff__UserId__1EA48E88" FromRole="aspnet_Users" ToRole="Staff" />
           <NavigationProperty Name="aspnet_Roles" Relationship="ArtShopModel.aspnet_UsersInRoles" FromRole="aspnet_Users" ToRole="aspnet_Roles" />
-          <NavigationProperty Name="UserExtensions" Relationship="ArtShopModel.FK__UserExten__UserI__74794A92" FromRole="aspnet_Users" ToRole="UserExtension" />
+          <NavigationProperty Name="UserExtension" Relationship="ArtShopModel.FK__UserExten__UserI__1B9317B3" FromRole="aspnet_Users" ToRole="UserExtension" />
         </EntityType>
         <EntityType Name="Card">
           <Key>
@@ -2546,20 +2533,6 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="DataSize" Type="Int32" />
           <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
-        <EntityType Name="UserExtension">
-          <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="first_name" />
-            <PropertyRef Name="last_name" />
-            <PropertyRef Name="gender" />
-          </Key>
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="first_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="last_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="aspnet_Users" Relationship="ArtShopModel.FK__UserExten__UserI__74794A92" FromRole="UserExtension" ToRole="aspnet_Users" />
-        </EntityType>
         <EntityType Name="vw_customer_cart">
           <Key>
             <PropertyRef Name="image" />
@@ -2575,9 +2548,20 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="availability" Type="Int32" />
           <Property Name="add_date" Type="DateTime" Precision="0" />
         </EntityType>
-        <Association Name="FK__UserExten__UserI__74794A92">
+        <EntityType Name="UserExtension">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="first_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="last_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="aspnet_Users" Relationship="ArtShopModel.FK__UserExten__UserI__1B9317B3" FromRole="UserExtension" ToRole="aspnet_Users" />
+        </EntityType>
+        <Association Name="FK__UserExten__UserI__1B9317B3">
           <End Type="ArtShopModel.aspnet_Users" Role="aspnet_Users" Multiplicity="1" />
-          <End Type="ArtShopModel.UserExtension" Role="UserExtension" Multiplicity="*" />
+          <End Type="ArtShopModel.UserExtension" Role="UserExtension" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="aspnet_Users">
               <PropertyRef Name="UserId" />
@@ -3113,17 +3097,6 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UserExtensions">
-            <EntityTypeMapping TypeName="ArtShopModel.UserExtension">
-              <MappingFragment StoreEntitySet="UserExtension">
-                <ScalarProperty Name="picture" ColumnName="picture" />
-                <ScalarProperty Name="gender" ColumnName="gender" />
-                <ScalarProperty Name="last_name" ColumnName="last_name" />
-                <ScalarProperty Name="first_name" ColumnName="first_name" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="vw_customer_cart">
             <EntityTypeMapping TypeName="ArtShopModel.vw_customer_cart">
               <MappingFragment StoreEntitySet="vw_customer_cart">
@@ -3134,6 +3107,17 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="image" ColumnName="image" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserExtensions">
+            <EntityTypeMapping TypeName="ArtShopModel.UserExtension">
+              <MappingFragment StoreEntitySet="UserExtension">
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

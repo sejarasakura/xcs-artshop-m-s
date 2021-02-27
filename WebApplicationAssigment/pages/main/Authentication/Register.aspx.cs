@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -68,7 +70,7 @@ namespace WebApplicationAssigment.pages.main.Profile
         {
             MembershipUser newUser = Membership.GetUser(CreateUserWizard1.UserName);
             Guid newUserId = (Guid)newUser.ProviderUserKey;
-            Console.WriteLine("The user id is: " + newUserId);
+            Console.Out.WriteLine("The user id is: " + newUserId);
             return newUserId;
         }
 
@@ -92,9 +94,9 @@ namespace WebApplicationAssigment.pages.main.Profile
             modal.UserExtension newUserExtension = new UserExtension();
             
 
-            newArtist.UserId = userId;
-            newCustomer.UserId = userId;
-            newUserExtension.UserId = userId;
+            newArtist.UserId = getUserId();
+            newCustomer.UserId = getUserId();
+            newUserExtension.UserId = getUserId();
 
 
             newUserExtension.first_name = fname.Text;
@@ -114,20 +116,25 @@ namespace WebApplicationAssigment.pages.main.Profile
 
             using (ArtShopEntities db = new ArtShopEntities())
             {
+                Console.Out.WriteLine(userId);
                 db.UserExtensions.Add(newUserExtension);
+
 
                 if (artistCheckBox.Checked)
                 {
+                    Roles.AddUserToRole(CreateUserWizard1.UserName, "Artist");
                     db.Artists.Add(newArtist);
                 }
                 if (custCheckBox.Checked)
                 {
+                    Roles.AddUserToRole(CreateUserWizard1.UserName, "Customer");
                     db.Customers.Add(newCustomer);
                 }
 
                 db.SaveChanges();
             }
         }
+
 
     }
 }

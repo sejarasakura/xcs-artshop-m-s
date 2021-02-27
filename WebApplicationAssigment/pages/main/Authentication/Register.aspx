@@ -148,7 +148,6 @@
                                                 <input type="checkbox" name="t_and_c" id="t_and_c" class="hidden" value="1">
                                                 I agree <strong class="label label-primary">Register</strong> to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> set out by this site, including our Cookie Use.
                                             </span>
-                                            &nbsp;&nbsp;&nbsp;
                                         </div>
                                     </div>
                                     <div class="text-danger">
@@ -194,12 +193,14 @@
                                 <div class="col-sm-12">
                                     <h2>Profiles</h2>
                                     <hr class="colorgraph">
-                                    <asp:Image CssClass="center img-circle"
-                                        ImageUrl="~/assets/image/profile.png"
-                                        ID="Image1"
-                                        runat="server"
-                                        length="100px"
-                                        Width="100px" />
+                                    <div style="margin: auto; padding: 10px; width:100px">
+                                        <asp:Image CssClass="img img-circle" 
+                                            ImageUrl="~/assets/image/profile.png"
+                                            ID="Image1"
+                                            runat="server"
+                                            length="100px"
+                                            Width="100px" />
+                                    </div>
                                     <div class="form-group">
 
                                         <div class="row">
@@ -242,8 +243,10 @@
 
                                         <!--Gender-->
                                         <div class="row">
-                                            <div class="col-md-12">
+                                            <div class="col-md-4">
                                                 Gender : 
+                                                </div>
+                                            <div class="col-md-8">
                                                 <div class="form-check-inline">
                                                     <asp:RadioButton ID="radioMale" runat="server" Text="Male" GroupName="gender" />
                                                 </div>
@@ -255,7 +258,10 @@
 
                                         <!--Birthday Date-->
                                         <div class="row">
-                                            <div class="col-xs-12 col-sm-12">
+                                            <div class="col-xs-12 col-sm-4">
+                                                Birthday Date
+                                            </div>
+                                            <div class="col-xs-12 col-sm-8">
                                                 <asp:textbox 
                                                     type="date" 
                                                     CssClass="form-control" 
@@ -282,15 +288,14 @@
                                             });
                                         </script>
 
-                                        <div id="custExtensions" runat="server" visible="false">
+                                        <div id="custExtensions" runat="server" visible="true">
                                             <fieldset class="form-group border p-3">
                                                 <legend class="w-auto px-2"><sub>Customer Fields</sub></legend>
                                                 <div class="row">
                                                     <div class="col-sm-12">
                                                         <asp:DropDownList 
                                                             ID="ddlMembership" 
-                                                            runat="server"
-                                                            >
+                                                            runat="server">
                                                             <asp:ListItem Value="N">Normal Customer</asp:ListItem>
                                                             <asp:ListItem Value="S">Silver Member</asp:ListItem>
                                                             <asp:ListItem Value="G">Gold Member</asp:ListItem>
@@ -344,6 +349,7 @@
                                             <div class="col-xs-12 col-sm-12 col-md-12">
                                                 <div class="pull-right" style="margin:10px">
                                                     <asp:CheckBox
+                                                        AutoPostBack="true" Checked="false"
                                                         OnCheckedChanged="ChckedChangedArt"
                                                         ID="ArtistOnly"
                                                         runat="server" />
@@ -352,6 +358,7 @@
 
                                                 <div class="pull-right" style="margin:10px">
                                                     <asp:CheckBox
+                                                        AutoPostBack="true" Checked="true"
                                                         OnCheckedChanged="ChckedChangedCustomer"
                                                         ID="CustomerOnly"
                                                         runat="server" />
