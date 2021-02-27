@@ -4,7 +4,7 @@
 
 <nav id="project_navbar" class="navbar navbar-expand-lg navbar-light" style="background-color: transparent">
     <a class="navbar-brand" href="#">
-        <img src="<%= "https://" + HttpContext.Current.Request.Url.Authority%>/assets/image/background/CompanyLogo.png " class="d-inline-block align-top" width="90" height="64">
+        <img src="<%= Constant.DEFAULT_URL%>/assets/image/background/CompanyLogo.png " class="d-inline-block align-top" width="90" height="64">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -12,10 +12,10 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mk mx-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">Home</a>
+                <a class="nav-link" href="<%= Constant.HOME_URL %>">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<%= "https://" + HttpContext.Current.Request.Url.Authority%>/pages/main/ArtShop/ArtShop_Customer.aspx">Painting</a>
+                <a class="nav-link" href="<%= Constant.DEFAULT_URL%>/pages/main/ArtShop/ArtShop_Customer.aspx">Painting</a>
             </li>
             <asp:LoginView ID="LoginView1" runat="server">
                 <AnonymousTemplate>
@@ -27,6 +27,7 @@
                     </li>
                 </AnonymousTemplate>
                 <LoggedInTemplate>
+                    
                     <% string[] role = Roles.GetRolesForUser(); %>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account
@@ -40,13 +41,17 @@
                     <% if (role.Contains("Artist")) { %>
                             <li class="nav-item">
                                 <a class="nav-link" href="<%= Constant.ARTIST_URL %>/AddNewArt.aspx">Add Art</a>
-                                <a class="nav-link" href="<%= Constant.ARTIST_URL %>/ReadUpdateDeleteArt.aspx">My Arts</a>
-                                <a class="nav-link" href="<%= Constant.ARTIST_URL %>/ViewArtSales.aspx">My Arts</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<%= Constant.ARTIST_URL %>/ReadUpdateDeleteArt.aspx">My Art</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<%= Constant.ARTIST_URL %>/ViewArtSales.aspx">Arts Sales</a>
                             </li>
                     <% } %>
                     <% if (role.Contains("Customer")) { %>
                             <li class="nav-item">
-                                <a class="nav-link" href="<%= "https://" + HttpContext.Current.Request.Url.Authority%>/pages/main/ArtShop/ShoppingCart.aspx">Shopping Cart</a>
+                                <a class="nav-link" href="<%= Constant.DEFAULT_URL%>/pages/main/ArtShop/ShoppingCart.aspx">Shopping Cart</a>
                             </li>
                     <% } %>
                     <% if (role.Contains("Administrator")) { %>
@@ -55,21 +60,6 @@
                             </li>
                     <% } %>
                 </LoggedInTemplate>
-                <RoleGroups>
-                    <asp:RoleGroup Roles="Artist">
-                        <ContentTemplate>
-                            <!-- child controls -->
-                        </ContentTemplate>
-                    </asp:RoleGroup>
-                    <asp:RoleGroup Roles="Customer">
-                        <ContentTemplate>
-                        </ContentTemplate>
-                    </asp:RoleGroup>
-                    <asp:RoleGroup Roles="Administrator">
-                        <ContentTemplate>
-                        </ContentTemplate>
-                    </asp:RoleGroup>
-                </RoleGroups>
             </asp:LoginView>
             <li class="nav-item">
                 <a class="nav-link font-weight-light" href="#">Contact Us</a>

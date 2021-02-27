@@ -189,6 +189,7 @@
     <Content Include="pages\main\ArtShop\ArtShop_Staff_Details.aspx" />
     <Content Include="pages\main\ArtShop\ShoppingCart.aspx" />
     <Content Include="pages\main\Authentication\ForgotPassword.aspx" />
+    <Content Include="pages\main\Authentication\Profile\Logout.aspx" />
     <Content Include="pages\main\Authentication\Profile\MyAccount.aspx" />
     <Content Include="pages\main\Authentication\Profile\Change Password.aspx" />
     <Content Include="pages\main\Authentication\Login.aspx" />
@@ -336,18 +337,12 @@
     <Compile Include="modal\vw_customer_cart.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="pages\diagram_reader\CustomerProfilePicture.ashx.cs">
-      <DependentUpon>CustomerProfilePicture.ashx</DependentUpon>
-    </Compile>
     <Compile Include="pages\diagram_reader\ImageViewer.aspx.cs">
       <DependentUpon>ImageViewer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="pages\diagram_reader\ImageViewer.aspx.designer.cs">
       <DependentUpon>ImageViewer.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="pages\diagram_reader\StaffProfilePicture.ashx.cs">
-      <DependentUpon>StaffProfilePicture.ashx</DependentUpon>
     </Compile>
     <Compile Include="pages\diagram_reader\XWebConfig.cs" />
     <Compile Include="pages\main\admin\BestArtReport.aspx.cs">
@@ -525,6 +520,13 @@
     </Compile>
     <Compile Include="pages\main\Authentication\ForgotPassword.aspx.designer.cs">
       <DependentUpon>ForgotPassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\Authentication\Profile\Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\Authentication\Profile\Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\main\Authentication\Profile\MyAccount.aspx.cs">
       <DependentUpon>MyAccount.aspx</DependentUpon>
@@ -726,8 +728,6 @@
     </None>
     <Content Include="pages\master\Master.Master" />
     <Content Include="pages\main\admin\master\Admin.Master" />
-    <Content Include="pages\diagram_reader\StaffProfilePicture.ashx" />
-    <Content Include="pages\diagram_reader\CustomerProfilePicture.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
