@@ -225,10 +225,10 @@ $(document).ready(function(){
                     <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" />
                     <asp:BoundField DataField="image" HeaderText="image" SortExpression="image" />
                     <asp:BoundField DataField="title" HeaderText="title" SortExpression="title" />
+                    <asp:BoundField DataField="name" HeaderText="Category" SortExpression="name" />
                     <asp:BoundField DataField="date" HeaderText="date" SortExpression="date" />
                     <asp:BoundField DataField="description" HeaderText="description" SortExpression="description" />
                     <asp:BoundField DataField="price" HeaderText="price" SortExpression="price" />
-                    <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
                 </Columns>
            
                 <EditRowStyle BackColor="#2461BF" />
@@ -245,7 +245,7 @@ $(document).ready(function(){
            
             <br /><br />
            
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [description], [title], [date], [price], [image], [id] FROM [Art]" DeleteCommand="DELETE FROM [Art] WHERE [id] = @id" InsertCommand="INSERT INTO [Art] ([description], [title], [date], [price], [image], [id]) VALUES (@description, @title, @date, @price, @image, @id)" UpdateCommand="UPDATE [Art] SET [description] = @description, [title] = @title, [date] = @date, [price] = @price, [image] = @image WHERE [id] = @id">
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT Art.description, Art.title, Art.date, Art.price, Art.image,Art.id,Category.name FROM Art INNER JOIN Category ON Art.category_id = Category.id" DeleteCommand="DELETE FROM [Art] WHERE [id] = @id" InsertCommand="INSERT INTO [Art] ([description], [title], [date], [price], [image], [id]) VALUES (@description, @title, @date, @price, @image, @id)" UpdateCommand="UPDATE [Art] SET [description] = @description, [title] = @title, [date] = @date, [price] = @price, [image] = @image WHERE [id] = @id">
                 <DeleteParameters>
                     <asp:Parameter Name="id" Type="Int32" />
                 </DeleteParameters>
