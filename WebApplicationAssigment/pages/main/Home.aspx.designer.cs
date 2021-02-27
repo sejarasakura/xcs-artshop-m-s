@@ -7,38 +7,38 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplicationAssigment.pages.main.Profile
+namespace WebApplicationAssigment.pages.main
 {
 
 
-    public partial class Login
+    public partial class Home
     {
 
         /// <summary>
-        /// StartPageSM control.
+        /// StartPage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::WebApplicationAssigment.pages.widget.StartPageSM StartPageSM;
+        protected global::WebApplicationAssigment.pages.widget.StartPage StartPage;
 
         /// <summary>
-        /// Login1 control.
+        /// HotDeals control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Login Login1;
+        protected global::WebApplicationAssigment.pages.widget.HotDeals HotDeals;
 
         /// <summary>
-        /// EndPagesSM control.
+        /// EndPages control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::WebApplicationAssigment.pages.widget.EndPagesSM EndPagesSM;
+        protected global::WebApplicationAssigment.pages.widget.EndPages EndPages;
     }
 }

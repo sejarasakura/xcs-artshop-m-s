@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplicationAssigment.pages.admin.content
+namespace WebApplication1.pages
 {
 
 
-    public partial class ArtGallery
+    public partial class WebForm7
     {
 
         /// <summary>

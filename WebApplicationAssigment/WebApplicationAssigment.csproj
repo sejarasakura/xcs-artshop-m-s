@@ -145,11 +145,17 @@
   <ItemGroup>
     <Content Include="assets\image\Art\one.jpg" />
     <Content Include="assets\image\profile.png" />
-    <Content Include="pages\main\admin\content\CreateRole.aspx" />
+    <Content Include="assets\image\signature.png" />
+    <Content Include="pages\diagram_reader\ImageViewer.aspx" />
+    <Content Include="pages\main\admin\BestArtReport.aspx" />
+    <Content Include="pages\main\admin\CreateRole.aspx" />
     <Content Include="assets\image\Payment\onlinebanking.jpg" />
     <Content Include="assets\image\Payment\paypal.jpg" />
     <Content Include="assets\image\Payment\publicbank.png" />
     <Content Include="assets\image\Payment\visamaster.jpg" />
+    <Content Include="pages\main\admin\AdminDashboard.aspx" />
+    <Content Include="pages\main\admin\SalesReport.aspx" />
+    <Content Include="pages\main\admin\widget\backup_development.ascx" />
     <Content Include="pages\main\Artist\content\AddNewArt.aspx" />
     <Content Include="pages\main\Artist\content\ReadUpdateDeleteArt.aspx" />
     <Content Include="pages\main\Artist\content\ViewArtSales.aspx" />
@@ -172,10 +178,9 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
     </Content>
-    <Content Include="pages\main\admin\content\PaymentDetails.aspx" />
-    <Content Include="pages\main\admin\content\User.aspx" />
-    <Content Include="pages\main\admin\content\UserPages.aspx" />
-    <Content Include="pages\main\admin\dashboard\AdminDashboard.aspx" />
+    <Content Include="pages\main\admin\PaymentDetails.aspx" />
+    <Content Include="pages\main\admin\Art.aspx" />
+    <Content Include="pages\main\admin\UserPages.aspx" />
     <Content Include="pages\main\admin\widget\AdminNav.ascx" />
     <Content Include="pages\main\ArtShop\ArtShop_Customer.aspx" />
     <Content Include="pages\main\ArtShop\ArtShop_Cust_Details.aspx" />
@@ -187,7 +192,7 @@
     <Content Include="pages\main\Authentication\Profile\Profile.aspx" />
     <Content Include="pages\main\Authentication\Login.aspx" />
     <Content Include="pages\main\Authentication\Register.aspx" />
-    <Content Include="pages\main\Splash.html" />
+    <Content Include="pages\main\Home.aspx" />
     <Content Include="pages\Payment\CreditAndDebit.aspx" />
     <Content Include="pages\Payment\DeliveryInformation.aspx" />
     <Content Include="pages\Payment\OnlineBanking.aspx" />
@@ -201,6 +206,7 @@
     <Content Include="pages\widget\EndPages.ascx" />
     <Content Include="pages\widget\Footer.ascx" />
     <Content Include="pages\widget\Header.ascx" />
+    <Content Include="pages\widget\HotDeals.ascx" />
     <Content Include="pages\widget\ProfilePicture.ascx" />
     <Content Include="pages\widget\Sidemap.ascx" />
     <Content Include="pages\widget\StartPageSM.ascx" />
@@ -331,16 +337,48 @@
     <Compile Include="pages\diagram_reader\CustomerProfilePicture.ashx.cs">
       <DependentUpon>CustomerProfilePicture.ashx</DependentUpon>
     </Compile>
+    <Compile Include="pages\diagram_reader\ImageViewer.aspx.cs">
+      <DependentUpon>ImageViewer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\diagram_reader\ImageViewer.aspx.designer.cs">
+      <DependentUpon>ImageViewer.aspx</DependentUpon>
+    </Compile>
     <Compile Include="pages\diagram_reader\StaffProfilePicture.ashx.cs">
       <DependentUpon>StaffProfilePicture.ashx</DependentUpon>
     </Compile>
     <Compile Include="pages\diagram_reader\XWebConfig.cs" />
-    <Compile Include="pages\main\admin\content\CreateRole.aspx.cs">
+    <Compile Include="pages\main\admin\BestArtReport.aspx.cs">
+      <DependentUpon>BestArtReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\admin\BestArtReport.aspx.designer.cs">
+      <DependentUpon>BestArtReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\admin\CreateRole.aspx.cs">
       <DependentUpon>CreateRole.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="pages\main\admin\content\CreateRole.aspx.designer.cs">
+    <Compile Include="pages\main\admin\CreateRole.aspx.designer.cs">
       <DependentUpon>CreateRole.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\admin\AdminDashboard.aspx.cs">
+      <DependentUpon>AdminDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\admin\SalesReport.aspx.cs">
+      <DependentUpon>SalesReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\admin\SalesReport.aspx.designer.cs">
+      <DependentUpon>SalesReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\admin\widget\backup_development.ascx.cs">
+      <DependentUpon>backup_development.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\admin\widget\backup_development.ascx.designer.cs">
+      <DependentUpon>backup_development.ascx</DependentUpon>
     </Compile>
     <Compile Include="pages\main\Artist\content\AddNewArt.aspx.cs">
       <DependentUpon>AddNewArt.aspx</DependentUpon>
@@ -409,33 +447,26 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
-    <Compile Include="pages\main\admin\content\PaymentDetails.aspx.cs">
+    <Compile Include="pages\main\admin\PaymentDetails.aspx.cs">
       <DependentUpon>PaymentDetails.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="pages\main\admin\content\PaymentDetails.aspx.designer.cs">
+    <Compile Include="pages\main\admin\PaymentDetails.aspx.designer.cs">
       <DependentUpon>PaymentDetails.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pages\main\admin\content\User.aspx.cs">
-      <DependentUpon>User.aspx</DependentUpon>
+    <Compile Include="pages\main\admin\Art.aspx.cs">
+      <DependentUpon>Art.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="pages\main\admin\content\User.aspx.designer.cs">
-      <DependentUpon>User.aspx</DependentUpon>
+    <Compile Include="pages\main\admin\Art.aspx.designer.cs">
+      <DependentUpon>Art.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pages\main\admin\content\UserPages.aspx.cs">
+    <Compile Include="pages\main\admin\UserPages.aspx.cs">
       <DependentUpon>UserPages.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="pages\main\admin\content\UserPages.aspx.designer.cs">
+    <Compile Include="pages\main\admin\UserPages.aspx.designer.cs">
       <DependentUpon>UserPages.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="pages\main\admin\dashboard\AdminDashboard.aspx.cs">
-      <DependentUpon>AdminDashboard.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\main\admin\dashboard\AdminDashboard.aspx.designer.cs">
-      <DependentUpon>AdminDashboard.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\main\admin\master\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
@@ -520,6 +551,13 @@
     </Compile>
     <Compile Include="pages\main\Authentication\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\master\Master.Master.cs">
       <DependentUpon>Master.Master</DependentUpon>
@@ -618,6 +656,13 @@
     </Compile>
     <Compile Include="pages\widget\Header.ascx.designer.cs">
       <DependentUpon>Header.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\widget\HotDeals.ascx.cs">
+      <DependentUpon>HotDeals.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\widget\HotDeals.ascx.designer.cs">
+      <DependentUpon>HotDeals.ascx</DependentUpon>
     </Compile>
     <Compile Include="pages\widget\ProfilePicture.ascx.cs">
       <DependentUpon>ProfilePicture.ascx</DependentUpon>

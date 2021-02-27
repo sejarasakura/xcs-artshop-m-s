@@ -9,7 +9,7 @@
     <table id="datatable" class="stripe row-border order-column" style="width: 100%">
         <thead>
             <tr>
-                <th>======</th>
+                <th>===</th>
                 <th>Id.</th>
                 <th>Email</th>
                 <th>Name</th>
@@ -25,7 +25,7 @@
                             <span class="glyphicon glyphicon-trash" data-id="A10001">
                             </span>
                         </a>
-                        <a href="/WebApplication/admin/edit/Admin?id=A10001#A10001">
+                        <a href="#">
                             <span class="glyphicon glyphicon-pencil">
                             </span>
                         </a>
@@ -44,7 +44,7 @@
                             <span class="glyphicon glyphicon-trash" data-id="A10001">
                             </span>
                         </a>
-                        <a href="/WebApplication/admin/edit/Admin?id=A10001#A10001">
+                        <a href="#">
                             <span class="glyphicon glyphicon-pencil">
                             </span>
                         </a>
@@ -63,7 +63,7 @@
                             <span class="glyphicon glyphicon-trash" data-id="A10001">
                             </span>
                         </a>
-                        <a href="/WebApplication/admin/edit/Admin?id=A10001#A10001">
+                        <a href="#">
                             <span class="glyphicon glyphicon-pencil">
                             </span>
                         </a>
@@ -82,7 +82,7 @@
                             <span class="glyphicon glyphicon-trash" data-id="A10001">
                             </span>
                         </a>
-                        <a href="/WebApplication/admin/edit/Admin?id=A10001#A10001">
+                        <a href="#">
                             <span class="glyphicon glyphicon-pencil">
                             </span>
                         </a>
@@ -101,7 +101,7 @@
                             <span class="glyphicon glyphicon-trash" data-id="">
                             </span>
                         </a>
-                        <a href="/WebApplication/admin/edit/Admin?id=A10001#A10001">
+                        <a href="#">
                             <span class="glyphicon glyphicon-pencil">
                             </span>
                         </a>
@@ -114,7 +114,18 @@
                 <td>&male;</td>
             </tr>
             <tr>
-                <td></td>
+                <td>
+                    <span id="A10001">
+                        <a href="#">
+                            <span class="glyphicon glyphicon-trash" data-id="">
+                            </span>
+                        </a>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-pencil">
+                            </span>
+                        </a>
+                    </span>
+                </td>
                 <td>615</td>
                 <td>tigedasafr@gmail.com</td>
                 <td>Hong wah</td>

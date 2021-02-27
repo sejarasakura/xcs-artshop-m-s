@@ -55,13 +55,25 @@ namespace WebApplicationAssigment.commons
                 }
                 else
                 {
-                    context.Response.BinaryWrite(Functions.ImmageAssetToByte("asset/profile.png"));
+                    context.Response.BinaryWrite(
+                        Functions.ImmageAssetToByte(getSelectionImage(_default))
+                    );
                 }
             }
             catch
             {
-                context.Response.BinaryWrite(Functions.ImmageAssetToByte("asset/profile.png"));
+                context.Response.BinaryWrite(
+                    Functions.ImmageAssetToByte(getSelectionImage(_default))
+                );
             }
+        }
+
+        private string getSelectionImage(string _default)
+        {
+            if (_default != null)
+                return _default;
+            else
+                return "asset/profile.png";
         }
 
         public bool IsReusable

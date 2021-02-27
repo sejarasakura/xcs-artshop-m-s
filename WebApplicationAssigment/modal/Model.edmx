@@ -24,7 +24,7 @@
           </Key>
           <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="birthday_date" Type="date" />
-          <Property Name="description" Type="nvarchar" MaxLength="10" />
+          <Property Name="description" Type="nvarchar(max)" />
           <Property Name="signature" Type="varbinary(max)" />
           <Property Name="picture" Type="varbinary(max)" />
         </EntityType>
@@ -1879,7 +1879,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           </Key>
           <Property Name="UserId" Type="Guid" Nullable="false" />
           <Property Name="birthday_date" Type="DateTime" Precision="0" />
-          <Property Name="description" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="signature" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="Arts" Relationship="ArtShopModel.FK__Art__artist_id__3B40CD36" FromRole="Artist" ToRole="Art" />

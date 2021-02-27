@@ -5,12 +5,13 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace WebApplicationAssigment.pages.admin.widget
+namespace WebApplication1.pages
 {
-    public partial class AdminNav : System.Web.UI.UserControl
+    public partial class WebForm7 : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
         }
     }
 }

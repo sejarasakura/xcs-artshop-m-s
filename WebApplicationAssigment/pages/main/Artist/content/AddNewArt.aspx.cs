@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebApplicationAssigment.modal;
+using WebApplicationAssigment.commons;
 
 namespace WebApplicationAssigment.pages.main.Artist.content
 {
@@ -24,6 +25,7 @@ namespace WebApplicationAssigment.pages.main.Artist.content
             art.description = this.Discription.Text;
             art.date = this.DateCreation.Text;
             art.price = decimal.Parse(this.Price.Text);
+            art.artist_id = (Guid)Functions.getLoginUser().ProviderUserKey;
             using (ArtShopEntities db = new ArtShopEntities())
             {
                 art.id = db.Arts.Last().id + 1;

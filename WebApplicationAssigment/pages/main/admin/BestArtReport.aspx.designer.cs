@@ -8,9 +8,9 @@
 //------------------------------------------------------------------------------
 
 
-namespace WebApplicationAssigment.pages.main.admin.content
+namespace WebApplicationAssigment.pages.main.admin
 {
-    public partial class WebForm1
+    public partial class BestArtReport
     {
     }
 }
