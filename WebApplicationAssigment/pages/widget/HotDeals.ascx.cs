@@ -16,7 +16,7 @@ namespace WebApplicationAssigment.pages.widget
             {
                 List<Art> ts = db.Arts.ToList();
                 Repeater1.DataSource = ts.GetRange(0, ts.Count >= 5?5:ts.Count);
-
+                Repeater1.DataBind();
             }
         }
     }

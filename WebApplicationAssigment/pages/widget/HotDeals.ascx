@@ -8,6 +8,10 @@
         background-color: #fff;
     }
 
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
     .data-container {
         display: inline-block;
         margin-right: 20px;
@@ -39,17 +43,28 @@
     .discripion {
         overflow: hidden;
     }
+
+    .border-Hotdeals {
+        border: solid #EEE 1px;
+        padding: 10px;
+    }
 </style>
 
-<%@ Import namespace="WebApplicationAssigment.commons" %>
+<%@ Import Namespace="WebApplicationAssigment.commons" %>
 <div class="container-x" id="flavoursContainer">
     <asp:Repeater ID="Repeater1" runat="server">
         <ItemTemplate>
             <!-- START -->
-            <div class="panel panel-default data-container">
-                <div class="panel-heading"><%# Eval("title") %></div>
+            <div class="panel panel-default data-container border-Hotdeals">
+                <h4 class="text-center"><%# Eval("title") %></h4>
                 <div class="panel-body control-body">
-                    <img class="img-control" src="../Class/ArtPicGetter.ashx?id=<%# Eval("id") %>" alt="<%# Eval("name") %>">
+                    <center>
+                            <a
+                                href='<%= Constant.IMAGE_URL %>/ImageViewer.aspx?image=<%# Eval("image") %>&name=<%# Eval("title") %>'
+                                target="_blank">
+                    <img class="img-control pull-center float-center" src="<%= Constant.DEFAULT_URL %>/<%# Eval("image") %>" alt="<%# Eval("title") %>">
+                            </a>
+                    </center>
                     <div class="row" style="padding-top: 10px;">
                         <div class="col-sm-8">
                             <div class="discripion overflow-hidden">
@@ -60,7 +75,7 @@
                             <a
                                 href='<%= Constant.IMAGE_URL %>/ImageViewer.aspx?image=<%# Eval("image") %>&name=<%# Eval("title") %>'
                                 target="_blank"
-                                class="btn btn-default btn-block form-control"
+                                class="btn btn-secondary btn-block form-control"
                                 style="margin-top: 10px">View Image
                             </a>
                         </div>
@@ -68,7 +83,7 @@
                     </div>
                     <div class="row" style="padding-top: 0">
                         <div class="col-sm-12 text-center">
-                            <a href="SingleProduct.aspx?id=<%# Eval("id")%>">View Details
+                            <a href="<%= Constant.ARTSHOP_URL%>/ArtShop_Cust_Details.aspx?id=<%# Eval("id")%>">View Details
                             </a>
                         </div>
                         <br />

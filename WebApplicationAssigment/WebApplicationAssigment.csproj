@@ -147,6 +147,8 @@
     <Content Include="assets\image\profile.png" />
     <Content Include="assets\image\signature.png" />
     <Content Include="assets\image\no_img.jpg" />
+    <Content Include="content\toastr.css" />
+    <Content Include="content\toastr.min.css" />
     <Content Include="pages\diagram_reader\ImageViewer.aspx" />
     <Content Include="pages\main\admin\BestArtReport.aspx" />
     <Content Include="pages\main\admin\CreateRole.aspx" />
@@ -213,6 +215,13 @@
     <Content Include="pages\widget\StartPageSM.ascx" />
     <Content Include="pages\widget\StartPage.ascx" />
     <Content Include="pages\widget\SuccessMessageLarge.ascx" />
+    <Content Include="content\toastr.scss" />
+    <Content Include="content\toastr.less" />
+    <None Include="Scripts\jquery-1.6.3-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.6.3.js" />
+    <Content Include="Scripts\jquery-1.6.3.min.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Web.config" />
     <Content Include="web\lib\css\extensions.css" />
     <Content Include="web\lib\css\lib.css" />

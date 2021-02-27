@@ -33,9 +33,9 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item mt-3" href="#">Account Details</a>
-                            <a class="dropdown-item mt-3" href="#">Change Password</a>
-                            <a class="dropdown-item mt-3" href="#">Logout</a>
+                            <a class="dropdown-item mt-3" href="<%= Constant.PROFILE_URL %>/MyAccount.aspx">Account Details</a>
+                            <a class="dropdown-item mt-3" href="<%= Constant.PROFILE_URL %>/Change Password.aspx">Change Password</a>
+                            <a class="dropdown-item mt-3" href="<%= Constant.PROFILE_URL %>/Logout.aspx">Logout</a>
                         </div>
                     </li>
                     <% if (role.Contains("Artist")) { %>
@@ -51,7 +51,7 @@
                     <% } %>
                     <% if (role.Contains("Customer")) { %>
                             <li class="nav-item">
-                                <a class="nav-link" href="<%= Constant.DEFAULT_URL%>/pages/main/ArtShop/ShoppingCart.aspx">Shopping Cart</a>
+                                <a class="nav-link" href="<%= Constant.ARTSHOP_URL%>/ShoppingCart.aspx">Shopping Cart</a>
                             </li>
                     <% } %>
                     <% if (role.Contains("Administrator")) { %>

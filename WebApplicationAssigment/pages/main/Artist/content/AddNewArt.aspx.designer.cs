@@ -15,6 +15,15 @@ namespace WebApplicationAssigment.pages.main.Artist.content
     {
 
         /// <summary>
+        /// preview control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl preview;
+
+        /// <summary>
         /// TitleText control.
         /// </summary>
         /// <remarks>
@@ -114,13 +123,13 @@ namespace WebApplicationAssigment.pages.main.Artist.content
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator6;
 
         /// <summary>
-        /// FileUpload control.
+        /// xFileUpload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUpload;
+        protected global::System.Web.UI.WebControls.FileUpload xFileUpload;
 
         /// <summary>
         /// btnSubmit control.

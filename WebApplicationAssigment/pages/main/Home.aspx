@@ -10,6 +10,13 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <uc1:StartPage runat="server" ID="StartPage" />
-    <uc1:HotDeals runat="server" id="HotDeals" />
+    <div style="margin: 20px">
+        <h2><div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>Hot Deals</h2>
+        <div id="container1">
+            <div id="container2">
+                <uc1:HotDeals runat="server" ID="HotDeals" />
+            </div>
+        </div>
+    </div>
     <uc1:EndPages runat="server" ID="EndPages" />
 </asp:Content>

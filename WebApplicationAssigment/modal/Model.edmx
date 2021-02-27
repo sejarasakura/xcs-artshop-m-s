@@ -449,7 +449,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="availability" Type="int" />
           <Property Name="add_date" Type="date" />
         </EntityType>
-        <Association Name="FK__Art__artist_id__3B40CD36">
+        <Association Name="FK__Art__artist_id__44952D46">
           <End Role="Artist" Type="Self.Artist" Multiplicity="1" />
           <End Role="Art" Type="Self.Art" Multiplicity="*" />
           <ReferentialConstraint>
@@ -461,7 +461,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Art__category_id__3A4CA8FD">
+        <Association Name="FK__Art__category_id__43A1090D">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
           <End Role="Art" Type="Self.Art" Multiplicity="*" />
           <ReferentialConstraint>
@@ -629,7 +629,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CartDetai__art_i__40F9A68C">
+        <Association Name="FK__CartDetai__art_i__41B8C09B">
           <End Role="Art" Type="Self.Art" Multiplicity="1" />
           <End Role="CartDetails" Type="Self.CartDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -689,7 +689,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PaymentDe__art_i__3F115E1A">
+        <Association Name="FK__PaymentDe__art_i__42ACE4D4">
           <End Role="Art" Type="Self.Art" Multiplicity="1" />
           <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1209,11 +1209,11 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
     [vw_customer_cart].[add_date] AS [add_date]
     FROM [dbo].[vw_customer_cart] AS [vw_customer_cart]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__Art__artist_id__3B40CD36" Association="Self.FK__Art__artist_id__3B40CD36">
+          <AssociationSet Name="FK__Art__artist_id__44952D46" Association="Self.FK__Art__artist_id__44952D46">
             <End Role="Artist" EntitySet="Artist" />
             <End Role="Art" EntitySet="Art" />
           </AssociationSet>
-          <AssociationSet Name="FK__Art__category_id__3A4CA8FD" Association="Self.FK__Art__category_id__3A4CA8FD">
+          <AssociationSet Name="FK__Art__category_id__43A1090D" Association="Self.FK__Art__category_id__43A1090D">
             <End Role="Category" EntitySet="Category" />
             <End Role="Art" EntitySet="Art" />
           </AssociationSet>
@@ -1269,7 +1269,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Cart" EntitySet="Cart" />
           </AssociationSet>
-          <AssociationSet Name="FK__CartDetai__art_i__40F9A68C" Association="Self.FK__CartDetai__art_i__40F9A68C">
+          <AssociationSet Name="FK__CartDetai__art_i__41B8C09B" Association="Self.FK__CartDetai__art_i__41B8C09B">
             <End Role="Art" EntitySet="Art" />
             <End Role="CartDetails" EntitySet="CartDetails" />
           </AssociationSet>
@@ -1289,7 +1289,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <End Role="PaymentMethod" EntitySet="PaymentMethod" />
             <End Role="Payment" EntitySet="Payment" />
           </AssociationSet>
-          <AssociationSet Name="FK__PaymentDe__art_i__3F115E1A" Association="Self.FK__PaymentDe__art_i__3F115E1A">
+          <AssociationSet Name="FK__PaymentDe__art_i__42ACE4D4" Association="Self.FK__PaymentDe__art_i__42ACE4D4">
             <End Role="Art" EntitySet="Art" />
             <End Role="PaymentDetails" EntitySet="PaymentDetails" />
           </AssociationSet>

@@ -5,6 +5,8 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:Label ID="Label1" runat="server" Text="Your Shopping Cart" Font-Size="X-Large"></asp:Label>
 
+    
+<%@ Import namespace="WebApplicationAssigment.commons" %>
 
     <div class="container">
         <div class="row">
@@ -45,7 +47,20 @@
 
 
 
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\ArtShop.mdf;Integrated Security=True;MultipleActiveResultSets=True;Connect Timeout=30;Application Name=EntityFramework" ProviderName="System.Data.SqlClient" SelectCommand="SELECT * FROM [vw_customer_cart]"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\ArtShop.mdf;Integrated Security=True;MultipleActiveResultSets=True;Connect Timeout=30;Application Name=EntityFramework" ProviderName="System.Data.SqlClient" 
+        SelectCommand="SELECT * FROM [vw_customer_cart] WHERE UserId = @UserId"
+        DeleteCommand="DELETE FROM [CartDetails] WHERE [cart_id] = @cart_id AND [art_id] = @art_id"
+        >
+
+        <SelectParameters>
+            <asp:Parameter Name="user_id" Type="Int32" />
+        </SelectParameters>
+        <DeleteParameters>
+            <asp:Parameter Name="cart_id" Type="Int32" />
+            <asp:Parameter Name="art_id" Type="Int32" />
+        </DeleteParameters>
+                    
+    </asp:SqlDataSource>
 
 
 </asp:Content>

@@ -28,5 +28,12 @@ namespace WebApplicationAssigment.commons
             return user;
         }
 
+        public static string getAlert(string css_class, string error)
+        {
+            return  "<div class=\"alert " + css_class + " alert-dismissible\">" +
+                "<a href = \"#\" class=\"close\" data-dismiss=\"alert\" aria-label=\"close\">&times;</a>" +
+                error +
+              "</div>";
+        }
     }
 }

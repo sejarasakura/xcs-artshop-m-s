@@ -51,7 +51,7 @@ namespace WebApplicationAssigment.pages.main.ArtShop
                     }
                     else
                     {
-                        newCart.id = db.Carts.Last().id + 1;
+                        newCart.id = db.Carts.OrderByDescending(u => u.id).FirstOrDefault().id + 1;
                     }
                     db.Carts.Add(newCart);
                     db.SaveChanges();
@@ -59,7 +59,7 @@ namespace WebApplicationAssigment.pages.main.ArtShop
                 }
                 else
                 {
-                    cart = carts.Last();
+                    cart = carts.FirstOrDefault();
                 }
                 //string userid = Session["UserId"].ToString(); //user id for the logged in user
                 string productid = Request.QueryString["id"]; //get product id from the selected product

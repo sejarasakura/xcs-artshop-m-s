@@ -28,12 +28,15 @@ namespace WebApplicationAssigment.pages.main.Artist.content
             art.artist_id = (Guid)Functions.getLoginUser().ProviderUserKey;
             using (ArtShopEntities db = new ArtShopEntities())
             {
-                art.id = db.Arts.Count() <= 0 ? 0 :db.Arts.Last().id + 1;
+                art.id = db.Arts.Count() <= 0 ? 1 : db.Arts.OrderByDescending(u => u.id).FirstOrDefault().id + 1;
                 try
                 {
+                    string fileName = art.id + "-" + art.title;
+                    art.image = "/asset/image/Art/" + fileName;
                     Art result = db.Arts.Add(art);
-                    string fileName = result.id + "-" + result.title;
-                    FileUpload.SaveAs(Server.MapPath("~/asset/image/Art/") + fileName);
+                    Console.Out.WriteLine(fileName);
+                    xFileUpload.SaveAs(Server.MapPath(Constant.DEFAULT_URL + "/asset/image/Art/") + fileName);
+                    db.SaveChanges();
                 }
                 catch (Exception x)
                 {
