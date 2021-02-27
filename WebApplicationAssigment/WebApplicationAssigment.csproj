@@ -342,7 +342,6 @@
     <Compile Include="pages\diagram_reader\ImageViewer.aspx.designer.cs">
       <DependentUpon>ImageViewer.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pages\diagram_reader\XWebConfig.cs" />
     <Compile Include="pages\main\admin\BestArtReport.aspx.cs">
       <DependentUpon>BestArtReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

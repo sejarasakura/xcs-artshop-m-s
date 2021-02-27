@@ -37,10 +37,11 @@ namespace WebApplicationAssigment.pages.main.ArtShop
             using (ArtShopEntities db = new ArtShopEntities())
             {
                 Guid user_id = (Guid)Functions.getLoginUser().ProviderUserKey;
-                Cart cart = db.Carts.Where(
+                Cart cart;
+                IQueryable<Cart> carts = db.Carts.Where(
                     s => s.user_id == user_id
-                    ).First();
-                if(cart == null)
+                );
+                if(carts.Count() <= 0)
                 {
                     Cart newCart = new Cart();
                     newCart.user_id = user_id;
@@ -55,6 +56,10 @@ namespace WebApplicationAssigment.pages.main.ArtShop
                     db.Carts.Add(newCart);
                     db.SaveChanges();
                     cart = newCart;
+                }
+                else
+                {
+                    cart = carts.Last();
                 }
                 //string userid = Session["UserId"].ToString(); //user id for the logged in user
                 string productid = Request.QueryString["id"]; //get product id from the selected product
