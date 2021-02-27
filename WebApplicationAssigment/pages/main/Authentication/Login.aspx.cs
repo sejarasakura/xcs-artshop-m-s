@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using WebApplicationAssigment.modal;
+using WebApplicationAssigment.commons;
 
 namespace WebApplicationAssigment.pages.main.Profile
 {
@@ -17,7 +18,8 @@ namespace WebApplicationAssigment.pages.main.Profile
 
         protected void Login1_LoggedIn(object sender, EventArgs e)
         {
-            Response.Redirect("LoggedIn.aspx");
+            
+            Response.Redirect("Profile/MyAccount.aspx?id=" + Functions.getLoginUser().UserName);
         }
     }
 }

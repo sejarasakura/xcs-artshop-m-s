@@ -21,15 +21,11 @@ namespace WebApplicationAssigment.commons
 
         public static MembershipUser getLoginUser()
         {
-            if (HttpContext.Current.User.Identity.IsAuthenticated)
-            {
-                MembershipUser user = Membership.GetUser(
-                    HttpContext.Current.User.Identity.Name
-                );
-                // (Guid) user.ProviderUserKey
-                return user;
-            }
-            return null;
+            MembershipUser user = Membership.GetUser(
+                HttpContext.Current.User.Identity.Name
+            );
+            // (Guid) user.ProviderUserKey
+            return user;
         }
 
     }

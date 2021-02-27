@@ -3,7 +3,6 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    @model UsingMVC.Models.Art 
     <style>
         a{
             color: #f8f9fa;
@@ -179,9 +178,8 @@
               </div>
         
       <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-3">
-       
-<asp:Image CssClass="center" ImageUrl="~/Class/ArtPicGetter.ashx?id=-1" ID="Image1" runat="server" length="700px" Width="500px" />  
-          </div>
+            <asp:Image CssClass="center" ImageUrl="~/assets/image/no_img.jpg" ID="Image1" runat="server" length="700px" Width="500px" />  
+      </div>
     </div>
   
 

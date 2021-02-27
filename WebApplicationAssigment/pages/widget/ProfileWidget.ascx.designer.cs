@@ -8,9 +8,9 @@
 //------------------------------------------------------------------------------
 
 
-namespace WebApplicationAssigment.pages.main.Profile.account
+namespace WebApplicationAssigment.pages.widget
 {
-    public partial class Profile
+    public partial class ProfileWidget
     {
     }
 }

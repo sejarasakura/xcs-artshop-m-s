@@ -146,6 +146,7 @@
     <Content Include="assets\image\Art\one.jpg" />
     <Content Include="assets\image\profile.png" />
     <Content Include="assets\image\signature.png" />
+    <Content Include="assets\image\no_img.jpg" />
     <Content Include="pages\diagram_reader\ImageViewer.aspx" />
     <Content Include="pages\main\admin\BestArtReport.aspx" />
     <Content Include="pages\main\admin\CreateRole.aspx" />
@@ -189,7 +190,7 @@
     <Content Include="pages\main\ArtShop\ShoppingCart.aspx" />
     <Content Include="pages\main\Authentication\ForgotPassword.aspx" />
     <Content Include="pages\main\Authentication\Profile\MyAccount.aspx" />
-    <Content Include="pages\main\Authentication\Profile\Profile.aspx" />
+    <Content Include="pages\main\Authentication\Profile\Change Password.aspx" />
     <Content Include="pages\main\Authentication\Login.aspx" />
     <Content Include="pages\main\Authentication\Register.aspx" />
     <Content Include="pages\main\Home.aspx" />
@@ -208,6 +209,7 @@
     <Content Include="pages\widget\Header.ascx" />
     <Content Include="pages\widget\HotDeals.ascx" />
     <Content Include="pages\widget\ProfilePicture.ascx" />
+    <Content Include="pages\widget\ProfileWidget.ascx" />
     <Content Include="pages\widget\Sidemap.ascx" />
     <Content Include="pages\widget\StartPageSM.ascx" />
     <Content Include="pages\widget\StartPage.ascx" />
@@ -531,12 +533,12 @@
     <Compile Include="pages\main\Authentication\Profile\MyAccount.aspx.designer.cs">
       <DependentUpon>MyAccount.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pages\main\Authentication\Profile\Profile.aspx.cs">
-      <DependentUpon>Profile.aspx</DependentUpon>
+    <Compile Include="pages\main\Authentication\Profile\Change Password.aspx.cs">
+      <DependentUpon>Change Password.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="pages\main\Authentication\Profile\Profile.aspx.designer.cs">
-      <DependentUpon>Profile.aspx</DependentUpon>
+    <Compile Include="pages\main\Authentication\Profile\Change Password.aspx.designer.cs">
+      <DependentUpon>Change Password.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\main\Authentication\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -670,6 +672,13 @@
     </Compile>
     <Compile Include="pages\widget\ProfilePicture.ascx.designer.cs">
       <DependentUpon>ProfilePicture.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\widget\ProfileWidget.ascx.cs">
+      <DependentUpon>ProfileWidget.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\widget\ProfileWidget.ascx.designer.cs">
+      <DependentUpon>ProfileWidget.ascx</DependentUpon>
     </Compile>
     <Compile Include="pages\widget\Sidemap.ascx.cs">
       <DependentUpon>Sidemap.ascx</DependentUpon>

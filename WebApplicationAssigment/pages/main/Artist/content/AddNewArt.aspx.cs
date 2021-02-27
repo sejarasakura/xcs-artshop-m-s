@@ -28,7 +28,7 @@ namespace WebApplicationAssigment.pages.main.Artist.content
             art.artist_id = (Guid)Functions.getLoginUser().ProviderUserKey;
             using (ArtShopEntities db = new ArtShopEntities())
             {
-                art.id = db.Arts.Last().id + 1;
+                art.id = db.Arts.Count() <= 0 ? 0 :db.Arts.Last().id + 1;
                 try
                 {
                     Art result = db.Arts.Add(art);

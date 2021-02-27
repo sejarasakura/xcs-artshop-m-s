@@ -16,7 +16,7 @@
                     <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i>Sign in with Google+</span> </button>
                 </div>
                 <p style="text-align: center">OR  </p>
-                <asp:TextBox ID="UserName" runat="server" class="form-control" placeholder="email/username" required="" autofocus="" />
+                <asp:TextBox ID="UserName" runat="server" class="form-control" placeholder="username" required="" autofocus="" />
                 <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" Text="*"></asp:RequiredFieldValidator>
                 <br>
                 <asp:TextBox ID="Password" runat="server" class="form-control" placeholder="password" required="" autofocus="" TextMode="Password" />
@@ -29,7 +29,7 @@
                 <b class="text-danger text-center">
                     <asp:Literal ID="FailureText" runat="server"></asp:Literal>
                 </b>
-                <asp:Button CssClass="btn btn-success btn-block" type="submit" ID="Login" CommandName="Login" runat="server" Text="Sing In"></asp:Button>
+                <asp:Button CssClass="btn btn-success btn-block" ID="Login" CommandName="Login" runat="server" Text="Sing In"></asp:Button>
                 <a href="ForgotPassword.aspx" id="forgot_pswd">Forgot password?</a>
                 <hr>
                 <a href="Register.aspx" class="text-white btn btn-primary" id="btn-signup"><i class="fas fa-user-plus"></i>Sign up New Account</a>

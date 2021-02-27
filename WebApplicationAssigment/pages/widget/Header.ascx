@@ -27,6 +27,7 @@
                     </li>
                 </AnonymousTemplate>
                 <LoggedInTemplate>
+                    <% string[] role = Roles.GetRolesForUser(); %>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account
                         </a>
@@ -36,6 +37,23 @@
                             <a class="dropdown-item mt-3" href="#">Logout</a>
                         </div>
                     </li>
+                    <% if (role.Contains("Artist")) { %>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<%= Constant.ARTIST_URL %>/AddNewArt.aspx">Add Art</a>
+                                <a class="nav-link" href="<%= Constant.ARTIST_URL %>/ReadUpdateDeleteArt.aspx">My Arts</a>
+                                <a class="nav-link" href="<%= Constant.ARTIST_URL %>/ViewArtSales.aspx">My Arts</a>
+                            </li>
+                    <% } %>
+                    <% if (role.Contains("Customer")) { %>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<%= "https://" + HttpContext.Current.Request.Url.Authority%>/pages/main/ArtShop/ShoppingCart.aspx">Shopping Cart</a>
+                            </li>
+                    <% } %>
+                    <% if (role.Contains("Administrator")) { %>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<%= Constant.ADMIN_URL %>/AdminDashboard.aspx">Admin Dashboard</a>
+                            </li>
+                    <% } %>
                 </LoggedInTemplate>
                 <RoleGroups>
                     <asp:RoleGroup Roles="Artist">
@@ -45,16 +63,10 @@
                     </asp:RoleGroup>
                     <asp:RoleGroup Roles="Customer">
                         <ContentTemplate>
-                            <li class="nav-item">
-                                <a class="dropdown-item mt-2" href="<%= "https://" + HttpContext.Current.Request.Url.Authority%>/pages/main/ArtShop/ShoppingCart.aspx">Shopping Cart</a>
-                            </li>
                         </ContentTemplate>
                     </asp:RoleGroup>
                     <asp:RoleGroup Roles="Administrator">
                         <ContentTemplate>
-                            <li class="nav-item">
-                                <a class="dropdown-item mt-2" href="<%= Constant.ADMIN_URL %>/AdminDashboard.aspx">Admin Dashboard</a>
-                            </li>
                         </ContentTemplate>
                     </asp:RoleGroup>
                 </RoleGroups>
