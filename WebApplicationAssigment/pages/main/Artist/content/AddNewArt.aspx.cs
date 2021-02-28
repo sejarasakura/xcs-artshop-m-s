@@ -31,21 +31,14 @@ namespace WebApplicationAssigment.pages.main.Artist.content
             art.category_id = int.Parse(this.Category.SelectedItem.Value);
             using (ArtShopEntities db = new ArtShopEntities())
             {
-                
                 art.id=db.Arts.Count()+1;
                 string fileName = art.id + "-" + art.title;
-                FileUpload.SaveAs(Server.MapPath("~/assets/image/Art/") + fileName);
+                string exe = new FileInfo(xFileUpload.PostedFile.FileName).Extension;
+                xFileUpload.SaveAs(Server.MapPath("~/assets/image/Art/") + fileName + exe);
                 try
                 {
-                //    string fileName = "adasd";
-                  //  FileUpload.SaveAs(Server.MapPath("~/asset/image/Art/") + fileName);
                     db.Arts.Add(art);
                     db.SaveChanges();
-                  //  Art result = db.Arts.LastOrDefault<Art>();
-                  //  string fileName = result.id + "-" + result.title;
-                   // FileUpload.SaveAs(Server.MapPath("~/asset/image/Art/") + fileName);
-
-
                 }
                 catch (Exception x)
                 {

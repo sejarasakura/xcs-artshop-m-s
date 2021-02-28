@@ -15,15 +15,6 @@ namespace WebApplicationAssigment.pages.main.Artist.content
     {
 
         /// <summary>
-        /// preview control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl preview;
-
-        /// <summary>
         /// TitleText control.
         /// </summary>
         /// <remarks>

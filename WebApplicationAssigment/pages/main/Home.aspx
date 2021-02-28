@@ -4,6 +4,7 @@
 <%@ Register Src="~/pages/widget/EndPages.ascx" TagPrefix="uc1" TagName="EndPages" %>
 <%@ Register Src="~/pages/widget/HotDeals.ascx" TagPrefix="uc1" TagName="HotDeals" %>
 
+<%@ Import namespace="WebApplicationAssigment.commons" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -11,7 +12,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <uc1:StartPage runat="server" ID="StartPage" />
     <div style="margin: 20px">
-        <h2><div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>Hot Deals</h2>
+        <img src="<%= Constant.DEFAULT_URL %>/assets/image/hot-deal.png" /><h2>Hot Deals</h2>
         <div id="container1">
             <div id="container2">
                 <uc1:HotDeals runat="server" ID="HotDeals" />

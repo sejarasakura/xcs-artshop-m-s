@@ -158,7 +158,7 @@
                     name="file" 
                     onchange="previewFile()" 
                     CssClass="form-control" 
-                    id="FileUpload" 
+                    id="xFileUpload" 
                     placeholder = "Upload your profile picture" 
                     runat="server" />
             </div>
@@ -169,7 +169,7 @@
   <script type="text/javascript">
       function previewFile() {
           var preview = document.querySelector('#<%=Image1.ClientID %>');
-            var file = document.querySelector('#<%=FileUpload.ClientID %>').files[0];
+            var file = document.querySelector('#<%=xFileUpload.ClientID %>').files[0];
           var reader = new FileReader();
 
           reader.onloadend = function () {

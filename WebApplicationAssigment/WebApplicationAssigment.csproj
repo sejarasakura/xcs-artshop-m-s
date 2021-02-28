@@ -144,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\image\Art\one.jpg" />
+    <Content Include="assets\image\hot-deal.png" />
     <Content Include="assets\image\profile.png" />
     <Content Include="assets\image\signature.png" />
     <Content Include="assets\image\no_img.jpg" />
