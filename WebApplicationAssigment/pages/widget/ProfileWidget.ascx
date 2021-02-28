@@ -1,16 +1,17 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ProfileWidget.ascx.cs" Inherits="WebApplicationAssigment.pages.widget.ProfileWidget" %>
 
 
+<%@ Import namespace="WebApplicationAssigment.commons" %>
 <hr />
 <div class="container bootstrap snippet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
+    <%
+        MembershipUser ms = Functions.getLoginUser();
+    %>
     <div class="row">
         <div class="col-sm-10">
             <h1>User name</h1>
         </div>
-        <div class="col-sm-2"><a href="/users" class="pull-right">
-            <img title="profile image" class="img-circle img-responsive" src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100"></a></div>
     </div>
     <div class="row">
         <div class="col-sm-3">
@@ -18,7 +19,7 @@
 
 
             <div class="text-center">
-                <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+                <img src="<%= Constant.PROFILE_PIC_URL %>?guid=<%= (Guid)ms.ProviderUserKey %>" class="avatar img-circle img-thumbnail" alt="avatar">
                 <h6>Upload a different photo...</h6>
                 <input type="file" class="text-center center-block file-upload">
             </div>
@@ -124,24 +125,6 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-
-                                    <div class="col-xs-6">
-                                        <label for="password">
-                                            <h4>Password</h4>
-                                        </label>
-                                        <input type="password" class="form-control" name="password" id="password" placeholder="password" title="enter your password.">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-
-                                    <div class="col-xs-6">
-                                        <label for="password2">
-                                            <h4>Verify</h4>
-                                        </label>
-                                        <input type="password" class="form-control" name="password2" id="password2" placeholder="password2" title="enter your password2.">
-                                    </div>
-                                </div>
-                                <div class="form-group">
                                     <div class="col-xs-12">
                                         <br>
                                         <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i>Save</button>
@@ -156,10 +139,9 @@
                         <% if (role.Contains("Artist"))
                             { %>
                         <div class="tab-pane" id="artist">
-
                             <h2></h2>
 
-                            <hr>
+                            <hr />
                         </div>
                         <!--/tab-pane-->
                         <% } %>

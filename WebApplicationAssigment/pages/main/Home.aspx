@@ -12,12 +12,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <uc1:StartPage runat="server" ID="StartPage" />
     <div style="margin: 20px">
-        <img src="<%= Constant.DEFAULT_URL %>/assets/image/hot-deal.png" /><h2>Hot Deals</h2>
+        <h2><img src="<%= Constant.DEFAULT_URL %>/assets/image/hot-deal.png" /> * Hot Deals</h2>
+        <br />
         <div id="container1">
             <div id="container2">
                 <uc1:HotDeals runat="server" ID="HotDeals" />
             </div>
         </div>
     </div>
+    <hr />
     <uc1:EndPages runat="server" ID="EndPages" />
 </asp:Content>

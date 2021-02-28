@@ -74,8 +74,9 @@
     </asp:content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
- <img src="../../assets/image/background/CompanyLogo.png " class="d-inline-block align-top" width="130" height="100"><br />
+    
+<%@ Import namespace="WebApplicationAssigment.commons" %>
+ <img src="<%= Constant.DEFAULT_URL %>/assets/image/background/CompanyLogo.png " class="d-inline-block align-top" width="130" height="100"><br />
     <a href="<%= "https://" + HttpContext.Current.Request.Url.Authority+"/pages/main/Artist/content/ReadUpdateDeleteArt.aspx"%>"">
         <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Update Art</button></a>
 

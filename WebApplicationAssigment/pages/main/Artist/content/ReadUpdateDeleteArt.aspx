@@ -155,6 +155,7 @@ $(document).ready(function(){
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
+<%@ Import namespace="WebApplicationAssigment.commons" %>
     <div class="row">
         <!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center"> -->
               <div class="page-header col-xs-12 col-sm-12">
@@ -164,7 +165,7 @@ $(document).ready(function(){
             <div class="col-lg-11 mx-auto">
                 <div class="card border-0 shadow">
                     <div class="card-body p-5">
-                        <img src="../../../assets/image/background/CompanyLogo.png " class="d-inline-block align-top" width="90" height="64">
+                        <img src="<%= Constant.DEFAULT_URL %>/assets/image/background/CompanyLogo.png " class="d-inline-block align-top" width="90" height="64">
                         <!-- Responsive table -->
                           <div class="table-responsive">
         <div class="table-wrapper" style="margin-top: 0px;margin-left: 0px;margin-right: 0px;margin-bottom: 0px;width: 890px;">

@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="Header.ascx.cs" Inherits="WebApplicationAssigment.pages.widget.Header" %>
 
-<%@ Import namespace="WebApplicationAssigment.commons" %>
+<%@ Import Namespace="WebApplicationAssigment.commons" %>
 
 <nav id="project_navbar" class="navbar navbar-expand-lg navbar-light" style="background-color: transparent">
     <a class="navbar-brand" href="#">
@@ -27,7 +27,7 @@
                     </li>
                 </AnonymousTemplate>
                 <LoggedInTemplate>
-                    
+
                     <% string[] role = Roles.GetRolesForUser(); %>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account
@@ -38,26 +38,29 @@
                             <a class="dropdown-item mt-3" href="<%= Constant.PROFILE_URL %>/Logout.aspx">Logout</a>
                         </div>
                     </li>
-                    <% if (role.Contains("Artist")) { %>
-                            <li class="nav-item">
-                                <a class="nav-link" href="<%= Constant.ARTIST_URL %>/AddNewArt.aspx">Add Art</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="<%= Constant.ARTIST_URL %>/ReadUpdateDeleteArt.aspx">My Art</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="<%= Constant.ARTIST_URL %>/ViewArtSales.aspx">Arts Sales</a>
-                            </li>
+                    <% if (role.Contains("Artist"))
+                        { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%= Constant.ARTIST_URL %>/AddNewArt.aspx">Add Art</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%= Constant.ARTIST_URL %>/ReadUpdateDeleteArt.aspx">My Art</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%= Constant.ARTIST_URL %>/ViewArtSales.aspx">Arts Sales</a>
+                    </li>
                     <% } %>
-                    <% if (role.Contains("Customer")) { %>
-                            <li class="nav-item">
-                                <a class="nav-link" href="<%= Constant.ARTSHOP_URL%>/ShoppingCart.aspx">Shopping Cart</a>
-                            </li>
+                    <% if (role.Contains("Customer"))
+                        { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%= Constant.ARTSHOP_URL%>/ShoppingCart.aspx">Shopping Cart</a>
+                    </li>
                     <% } %>
-                    <% if (role.Contains("Administrator")) { %>
-                            <li class="nav-item">
-                                <a class="nav-link" href="<%= Constant.ADMIN_URL %>/AdminDashboard.aspx">Admin Dashboard</a>
-                            </li>
+                    <% if (role.Contains("Administrator"))
+                        { %>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<%= Constant.ADMIN_URL %>/AdminDashboard.aspx">Admin Dashboard</a>
+                    </li>
                     <% } %>
                 </LoggedInTemplate>
             </asp:LoginView>
@@ -70,6 +73,15 @@
             <input class="form-control mr-sm-2" type="search" placeholder="Search..." aria-label="Search">
             <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
         </div>
+
+        <asp:LoginView ID="LoginView2" runat="server">
+            <AnonymousTemplate>
+            </AnonymousTemplate>
+            <LoggedInTemplate>
+                <% MembershipUser ms = Functions.getLoginUser(); %>
+                <img src="<%= Constant.PROFILE_PIC_URL %>?guid=<%= (Guid)ms.ProviderUserKey %>" class="avatar rounded-circle img-thumbnail" alt="avatar" width="60" height="60" style="margin-left: 20px">
+            </LoggedInTemplate>
+        </asp:LoginView>
     </div>
     <div class="header-content" style="width: 1px">
     </div>
@@ -94,6 +106,8 @@
 
     #project_navbar {
         z-index: 100000;
+        background: rgb(193,193,193)!important;
+        background: linear-gradient(0deg, rgba(225,225,225,1) 0%, rgba(255,255,255,1) 100%)!important;
     }
 </style>
 

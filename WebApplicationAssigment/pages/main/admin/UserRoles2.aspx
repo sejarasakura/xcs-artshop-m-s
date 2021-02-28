@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/pages/master/Master.Master" AutoEventWireup="true" CodeBehind="ShoppingCart.aspx.cs" Inherits="WebApplicationAssigment.pages.main.ArtShop.ShoppingCart" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/pages/master/Master.Master" AutoEventWireup="true" CodeBehind="UserRoles2.aspx.cs" Inherits="WebApplicationAssigment.pages.main.admin.UserRoles2.aspx" %>
 
 <%@ Import Namespace="WebApplicationAssigment.modal" %>
 
@@ -14,7 +14,7 @@
 
         <div class="row">
             <div class="col-md-12 d-flex justify-content-center">
-                <asp:Label ID="Label1" runat="server" Text="Your Shopping Cart" CssClass="text-lg-center"></asp:Label>
+                <asp:Label ID="Label1" runat="server" Text="USer roles" CssClass="text-lg-center"></asp:Label>
             </div>
             <center>
             <div id="preview" class="float-center" runat="server"></div>
@@ -31,60 +31,47 @@
                     DataSourceID="SqlDataSource1"
                     ShowHeaderWhenEmpty="True">
                     <Columns>
-                        <asp:TemplateField>
-                            <ItemTemplate>
-                                <asp:CheckBox ID="CheckBox1" runat="server" />
-                            </ItemTemplate>
-                        </asp:TemplateField>
-
 
                         <asp:TemplateField HeaderText="Art Image" SortExpression="image">
-                            <EditItemTemplate>
-                            </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("image", "~/{0}")%>' Height="50" Width="50" />
+                                <asp:Label ID="Label2" runat="server" Text="<%# Eval("UserId") %>"></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        
+                        <asp:TemplateField HeaderText="Art Image" SortExpression="image">
+                            <ItemTemplate>
+                                <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("UserId", "~/commons/UserProfilePicture.ashx?guid={0}")%>' Height="50" Width="50" />
                             </ItemTemplate>
                         </asp:TemplateField>
 
-                        <asp:TemplateField HeaderText="Art Title" SortExpression="title">
-                            <EditItemTemplate>
-                            </EditItemTemplate>
+                        <asp:TemplateField HeaderText="Art Image">
                             <ItemTemplate>
-                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("title") %>'></asp:Label>
+                                <asp:CheckBox ID="ckbRoleAdmin" runat="server" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Author">
+                            <ItemTemplate>
+                                <asp:CheckBox ID="ckbRoleAuthor" runat="server" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Art Image">
+                            <ItemTemplate>
+                                <asp:CheckBox ID="ckbRoleEditor" runat="server" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Art Image">
+                            <ItemTemplate>
+                                <asp:CheckBox ID="ckbRoleArtist" runat="server" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Art Image">
+                            <ItemTemplate>
+                                <asp:CheckBox ID="ckbRoleCustomer" runat="server" />
                             </ItemTemplate>
                         </asp:TemplateField>
 
-                        <asp:TemplateField HeaderText="Added Date" SortExpression="add_date">
-                            <EditItemTemplate>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Label2" runat="server" Text='<%# Eval("add_date") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
 
-                        <asp:TemplateField HeaderText="Availability" SortExpression="availability">
-                            <EditItemTemplate>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Label3" runat="server" Text='<%# setAvability((int)Eval("availability")) %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
 
-                        <asp:TemplateField HeaderText="Category Id" SortExpression="category_id">
-                            <EditItemTemplate>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Label4" runat="server" Text='<%# setCatergory((int)Eval("category_id")) %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
-
-                        <asp:TemplateField HeaderText="Price" SortExpression="price">
-                            <EditItemTemplate>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="Label6" runat="server" Text='<%# Eval("price", "RM {0:0.00}") %>'></asp:Label>
-                            </ItemTemplate>
-                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Remove" ShowHeader="False">
                             <ItemTemplate>
                                 <asp:LinkButton
@@ -119,7 +106,7 @@
             </div>
 
             <div class="col-md-12 text-right">
-                <asp:Button ID="Button2" CssClass="btn btn-danger" runat="server" Text="Check Out to payment" PostBackUrl="~/pages/Payment/SelectMethod.aspx" />
+                <asp:Button ID="Button2" CssClass="btn btn-danger" runat="server" Text="Check Out to payment" />
             </div>
 
         </div>

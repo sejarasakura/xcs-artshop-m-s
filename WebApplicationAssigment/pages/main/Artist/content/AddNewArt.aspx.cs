@@ -27,13 +27,13 @@ namespace WebApplicationAssigment.pages.main.Artist.content
             art.date = this.DateCreation.Text;
             art.price = decimal.Parse(this.Price.Text);
             art.artist_id = (Guid)Functions.getLoginUser().ProviderUserKey;
-            art.image = "asdafas";
             art.category_id = int.Parse(this.Category.SelectedItem.Value);
             using (ArtShopEntities db = new ArtShopEntities())
             {
-                art.id=db.Arts.Count()+1;
-                string fileName = art.id + "-" + art.title;
+                art.id = db.Arts.OrderByDescending(u => u.id).FirstOrDefault().id + 1; ;
+                string fileName = art.id + "-" + art.title.Replace(" ", "-");
                 string exe = new FileInfo(xFileUpload.PostedFile.FileName).Extension;
+                art.image = "/assets/image/Art/" + fileName + exe;
                 xFileUpload.SaveAs(Server.MapPath("~/assets/image/Art/") + fileName + exe);
                 try
                 {

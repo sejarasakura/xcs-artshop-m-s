@@ -15,7 +15,8 @@
         </div>
         <div id="nav-1" class="panel-collapse collapse " style="padding-left: 10px">
             <ul class="list-group">
-                <li class="list-group-item"><a href="<%= Constant.ADMIN_URL%>/AdminDashboard.aspx">Admin</a></li>
+                <li class="list-group-item"><a href="<%= Constant.ADMIN_URL%>/AdminDashboard.aspx">Admin Dashboard</a></li>
+                <li class="list-group-item"><a href="<%= Constant.HOME_URL%>">Customer Homepages</a></li>
             </ul>
         </div>
     </div>
@@ -25,9 +26,11 @@
         </div>
         <div id="nav-2" class="panel-collapse collapse " style="padding-left: 10px">
             <ul class="list-group">
-                <li class="list-group-item"><a href="<%= Constant.ADMIN_URL%>/UserPages.aspx?r=admin">Admin</a></li>
-                <li class="list-group-item"><a href="<%= Constant.ADMIN_URL%>/UserPages.aspx?r=customer">Customer</a></li>
-                <li class="list-group-item"><a href="<%= Constant.ADMIN_URL%>/UserPages.aspx?r=artist">Artist</a></li>
+                <li class="list-group-item"><a href="<%= Constant.ADMIN_URL%>/UserPages.aspx?role=administrator">Admin</a></li>
+                <li class="list-group-item"><a href="<%= Constant.ADMIN_URL%>/UserPages.aspx?role=customer">Customer</a></li>
+                <li class="list-group-item"><a href="<%= Constant.ADMIN_URL%>/UserPages.aspx?role=artist">Artist</a></li>
+                <li class="list-group-item"><a href="<%= Constant.ADMIN_URL%>/CreateRole.aspx">Create Role</a></li>
+                <li class="list-group-item"><a href="<%= Constant.ADMIN_URL%>/UserRole.aspx">User Role</a></li>
             </ul>
         </div>
     </div>
@@ -38,8 +41,8 @@
         <div id="nav-3" class="panel-collapse collapse " style="padding-left: 10px">
             <ul class="list-group">
                 <li class="list-group-item"><a href="<%= Constant.ADMIN_URL%>/Art.aspx">Art</a></li>
-                <li class="list-group-item"><a href="<%= Constant.ADMIN_URL%>/CreateRole.aspx">Role</a></li>
                 <li class="list-group-item"><a href="<%= Constant.ADMIN_URL%>/PaymentDetails.aspx">Payment</a></li>
+                <li class="list-group-item"><a href="<%= Constant.ADMIN_URL%>/PaymentDetails.aspx">Cart</a></li>
             </ul>
         </div>
     </div>

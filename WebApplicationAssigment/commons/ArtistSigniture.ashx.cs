@@ -27,7 +27,7 @@ namespace WebApplicationAssigment.commons
             {
                 if (data != null)
                 {
-                    context.Response.BinaryWrite((byte[])data);
+                    context.Response.BinaryWrite(data);
                 }
                 else
                 {

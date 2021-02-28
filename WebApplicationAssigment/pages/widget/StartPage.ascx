@@ -10,16 +10,16 @@
                             <div class="tatsu-column-pad">
                                 <div class="tatsu-module tatsu-inline-text clearfix tatsu-background-screen-sk   ">
                                     <div class="tatsu-inline-text-inner tatsu-align-center">
-                                        <h1 style="text-align: center"><span style="color: #ffffff">How we got started</span></h1>
+                                        <h1 style="text-align: center"><span style="color: #ffffff">Sketch</span></h1>
                                     </div>
                                 </div>
                                 <div class="tatsu-module tatsu-inline-text clearfix tatsu-background-screen-sk2   ">
                                     <div class="tatsu-inline-text-inner tatsu-align-center">
-                                        <p style="text-align: center"><span style="color: #ffffff; font-size: 18px; line-height: 32px">From a tiny garage to a multi-million dollar company, we innovated our way to the top.</span></p>
+                                        <p style="text-align: center"><span style="color: #ffffff; font-size: 18px; line-height: 32px"> &#8226; CHINA &#8226; USA &#8226; CANADA &#8226;</span></p>
                                     </div>
                                 </div>
                                 <div class="tatsu-module tatsu-normal-button tatsu-button-wrap align-block block-center">
-                                    <a style="background-color:#FFF" class="tatsu-shortcode mediumbtn tatsu-button left-icon circular bg-animation-none" href="#" aria-label="Learn More" data-gdpr-atts="{}">Learn More</a>
+                                    <a style="background-color:#FFF" class="tatsu-shortcode mediumbtn tatsu-button left-icon circular bg-animation-none" href="#" aria-label="Background" data-gdpr-atts="{}">Learn More</a>
                                 </div>
                             </div>
                         </div>

@@ -15,7 +15,7 @@ namespace WebApplicationAssigment.commons
             byte[] imageBytes = null;
             using (var webClient = new WebClient())
             {
-                imageBytes = webClient.DownloadData(Constant.DEFAULT_URL + path);
+                imageBytes = webClient.DownloadData(Constant.DEFAULT_URL + "/" +path);
             }
             return imageBytes;
         }
