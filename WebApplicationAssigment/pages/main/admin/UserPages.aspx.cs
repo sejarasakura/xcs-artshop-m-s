@@ -12,6 +12,16 @@ namespace WebApplicationAssigment.pages.main.admin.content
         protected void Page_Load(object sender, EventArgs e)
         {
             Page.Title = Request.QueryString["role"] == null ? "User" : Request.QueryString["role"];
+            SqlDataSource1.SelectParameters["role"].DefaultValue = Request.QueryString["role"];
+            this.Label1.Text = Page.Title + " Table";
+        }
+        protected void btnUpdateEvent(object sender, EventArgs e)
+        {
+
+        }
+        protected void btnDeleteEvent(object sender, EventArgs e)
+        {
+
         }
     }
 }

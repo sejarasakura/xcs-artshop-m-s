@@ -10,10 +10,10 @@
 <!DOCTYPE html>
 
 <html>
-  <head runat="server">
+<head runat="server">
     <title></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" >
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -24,18 +24,24 @@
     <script src="<%= "https://" + HttpContext.Current.Request.Url.Authority%>/web/lib/js/helpers.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-  </head>
+</head>
 <body>
     <div>
         <form id="master_form" runat="server">
             <uc1:Header runat="server" ID="Header" />
 
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-
             </asp:ContentPlaceHolder>
 
             <uc1:Footer runat="server" ID="Footer" />
         </form>
     </div>
+    
+<script>
+$(document).ready(function(){
+  $('.toast').toast('show');
+});
+</script>
+
 </body>
 </html>

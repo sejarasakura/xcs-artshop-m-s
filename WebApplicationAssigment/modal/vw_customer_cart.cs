@@ -21,5 +21,6 @@ namespace WebApplicationAssigment.modal
         public Nullable<int> category_id { get; set; }
         public Nullable<int> availability { get; set; }
         public Nullable<System.DateTime> add_date { get; set; }
+        public int art_id { get; set; }
     }
 }

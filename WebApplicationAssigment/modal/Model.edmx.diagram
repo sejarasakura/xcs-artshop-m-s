@@ -4,38 +4,38 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9697cf9adc1a4f2895d1cdb3b425541c" Name="Diagram1" ZoomLevel="42" >
+      <Diagram DiagramId="9697cf9adc1a4f2895d1cdb3b425541c" Name="Diagram1" ZoomLevel="47" >
         <EntityTypeShape EntityType="ArtShopModel.ChangePassword" Width="1.5" PointX="6.75" PointY="3.75" />
-        <EntityTypeShape EntityType="ArtShopModel.vw_aspnet_Applications" Width="1.5" PointX="9.75" PointY="7" />
+        <EntityTypeShape EntityType="ArtShopModel.vw_aspnet_Applications" Width="1.5" PointX="18.5" PointY="1.75" />
         <EntityTypeShape EntityType="ArtShopModel.vw_aspnet_MembershipUsers" Width="1.5" PointX="11.375" PointY="0.75" />
-        <EntityTypeShape EntityType="ArtShopModel.vw_aspnet_Profiles" Width="1.5" PointX="12.375" PointY="7.75" />
-        <EntityTypeShape EntityType="ArtShopModel.vw_aspnet_Roles" Width="1.5" PointX="12.375" PointY="10.75" />
+        <EntityTypeShape EntityType="ArtShopModel.vw_aspnet_Profiles" Width="1.5" PointX="18.875" PointY="4.375" />
+        <EntityTypeShape EntityType="ArtShopModel.vw_aspnet_Roles" Width="1.5" PointX="15.125" PointY="1.25" />
         <EntityTypeShape EntityType="ArtShopModel.vw_aspnet_Users" Width="1.5" PointX="13.375" PointY="0.75" />
         <EntityTypeShape EntityType="ArtShopModel.vw_aspnet_UsersInRoles" Width="1.5" PointX="13.375" PointY="4.75" />
-        <EntityTypeShape EntityType="ArtShopModel.vw_aspnet_WebPartState_Paths" Width="1.5" PointX="15.625" PointY="11.25" />
-        <EntityTypeShape EntityType="ArtShopModel.vw_aspnet_WebPartState_Shared" Width="1.5" PointX="14.125" PointY="13.75" />
-        <EntityTypeShape EntityType="ArtShopModel.vw_aspnet_WebPartState_User" Width="1.5" PointX="14.375" PointY="7.75" />
-        <EntityTypeShape EntityType="ArtShopModel.Art" Width="1.5" PointX="9.625" PointY="20.625" />
-        <EntityTypeShape EntityType="ArtShopModel.Artist" Width="1.5" PointX="7.375" PointY="21.125" />
+        <EntityTypeShape EntityType="ArtShopModel.vw_aspnet_WebPartState_Paths" Width="1.5" PointX="15.125" PointY="4.25" />
+        <EntityTypeShape EntityType="ArtShopModel.vw_aspnet_WebPartState_Shared" Width="1.5" PointX="16.875" PointY="1.375" />
+        <EntityTypeShape EntityType="ArtShopModel.vw_aspnet_WebPartState_User" Width="1.5" PointX="17" PointY="4.375" />
+        <EntityTypeShape EntityType="ArtShopModel.Art" Width="1.5" PointX="9.625" PointY="19.875" />
+        <EntityTypeShape EntityType="ArtShopModel.Artist" Width="1.5" PointX="7.375" PointY="19.875" />
         <EntityTypeShape EntityType="ArtShopModel.aspnet_Applications" Width="1.5" PointX="0.75" PointY="16.25" />
         <EntityTypeShape EntityType="ArtShopModel.aspnet_Membership" Width="1.5" PointX="7.5" PointY="13.625" />
-        <EntityTypeShape EntityType="ArtShopModel.aspnet_Paths" Width="1.5" PointX="2.5" PointY="23.375" />
-        <EntityTypeShape EntityType="ArtShopModel.aspnet_PersonalizationAllUsers" Width="1.5" PointX="4.75" PointY="23.875" />
+        <EntityTypeShape EntityType="ArtShopModel.aspnet_Paths" Width="1.5" PointX="2" PointY="22.25" />
+        <EntityTypeShape EntityType="ArtShopModel.aspnet_PersonalizationAllUsers" Width="1.5" PointX="4.25" PointY="22.5" />
         <EntityTypeShape EntityType="ArtShopModel.aspnet_PersonalizationPerUser" Width="1.5" PointX="3" PointY="19.25" />
-        <EntityTypeShape EntityType="ArtShopModel.aspnet_Profile" Width="2.375" PointX="7.375" PointY="24.25" />
+        <EntityTypeShape EntityType="ArtShopModel.aspnet_Profile" Width="2.375" PointX="6.75" PointY="22.5" />
         <EntityTypeShape EntityType="ArtShopModel.aspnet_Roles" Width="1.5" PointX="3" PointY="14.25" />
         <EntityTypeShape EntityType="ArtShopModel.aspnet_Users" Width="1.5" PointX="5.25" PointY="14.25" />
-        <EntityTypeShape EntityType="ArtShopModel.Card" Width="1.5" PointX="0.875" PointY="10.5" />
+        <EntityTypeShape EntityType="ArtShopModel.Card" Width="1.5" PointX="9.375" PointY="0.75" />
         <EntityTypeShape EntityType="ArtShopModel.Cart" Width="1.5" PointX="12.125" PointY="13.375" />
         <EntityTypeShape EntityType="ArtShopModel.CartDetail" Width="1.5" PointX="12.375" PointY="20.25" />
-        <EntityTypeShape EntityType="ArtShopModel.Category" Width="1.5" PointX="12.625" PointY="23.5" />
+        <EntityTypeShape EntityType="ArtShopModel.Category" Width="1.5" PointX="12.375" PointY="23" />
         <EntityTypeShape EntityType="ArtShopModel.Customer" Width="1.5" PointX="7.5" PointY="10.125" />
         <EntityTypeShape EntityType="ArtShopModel.Payment" Width="1.5" PointX="9.75" PointY="10.75" />
         <EntityTypeShape EntityType="ArtShopModel.PaymentDetail" Width="1.5" PointX="9.875" PointY="14.25" />
         <EntityTypeShape EntityType="ArtShopModel.PaymentMethod" Width="1.5" PointX="5.75" PointY="11.625" />
-        <EntityTypeShape EntityType="ArtShopModel.PayPal" Width="1.5" PointX="3.125" PointY="10.625" />
+        <EntityTypeShape EntityType="ArtShopModel.PayPal" Width="1.5" PointX="9.375" PointY="3.375" />
         <EntityTypeShape EntityType="ArtShopModel.Position" Width="1.5" PointX="13.625" PointY="17.25" />
-        <EntityTypeShape EntityType="ArtShopModel.PublicBank" Width="1.5" PointX="0.875" PointY="13.375" />
+        <EntityTypeShape EntityType="ArtShopModel.PublicBank" Width="1.5" PointX="1.125" PointY="3.5" />
         <EntityTypeShape EntityType="ArtShopModel.Staff" Width="1.5" PointX="11.125" PointY="17" />
         <AssociationConnector Association="ArtShopModel.FK__Art__artist_id__3B40CD36" />
         <AssociationConnector Association="ArtShopModel.FK__Art__category_id__3A4CA8FD" />
@@ -53,7 +53,19 @@
         <AssociationConnector Association="ArtShopModel.FK__aspnet_Pe__UserI__76969D2E" />
         <AssociationConnector Association="ArtShopModel.FK__aspnet_Pr__UserI__4F7CD00D" />
         <AssociationConnector Association="ArtShopModel.FK__Customer__UserId__1AD3FDA4" ></AssociationConnector>
-        <AssociationConnector Association="ArtShopModel.FK__Staff__UserId__1EA48E88" />
+        <AssociationConnector Association="ArtShopModel.FK__Staff__UserId__1EA48E88" ManuallyRouted="true" >
+          <ConnectorPoint PointX="6.265625" PointY="18.345602213541667" />
+          <ConnectorPoint PointX="6.265625" PointY="19.518654037629496" />
+          <ConnectorPoint PointX="6.4557316666666669" PointY="19.518654037629496" />
+          <ConnectorPoint PointX="6.6223983333333329" PointY="19.518654037629496" />
+          <ConnectorPoint PointX="9.52140625" PointY="19.518654037629496" />
+          <ConnectorPoint PointX="9.52140625" PointY="19.150900065104167" />
+          <ConnectorPoint PointX="10.385416666666666" PointY="19.150900065104167" />
+          <ConnectorPoint PointX="10.385416666666666" PointY="19.150900065104167" />
+          <ConnectorPoint PointX="10.552083333333334" PointY="19.150900065104167" />
+          <ConnectorPoint PointX="10.552083333333334" PointY="19.150900065104167" />
+          <ConnectorPoint PointX="11.125" PointY="19.150900065104167" />
+        </AssociationConnector>
         <AssociationConnector Association="ArtShopModel.FK__Cart__user_id__3C34F16F" />
         <AssociationConnector Association="ArtShopModel.FK__CartDetai__cart___40058253" />
         <AssociationConnector Association="ArtShopModel.FK__Payment__custome__3D2915A8" />
@@ -62,9 +74,13 @@
         </AssociationConnector>
         <AssociationConnector Association="ArtShopModel.FK__Staff__position___4F47C5E3" />
         <AssociationConnector Association="ArtShopModel.aspnet_UsersInRoles" />
-        <EntityTypeShape EntityType="ArtShopModel.vw_customer_cart" Width="1.5" PointX="0.5" PointY="1.75" />
-        <EntityTypeShape EntityType="ArtShopModel.UserExtension" Width="1.5" PointX="7.5" PointY="6.25" />
+        <EntityTypeShape EntityType="ArtShopModel.vw_customer_cart" Width="1.5" PointX="1.125" PointY="0.5" />
+        <EntityTypeShape EntityType="ArtShopModel.UserExtension" Width="1.5" PointX="1.875" PointY="11.375" />
         <AssociationConnector Association="ArtShopModel.FK__UserExten__UserI__1B9317B3" />
+        <EntityTypeShape EntityType="ArtShopModel.avw_AdminUsers" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ArtShopModel.avw_ArtistUsers" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ArtShopModel.avw_CustomerUsers" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="ArtShopModel.avw_AllUsers" Width="1.5" PointX="20.5" PointY="1.625" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

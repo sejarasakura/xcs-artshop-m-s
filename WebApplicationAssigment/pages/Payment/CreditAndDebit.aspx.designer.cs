@@ -15,6 +15,15 @@ namespace WebApplicationAssigment.pages.Payment
     {
 
         /// <summary>
+        /// StartPageSM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebApplicationAssigment.pages.widget.StartPageSM StartPageSM;
+
+        /// <summary>
         /// CardNumber control.
         /// </summary>
         /// <remarks>
@@ -148,5 +157,14 @@ namespace WebApplicationAssigment.pages.Payment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button1;
+
+        /// <summary>
+        /// EndPagesSM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebApplicationAssigment.pages.widget.EndPagesSM EndPagesSM;
     }
 }

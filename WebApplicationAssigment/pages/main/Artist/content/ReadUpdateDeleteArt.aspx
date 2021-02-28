@@ -155,6 +155,7 @@ $(document).ready(function(){
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
+<%@ Import namespace="WebApplicationAssigment.commons" %>
     <div class="row">
         <!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center"> -->
               <div class="page-header col-xs-12 col-sm-12">
@@ -164,7 +165,7 @@ $(document).ready(function(){
             <div class="col-lg-11 mx-auto">
                 <div class="card border-0 shadow">
                     <div class="card-body p-5">
-                        <img src="../../../assets/image/background/CompanyLogo.png " class="d-inline-block align-top" width="90" height="64">
+                        <img src="<%= Constant.DEFAULT_URL %>/assets/image/background/CompanyLogo.png " class="d-inline-block align-top" width="90" height="64">
                         <!-- Responsive table -->
                           <div class="table-responsive">
         <div class="table-wrapper" style="margin-top: 0px;margin-left: 0px;margin-right: 0px;margin-bottom: 0px;width: 890px;">
@@ -225,10 +226,10 @@ $(document).ready(function(){
                     <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" />
                     <asp:BoundField DataField="image" HeaderText="image" SortExpression="image" />
                     <asp:BoundField DataField="title" HeaderText="title" SortExpression="title" />
+                    <asp:BoundField DataField="name" HeaderText="Category" SortExpression="name" />
                     <asp:BoundField DataField="date" HeaderText="date" SortExpression="date" />
                     <asp:BoundField DataField="description" HeaderText="description" SortExpression="description" />
                     <asp:BoundField DataField="price" HeaderText="price" SortExpression="price" />
-                    <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
                 </Columns>
            
                 <EditRowStyle BackColor="#2461BF" />
@@ -245,7 +246,7 @@ $(document).ready(function(){
            
             <br /><br />
            
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [description], [title], [date], [price], [image], [id] FROM [Art]" DeleteCommand="DELETE FROM [Art] WHERE [id] = @id" InsertCommand="INSERT INTO [Art] ([description], [title], [date], [price], [image], [id]) VALUES (@description, @title, @date, @price, @image, @id)" UpdateCommand="UPDATE [Art] SET [description] = @description, [title] = @title, [date] = @date, [price] = @price, [image] = @image WHERE [id] = @id">
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT Art.description, Art.title, Art.date, Art.price, Art.image,Art.id,Category.name FROM Art INNER JOIN Category ON Art.category_id = Category.id" DeleteCommand="DELETE FROM [Art] WHERE [id] = @id" InsertCommand="INSERT INTO [Art] ([description], [title], [date], [price], [image], [id]) VALUES (@description, @title, @date, @price, @image, @id)" UpdateCommand="UPDATE [Art] SET [description] = @description, [title] = @title, [date] = @date, [price] = @price, [image] = @image WHERE [id] = @id">
                 <DeleteParameters>
                     <asp:Parameter Name="id" Type="Int32" />
                 </DeleteParameters>

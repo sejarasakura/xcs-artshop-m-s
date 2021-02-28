@@ -15,6 +15,15 @@ namespace WebApplicationAssigment.pages.main.Profile.account
     {
 
         /// <summary>
+        /// StartPageSM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebApplicationAssigment.pages.widget.StartPageSM StartPageSM;
+
+        /// <summary>
         /// ChangePassword1 control.
         /// </summary>
         /// <remarks>
@@ -22,5 +31,14 @@ namespace WebApplicationAssigment.pages.main.Profile.account
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ChangePassword ChangePassword1;
+
+        /// <summary>
+        /// EndPagesSM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebApplicationAssigment.pages.widget.EndPagesSM EndPagesSM;
     }
 }

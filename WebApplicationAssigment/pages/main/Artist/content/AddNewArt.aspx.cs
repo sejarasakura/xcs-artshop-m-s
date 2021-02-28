@@ -21,25 +21,36 @@ namespace WebApplicationAssigment.pages.main.Artist.content
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             Art art = new Art();
+          //  Art atr2;
             art.title = this.TitleText.Text;
             art.description = this.Discription.Text;
             art.date = this.DateCreation.Text;
             art.price = decimal.Parse(this.Price.Text);
             art.artist_id = (Guid)Functions.getLoginUser().ProviderUserKey;
+            art.category_id = int.Parse(this.Category.SelectedItem.Value);
             using (ArtShopEntities db = new ArtShopEntities())
             {
-                art.id = db.Arts.Count() <= 0 ? 0 :db.Arts.Last().id + 1;
+                art.id = db.Arts.OrderByDescending(u => u.id).FirstOrDefault().id + 1; ;
+                string fileName = art.id + "-" + art.title.Replace(" ", "-");
+                string exe = new FileInfo(xFileUpload.PostedFile.FileName).Extension;
+                art.image = "/assets/image/Art/" + fileName + exe;
+                xFileUpload.SaveAs(Server.MapPath("~/assets/image/Art/") + fileName + exe);
                 try
                 {
-                    Art result = db.Arts.Add(art);
-                    string fileName = result.id + "-" + result.title;
-                    FileUpload.SaveAs(Server.MapPath("~/asset/image/Art/") + fileName);
+                    db.Arts.Add(art);
+                    db.SaveChanges();
                 }
                 catch (Exception x)
                 {
                     Console.Out.WriteLine(x.Message);
                 }
             }
+            Response.Redirect("ReadUpdateDeleteArt.aspx");
+        }
+
+        protected void DropDownList1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

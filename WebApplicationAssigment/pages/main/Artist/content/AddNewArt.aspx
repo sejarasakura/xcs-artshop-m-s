@@ -48,9 +48,21 @@
                         Display = "Dynamic" 
                         ControlToValidate = "Discription" 
                         ID="RegularExpressionValidator1" 
-                        ValidationExpression = "[\s\S]{10,150}$" 
+                        ValidationExpression = "[\s\S]{0,150}$" 
                         runat="server" 
                         ErrorMessage="The description only accept max 50 word only" />
+            </div>
+        </div>
+    </div>
+           <!--Category-->
+           <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+              <label for="usr">Category:</label>
+                <asp:DropDownList ID="Category" runat="server" DataSourceID="SqlDataSource1" DataTextField="name" DataValueField="id" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+                </asp:DropDownList>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [name], [id] FROM [Category]"></asp:SqlDataSource>
+               
             </div>
         </div>
     </div>
@@ -142,11 +154,11 @@
             <div class="form-group">
               <label for="pwd">Upload Image:</label>
                 <asp:FileUpload  
-                    type="file" 
+                   type="file"
                     name="file" 
                     onchange="previewFile()" 
                     CssClass="form-control" 
-                    id="FileUpload" 
+                    id="xFileUpload" 
                     placeholder = "Upload your profile picture" 
                     runat="server" />
             </div>
@@ -154,23 +166,23 @@
     </div>
         
     <!-- Load picture functions -->
-   <script type="text/javascript">
-        function previewFile() {
-            var preview = document.querySelector('#<%=Image1.ClientID %>');
-            var file = document.querySelector('#<%=FileUpload.ClientID %>').files[0];
-            var reader = new FileReader();
+  <script type="text/javascript">
+      function previewFile() {
+          var preview = document.querySelector('#<%=Image1.ClientID %>');
+            var file = document.querySelector('#<%=xFileUpload.ClientID %>').files[0];
+          var reader = new FileReader();
 
-            reader.onloadend = function () {
-                preview.src = reader.result;
-            }
+          reader.onloadend = function () {
+              preview.src = reader.result;
+          }
 
-            if (file) {
-                reader.readAsDataURL(file);
-            } else {
-                preview.src = "";
-            }
-        }
-    </script> 
+          if (file) {
+              reader.readAsDataURL(file);
+          } else {
+              preview.src = "";
+          }
+      }
+  </script> 
 
         <a class="btn btn-secondary"  href="<%= "https://" + HttpContext.Current.Request.Url.Authority+"/pages/main/Artist/content/ReadUpdateDeleteArt.aspx"%>"" >
             Back</a> 

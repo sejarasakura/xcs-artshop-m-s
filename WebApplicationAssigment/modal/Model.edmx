@@ -284,6 +284,154 @@
           <Property Name="picture" Type="varbinary(max)" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.avw_AdminUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="avw_AdminUsers">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="IsApproved" />
+            <PropertyRef Name="IsLockedOut" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="LastActivityDate" />
+            <PropertyRef Name="LastLoginDate" />
+            <PropertyRef Name="LastLockoutDate" />
+            <PropertyRef Name="LastPasswordChangedDate" />
+            <PropertyRef Name="first_name" />
+            <PropertyRef Name="last_name" />
+            <PropertyRef Name="gender" />
+            <PropertyRef Name="position_id" />
+            <PropertyRef Name="priority" />
+          </Key>
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="LoweredEmail" Type="nvarchar" MaxLength="256" />
+          <Property Name="IsApproved" Type="bit" Nullable="false" />
+          <Property Name="IsLockedOut" Type="bit" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
+          <Property Name="LastLoginDate" Type="datetime" Nullable="false" />
+          <Property Name="LastLockoutDate" Type="datetime" Nullable="false" />
+          <Property Name="LastPasswordChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="first_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="last_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="gender" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="picture" Type="varbinary(max)" />
+          <Property Name="position_id" Type="int" Nullable="false" />
+          <Property Name="priority" Type="int" Nullable="false" />
+          <Property Name="private_pic" Type="varbinary(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.avw_AllUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="avw_AllUsers">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="IsApproved" />
+            <PropertyRef Name="IsLockedOut" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="LastActivityDate" />
+            <PropertyRef Name="LastLoginDate" />
+            <PropertyRef Name="LastLockoutDate" />
+            <PropertyRef Name="LastPasswordChangedDate" />
+            <PropertyRef Name="first_name" />
+            <PropertyRef Name="last_name" />
+            <PropertyRef Name="gender" />
+            <PropertyRef Name="RoleName" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="LoweredEmail" Type="nvarchar" MaxLength="256" />
+          <Property Name="IsApproved" Type="bit" Nullable="false" />
+          <Property Name="IsLockedOut" Type="bit" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
+          <Property Name="LastLoginDate" Type="datetime" Nullable="false" />
+          <Property Name="LastLockoutDate" Type="datetime" Nullable="false" />
+          <Property Name="LastPasswordChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="first_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="last_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="gender" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="RoleId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="picture" Type="varbinary(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.avw_ArtistUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="avw_ArtistUsers">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="IsApproved" />
+            <PropertyRef Name="IsLockedOut" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="LastActivityDate" />
+            <PropertyRef Name="LastLoginDate" />
+            <PropertyRef Name="LastLockoutDate" />
+            <PropertyRef Name="LastPasswordChangedDate" />
+            <PropertyRef Name="first_name" />
+            <PropertyRef Name="last_name" />
+            <PropertyRef Name="gender" />
+          </Key>
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="LoweredEmail" Type="nvarchar" MaxLength="256" />
+          <Property Name="IsApproved" Type="bit" Nullable="false" />
+          <Property Name="IsLockedOut" Type="bit" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
+          <Property Name="LastLoginDate" Type="datetime" Nullable="false" />
+          <Property Name="LastLockoutDate" Type="datetime" Nullable="false" />
+          <Property Name="LastPasswordChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="first_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="last_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="gender" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="picture" Type="varbinary(max)" />
+          <Property Name="birthday_date" Type="date" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="signature" Type="varbinary(max)" />
+          <Property Name="private_pic" Type="varbinary(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.avw_CustomerUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="avw_CustomerUsers">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="IsApproved" />
+            <PropertyRef Name="IsLockedOut" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="LastActivityDate" />
+            <PropertyRef Name="LastLoginDate" />
+            <PropertyRef Name="LastLockoutDate" />
+            <PropertyRef Name="LastPasswordChangedDate" />
+            <PropertyRef Name="first_name" />
+            <PropertyRef Name="last_name" />
+            <PropertyRef Name="gender" />
+          </Key>
+          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="LoweredEmail" Type="nvarchar" MaxLength="256" />
+          <Property Name="IsApproved" Type="bit" Nullable="false" />
+          <Property Name="IsLockedOut" Type="bit" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
+          <Property Name="LastLoginDate" Type="datetime" Nullable="false" />
+          <Property Name="LastLockoutDate" Type="datetime" Nullable="false" />
+          <Property Name="LastPasswordChangedDate" Type="datetime" Nullable="false" />
+          <Property Name="first_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="last_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="gender" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="picture" Type="varbinary(max)" />
+          <Property Name="birthday_date" Type="date" />
+          <Property Name="membership" Type="varchar" MaxLength="1" />
+          <Property Name="private_pic" Type="varbinary(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.vw_aspnet_Applications' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vw_aspnet_Applications">
           <Key>
@@ -440,6 +588,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <PropertyRef Name="price" />
             <PropertyRef Name="title" />
             <PropertyRef Name="user_id" />
+            <PropertyRef Name="art_id" />
           </Key>
           <Property Name="image" Type="nvarchar(max)" Nullable="false" />
           <Property Name="price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
@@ -448,8 +597,9 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="category_id" Type="int" />
           <Property Name="availability" Type="int" />
           <Property Name="add_date" Type="date" />
+          <Property Name="art_id" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Art__artist_id__3B40CD36">
+        <Association Name="FK__Art__artist_id__44952D46">
           <End Role="Artist" Type="Self.Artist" Multiplicity="1" />
           <End Role="Art" Type="Self.Art" Multiplicity="*" />
           <ReferentialConstraint>
@@ -461,7 +611,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Art__category_id__3A4CA8FD">
+        <Association Name="FK__Art__category_id__43A1090D">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
           <End Role="Art" Type="Self.Art" Multiplicity="*" />
           <ReferentialConstraint>
@@ -629,7 +779,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CartDetai__art_i__40F9A68C">
+        <Association Name="FK__CartDetai__art_i__41B8C09B">
           <End Role="Art" Type="Self.Art" Multiplicity="1" />
           <End Role="CartDetails" Type="Self.CartDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -689,7 +839,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PaymentDe__art_i__3F115E1A">
+        <Association Name="FK__PaymentDe__art_i__42ACE4D4">
           <End Role="Art" Type="Self.Art" Multiplicity="1" />
           <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1107,6 +1257,94 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <EntitySet Name="PublicBank" EntityType="Self.PublicBank" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserExtension" EntityType="Self.UserExtension" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="avw_AdminUsers" EntityType="Self.avw_AdminUsers" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [avw_AdminUsers].[UserId] AS [UserId], 
+    [avw_AdminUsers].[UserName] AS [UserName], 
+    [avw_AdminUsers].[Email] AS [Email], 
+    [avw_AdminUsers].[LoweredEmail] AS [LoweredEmail], 
+    [avw_AdminUsers].[IsApproved] AS [IsApproved], 
+    [avw_AdminUsers].[IsLockedOut] AS [IsLockedOut], 
+    [avw_AdminUsers].[CreateDate] AS [CreateDate], 
+    [avw_AdminUsers].[LastActivityDate] AS [LastActivityDate], 
+    [avw_AdminUsers].[LastLoginDate] AS [LastLoginDate], 
+    [avw_AdminUsers].[LastLockoutDate] AS [LastLockoutDate], 
+    [avw_AdminUsers].[LastPasswordChangedDate] AS [LastPasswordChangedDate], 
+    [avw_AdminUsers].[first_name] AS [first_name], 
+    [avw_AdminUsers].[last_name] AS [last_name], 
+    [avw_AdminUsers].[gender] AS [gender], 
+    [avw_AdminUsers].[picture] AS [picture], 
+    [avw_AdminUsers].[position_id] AS [position_id], 
+    [avw_AdminUsers].[priority] AS [priority], 
+    [avw_AdminUsers].[private_pic] AS [private_pic]
+    FROM [dbo].[avw_AdminUsers] AS [avw_AdminUsers]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="avw_AllUsers" EntityType="Self.avw_AllUsers" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [avw_AllUsers].[UserId] AS [UserId], 
+    [avw_AllUsers].[UserName] AS [UserName], 
+    [avw_AllUsers].[Email] AS [Email], 
+    [avw_AllUsers].[LoweredEmail] AS [LoweredEmail], 
+    [avw_AllUsers].[IsApproved] AS [IsApproved], 
+    [avw_AllUsers].[IsLockedOut] AS [IsLockedOut], 
+    [avw_AllUsers].[CreateDate] AS [CreateDate], 
+    [avw_AllUsers].[LastActivityDate] AS [LastActivityDate], 
+    [avw_AllUsers].[LastLoginDate] AS [LastLoginDate], 
+    [avw_AllUsers].[LastLockoutDate] AS [LastLockoutDate], 
+    [avw_AllUsers].[LastPasswordChangedDate] AS [LastPasswordChangedDate], 
+    [avw_AllUsers].[first_name] AS [first_name], 
+    [avw_AllUsers].[last_name] AS [last_name], 
+    [avw_AllUsers].[gender] AS [gender], 
+    [avw_AllUsers].[RoleName] AS [RoleName], 
+    [avw_AllUsers].[RoleId] AS [RoleId], 
+    [avw_AllUsers].[picture] AS [picture]
+    FROM [dbo].[avw_AllUsers] AS [avw_AllUsers]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="avw_ArtistUsers" EntityType="Self.avw_ArtistUsers" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [avw_ArtistUsers].[UserId] AS [UserId], 
+    [avw_ArtistUsers].[UserName] AS [UserName], 
+    [avw_ArtistUsers].[Email] AS [Email], 
+    [avw_ArtistUsers].[LoweredEmail] AS [LoweredEmail], 
+    [avw_ArtistUsers].[IsApproved] AS [IsApproved], 
+    [avw_ArtistUsers].[IsLockedOut] AS [IsLockedOut], 
+    [avw_ArtistUsers].[CreateDate] AS [CreateDate], 
+    [avw_ArtistUsers].[LastActivityDate] AS [LastActivityDate], 
+    [avw_ArtistUsers].[LastLoginDate] AS [LastLoginDate], 
+    [avw_ArtistUsers].[LastLockoutDate] AS [LastLockoutDate], 
+    [avw_ArtistUsers].[LastPasswordChangedDate] AS [LastPasswordChangedDate], 
+    [avw_ArtistUsers].[first_name] AS [first_name], 
+    [avw_ArtistUsers].[last_name] AS [last_name], 
+    [avw_ArtistUsers].[gender] AS [gender], 
+    [avw_ArtistUsers].[picture] AS [picture], 
+    [avw_ArtistUsers].[birthday_date] AS [birthday_date], 
+    [avw_ArtistUsers].[description] AS [description], 
+    [avw_ArtistUsers].[signature] AS [signature], 
+    [avw_ArtistUsers].[private_pic] AS [private_pic]
+    FROM [dbo].[avw_ArtistUsers] AS [avw_ArtistUsers]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="avw_CustomerUsers" EntityType="Self.avw_CustomerUsers" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [avw_CustomerUsers].[UserId] AS [UserId], 
+    [avw_CustomerUsers].[UserName] AS [UserName], 
+    [avw_CustomerUsers].[Email] AS [Email], 
+    [avw_CustomerUsers].[LoweredEmail] AS [LoweredEmail], 
+    [avw_CustomerUsers].[IsApproved] AS [IsApproved], 
+    [avw_CustomerUsers].[IsLockedOut] AS [IsLockedOut], 
+    [avw_CustomerUsers].[CreateDate] AS [CreateDate], 
+    [avw_CustomerUsers].[LastActivityDate] AS [LastActivityDate], 
+    [avw_CustomerUsers].[LastLoginDate] AS [LastLoginDate], 
+    [avw_CustomerUsers].[LastLockoutDate] AS [LastLockoutDate], 
+    [avw_CustomerUsers].[LastPasswordChangedDate] AS [LastPasswordChangedDate], 
+    [avw_CustomerUsers].[first_name] AS [first_name], 
+    [avw_CustomerUsers].[last_name] AS [last_name], 
+    [avw_CustomerUsers].[gender] AS [gender], 
+    [avw_CustomerUsers].[picture] AS [picture], 
+    [avw_CustomerUsers].[birthday_date] AS [birthday_date], 
+    [avw_CustomerUsers].[membership] AS [membership], 
+    [avw_CustomerUsers].[private_pic] AS [private_pic]
+    FROM [dbo].[avw_CustomerUsers] AS [avw_CustomerUsers]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vw_aspnet_Applications" EntityType="Self.vw_aspnet_Applications" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vw_aspnet_Applications].[ApplicationName] AS [ApplicationName], 
@@ -1206,14 +1444,15 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
     [vw_customer_cart].[user_id] AS [user_id], 
     [vw_customer_cart].[category_id] AS [category_id], 
     [vw_customer_cart].[availability] AS [availability], 
-    [vw_customer_cart].[add_date] AS [add_date]
+    [vw_customer_cart].[add_date] AS [add_date], 
+    [vw_customer_cart].[art_id] AS [art_id]
     FROM [dbo].[vw_customer_cart] AS [vw_customer_cart]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__Art__artist_id__3B40CD36" Association="Self.FK__Art__artist_id__3B40CD36">
+          <AssociationSet Name="FK__Art__artist_id__44952D46" Association="Self.FK__Art__artist_id__44952D46">
             <End Role="Artist" EntitySet="Artist" />
             <End Role="Art" EntitySet="Art" />
           </AssociationSet>
-          <AssociationSet Name="FK__Art__category_id__3A4CA8FD" Association="Self.FK__Art__category_id__3A4CA8FD">
+          <AssociationSet Name="FK__Art__category_id__43A1090D" Association="Self.FK__Art__category_id__43A1090D">
             <End Role="Category" EntitySet="Category" />
             <End Role="Art" EntitySet="Art" />
           </AssociationSet>
@@ -1269,7 +1508,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Cart" EntitySet="Cart" />
           </AssociationSet>
-          <AssociationSet Name="FK__CartDetai__art_i__40F9A68C" Association="Self.FK__CartDetai__art_i__40F9A68C">
+          <AssociationSet Name="FK__CartDetai__art_i__41B8C09B" Association="Self.FK__CartDetai__art_i__41B8C09B">
             <End Role="Art" EntitySet="Art" />
             <End Role="CartDetails" EntitySet="CartDetails" />
           </AssociationSet>
@@ -1289,7 +1528,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <End Role="PaymentMethod" EntitySet="PaymentMethod" />
             <End Role="Payment" EntitySet="Payment" />
           </AssociationSet>
-          <AssociationSet Name="FK__PaymentDe__art_i__3F115E1A" Association="Self.FK__PaymentDe__art_i__3F115E1A">
+          <AssociationSet Name="FK__PaymentDe__art_i__42ACE4D4" Association="Self.FK__PaymentDe__art_i__42ACE4D4">
             <End Role="Art" EntitySet="Art" />
             <End Role="PaymentDetails" EntitySet="PaymentDetails" />
           </AssociationSet>
@@ -1777,6 +2016,10 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
             <End Role="UserExtension" EntitySet="UserExtensions" />
           </AssociationSet>
+          <EntitySet Name="avw_AdminUsers" EntityType="ArtShopModel.avw_AdminUsers" />
+          <EntitySet Name="avw_ArtistUsers" EntityType="ArtShopModel.avw_ArtistUsers" />
+          <EntitySet Name="avw_CustomerUsers" EntityType="ArtShopModel.avw_CustomerUsers" />
+          <EntitySet Name="avw_AllUsers" EntityType="ArtShopModel.avw_AllUsers" />
           </EntityContainer>
         <ComplexType Name="aspnet_Membership_GetPassword_Result">
           <Property Type="String" Name="Column1" Nullable="true" MaxLength="128" />
@@ -2539,6 +2782,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <PropertyRef Name="price" />
             <PropertyRef Name="title" />
             <PropertyRef Name="user_id" />
+            <PropertyRef Name="art_id" />
           </Key>
           <Property Name="image" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
@@ -2547,6 +2791,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="category_id" Type="Int32" />
           <Property Name="availability" Type="Int32" />
           <Property Name="add_date" Type="DateTime" Precision="0" />
+          <Property Name="art_id" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="UserExtension">
           <Key>
@@ -2571,6 +2816,146 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="avw_AdminUsers">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="IsApproved" />
+            <PropertyRef Name="IsLockedOut" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="LastActivityDate" />
+            <PropertyRef Name="LastLoginDate" />
+            <PropertyRef Name="LastLockoutDate" />
+            <PropertyRef Name="LastPasswordChangedDate" />
+            <PropertyRef Name="first_name" />
+            <PropertyRef Name="last_name" />
+            <PropertyRef Name="gender" />
+            <PropertyRef Name="position_id" />
+            <PropertyRef Name="priority" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LoweredEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+          <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLockoutDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastPasswordChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="first_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="last_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="position_id" Type="Int32" Nullable="false" />
+          <Property Name="priority" Type="Int32" Nullable="false" />
+          <Property Name="private_pic" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="avw_ArtistUsers">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="IsApproved" />
+            <PropertyRef Name="IsLockedOut" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="LastActivityDate" />
+            <PropertyRef Name="LastLoginDate" />
+            <PropertyRef Name="LastLockoutDate" />
+            <PropertyRef Name="LastPasswordChangedDate" />
+            <PropertyRef Name="first_name" />
+            <PropertyRef Name="last_name" />
+            <PropertyRef Name="gender" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LoweredEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+          <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLockoutDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastPasswordChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="first_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="last_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="birthday_date" Type="DateTime" Precision="0" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="signature" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="private_pic" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="avw_CustomerUsers">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="IsApproved" />
+            <PropertyRef Name="IsLockedOut" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="LastActivityDate" />
+            <PropertyRef Name="LastLoginDate" />
+            <PropertyRef Name="LastLockoutDate" />
+            <PropertyRef Name="LastPasswordChangedDate" />
+            <PropertyRef Name="first_name" />
+            <PropertyRef Name="last_name" />
+            <PropertyRef Name="gender" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LoweredEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+          <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLockoutDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastPasswordChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="first_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="last_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="birthday_date" Type="DateTime" Precision="0" />
+          <Property Name="membership" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="private_pic" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="avw_AllUsers">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="IsApproved" />
+            <PropertyRef Name="IsLockedOut" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="LastActivityDate" />
+            <PropertyRef Name="LastLoginDate" />
+            <PropertyRef Name="LastLockoutDate" />
+            <PropertyRef Name="LastPasswordChangedDate" />
+            <PropertyRef Name="first_name" />
+            <PropertyRef Name="last_name" />
+            <PropertyRef Name="gender" />
+            <PropertyRef Name="RoleName" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LoweredEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+          <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLockoutDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastPasswordChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="first_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="last_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="Guid" Nullable="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -3100,6 +3485,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <EntitySetMapping Name="vw_customer_cart">
             <EntityTypeMapping TypeName="ArtShopModel.vw_customer_cart">
               <MappingFragment StoreEntitySet="vw_customer_cart">
+                <ScalarProperty Name="art_id" ColumnName="art_id" />
                 <ScalarProperty Name="add_date" ColumnName="add_date" />
                 <ScalarProperty Name="availability" ColumnName="availability" />
                 <ScalarProperty Name="category_id" ColumnName="category_id" />
@@ -3117,6 +3503,102 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
                 <ScalarProperty Name="gender" ColumnName="gender" />
                 <ScalarProperty Name="last_name" ColumnName="last_name" />
                 <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="avw_AdminUsers">
+            <EntityTypeMapping TypeName="ArtShopModel.avw_AdminUsers">
+              <MappingFragment StoreEntitySet="avw_AdminUsers">
+                <ScalarProperty Name="private_pic" ColumnName="private_pic" />
+                <ScalarProperty Name="priority" ColumnName="priority" />
+                <ScalarProperty Name="position_id" ColumnName="position_id" />
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
+                <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="LoweredEmail" ColumnName="LoweredEmail" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="avw_ArtistUsers">
+            <EntityTypeMapping TypeName="ArtShopModel.avw_ArtistUsers">
+              <MappingFragment StoreEntitySet="avw_ArtistUsers">
+                <ScalarProperty Name="private_pic" ColumnName="private_pic" />
+                <ScalarProperty Name="signature" ColumnName="signature" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="birthday_date" ColumnName="birthday_date" />
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
+                <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="LoweredEmail" ColumnName="LoweredEmail" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="avw_CustomerUsers">
+            <EntityTypeMapping TypeName="ArtShopModel.avw_CustomerUsers">
+              <MappingFragment StoreEntitySet="avw_CustomerUsers">
+                <ScalarProperty Name="private_pic" ColumnName="private_pic" />
+                <ScalarProperty Name="membership" ColumnName="membership" />
+                <ScalarProperty Name="birthday_date" ColumnName="birthday_date" />
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
+                <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="LoweredEmail" ColumnName="LoweredEmail" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="avw_AllUsers">
+            <EntityTypeMapping TypeName="ArtShopModel.avw_AllUsers">
+              <MappingFragment StoreEntitySet="avw_AllUsers">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
+                <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="LoweredEmail" ColumnName="LoweredEmail" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>

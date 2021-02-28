@@ -144,9 +144,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\image\Art\one.jpg" />
+    <Content Include="assets\image\hot-deal.png" />
     <Content Include="assets\image\profile.png" />
     <Content Include="assets\image\signature.png" />
     <Content Include="assets\image\no_img.jpg" />
+    <Content Include="content\toastr.css" />
+    <Content Include="content\toastr.min.css" />
     <Content Include="pages\diagram_reader\ImageViewer.aspx" />
     <Content Include="pages\main\admin\BestArtReport.aspx" />
     <Content Include="pages\main\admin\CreateRole.aspx" />
@@ -156,6 +159,8 @@
     <Content Include="assets\image\Payment\visamaster.jpg" />
     <Content Include="pages\main\admin\AdminDashboard.aspx" />
     <Content Include="pages\main\admin\SalesReport.aspx" />
+    <Content Include="pages\main\admin\UserRole.aspx" />
+    <Content Include="pages\main\admin\UserRoles2.aspx" />
     <Content Include="pages\main\admin\widget\backup_development.ascx" />
     <Content Include="pages\main\Artist\content\AddNewArt.aspx" />
     <Content Include="pages\main\Artist\content\ReadUpdateDeleteArt.aspx" />
@@ -213,6 +218,17 @@
     <Content Include="pages\widget\StartPageSM.ascx" />
     <Content Include="pages\widget\StartPage.ascx" />
     <Content Include="pages\widget\SuccessMessageLarge.ascx" />
+    <Content Include="content\toastr.scss" />
+    <Content Include="content\toastr.less" />
+    <Content Include="pages\main\ArtShop\Web.config" />
+    <Content Include="pages\main\Artist\Web.config" />
+    <Content Include="pages\main\Authentication\Profile\Web.config" />
+    <Content Include="pages\main\admin\Web.config" />
+    <None Include="Scripts\jquery-1.6.3-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.6.3.js" />
+    <Content Include="Scripts\jquery-1.6.3.min.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Web.config" />
     <Content Include="web\lib\css\extensions.css" />
     <Content Include="web\lib\css\lib.css" />
@@ -264,6 +280,18 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="modal\aspnet_Users.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\avw_AdminUsers.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\avw_AllUsers.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\avw_ArtistUsers.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\avw_CustomerUsers.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="modal\Card.cs">
@@ -342,7 +370,6 @@
     <Compile Include="pages\diagram_reader\ImageViewer.aspx.designer.cs">
       <DependentUpon>ImageViewer.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pages\diagram_reader\XWebConfig.cs" />
     <Compile Include="pages\main\admin\BestArtReport.aspx.cs">
       <DependentUpon>BestArtReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -367,6 +394,20 @@
     </Compile>
     <Compile Include="pages\main\admin\SalesReport.aspx.designer.cs">
       <DependentUpon>SalesReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\admin\UserRole.aspx.cs">
+      <DependentUpon>UserRole.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\admin\UserRole.aspx.designer.cs">
+      <DependentUpon>UserRole.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\admin\UserRoles2.aspx.cs">
+      <DependentUpon>UserRoles2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\admin\UserRoles2.aspx.designer.cs">
+      <DependentUpon>UserRoles2.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\main\admin\widget\backup_development.ascx.cs">
       <DependentUpon>backup_development.ascx</DependentUpon>

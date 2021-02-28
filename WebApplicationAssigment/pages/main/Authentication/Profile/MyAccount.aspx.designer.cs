@@ -15,21 +15,30 @@ namespace WebApplicationAssigment.pages.main.Profile.account
     {
 
         /// <summary>
-        /// LoginView2 control.
+        /// StartPageSM control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LoginView LoginView2;
+        protected global::WebApplicationAssigment.pages.widget.StartPageSM StartPageSM;
 
         /// <summary>
-        /// LoginView1 control.
+        /// ProfileWidget control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LoginView LoginView1;
+        protected global::WebApplicationAssigment.pages.widget.ProfileWidget ProfileWidget;
+
+        /// <summary>
+        /// EndPagesSM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebApplicationAssigment.pages.widget.EndPagesSM EndPagesSM;
     }
 }

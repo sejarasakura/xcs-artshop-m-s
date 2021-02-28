@@ -1,176 +1,123 @@
 ﻿<%@ Page Title="User" Language="C#" MasterPageFile="~/pages/main/admin/master/Admin.Master" AutoEventWireup="true" CodeBehind="UserPages.aspx.cs" Inherits="WebApplicationAssigment.pages.main.admin.content.UserPages" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+    <%@ Import Namespace="WebApplicationAssigment.commons" %>
+
     <%
         string role = Request.QueryString["role"];
     %>
-    
-    <table id="datatable" class="stripe row-border order-column" style="width: 100%">
-        <thead>
-            <tr>
-                <th>===</th>
-                <th>Id.</th>
-                <th>Email</th>
-                <th>Name</th>
-                <th>Phone number</th>
-                <th>Gender</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>
-                    <span id="A10001">
-                        <a href="#">
-                            <span class="glyphicon glyphicon-trash" data-id="A10001">
-                            </span>
-                        </a>
-                        <a href="#">
-                            <span class="glyphicon glyphicon-pencil">
-                            </span>
-                        </a>
-                    </span>
-                </td>
-                <td>61</td>
-                <td>tiger@gmail.com</td>
-                <td>Nixon</td>
-                <td>+60183927135</td>
-                <td>&male;</td>
-            </tr>
-            <tr>
-                <td>
-                    <span id="A10001">
-                        <a href="#">
-                            <span class="glyphicon glyphicon-trash" data-id="A10001">
-                            </span>
-                        </a>
-                        <a href="#">
-                            <span class="glyphicon glyphicon-pencil">
-                            </span>
-                        </a>
-                    </span>
-                </td>
-                <td>61</td>
-                <td>tiger@gmail.com</td>
-                <td>Nixon</td>
-                <td>+60183927135</td>
-                <td>&female;</td>
-            </tr>
-            <tr>
-                <td>
-                    <span id="A10001">
-                        <a href="#">
-                            <span class="glyphicon glyphicon-trash" data-id="A10001">
-                            </span>
-                        </a>
-                        <a href="#">
-                            <span class="glyphicon glyphicon-pencil">
-                            </span>
-                        </a>
-                    </span>
-                </td>
-                <td>62</td>
-                <td>bhh@gmail.com</td>
-                <td>Lim sai keat</td>
-                <td>+60183927135</td>
-                <td>&female;</td>
-            </tr>
-            <tr>
-                <td>
-                    <span id="A10001">
-                        <a href="#">
-                            <span class="glyphicon glyphicon-trash" data-id="A10001">
-                            </span>
-                        </a>
-                        <a href="#">
-                            <span class="glyphicon glyphicon-pencil">
-                            </span>
-                        </a>
-                    </span>
-                </td>
-                <td>613</td>
-                <td>haha@gmail.com</td>
-                <td>Lim sai jie</td>
-                <td>+60183927135</td>
-                <td>&female;</td>
-            </tr>
-            <tr>
-                <td>
-                    <span id="A10001">
-                        <a href="#">
-                            <span class="glyphicon glyphicon-trash" data-id="">
-                            </span>
-                        </a>
-                        <a href="#">
-                            <span class="glyphicon glyphicon-pencil">
-                            </span>
-                        </a>
-                    </span>
-                </td>
-                <td>64</td>
-                <td>dddd@gmail.com</td>
-                <td>Loo wei wei</td>
-                <td>+60183927135</td>
-                <td>&male;</td>
-            </tr>
-            <tr>
-                <td>
-                    <span id="A10001">
-                        <a href="#">
-                            <span class="glyphicon glyphicon-trash" data-id="">
-                            </span>
-                        </a>
-                        <a href="#">
-                            <span class="glyphicon glyphicon-pencil">
-                            </span>
-                        </a>
-                    </span>
-                </td>
-                <td>615</td>
-                <td>tigedasafr@gmail.com</td>
-                <td>Hong wah</td>
-                <td>+60183927135</td>
-                <td>&male;</td>
-            </tr>
-        </tbody>
-    </table>
-    <style>
-        tfoot input {
-            width: 100%;
-            padding: 3px;
-            box-sizing: border-box;
-        }
-    </style>
-    <script>
-        $(document).ready(function () {
 
-            $('#datatable tfoot th').each(function () {
-                var title = $(this).text();
-                $(this).html('<input class="form-control" type="text" placeholder="Search ' + title + '" />');
-            });
+    <div class="container">
 
-            var table = $('#datatable').DataTable({
-                scrollY: "300px",
-                scrollX: true,
-                scrollCollapse: true,
-                fixedColumns: {
-                    leftColumns: 1
-                },      
-                initComplete: function () {
-                // Apply the search
-                this.api().columns().every(function () {
-                    var that = this;
+        <div class="row">
+            <div class="col-md-12 d-flex justify-content-center">
+                <h2>
+                    <asp:Label ID="Label1" runat="server" CssClass="text-lg-center"></asp:Label>
+                </h2>
+            </div>
+            <center>
+            <div id="preview" class="float-center" runat="server"></div>
+                </center>
+            <br>
+            <div class="col-md-12 d-flex justify-content-center">
 
-                    $('input', this.footer()).on('keyup change clear', function () {
-                        if (that.search() !== this.value) {
-                            that
-                                .search(this.value)
-                                .draw();
-                        }
-                    });
-                });
-            }
-            });
-        });
-    </script>
+                <asp:GridView
+                    ID="GridView1"
+                    runat="server"
+                    class="table table-borderless table-condensed table-responsive table-hover "
+                    AutoGenerateColumns="False"
+                    AutoGenerateDeleteButton="False"
+                    DataSourceID="SqlDataSource1"
+                    ShowHeaderWhenEmpty="True">
+                    <Columns>
+
+                        <asp:TemplateField HeaderText="Profile" SortExpression="image">
+                            <EditItemTemplate>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Image ID="Image1" runat="server" ImageUrl='<%# Eval("UserId", Constant.PROFILE_PIC_URL + "?guid={0}")%>' Height="50" Width="50" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Username" SortExpression="UserName">
+                            <EditItemTemplate>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("UserName") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Email" SortExpression="email">
+                            <EditItemTemplate>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("email") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="First name" SortExpression="first_name">
+                            <EditItemTemplate>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("first_name") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="First name" SortExpression="last_name">
+                            <EditItemTemplate>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("last_name") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="First name" SortExpression="gender">
+                            <EditItemTemplate>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("gender") %>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Updates" ShowHeader="False"
+                            HeaderStyle-CssClass="text-success"
+                            ItemStyle-CssClass="text-success">
+                            <ItemTemplate>
+                                <asp:LinkButton
+                                    ID="btnRemoveItem"
+                                    runat="server"
+                                    CausesValidation="false"
+                                    Text="<h3>&#x270E;</h3>"
+                                    ControlStyle-CssClass="text-success"
+                                    CommandArgument='<%# Eval("UserId") %>'
+                                    OnCommand="btnUpdateEvent" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Remove" ShowHeader="False"
+                            HeaderStyle-CssClass="text-danger"
+                            ItemStyle-CssClass="text-danger">
+                            <ItemTemplate>
+                                <asp:LinkButton
+                                    ID="btnRemoveItem"
+                                    runat="server"
+                                    CausesValidation="false"
+                                    Text="<h3><b>&#x1F5D1;</b></h3>"
+                                    ControlStyle-CssClass="text-danger"
+                                    CommandArgument='<%# Eval("UserId") %>'
+                                    OnCommand="btnDeleteEvent" />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+                    </Columns>
+                </asp:GridView>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\ArtShop.mdf;Integrated Security=True;MultipleActiveResultSets=True;Connect Timeout=30;Application Name=EntityFramework" ProviderName="System.Data.SqlClient"
+                    SelectCommand="SELECT * FROM [dbo].[avw_AllUsers] WHERE LOWER(@role) LIKE LOWER([RoleName])">
+                    <SelectParameters>
+                        <asp:Parameter Name="role" Type="String" />
+                    </SelectParameters>
+
+                </asp:SqlDataSource>
+
+
+            </div>
+
+        </div>
+    </div>
+
 </asp:Content>
