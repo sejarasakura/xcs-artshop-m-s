@@ -37,6 +37,8 @@ namespace WebApplicationAssigment.pages.main.Artist.content
                 xFileUpload.SaveAs(Server.MapPath("~/assets/image/Art/") + fileName + exe);
                 try
                 {
+                    string coulmn_name = art.id.GetType().Name;
+
                     db.Arts.Add(art);
                     db.SaveChanges();
                 }

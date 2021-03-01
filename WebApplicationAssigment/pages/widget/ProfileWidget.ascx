@@ -4,7 +4,7 @@
 <%@ Import namespace="WebApplicationAssigment.commons" %>
 <hr />
 <div class="container bootstrap snippet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%= Constant.LIB_URL %>/css/bootstarp3.css">
     <%
         MembershipUser ms = Functions.getLoginUser();
     %>
@@ -36,7 +36,7 @@
         </div>
         <!--/col-3-->
         <div class="col-sm-9">
-            <ul class="nav nav-tabs">
+            <ul class="xnav xnav-tabs">
 
                 <asp:LoginView ID="LoginView2" runat="server">
                     <LoggedInTemplate>
