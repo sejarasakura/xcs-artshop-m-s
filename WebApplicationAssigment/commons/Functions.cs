@@ -29,6 +29,15 @@ namespace WebApplicationAssigment.commons
             return user;
         }
 
+        public static MembershipUser getUser(string guid)
+        {
+            MembershipUser user = Membership.GetUser(
+                Guid.Parse(guid), false
+            );
+            // (Guid) user.ProviderUserKey
+            return user;
+        }
+
         public static string getAlert(string css_class, string error)
         {
             return  "<div class=\"alert " + css_class + " alert-dismissible\">" +
@@ -60,6 +69,52 @@ namespace WebApplicationAssigment.commons
                 {
                     return null;
                 }
+            }
+        }
+
+        public static void addToCart(string productId, HttpResponse Response)
+        {
+            CartDetail cd = new CartDetail();
+            if (HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                using (ArtShopEntities db = new ArtShopEntities())
+                {
+                    Guid user_id = (Guid)Functions.getLoginUser().ProviderUserKey;
+                    Cart cart;
+                    IQueryable<Cart> carts = db.Carts.Where(
+                        s => s.user_id == user_id
+                    );
+                    if (carts.Count() <= 0)
+                    {
+                        cart = Functions.CreateCart();
+                    }
+                    else
+                    {
+                        cart = carts.FirstOrDefault();
+                    }
+                    //string userid = Session["UserId"].ToString(); //user id for the logged in user
+                    string productid = productId; //get product id from the selected product
+                    int pidininteger = Int32.Parse(productid);
+
+                    cd.art_id = pidininteger; //art id
+                    cd.availability = 1; //1 means available
+                    cd.add_date = DateTime.Now; //added item must be recorded on real time\
+                    cd.cart_id = cart.id;
+
+                    db.CartDetails.Add(cd);
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch
+                    {
+
+                    }
+                }
+            }
+            else
+            {
+                Response.Redirect(Constant.LOGIN_URL);
             }
         }
 
