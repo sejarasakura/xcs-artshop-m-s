@@ -22,7 +22,7 @@ namespace WebApplicationAssigment.commons
         public static readonly string LOGIN_URL = PAGES_URL + "/main/Authentication/Login.aspx";
         public static readonly string PROFILE_URL = PAGES_URL + "/main/Authentication/Profile";
         public static readonly string ARTSHOP_URL = PAGES_URL + "/main/ArtShop";
-        public static readonly string LIB_URL = PAGES_URL + "/web/lib";
+        public static readonly string LIB_URL = DEFAULT_URL + "/web/lib";
         public static readonly string PROFILE_PIC_URL = DEFAULT_URL + "/commons/UserProfilePicture.ashx";
     }
 }

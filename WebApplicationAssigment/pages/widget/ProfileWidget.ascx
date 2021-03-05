@@ -1,16 +1,13 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ProfileWidget.ascx.cs" Inherits="WebApplicationAssigment.pages.widget.ProfileWidget" %>
 
 
-<%@ Import namespace="WebApplicationAssigment.commons" %>
+<%@ Import Namespace="WebApplicationAssigment.commons" %>
 <hr />
 <div class="container bootstrap snippet">
-    <link rel="stylesheet" href="<%= Constant.LIB_URL %>/css/bootstarp3.css">
-    <%
-        MembershipUser ms = Functions.getLoginUser();
-    %>
+    <link rel="stylesheet" href="<%= Constant.LIB_URL %>/css/bootstrap3.css" />
     <div class="row">
         <div class="col-sm-10">
-            <h1>User name</h1>
+            <h1><%= this.viewMember.UserName %></h1>
         </div>
     </div>
     <div class="row">
@@ -19,7 +16,7 @@
 
 
             <div class="text-center">
-                <img src="<%= Constant.PROFILE_PIC_URL %>?guid=<%= (Guid)ms.ProviderUserKey %>" class="avatar img-circle img-thumbnail" alt="avatar">
+                <img src="<%= Constant.PROFILE_PIC_URL %>?guid=<%= (Guid)viewMember.ProviderUserKey %>" class="avatar img-circle img-thumbnail" alt="avatar">
                 <h6>Upload a different photo...</h6>
                 <input type="file" class="text-center center-block file-upload">
             </div>
@@ -30,17 +27,21 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Website <i class="fa fa-link fa-1x"></i></div>
                 <div class="panel-body"><a href="http://bootnipets.com">bootnipets.com</a></div>
+                <div class="panel-body">
+                    <asp:LoginStatus ID="LoginStatus1" runat="server" />
+                </div>
+
             </div>
 
 
         </div>
         <!--/col-3-->
         <div class="col-sm-9">
-            <ul class="xnav xnav-tabs">
+            <ul class="xnav xnav-tabs nav nav-tabs">
 
                 <asp:LoginView ID="LoginView2" runat="server">
                     <LoggedInTemplate>
-                        <% string[] role = Roles.GetRolesForUser(); %>
+                        <% string[] role = Roles.GetRolesForUser(viewMember.UserName); %>
 
                         <li class="active"><a data-toggle="tab" href="#general">General</a></li>
 
@@ -64,76 +65,123 @@
 
                 <asp:LoginView ID="LoginView1" runat="server">
                     <LoggedInTemplate>
-                        <% string[] role = Roles.GetRolesForUser(); %>
+                        <% string[] role = Roles.GetRolesForUser(viewMember.UserName); %>
 
                         <div class="tab-pane active" id="general">
+                            <hr />
+                            <div class="row">
+                                <div class="col-sm 12 form-group" style="margin: 0">
+                                    <asp:TextBox
+                                        runat="server"
+                                        ID="Emails"
+                                        class="form-control"
+                                        placeholder="Emails" />
+                                    <asp:RequiredFieldValidator runat="server"
+                                        ControlToValidate="Emails"
+                                        ToolTip="Email is a required field."
+                                        ID="EmailRequired"
+                                        CssClass="text-danger"
+                                        ErrorMessage="Email is a required field.">
+                                                    <b>* Email is a required field.</b>
+                                    </asp:RequiredFieldValidator>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="form-group">
+
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <asp:TextBox
+                                            ID="firstName"
+                                            runat="server"
+                                            placeholder="First Name"
+                                            CssClass="form-control" />
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 col-md-6">
+                                        <asp:TextBox
+                                            ID="lastName"
+                                            runat="server"
+                                            placeholder="Last Name"
+                                            CssClass="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <!--Gender-->
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        Gender : 
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="form-check-inline">
+                                            <asp:RadioButton ID="radioMale" runat="server" Text="" GroupName="gender" CssClass="form-check-input"/>
+                                            <label class="form-check-label" for="inlineRadio2">Male</label>
+                                        </div>
+                                         | 
+                                        <div class="form-check-inline">
+                                            <asp:RadioButton ID="radioFemale" runat="server" Text="" GroupName="gender" CssClass="form-check-input"/>
+                                            <label class="form-check-label" for="inlineRadio2">Female</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <!--Birthday Date-->
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-4">
+                                        Birthday Date
+                                    </div>
+                                    <div class="col-xs-12 col-sm-8">
+                                        <asp:TextBox
+                                            type="date"
+                                            CssClass="form-control"
+                                            ID="birthdayDate"
+                                            placeholder="Birthday Date"
+                                            runat="server" />
+                                    </div>
+                                </div>
+                            </div>
+
                             <hr>
-                            <form class="form" action="##" method="post" id="registrationForm">
-                                <div class="form-group">
-
-                                    <div class="col-xs-6">
-                                        <label for="first_name">
-                                            <h4>First name</h4>
-                                        </label>
-                                        <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" title="enter your first name if any.">
-                                    </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <asp:TextBox
+                                        runat="server"
+                                        ID="Question"
+                                        class="form-control input"
+                                        placeholder="Security Question" />
+                                    <asp:RequiredFieldValidator runat="server"
+                                        ControlToValidate="Question"
+                                        ToolTip="Security Question is a required field."
+                                        ID="QuestionRequired"
+                                        CssClass="text-danger"
+                                        ErrorMessage="Security Question is a required field.">
+                                            <b>* Security Question is a required field.</b>
+                                    </asp:RequiredFieldValidator>
                                 </div>
-                                <div class="form-group">
-
-                                    <div class="col-xs-6">
-                                        <label for="last_name">
-                                            <h4>Last name</h4>
-                                        </label>
-                                        <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" title="enter your last name if any.">
-                                    </div>
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <asp:TextBox
+                                        runat="server"
+                                        ID="Answer"
+                                        class="form-control input"
+                                        TextMode="Password"
+                                        placeholder="Answer" />
+                                    <asp:RequiredFieldValidator runat="server"
+                                        ControlToValidate="Answer"
+                                        ToolTip="Security Answer is a required field."
+                                        ID="AnswerRequired"
+                                        CssClass="text-danger"
+                                        ErrorMessage="Security Answer is a required field.">
+                                            <b>* Security Answer is a required field.</b>
+                                    </asp:RequiredFieldValidator>
                                 </div>
-
-                                <div class="form-group">
-
-                                    <div class="col-xs-6">
-                                        <label for="phone">
-                                            <h4>Phone</h4>
-                                        </label>
-                                        <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" title="enter your phone number if any.">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-xs-6">
-                                        <label for="mobile">
-                                            <h4>Mobile</h4>
-                                        </label>
-                                        <input type="text" class="form-control" name="mobile" id="mobile" placeholder="enter mobile number" title="enter your mobile number if any.">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-
-                                    <div class="col-xs-6">
-                                        <label for="email">
-                                            <h4>Email</h4>
-                                        </label>
-                                        <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" title="enter your email.">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-
-                                    <div class="col-xs-6">
-                                        <label for="email">
-                                            <h4>Location</h4>
-                                        </label>
-                                        <input type="email" class="form-control" id="location" placeholder="somewhere" title="enter a location">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-xs-12">
-                                        <br>
-                                        <button class="btn btn-lg btn-success" type="submit"><i class="glyphicon glyphicon-ok-sign"></i>Save</button>
-                                        <button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i>Reset</button>
-                                    </div>
-                                </div>
-                            </form>
-
-                            <hr>
+                            </div>
+                            
+                            <hr />
                         </div>
 
                         <% if (role.Contains("Artist"))

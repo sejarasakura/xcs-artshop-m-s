@@ -29,6 +29,15 @@ namespace WebApplicationAssigment.commons
             return user;
         }
 
+        public static MembershipUser getUser(string guid)
+        {
+            MembershipUser user = Membership.GetUser(
+                Guid.Parse(guid), false
+            );
+            // (Guid) user.ProviderUserKey
+            return user;
+        }
+
         public static string getAlert(string css_class, string error)
         {
             return  "<div class=\"alert " + css_class + " alert-dismissible\">" +
