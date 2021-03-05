@@ -230,6 +230,7 @@
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="Web.config" />
+    <Content Include="web\lib\css\bootstrap3.css" />
     <Content Include="web\lib\css\extensions.css" />
     <Content Include="web\lib\css\lib.css" />
     <Content Include="web\lib\css\login.css" />

@@ -15,6 +15,15 @@ namespace WebApplicationAssigment.pages.main.ArtShop
     {
 
         /// <summary>
+        /// StartPageSM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebApplicationAssigment.pages.widget.StartPageSM StartPageSM;
+
+        /// <summary>
         /// Label1 control.
         /// </summary>
         /// <remarks>
@@ -31,6 +40,15 @@ namespace WebApplicationAssigment.pages.main.ArtShop
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl preview;
+
+        /// <summary>
+        /// NoCartFound control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl NoCartFound;
 
         /// <summary>
         /// GridView1 control.
@@ -67,5 +85,14 @@ namespace WebApplicationAssigment.pages.main.ArtShop
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button Button2;
+
+        /// <summary>
+        /// EndPagesSM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebApplicationAssigment.pages.widget.EndPagesSM EndPagesSM;
     }
 }
