@@ -172,6 +172,7 @@
                                     <hr class="colorgraph">
                                 </div>
                             </div>
+                        </div>
                     </ContentTemplate>
                     <CustomNavigationTemplate>
                         <div class="row">
@@ -373,6 +374,7 @@
                                     <hr class="colorgraph">
                                 </div>
                             </div>
+                        </div>
                     </ContentTemplate>
                     <CustomNavigationTemplate>
                         <stepnavigationtemplate>
