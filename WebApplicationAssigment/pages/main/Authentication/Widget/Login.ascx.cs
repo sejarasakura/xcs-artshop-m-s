@@ -28,8 +28,6 @@ namespace WebApplicationAssigment.pages.main.Authentication.Widget
                 TextBox username = (TextBox)FindControlRecursive(Login1, "UserName");
                 TextBox pass = (TextBox)FindControlRecursive(Login1, "Password");
                 Button btnSubmit = (Button)FindControlRecursive(Login1, "Login");
-                username.ValidationGroup = value;
-                pass.ValidationGroup = value;
                 btnSubmit.ValidationGroup = value;
                 passwordValidator.ValidationGroup = value;
                 usernameValidator.ValidationGroup = value;

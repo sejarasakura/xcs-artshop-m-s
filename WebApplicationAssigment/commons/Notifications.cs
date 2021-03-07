@@ -12,7 +12,6 @@ namespace WebApplicationAssigment.commons
         public static readonly string INFO_TYPE = "info";
 
         public static readonly int DEFAULT_TIMES = 1;
-        public static readonly int INFINITY_TIMES = -1;
 
         public int times { get; set; }
         public string type { get; set; }

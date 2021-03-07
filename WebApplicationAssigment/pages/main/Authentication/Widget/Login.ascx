@@ -10,10 +10,10 @@
                 <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Sign in with Google+</span> </button>
             </div>
             <p style="text-align: center">OR  </p>
-            <asp:TextBox ID="UserName" runat="server" class="form-control" placeholder="username" required="" autofocus="" />
+            <asp:TextBox ID="UserName" runat="server" class="form-control" placeholder="username" />
             <asp:RequiredFieldValidator class="text-danger" ID="UserNameRequired" runat="server" ControlToValidate="UserName" Text="*Username is required"></asp:RequiredFieldValidator>
             <br>
-            <asp:TextBox ID="Password" runat="server" class="form-control" placeholder="password" required="" autofocus="" TextMode="Password" />
+            <asp:TextBox ID="Password" runat="server" class="form-control" placeholder="password" TextMode="Password" />
             <asp:RequiredFieldValidator class="text-danger" ID="PasswordRequired" runat="server" ControlToValidate="Password" Text="*Password is required"></asp:RequiredFieldValidator>
 
             <br />
