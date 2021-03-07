@@ -20,7 +20,7 @@
             <asp:LoginView ID="LoginView1" runat="server">
                 <AnonymousTemplate>
                     <li class="nav-item">
-                        <a class="nav-link" href="<%= Constant.AUTH_URL %>/Login.aspx">Login</a>
+                        <a class="nav-link" id="login_button_in_header" href="#">Login</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<%= Constant.AUTH_URL %>/Register.aspx">Sign Up</a>

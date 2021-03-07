@@ -3115,16 +3115,16 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Arts">
-            <EntityTypeMapping TypeName="ArtShopModel.Art">
+            <EntityTypeMapping TypeName="IsTypeOf(ArtShopModel.Art)">
               <MappingFragment StoreEntitySet="Art">
-                <ScalarProperty Name="artist_id" ColumnName="artist_id" />
-                <ScalarProperty Name="category_id" ColumnName="category_id" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="artist_id" ColumnName="artist_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

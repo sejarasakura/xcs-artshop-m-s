@@ -3,6 +3,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<%@ Import namespace="WebApplicationAssigment.commons" %>
+<%@ Import namespace="WebApplicationAssigment.modal" %>
+    <%
+        int id = Int32.Parse(Request["id"]);
+        using (ArtShopEntities db = new ArtShopEntities())
+        {
+            art = db.Arts.Find(id); 
+    %>
     <div class="container-lg mt-4 mb-4">
         <div class="row">
             <div class="col-md-6">
@@ -13,6 +21,10 @@
                 <p class="font-weight-lighter"><%=art.description%></p>
                 <p class="font-weight-bolder">RM <%=art.price %></p>
                 <p class="font-weight-lighter">Date Published : <%= art.date %></p>
+                <img alt="" src="<%= Constant.PROFILE_PIC_URL %>?guid=<%= art.Artist.UserId %>" />
+                <img alt="" src="<%= art.Artist.aspnet_Users.UserExtension.first_name + " " + art.Artist.aspnet_Users.UserExtension.last_name %>" />
+                <img alt="" src="<%= art.Artist.birthday_date %>" />
+                <img alt="" src="<%= art.Artist.description %>" />
                 <p class="mb-5"></p>
                 <p class="mb-5"></p>
                 <p class="mb-5"></p>
@@ -21,4 +33,5 @@
         </div>
 
     </div>
+   <%}%>
 </asp:Content>

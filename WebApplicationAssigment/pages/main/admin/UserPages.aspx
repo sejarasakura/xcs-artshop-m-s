@@ -34,6 +34,13 @@
                     ShowHeaderWhenEmpty="True">
                     <Columns>
 
+                        <asp:TemplateField HeaderText="Username" SortExpression="Guid">
+                            <EditItemTemplate>
+                            </EditItemTemplate>
+                            <ItemTemplate>
+                                <asp:Label ID="Label1" runat="server" Text='<%# Eval("UserId")%>'></asp:Label>
+                            </ItemTemplate>
+                        </asp:TemplateField>
                         <asp:TemplateField HeaderText="Profile" SortExpression="image">
                             <EditItemTemplate>
                             </EditItemTemplate>

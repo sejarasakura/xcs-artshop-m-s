@@ -28,7 +28,7 @@
         <div style="margin-left:200px">
             <nav class="navbar navbar-default">
                 <div class="w3-container ">
-                    <h1 class="text-right">Sketch<%= Page.Title == "" ? "" : " - "+ Page.Title%>
+                    <h1 class="text-right">Sketch<%= Page.Title == "" ? "" : " - " + Page.Title%>
                     </h1>
                 </div>
             </nav>
