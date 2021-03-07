@@ -10,8 +10,14 @@
     </center>
     <div class="panel panel-default" style="margin: 0px">
         <div class="panel-heading">
-            <h4 class="panel-title"><a data-toggle="collapse" class=" admin-menu " href="#nav-1"
-                    datatype="0"><b>Dashboard</b></a></h4>
+            <h4 class="panel-title">
+                <a data-toggle="collapse" 
+                    class=" admin-menu " 
+                    href="#nav-1"
+                    datatype="0">
+                    <b>Dashboard</b>
+                </a>
+            </h4>
         </div>
         <div id="nav-1" class="panel-collapse collapse " style="padding-left: 10px">
             <ul class="list-group">
@@ -22,7 +28,14 @@
     </div>
     <div class="panel panel-default" style="margin: 0px">
         <div class="panel-heading">
-            <h4 class="panel-title"><a data-toggle="collapse" class=" admin-menu " href="#nav-2" datatype="1"><b>Users</b></a></h4>
+            <h4 class="panel-title">
+                <a data-toggle="collapse" 
+                    class=" admin-menu " 
+                    href="#nav-2" 
+                    datatype="1">
+                    <b>Users</b>
+                </a>
+            </h4>
         </div>
         <div id="nav-2" class="panel-collapse collapse " style="padding-left: 10px">
             <ul class="list-group">
@@ -36,7 +49,14 @@
     </div>
     <div class="panel panel-default" style="margin: 0px">
         <div class="panel-heading">
-            <h4 class="panel-title"><a data-toggle="collapse" class=" admin-menu " href="#nav-3" datatype="2"><b>Data Adminsration</b></a></h4>
+            <h4 class="panel-title">
+                <a data-toggle="collapse" 
+                    class=" admin-menu " 
+                    href="#nav-3" 
+                    datatype="2">
+                    <b>Data Adminsration</b>
+                </a>
+            </h4>
         </div>
         <div id="nav-3" class="panel-collapse collapse " style="padding-left: 10px">
             <ul class="list-group">
@@ -48,7 +68,14 @@
     </div>
     <div class="panel panel-default" style="margin: 0px">
         <div class="panel-heading">
-            <h4 class="panel-title"><a data-toggle="collapse" class=" admin-menu " href="#nav-4" datatype="3"><b>Report</b></a></h4>
+            <h4 class="panel-title">
+                <a data-toggle="collapse" 
+                    class=" admin-menu " 
+                    href="#nav-4" 
+                    datatype="3">
+                    <b>Report</b>
+                </a>
+            </h4>
         </div>
         <div id="nav-4" class="panel-collapse collapse " style="padding-left: 10px">
             <ul class="list-group">

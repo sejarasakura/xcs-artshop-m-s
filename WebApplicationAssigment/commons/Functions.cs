@@ -29,6 +29,15 @@ namespace WebApplicationAssigment.commons
             return user;
         }
 
+        public static MembershipUser getUser(string guid)
+        {
+            MembershipUser user = Membership.GetUser(
+                Guid.Parse(guid), false
+            );
+            // (Guid) user.ProviderUserKey
+            return user;
+        }
+
         public static string getAlert(string css_class, string error)
         {
             return  "<div class=\"alert " + css_class + " alert-dismissible\">" +
@@ -43,6 +52,8 @@ namespace WebApplicationAssigment.commons
             {
                 Cart newCart = new Cart();
                 newCart.user_id = (Guid)getLoginUser().ProviderUserKey;
+                if (newCart.user_id == null)
+                    return null;
                 if (db.Carts.Count() == 0)
                 {
                     newCart.id = 1;
@@ -63,5 +74,134 @@ namespace WebApplicationAssigment.commons
             }
         }
 
+        public static void addToCart(string productId, HttpResponse Response)
+        {
+            CartDetail cd = new CartDetail();
+            if (HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                using (ArtShopEntities db = new ArtShopEntities())
+                {
+                    Cart cart = null;
+                    Guid user_id = (Guid)Functions.getLoginUser().ProviderUserKey;
+
+                    if(user_id == null)
+                    {
+                        Response.Redirect(Constant.LOGIN_URL);
+                    }
+
+                    IQueryable<Cart> carts = db.Carts.Where(
+                        s => s.user_id == user_id
+                    );
+
+                    if (carts.Count() <= 0)
+                    {
+                        cart = Functions.CreateCart();
+                    }
+                    else
+                    {
+                        cart = carts.FirstOrDefault();
+                    }
+
+                    if(cart != null)
+                    {
+                        //string userid = Session["UserId"].ToString(); //user id for the logged in user
+                        string productid = productId; //get product id from the selected product
+                        int pidininteger = Int32.Parse(productid);
+
+                        cd.art_id = pidininteger; //art id
+                        cd.availability = 1; //1 means available
+                        cd.add_date = DateTime.Now; //added item must be recorded on real time\
+                        cd.cart_id = cart.id;
+
+                        db.CartDetails.Add(cd);
+                        try
+                        {
+                            db.SaveChanges();
+                        }
+                        catch
+                        { }
+                    }
+                }
+            }
+            else
+            {
+                Response.Redirect(Constant.LOGIN_URL);
+            }
+        }
+
+        public static void EnqueueNewNotifications(Notifications news)
+        {
+            if (news == null)
+                return;
+
+            var sessionContent = HttpContext.Current.Session[Constant.ERROR_MESSAGE_SESSION];
+            List<Notifications> notifications;
+            if(sessionContent == null)
+            {
+                notifications = new List<Notifications>();
+            }
+            else
+            {
+                notifications = (List<Notifications>)sessionContent;
+            }
+            notifications.Add(news);
+
+            HttpContext.Current.Session[Constant.ERROR_MESSAGE_SESSION] = notifications;
+        }
+        public static string DisplayError()
+        {
+            var sessionContent = HttpContext.Current.Session[Constant.ERROR_MESSAGE_SESSION];
+
+            if (sessionContent == null)
+            {
+                return "";
+            }
+
+            List<Notifications> notifications = (List<Notifications>)sessionContent;
+            string result = "";
+            List<int> removes = new List<int>();
+
+            for (int i = 0; i < notifications.Count(); i++)
+            {
+                if (notifications[i].times < -1)
+                    continue;
+
+                switch (notifications[i].times)
+                {
+                    case -1:
+                        result += FormatNotificationScript(notifications[i]);
+                        break;
+                    case 0:
+                        removes.Add(i);
+                        break;
+                    case 1:
+                        result += FormatNotificationScript(notifications[i]);
+                        removes.Add(i);
+                        break;
+                    default:
+                        result += FormatNotificationScript(notifications[i]);
+                        notifications[i].times--;
+                        break;
+                }
+            }
+            removes.Reverse();
+            foreach (int remove in removes)
+            {
+                notifications.RemoveAt(remove);
+            }
+
+            HttpContext.Current.Session[Constant.ERROR_MESSAGE_SESSION] = notifications;
+
+            return result;
+        }
+        public static void ClearNotifications()
+        {
+            HttpContext.Current.Session[Constant.ERROR_MESSAGE_SESSION] = null;
+        }
+
+        public static string FormatNotificationScript(Notifications notifications)
+        {
+            return "toastr[\"" + notifications.type + "\"](\"" + notifications.detail + "\", \"" + notifications.title + "\"); ";
+        }
     }
 }
