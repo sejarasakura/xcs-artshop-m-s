@@ -23,11 +23,11 @@
     <form id="form1" runat="server">
         <div style="height: 100%">
             <center>
-            <img class="img-control" 
+            <img 
+                class="img-control" 
                 src='<%= "https://" + HttpContext.Current.Request.Url.Authority + "/" + Request.QueryString["image"].ToString()%>' 
-                alt="<%= Request.QueryString["name"].ToString() %>"
-                 />
-                </center>
+                alt="<%= Request.QueryString["name"].ToString() %>"/>
+            </center>
         </div>
     </form>
 </body>
