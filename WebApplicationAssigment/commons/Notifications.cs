@@ -7,6 +7,7 @@ namespace WebApplicationAssigment.commons
 {
     public class Notifications
     {
+        public static readonly string WARNING_TYPE = "warning";
         public static readonly string SUCCESS_TYPE = "success";
         public static readonly string ERROR_TYPE = "error";
         public static readonly string INFO_TYPE = "info";

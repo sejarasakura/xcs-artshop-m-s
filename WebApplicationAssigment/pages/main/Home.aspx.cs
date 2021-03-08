@@ -12,10 +12,7 @@ namespace WebApplicationAssigment.pages.main
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Functions.EnqueueNewNotifications(new Notifications(
-                Notifications.SUCCESS_TYPE,
-                "Welcome to home pages!!",
-                "Hahahaha haha"));
+
         }
     }
 }

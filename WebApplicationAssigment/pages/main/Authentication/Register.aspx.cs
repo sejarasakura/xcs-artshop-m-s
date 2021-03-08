@@ -139,7 +139,8 @@ namespace WebApplicationAssigment.pages.main.Profile
                     Functions.EnqueueNewNotifications(new Notifications(
                         Notifications.SUCCESS_TYPE,
                         "Successful register!!",
-                        "Your registeration have sucessful. Dear " + ue.first_name + " " + ue.last_name + " welcome to sketch!!"));
+                        "Your registeration have sucessful. Dear " + 
+                        ue.first_name + " " + ue.last_name + " welcome to sketch!!"));
                 }
                 catch (Exception ex)
                 {
