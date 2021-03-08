@@ -916,7 +916,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Delivery__delive__10E07F16">
+        <Association Name="FK__Delivery__delive__11D4A34F">
           <End Role="DeliveryCompany" Type="Self.DeliveryCompany" Multiplicity="1" />
           <End Role="Delivery" Type="Self.Delivery" Multiplicity="*" />
           <ReferentialConstraint>
@@ -928,7 +928,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Delivery__destin__0FEC5ADD">
+        <Association Name="FK__Delivery__destin__10E07F16">
           <End Role="Address" Type="Self.Address" Multiplicity="1" />
           <End Role="Delivery" Type="Self.Delivery" Multiplicity="*" />
           <ReferentialConstraint>
@@ -940,7 +940,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Delivery__final___11D4A34F">
+        <Association Name="FK__Delivery__final___12C8C788">
           <End Role="DeliveryStatus" Type="Self.DeliveryStatus" Multiplicity="1" />
           <End Role="Delivery" Type="Self.Delivery" Multiplicity="*" />
           <ReferentialConstraint>
@@ -952,7 +952,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Delivery__source__0EF836A4">
+        <Association Name="FK__Delivery__source__0FEC5ADD">
           <End Role="Address" Type="Self.Address" Multiplicity="1" />
           <End Role="Delivery" Type="Self.Delivery" Multiplicity="*" />
           <ReferentialConstraint>
@@ -964,7 +964,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DeliveryC__addre__15A53433">
+        <Association Name="FK__DeliveryC__addre__1699586C">
           <End Role="Address" Type="Self.Address" Multiplicity="1" />
           <End Role="DeliveryChain" Type="Self.DeliveryChain" Multiplicity="*" />
           <ReferentialConstraint>
@@ -976,7 +976,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DeliveryC__deliv__1699586C">
+        <Association Name="FK__DeliveryC__deliv__178D7CA5">
           <End Role="DeliveryStatus" Type="Self.DeliveryStatus" Multiplicity="0..1" />
           <End Role="DeliveryChain" Type="Self.DeliveryChain" Multiplicity="*" />
           <ReferentialConstraint>
@@ -988,7 +988,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DeliveryC__deliv__1975C517">
+        <Association Name="FK__DeliveryC__deliv__1A69E950">
           <End Role="Delivery" Type="Self.Delivery" Multiplicity="1" />
           <End Role="DeliveryChainDetails" Type="Self.DeliveryChainDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1000,7 +1000,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DeliveryC__tranf__1A69E950">
+        <Association Name="FK__DeliveryC__tranf__1B5E0D89">
           <End Role="DeliveryChain" Type="Self.DeliveryChain" Multiplicity="1" />
           <End Role="DeliveryChainDetails" Type="Self.DeliveryChainDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1012,7 +1012,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Painting__art_id__0B27A5C0">
+        <Association Name="FK__Painting__art_id__0C1BC9F9">
           <End Role="Art" Type="Self.Art" Multiplicity="1" />
           <End Role="Painting" Type="Self.Painting" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -1024,7 +1024,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Payment__payment__2E70E1FD">
+        <Association Name="FK__Payment__payment__3BCADD1B">
           <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="1" />
           <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1036,7 +1036,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Payment__payment__2F650636">
+        <Association Name="FK__Payment__payment__3CBF0154">
           <End Role="PaymentStatus" Type="Self.PaymentStatus" Multiplicity="1" />
           <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1048,7 +1048,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Payment__UserId__30592A6F">
+        <Association Name="FK__Payment__UserId__3DB3258D">
           <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="1" />
           <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1084,7 +1084,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserAddre__addre__084B3915">
+        <Association Name="FK__UserAddre__addre__093F5D4E">
           <End Role="Address" Type="Self.Address" Multiplicity="1" />
           <End Role="UserAddress" Type="Self.UserAddress" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1096,7 +1096,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UserAddre__UserI__075714DC">
+        <Association Name="FK__UserAddre__UserI__084B3915">
           <End Role="UserExtension" Type="Self.UserExtension" Multiplicity="1" />
           <End Role="UserAddress" Type="Self.UserAddress" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1750,51 +1750,51 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
             <End Role="Customer" EntitySet="Customer" />
           </AssociationSet>
-          <AssociationSet Name="FK__Delivery__delive__10E07F16" Association="Self.FK__Delivery__delive__10E07F16">
+          <AssociationSet Name="FK__Delivery__delive__11D4A34F" Association="Self.FK__Delivery__delive__11D4A34F">
             <End Role="DeliveryCompany" EntitySet="DeliveryCompany" />
             <End Role="Delivery" EntitySet="Delivery" />
           </AssociationSet>
-          <AssociationSet Name="FK__Delivery__destin__0FEC5ADD" Association="Self.FK__Delivery__destin__0FEC5ADD">
+          <AssociationSet Name="FK__Delivery__destin__10E07F16" Association="Self.FK__Delivery__destin__10E07F16">
             <End Role="Address" EntitySet="Address" />
             <End Role="Delivery" EntitySet="Delivery" />
           </AssociationSet>
-          <AssociationSet Name="FK__Delivery__final___11D4A34F" Association="Self.FK__Delivery__final___11D4A34F">
+          <AssociationSet Name="FK__Delivery__final___12C8C788" Association="Self.FK__Delivery__final___12C8C788">
             <End Role="DeliveryStatus" EntitySet="DeliveryStatus" />
             <End Role="Delivery" EntitySet="Delivery" />
           </AssociationSet>
-          <AssociationSet Name="FK__Delivery__source__0EF836A4" Association="Self.FK__Delivery__source__0EF836A4">
+          <AssociationSet Name="FK__Delivery__source__0FEC5ADD" Association="Self.FK__Delivery__source__0FEC5ADD">
             <End Role="Address" EntitySet="Address" />
             <End Role="Delivery" EntitySet="Delivery" />
           </AssociationSet>
-          <AssociationSet Name="FK__DeliveryC__addre__15A53433" Association="Self.FK__DeliveryC__addre__15A53433">
+          <AssociationSet Name="FK__DeliveryC__addre__1699586C" Association="Self.FK__DeliveryC__addre__1699586C">
             <End Role="Address" EntitySet="Address" />
             <End Role="DeliveryChain" EntitySet="DeliveryChain" />
           </AssociationSet>
-          <AssociationSet Name="FK__DeliveryC__deliv__1699586C" Association="Self.FK__DeliveryC__deliv__1699586C">
+          <AssociationSet Name="FK__DeliveryC__deliv__178D7CA5" Association="Self.FK__DeliveryC__deliv__178D7CA5">
             <End Role="DeliveryStatus" EntitySet="DeliveryStatus" />
             <End Role="DeliveryChain" EntitySet="DeliveryChain" />
           </AssociationSet>
-          <AssociationSet Name="FK__DeliveryC__deliv__1975C517" Association="Self.FK__DeliveryC__deliv__1975C517">
+          <AssociationSet Name="FK__DeliveryC__deliv__1A69E950" Association="Self.FK__DeliveryC__deliv__1A69E950">
             <End Role="Delivery" EntitySet="Delivery" />
             <End Role="DeliveryChainDetails" EntitySet="DeliveryChainDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__DeliveryC__tranf__1A69E950" Association="Self.FK__DeliveryC__tranf__1A69E950">
+          <AssociationSet Name="FK__DeliveryC__tranf__1B5E0D89" Association="Self.FK__DeliveryC__tranf__1B5E0D89">
             <End Role="DeliveryChain" EntitySet="DeliveryChain" />
             <End Role="DeliveryChainDetails" EntitySet="DeliveryChainDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__Painting__art_id__0B27A5C0" Association="Self.FK__Painting__art_id__0B27A5C0">
+          <AssociationSet Name="FK__Painting__art_id__0C1BC9F9" Association="Self.FK__Painting__art_id__0C1BC9F9">
             <End Role="Art" EntitySet="Art" />
             <End Role="Painting" EntitySet="Painting" />
           </AssociationSet>
-          <AssociationSet Name="FK__Payment__payment__2E70E1FD" Association="Self.FK__Payment__payment__2E70E1FD">
+          <AssociationSet Name="FK__Payment__payment__3BCADD1B" Association="Self.FK__Payment__payment__3BCADD1B">
             <End Role="PaymentMethod" EntitySet="PaymentMethod" />
             <End Role="Payment" EntitySet="Payment" />
           </AssociationSet>
-          <AssociationSet Name="FK__Payment__payment__2F650636" Association="Self.FK__Payment__payment__2F650636">
+          <AssociationSet Name="FK__Payment__payment__3CBF0154" Association="Self.FK__Payment__payment__3CBF0154">
             <End Role="PaymentStatus" EntitySet="PaymentStatus" />
             <End Role="Payment" EntitySet="Payment" />
           </AssociationSet>
-          <AssociationSet Name="FK__Payment__UserId__30592A6F" Association="Self.FK__Payment__UserId__30592A6F">
+          <AssociationSet Name="FK__Payment__UserId__3DB3258D" Association="Self.FK__Payment__UserId__3DB3258D">
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
             <End Role="Payment" EntitySet="Payment" />
           </AssociationSet>
@@ -1806,11 +1806,11 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
             <End Role="Staff" EntitySet="Staff" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserAddre__addre__084B3915" Association="Self.FK__UserAddre__addre__084B3915">
+          <AssociationSet Name="FK__UserAddre__addre__093F5D4E" Association="Self.FK__UserAddre__addre__093F5D4E">
             <End Role="Address" EntitySet="Address" />
             <End Role="UserAddress" EntitySet="UserAddress" />
           </AssociationSet>
-          <AssociationSet Name="FK__UserAddre__UserI__075714DC" Association="Self.FK__UserAddre__UserI__075714DC">
+          <AssociationSet Name="FK__UserAddre__UserI__084B3915" Association="Self.FK__UserAddre__UserI__084B3915">
             <End Role="UserExtension" EntitySet="UserExtension" />
             <End Role="UserAddress" EntitySet="UserAddress" />
           </AssociationSet>

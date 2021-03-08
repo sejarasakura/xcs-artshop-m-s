@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
- <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9697cf9adc1a4f2895d1cdb3b425541c" Name="Diagram1" ZoomLevel="103" >
+      <Diagram DiagramId="9697cf9adc1a4f2895d1cdb3b425541c" Name="Diagram1" ZoomLevel="36" >
         <EntityTypeShape EntityType="ArtShopModel.ChangePassword" Width="1.5" PointX="6.75" PointY="3.75" />
         <EntityTypeShape EntityType="ArtShopModel.vw_aspnet_Applications" Width="1.5" PointX="18.5" PointY="1.75" />
         <EntityTypeShape EntityType="ArtShopModel.vw_aspnet_MembershipUsers" Width="1.5" PointX="11.375" PointY="0.75" />
@@ -27,11 +27,11 @@
         <EntityTypeShape EntityType="ArtShopModel.aspnet_Users" Width="1.5" PointX="5.25" PointY="14.25" />
         <EntityTypeShape EntityType="ArtShopModel.Card" Width="1.5" PointX="9.375" PointY="0.75" />
         <EntityTypeShape EntityType="ArtShopModel.Cart" Width="1.5" PointX="12.125" PointY="13.375" />
-        <EntityTypeShape EntityType="ArtShopModel.CartDetail" Width="1.5" PointX="12.375" PointY="20.25" />
-        <EntityTypeShape EntityType="ArtShopModel.Category" Width="1.5" PointX="12.375" PointY="23" />
+        <EntityTypeShape EntityType="ArtShopModel.CartDetail" Width="1.5" PointX="15.25" PointY="20" />
+        <EntityTypeShape EntityType="ArtShopModel.Category" Width="1.5" PointX="11.875" PointY="22.75" />
         <EntityTypeShape EntityType="ArtShopModel.Customer" Width="1.5" PointX="7.5" PointY="10.125" />
         <EntityTypeShape EntityType="ArtShopModel.Payment" Width="1.5" PointX="9.75" PointY="10.75" />
-        <EntityTypeShape EntityType="ArtShopModel.PaymentDetail" Width="1.5" PointX="9.875" PointY="14.25" />
+        <EntityTypeShape EntityType="ArtShopModel.PaymentDetail" Width="1.5" PointX="14.375" PointY="12.625" />
         <EntityTypeShape EntityType="ArtShopModel.PaymentMethod" Width="1.5" PointX="5.75" PointY="11.625" />
         <EntityTypeShape EntityType="ArtShopModel.PayPal" Width="1.5" PointX="9.375" PointY="3.375" />
         <EntityTypeShape EntityType="ArtShopModel.Position" Width="1.5" PointX="13.625" PointY="17.25" />
@@ -54,16 +54,16 @@
         <AssociationConnector Association="ArtShopModel.FK__aspnet_Pr__UserI__4F7CD00D" />
         <AssociationConnector Association="ArtShopModel.FK__Customer__UserId__1AD3FDA4" ></AssociationConnector>
         <AssociationConnector Association="ArtShopModel.FK__Staff__UserId__1EA48E88" ManuallyRouted="true" >
-          <ConnectorPoint PointX="6.265625" PointY="18.345602213541667" />
-          <ConnectorPoint PointX="6.265625" PointY="19.518654037629496" />
-          <ConnectorPoint PointX="6.4557316666666669" PointY="19.518654037629496" />
-          <ConnectorPoint PointX="6.6223983333333329" PointY="19.518654037629496" />
-          <ConnectorPoint PointX="9.52140625" PointY="19.518654037629496" />
-          <ConnectorPoint PointX="9.52140625" PointY="19.150900065104167" />
-          <ConnectorPoint PointX="10.385416666666666" PointY="19.150900065104167" />
-          <ConnectorPoint PointX="10.385416666666666" PointY="19.150900065104167" />
-          <ConnectorPoint PointX="10.552083333333334" PointY="19.150900065104167" />
-          <ConnectorPoint PointX="10.552083333333334" PointY="19.150900065104167" />
+          <ConnectorPoint PointX="5.4716765625" PointY="18.537903645833335" />
+          <ConnectorPoint PointX="5.4716765625" PointY="19.150900065104167" />
+          <ConnectorPoint PointX="5.6725247916666666" PointY="19.150900065104167" />
+          <ConnectorPoint PointX="5.8391914583333326" PointY="19.150900065104167" />
+          <ConnectorPoint PointX="5.9889297916666671" PointY="19.150900065104167" />
+          <ConnectorPoint PointX="6.1555964583333331" PointY="19.150900065104167" />
+          <ConnectorPoint PointX="6.311197916666667" PointY="19.150900065104167" />
+          <ConnectorPoint PointX="6.477864583333333" PointY="19.150900065104167" />
+          <ConnectorPoint PointX="10.260414666666666" PointY="19.150900065104167" />
+          <ConnectorPoint PointX="10.427081333333334" PointY="19.150900065104167" />
           <ConnectorPoint PointX="11.125" PointY="19.150900065104167" />
         </AssociationConnector>
         <AssociationConnector Association="ArtShopModel.FK__Cart__user_id__3C34F16F" />
@@ -81,7 +81,27 @@
         <EntityTypeShape EntityType="ArtShopModel.avw_ArtistUsers" Width="1.5" PointX="5.375" PointY="0.75" />
         <EntityTypeShape EntityType="ArtShopModel.avw_CustomerUsers" Width="1.5" PointX="7.375" PointY="0.75" />
         <EntityTypeShape EntityType="ArtShopModel.avw_AllUsers" Width="1.5" PointX="20.5" PointY="1.625" />
-        </Diagram>
+        <EntityTypeShape EntityType="ArtShopModel.Address" Width="1.5" PointX="16.5" PointY="10.875" />
+        <EntityTypeShape EntityType="ArtShopModel.Delivery" Width="1.5" PointX="19.125" PointY="11" />
+        <EntityTypeShape EntityType="ArtShopModel.DeliveryChain" Width="1.5" PointX="16.875" PointY="15.375" />
+        <EntityTypeShape EntityType="ArtShopModel.DeliveryCompany" Width="1.5" PointX="17.5" PointY="19.5" />
+        <EntityTypeShape EntityType="ArtShopModel.DeliveryStatu" Width="1.5" PointX="19.75" PointY="18" />
+        <EntityTypeShape EntityType="ArtShopModel.Painting" Width="1.5" PointX="12" PointY="19.75" />
+        <EntityTypeShape EntityType="ArtShopModel.PaymentStatu" Width="1.5" PointX="14.25" PointY="10.25" />
+        <AssociationConnector Association="ArtShopModel.FK__Delivery__destin__0FEC5ADD" />
+        <AssociationConnector Association="ArtShopModel.FK__Delivery__source__0EF836A4" />
+        <AssociationConnector Association="ArtShopModel.FK__DeliveryC__addre__15A53433" />
+        <AssociationConnector Association="ArtShopModel.FK__Painting__art_id__0B27A5C0" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="ArtShopModel.FK__Payment__UserId__2B947552" />
+        <AssociationConnector Association="ArtShopModel.FK__Delivery__delive__10E07F16" />
+        <AssociationConnector Association="ArtShopModel.FK__Delivery__final___11D4A34F" />
+        <AssociationConnector Association="ArtShopModel.FK__DeliveryC__deliv__1699586C" />
+        <AssociationConnector Association="ArtShopModel.FK__Payment__payment__29AC2CE0" />
+        <AssociationConnector Association="ArtShopModel.FK__Payment__payment__2AA05119" />
+        <AssociationConnector Association="ArtShopModel.DeliveryChainDetails" />
+        <AssociationConnector Association="ArtShopModel.UserAddress" />
+      </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

@@ -153,6 +153,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\ArtShop_log.ldf">
+      <DependentUpon>ArtShop.mdf</DependentUpon>
+    </Content>
     <Content Include="assets\image\Art\one.jpg" />
     <Content Include="assets\image\hot-deal.png" />
     <Content Include="assets\image\profile.png" />
@@ -194,9 +197,6 @@
     <Content Include="pages\main\Artist\content\ViewArtSales.aspx" />
     <Content Include="pages\main\Artist\widget\title.ascx" />
     <Content Include="App_Data\ArtShop.mdf" />
-    <Content Include="App_Data\ArtShop_log.ldf">
-      <DependentUpon>ArtShop.mdf</DependentUpon>
-    </Content>
     <Content Include="assets\image\background\CompanyLogo.png" />
     <Content Include="assets\image\background\sky-bg.jpg" />
     <Content Include="assets\image\testing\OK.jpg" />
@@ -311,6 +311,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="modal\Address.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="modal\Art.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -368,6 +371,21 @@
     <Compile Include="modal\Customer.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="modal\Delivery.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\DeliveryChain.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\DeliveryCompany.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\DeliveryStatu.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\Painting.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="modal\Payment.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -375,6 +393,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="modal\PaymentMethod.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\PaymentStatu.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="modal\PayPal.cs">
