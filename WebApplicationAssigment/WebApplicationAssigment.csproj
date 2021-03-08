@@ -265,6 +265,7 @@
     <Content Include="content\bootstrap.css.map" />
     <Content Include="content\bootstrap-theme.min.css.map" />
     <Content Include="content\bootstrap-theme.css.map" />
+    <Content Include="commons\handler\UpdatesHeaderNavigations.ashx" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -297,6 +298,9 @@
     </Compile>
     <Compile Include="commons\Constant.cs" />
     <Compile Include="commons\Functions.cs" />
+    <Compile Include="commons\handler\UpdatesHeaderNavigations.ashx.cs">
+      <DependentUpon>UpdatesHeaderNavigations.ashx</DependentUpon>
+    </Compile>
     <Compile Include="commons\HttpsLoad.cs" />
     <Compile Include="commons\MapApiConstant.cs" />
     <Compile Include="commons\MapApiProvider.cs" />

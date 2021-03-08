@@ -86,7 +86,7 @@
     </div>
     <script>$(document).ready(function () {
             $(".admin-menu").click(function () {
-                var x = "/WebApplication/AdminBarUpdate?c=" + $(this).attr('datatype');
+                var x = "/commons/handler/UpdatesHeaderNavigations.ashx?c=" + $(this).attr('datatype');
                 $.get(x, function (data, status) {
                     console.log('The status' + status + ', and data: ' + data);
                 });

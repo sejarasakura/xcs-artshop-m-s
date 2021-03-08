@@ -38,6 +38,30 @@ namespace WebApplicationAssigment.commons
             return user;
         }
 
+        internal static List<bool> getAdminBarStatus(HttpRequest request)
+        {
+            var sessionContent = HttpContext.Current.Session[Constant.ADMIN_NAVIGATION_SESSION];
+            List<bool> status;
+            if (sessionContent == null)
+            {
+                status = new List<bool>();
+                for(int i = 0; i < 10; i++)
+                {
+                    status.Add(false);
+                }
+            }
+            else
+            {
+                status = (List<bool>)sessionContent;
+            }
+            return status;
+        }
+
+        internal static void setAdminBarStatus(HttpRequest request, List<bool> refer)
+        {
+            HttpContext.Current.Session[Constant.ADMIN_NAVIGATION_SESSION] = refer;
+        }
+
         public static string getAlert(string css_class, string error)
         {
             return  "<div class=\"alert " + css_class + " alert-dismissible\">" +
@@ -67,7 +91,14 @@ namespace WebApplicationAssigment.commons
                     db.Carts.Add(newCart);
                     db.SaveChanges();
                     return newCart;
-                }catch(Exception e)
+
+                    db.SaveChanges();
+                    Functions.EnqueueNewNotifications(new Notifications(
+                        Notifications.SUCCESS_TYPE,
+                        "Hello "+ Functions.getLoginUser().UserName + " !!",
+                        "Hi, new user you can click \"Shopping Cart\" navigation at the top to check you cart!!"));
+                }
+                catch(Exception e)
                 {
                     return null;
                 }
@@ -117,15 +148,29 @@ namespace WebApplicationAssigment.commons
                         try
                         {
                             db.SaveChanges();
+                            Functions.EnqueueNewNotifications(new Notifications(
+                                Notifications.SUCCESS_TYPE,
+                                "Successful add to cart!!",
+                                "You have successful added "+ db.Arts.Find(cd.art_id).title +" to cart!!"));
                         }
-                        catch
-                        { }
+                        catch(Exception ex)
+                        {
+                            Functions.EnqueueNewNotifications(new Notifications(
+                                Notifications.ERROR_TYPE,
+                                "Server SQL Error!!",
+                                "SQL: " + ex.Message));
+                        }
                     }
                 }
             }
             else
             {
                 Response.Redirect(Constant.LOGIN_URL);
+
+                Functions.EnqueueNewNotifications(new Notifications(
+                    Notifications.ERROR_TYPE,
+                    "Login required!!",
+                    "You must login before addin new item to cart !!"));
             }
         }
 
@@ -148,7 +193,7 @@ namespace WebApplicationAssigment.commons
 
             HttpContext.Current.Session[Constant.ERROR_MESSAGE_SESSION] = notifications;
         }
-        public static string DisplayError()
+        public static string DisplayNotifications()
         {
             var sessionContent = HttpContext.Current.Session[Constant.ERROR_MESSAGE_SESSION];
 

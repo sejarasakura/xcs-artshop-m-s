@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebApplicationAssigment.commons;
 
 namespace WebApplicationAssigment.pages.main
 {
@@ -11,7 +12,10 @@ namespace WebApplicationAssigment.pages.main
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Functions.EnqueueNewNotifications(new Notifications(
+                Notifications.SUCCESS_TYPE,
+                "Welcome to home pages!!",
+                "Hahahaha haha"));
         }
     }
 }

@@ -81,7 +81,7 @@
                 "hideMethod": "fadeOut"
             }
 
-            <%= Functions.DisplayError()%>
+            <%= Functions.DisplayNotifications()%>
         })
     </script>
 </body>

@@ -22,15 +22,15 @@ namespace WebApplicationAssigment
             {
                 Functions.EnqueueNewNotifications(new Notifications(
                     Notifications.SUCCESS_TYPE,
-                    "Welcome "+ System.Environment.UserName + " !!",
-                    "System initalizes complete, welcome back to sketch. <a style='text-color: #039BCD' href='" + Constant.ARTSHOP_URL + "/ArtShop_Customer.aspx'>Having shops now</a>"));
+                    "Welcome "+ Functions.getLoginUser().UserName + " !!",
+                    "System initalizes complete, welcome back to sketch. <a style='color: rgb(90, 203, 255)' href='" + Constant.ARTSHOP_URL + "/ArtShop_Customer.aspx'>Having shops now</a>"));
             }
             else
             {
                 Functions.EnqueueNewNotifications(new Notifications(
                     Notifications.SUCCESS_TYPE,
                     "Welcome Guess !!",
-                    "System initalizes complete, first time on sketch? <a style='text-color: #039BCD' href='" + Constant.REGISTER_URL + "'>Register Now</a>. Already have new account? <a style='text-color: #039BCD' href='" + Constant.LOGIN_URL + "'>Login Now</a>."));
+                    "System initalizes complete, first time on sketch? <a style='color: rgb(90, 203, 255)' href='" + Constant.REGISTER_URL + "'>Register Now</a>. Already have new account? <a style='color: rgb(90, 203, 255)' href='" + Constant.LOGIN_URL + "'>Login Now</a>."));
             }
         }
 
