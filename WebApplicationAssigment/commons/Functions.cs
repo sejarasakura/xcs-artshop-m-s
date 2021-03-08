@@ -92,7 +92,6 @@ namespace WebApplicationAssigment.commons
                     db.SaveChanges();
                     return newCart;
 
-                    db.SaveChanges();
                     Functions.EnqueueNewNotifications(new Notifications(
                         Notifications.SUCCESS_TYPE,
                         "Hello "+ Functions.getLoginUser().UserName + " !!",
