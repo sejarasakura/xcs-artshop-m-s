@@ -2201,15 +2201,15 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <EntitySet Name="vw_aspnet_WebPartState_Shared" EntityType="ArtShopModel.vw_aspnet_WebPartState_Shared" />
           <EntitySet Name="vw_aspnet_WebPartState_User" EntityType="ArtShopModel.vw_aspnet_WebPartState_User" />
           <EntitySet Name="vw_customer_cart" EntityType="ArtShopModel.vw_customer_cart" />
-          <AssociationSet Name="FK__Delivery__destin__0FEC5ADD" Association="ArtShopModel.FK__Delivery__destin__0FEC5ADD">
+          <AssociationSet Name="FK__Delivery__destin__10E07F16" Association="ArtShopModel.FK__Delivery__destin__10E07F16">
             <End Role="Address" EntitySet="Addresses" />
             <End Role="Delivery" EntitySet="Deliveries" />
           </AssociationSet>
-          <AssociationSet Name="FK__Delivery__source__0EF836A4" Association="ArtShopModel.FK__Delivery__source__0EF836A4">
+          <AssociationSet Name="FK__Delivery__source__0FEC5ADD" Association="ArtShopModel.FK__Delivery__source__0FEC5ADD">
             <End Role="Address" EntitySet="Addresses" />
             <End Role="Delivery" EntitySet="Deliveries" />
           </AssociationSet>
-          <AssociationSet Name="FK__DeliveryC__addre__15A53433" Association="ArtShopModel.FK__DeliveryC__addre__15A53433">
+          <AssociationSet Name="FK__DeliveryC__addre__1699586C" Association="ArtShopModel.FK__DeliveryC__addre__1699586C">
             <End Role="Address" EntitySet="Addresses" />
             <End Role="DeliveryChain" EntitySet="DeliveryChains" />
           </AssociationSet>
@@ -2225,7 +2225,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <End Role="Art" EntitySet="Arts" />
             <End Role="CartDetail" EntitySet="CartDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__Painting__art_id__0B27A5C0" Association="ArtShopModel.FK__Painting__art_id__0B27A5C0">
+          <AssociationSet Name="FK__Painting__art_id__0C1BC9F9" Association="ArtShopModel.FK__Painting__art_id__0C1BC9F9">
             <End Role="Art" EntitySet="Arts" />
             <End Role="Painting" EntitySet="Paintings" />
           </AssociationSet>
@@ -2273,7 +2273,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
             <End Role="Customer" EntitySet="Customers" />
           </AssociationSet>
-          <AssociationSet Name="FK__Payment__UserId__30592A6F" Association="ArtShopModel.FK__Payment__UserId__30592A6F">
+          <AssociationSet Name="FK__Payment__UserId__3DB3258D" Association="ArtShopModel.FK__Payment__UserId__3DB3258D">
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
             <End Role="Payment" EntitySet="Payments" />
           </AssociationSet>
@@ -2293,23 +2293,23 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <End Role="Cart" EntitySet="Carts" />
             <End Role="CartDetail" EntitySet="CartDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__Delivery__delive__10E07F16" Association="ArtShopModel.FK__Delivery__delive__10E07F16">
+          <AssociationSet Name="FK__Delivery__delive__11D4A34F" Association="ArtShopModel.FK__Delivery__delive__11D4A34F">
             <End Role="DeliveryCompany" EntitySet="DeliveryCompanies" />
             <End Role="Delivery" EntitySet="Deliveries" />
           </AssociationSet>
-          <AssociationSet Name="FK__Delivery__final___11D4A34F" Association="ArtShopModel.FK__Delivery__final___11D4A34F">
+          <AssociationSet Name="FK__Delivery__final___12C8C788" Association="ArtShopModel.FK__Delivery__final___12C8C788">
             <End Role="DeliveryStatu" EntitySet="DeliveryStatus" />
             <End Role="Delivery" EntitySet="Deliveries" />
           </AssociationSet>
-          <AssociationSet Name="FK__DeliveryC__deliv__1699586C" Association="ArtShopModel.FK__DeliveryC__deliv__1699586C">
+          <AssociationSet Name="FK__DeliveryC__deliv__178D7CA5" Association="ArtShopModel.FK__DeliveryC__deliv__178D7CA5">
             <End Role="DeliveryStatu" EntitySet="DeliveryStatus" />
             <End Role="DeliveryChain" EntitySet="DeliveryChains" />
           </AssociationSet>
-          <AssociationSet Name="FK__Payment__payment__2E70E1FD" Association="ArtShopModel.FK__Payment__payment__2E70E1FD">
+          <AssociationSet Name="FK__Payment__payment__3BCADD1B" Association="ArtShopModel.FK__Payment__payment__3BCADD1B">
             <End Role="PaymentMethod" EntitySet="PaymentMethods" />
             <End Role="Payment" EntitySet="Payments" />
           </AssociationSet>
-          <AssociationSet Name="FK__Payment__payment__2F650636" Association="ArtShopModel.FK__Payment__payment__2F650636">
+          <AssociationSet Name="FK__Payment__payment__3CBF0154" Association="ArtShopModel.FK__Payment__payment__3CBF0154">
             <End Role="PaymentStatu" EntitySet="PaymentStatus" />
             <End Role="Payment" EntitySet="Payments" />
           </AssociationSet>
@@ -2421,9 +2421,9 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="poscode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Deliveries" Relationship="ArtShopModel.FK__Delivery__destin__0FEC5ADD" FromRole="Address" ToRole="Delivery" />
-          <NavigationProperty Name="Deliveries1" Relationship="ArtShopModel.FK__Delivery__source__0EF836A4" FromRole="Address" ToRole="Delivery" />
-          <NavigationProperty Name="DeliveryChains" Relationship="ArtShopModel.FK__DeliveryC__addre__15A53433" FromRole="Address" ToRole="DeliveryChain" />
+          <NavigationProperty Name="Deliveries" Relationship="ArtShopModel.FK__Delivery__destin__10E07F16" FromRole="Address" ToRole="Delivery" />
+          <NavigationProperty Name="Deliveries1" Relationship="ArtShopModel.FK__Delivery__source__0FEC5ADD" FromRole="Address" ToRole="Delivery" />
+          <NavigationProperty Name="DeliveryChains" Relationship="ArtShopModel.FK__DeliveryC__addre__1699586C" FromRole="Address" ToRole="DeliveryChain" />
           <NavigationProperty Name="UserExtensions" Relationship="ArtShopModel.UserAddress" FromRole="Address" ToRole="UserExtension" />
         </EntityType>
         <EntityType Name="Art">
@@ -2441,7 +2441,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <NavigationProperty Name="Artist" Relationship="ArtShopModel.FK__Art__artist_id__44952D46" FromRole="Art" ToRole="Artist" />
           <NavigationProperty Name="Category" Relationship="ArtShopModel.FK__Art__category_id__43A1090D" FromRole="Art" ToRole="Category" />
           <NavigationProperty Name="CartDetails" Relationship="ArtShopModel.FK__CartDetai__art_i__41B8C09B" FromRole="Art" ToRole="CartDetail" />
-          <NavigationProperty Name="Painting" Relationship="ArtShopModel.FK__Painting__art_id__0B27A5C0" FromRole="Art" ToRole="Painting" />
+          <NavigationProperty Name="Painting" Relationship="ArtShopModel.FK__Painting__art_id__0C1BC9F9" FromRole="Art" ToRole="Painting" />
         </EntityType>
         <EntityType Name="Artist">
           <Key>
@@ -2569,7 +2569,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <NavigationProperty Name="aspnet_PersonalizationPerUser" Relationship="ArtShopModel.FK__aspnet_Pe__UserI__76969D2E" FromRole="aspnet_Users" ToRole="aspnet_PersonalizationPerUser" />
           <NavigationProperty Name="aspnet_Profile" Relationship="ArtShopModel.FK__aspnet_Pr__UserI__4F7CD00D" FromRole="aspnet_Users" ToRole="aspnet_Profile" />
           <NavigationProperty Name="Customer" Relationship="ArtShopModel.FK__Customer__UserId__1AD3FDA4" FromRole="aspnet_Users" ToRole="Customer" />
-          <NavigationProperty Name="Payments" Relationship="ArtShopModel.FK__Payment__UserId__30592A6F" FromRole="aspnet_Users" ToRole="Payment" />
+          <NavigationProperty Name="Payments" Relationship="ArtShopModel.FK__Payment__UserId__3DB3258D" FromRole="aspnet_Users" ToRole="Payment" />
           <NavigationProperty Name="Staff" Relationship="ArtShopModel.FK__Staff__UserId__1EA48E88" FromRole="aspnet_Users" ToRole="Staff" />
           <NavigationProperty Name="UserExtension" Relationship="ArtShopModel.FK__UserExten__UserI__1B9317B3" FromRole="aspnet_Users" ToRole="UserExtension" />
           <NavigationProperty Name="aspnet_Roles" Relationship="ArtShopModel.aspnet_UsersInRoles" FromRole="aspnet_Users" ToRole="aspnet_Roles" />
@@ -2640,10 +2640,10 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="delivery_company" Type="Guid" Nullable="false" />
           <Property Name="recive_dates" Type="DateTime" Precision="3" />
           <Property Name="recive_prove" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="Address" Relationship="ArtShopModel.FK__Delivery__destin__0FEC5ADD" FromRole="Delivery" ToRole="Address" />
-          <NavigationProperty Name="Address1" Relationship="ArtShopModel.FK__Delivery__source__0EF836A4" FromRole="Delivery" ToRole="Address" />
-          <NavigationProperty Name="DeliveryCompany" Relationship="ArtShopModel.FK__Delivery__delive__10E07F16" FromRole="Delivery" ToRole="DeliveryCompany" />
-          <NavigationProperty Name="DeliveryStatu" Relationship="ArtShopModel.FK__Delivery__final___11D4A34F" FromRole="Delivery" ToRole="DeliveryStatu" />
+          <NavigationProperty Name="Address" Relationship="ArtShopModel.FK__Delivery__destin__10E07F16" FromRole="Delivery" ToRole="Address" />
+          <NavigationProperty Name="Address1" Relationship="ArtShopModel.FK__Delivery__source__0FEC5ADD" FromRole="Delivery" ToRole="Address" />
+          <NavigationProperty Name="DeliveryCompany" Relationship="ArtShopModel.FK__Delivery__delive__11D4A34F" FromRole="Delivery" ToRole="DeliveryCompany" />
+          <NavigationProperty Name="DeliveryStatu" Relationship="ArtShopModel.FK__Delivery__final___12C8C788" FromRole="Delivery" ToRole="DeliveryStatu" />
           <NavigationProperty Name="DeliveryChains" Relationship="ArtShopModel.DeliveryChainDetails" FromRole="Delivery" ToRole="DeliveryChain" />
         </EntityType>
         <EntityType Name="DeliveryChain">
@@ -2655,8 +2655,8 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="address_id" Type="Guid" Nullable="false" />
           <Property Name="delivery_status" Type="Guid" />
           <Property Name="notes" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Address" Relationship="ArtShopModel.FK__DeliveryC__addre__15A53433" FromRole="DeliveryChain" ToRole="Address" />
-          <NavigationProperty Name="DeliveryStatu" Relationship="ArtShopModel.FK__DeliveryC__deliv__1699586C" FromRole="DeliveryChain" ToRole="DeliveryStatu" />
+          <NavigationProperty Name="Address" Relationship="ArtShopModel.FK__DeliveryC__addre__1699586C" FromRole="DeliveryChain" ToRole="Address" />
+          <NavigationProperty Name="DeliveryStatu" Relationship="ArtShopModel.FK__DeliveryC__deliv__178D7CA5" FromRole="DeliveryChain" ToRole="DeliveryStatu" />
           <NavigationProperty Name="Deliveries" Relationship="ArtShopModel.DeliveryChainDetails" FromRole="DeliveryChain" ToRole="Delivery" />
         </EntityType>
         <EntityType Name="DeliveryCompany">
@@ -2672,7 +2672,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="gradient" Type="Double" Nullable="false" />
           <Property Name="prefence_country" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="oversea_support" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Deliveries" Relationship="ArtShopModel.FK__Delivery__delive__10E07F16" FromRole="DeliveryCompany" ToRole="Delivery" />
+          <NavigationProperty Name="Deliveries" Relationship="ArtShopModel.FK__Delivery__delive__11D4A34F" FromRole="DeliveryCompany" ToRole="Delivery" />
         </EntityType>
         <EntityType Name="DeliveryStatu">
           <Key>
@@ -2681,8 +2681,8 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="id" Type="Guid" Nullable="false" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Deliveries" Relationship="ArtShopModel.FK__Delivery__final___11D4A34F" FromRole="DeliveryStatu" ToRole="Delivery" />
-          <NavigationProperty Name="DeliveryChains" Relationship="ArtShopModel.FK__DeliveryC__deliv__1699586C" FromRole="DeliveryStatu" ToRole="DeliveryChain" />
+          <NavigationProperty Name="Deliveries" Relationship="ArtShopModel.FK__Delivery__final___12C8C788" FromRole="DeliveryStatu" ToRole="Delivery" />
+          <NavigationProperty Name="DeliveryChains" Relationship="ArtShopModel.FK__DeliveryC__deliv__178D7CA5" FromRole="DeliveryStatu" ToRole="DeliveryChain" />
         </EntityType>
         <EntityType Name="Painting">
           <Key>
@@ -2694,7 +2694,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="height_mm" Type="Int32" Nullable="false" />
           <Property Name="width_mm" Type="Int32" Nullable="false" />
           <Property Name="lenght_mm" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Art" Relationship="ArtShopModel.FK__Painting__art_id__0B27A5C0" FromRole="Painting" ToRole="Art" />
+          <NavigationProperty Name="Art" Relationship="ArtShopModel.FK__Painting__art_id__0C1BC9F9" FromRole="Painting" ToRole="Art" />
         </EntityType>
         <EntityType Name="Payment">
           <Key>
@@ -2712,9 +2712,9 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="payment_date" Type="DateTime" Precision="3" />
           <Property Name="payment_meta" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="notes" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="aspnet_Users" Relationship="ArtShopModel.FK__Payment__UserId__30592A6F" FromRole="Payment" ToRole="aspnet_Users" />
-          <NavigationProperty Name="PaymentMethod" Relationship="ArtShopModel.FK__Payment__payment__2E70E1FD" FromRole="Payment" ToRole="PaymentMethod" />
-          <NavigationProperty Name="PaymentStatu" Relationship="ArtShopModel.FK__Payment__payment__2F650636" FromRole="Payment" ToRole="PaymentStatu" />
+          <NavigationProperty Name="aspnet_Users" Relationship="ArtShopModel.FK__Payment__UserId__3DB3258D" FromRole="Payment" ToRole="aspnet_Users" />
+          <NavigationProperty Name="PaymentMethod" Relationship="ArtShopModel.FK__Payment__payment__3BCADD1B" FromRole="Payment" ToRole="PaymentMethod" />
+          <NavigationProperty Name="PaymentStatu" Relationship="ArtShopModel.FK__Payment__payment__3CBF0154" FromRole="Payment" ToRole="PaymentStatu" />
         </EntityType>
         <EntityType Name="PaymentDetail">
           <Key>
@@ -2735,7 +2735,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="meta_field" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Payments" Relationship="ArtShopModel.FK__Payment__payment__2E70E1FD" FromRole="PaymentMethod" ToRole="Payment" />
+          <NavigationProperty Name="Payments" Relationship="ArtShopModel.FK__Payment__payment__3BCADD1B" FromRole="PaymentMethod" ToRole="Payment" />
         </EntityType>
         <EntityType Name="PaymentStatu">
           <Key>
@@ -2744,7 +2744,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="id" Type="Guid" Nullable="false" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Payments" Relationship="ArtShopModel.FK__Payment__payment__2F650636" FromRole="PaymentStatu" ToRole="Payment" />
+          <NavigationProperty Name="Payments" Relationship="ArtShopModel.FK__Payment__payment__3CBF0154" FromRole="PaymentStatu" ToRole="Payment" />
         </EntityType>
         <EntityType Name="PayPal">
           <Key>
@@ -3086,7 +3086,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="add_date" Type="DateTime" Precision="0" />
           <Property Name="art_id" Type="Int32" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Delivery__destin__0FEC5ADD">
+        <Association Name="FK__Delivery__destin__10E07F16">
           <End Type="ArtShopModel.Address" Role="Address" Multiplicity="1" />
           <End Type="ArtShopModel.Delivery" Role="Delivery" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3098,7 +3098,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Delivery__source__0EF836A4">
+        <Association Name="FK__Delivery__source__0FEC5ADD">
           <End Type="ArtShopModel.Address" Role="Address" Multiplicity="1" />
           <End Type="ArtShopModel.Delivery" Role="Delivery" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3110,7 +3110,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DeliveryC__addre__15A53433">
+        <Association Name="FK__DeliveryC__addre__1699586C">
           <End Type="ArtShopModel.Address" Role="Address" Multiplicity="1" />
           <End Type="ArtShopModel.DeliveryChain" Role="DeliveryChain" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3158,7 +3158,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Painting__art_id__0B27A5C0">
+        <Association Name="FK__Painting__art_id__0C1BC9F9">
           <End Type="ArtShopModel.Art" Role="Art" Multiplicity="1" />
           <End Type="ArtShopModel.Painting" Role="Painting" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -3302,7 +3302,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Payment__UserId__30592A6F">
+        <Association Name="FK__Payment__UserId__3DB3258D">
           <End Type="ArtShopModel.aspnet_Users" Role="aspnet_Users" Multiplicity="1" />
           <End Type="ArtShopModel.Payment" Role="Payment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3362,7 +3362,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Delivery__delive__10E07F16">
+        <Association Name="FK__Delivery__delive__11D4A34F">
           <End Type="ArtShopModel.DeliveryCompany" Role="DeliveryCompany" Multiplicity="1" />
           <End Type="ArtShopModel.Delivery" Role="Delivery" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3374,7 +3374,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Delivery__final___11D4A34F">
+        <Association Name="FK__Delivery__final___12C8C788">
           <End Type="ArtShopModel.DeliveryStatu" Role="DeliveryStatu" Multiplicity="1" />
           <End Type="ArtShopModel.Delivery" Role="Delivery" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3386,7 +3386,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DeliveryC__deliv__1699586C">
+        <Association Name="FK__DeliveryC__deliv__178D7CA5">
           <End Type="ArtShopModel.DeliveryStatu" Role="DeliveryStatu" Multiplicity="0..1" />
           <End Type="ArtShopModel.DeliveryChain" Role="DeliveryChain" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3398,7 +3398,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Payment__payment__2E70E1FD">
+        <Association Name="FK__Payment__payment__3BCADD1B">
           <End Type="ArtShopModel.PaymentMethod" Role="PaymentMethod" Multiplicity="1" />
           <End Type="ArtShopModel.Payment" Role="Payment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3410,7 +3410,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Payment__payment__2F650636">
+        <Association Name="FK__Payment__payment__3CBF0154">
           <End Type="ArtShopModel.PaymentStatu" Role="PaymentStatu" Multiplicity="1" />
           <End Type="ArtShopModel.Payment" Role="Payment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3620,16 +3620,16 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Arts">
-            <EntityTypeMapping TypeName="IsTypeOf(ArtShopModel.Art)">
+            <EntityTypeMapping TypeName="ArtShopModel.Art">
               <MappingFragment StoreEntitySet="Art">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="image" ColumnName="image" />
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="category_id" ColumnName="category_id" />
                 <ScalarProperty Name="artist_id" ColumnName="artist_id" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
