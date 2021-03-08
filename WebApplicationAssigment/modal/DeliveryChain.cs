@@ -12,27 +12,23 @@ namespace WebApplicationAssigment.modal
     using System;
     using System.Collections.Generic;
     
-    public partial class Art
+    public partial class DeliveryChain
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Art()
+        public DeliveryChain()
         {
-            this.CartDetails = new HashSet<CartDetail>();
+            this.Deliveries = new HashSet<Delivery>();
         }
     
-        public int id { get; set; }
-        public string image { get; set; }
-        public decimal price { get; set; }
-        public string date { get; set; }
-        public string title { get; set; }
-        public string description { get; set; }
-        public Nullable<int> category_id { get; set; }
-        public System.Guid artist_id { get; set; }
+        public System.Guid id { get; set; }
+        public System.DateTime arrival_dates { get; set; }
+        public System.Guid address_id { get; set; }
+        public Nullable<System.Guid> delivery_status { get; set; }
+        public string notes { get; set; }
     
-        public virtual Artist Artist { get; set; }
-        public virtual Category Category { get; set; }
+        public virtual Address Address { get; set; }
+        public virtual DeliveryStatu DeliveryStatu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CartDetail> CartDetails { get; set; }
-        public virtual Painting Painting { get; set; }
+        public virtual ICollection<Delivery> Deliveries { get; set; }
     }
 }

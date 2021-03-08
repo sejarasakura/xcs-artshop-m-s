@@ -12,20 +12,28 @@ namespace WebApplicationAssigment.modal
     using System;
     using System.Collections.Generic;
     
-    public partial class PaymentMethod
+    public partial class Delivery
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PaymentMethod()
+        public Delivery()
         {
-            this.Payments = new HashSet<Payment>();
+            this.DeliveryChains = new HashSet<DeliveryChain>();
         }
     
         public System.Guid id { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
-        public string meta_field { get; set; }
+        public System.Guid source { get; set; }
+        public System.Guid destination { get; set; }
+        public string delivery_note { get; set; }
+        public System.Guid final_delivery_status { get; set; }
+        public System.Guid delivery_company { get; set; }
+        public Nullable<System.DateTime> recive_dates { get; set; }
+        public byte[] recive_prove { get; set; }
     
+        public virtual Address Address { get; set; }
+        public virtual Address Address1 { get; set; }
+        public virtual DeliveryCompany DeliveryCompany { get; set; }
+        public virtual DeliveryStatu DeliveryStatu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Payment> Payments { get; set; }
+        public virtual ICollection<DeliveryChain> DeliveryChains { get; set; }
     }
 }

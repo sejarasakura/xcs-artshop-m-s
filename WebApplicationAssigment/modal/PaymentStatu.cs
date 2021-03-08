@@ -12,27 +12,19 @@ namespace WebApplicationAssigment.modal
     using System;
     using System.Collections.Generic;
     
-    public partial class Art
+    public partial class PaymentStatu
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Art()
+        public PaymentStatu()
         {
-            this.CartDetails = new HashSet<CartDetail>();
+            this.Payments = new HashSet<Payment>();
         }
     
-        public int id { get; set; }
-        public string image { get; set; }
-        public decimal price { get; set; }
-        public string date { get; set; }
-        public string title { get; set; }
+        public System.Guid id { get; set; }
+        public string name { get; set; }
         public string description { get; set; }
-        public Nullable<int> category_id { get; set; }
-        public System.Guid artist_id { get; set; }
     
-        public virtual Artist Artist { get; set; }
-        public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CartDetail> CartDetails { get; set; }
-        public virtual Painting Painting { get; set; }
+        public virtual ICollection<Payment> Payments { get; set; }
     }
 }
