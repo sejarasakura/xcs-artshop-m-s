@@ -88,15 +88,15 @@ namespace WebApplicationAssigment.pages.main.ArtShop
 
                     Functions.EnqueueNewNotifications(new Notifications(
                         Notifications.SUCCESS_TYPE,
-                        "Deleted Sucessful!!",
-                        "you have remove item form your cart !!"));
+                        "Item Removed Sucessfully!",
+                        "You have removed the item from your cart !!"));
                 }
             }
             catch (Exception e)
             {
                 Functions.EnqueueNewNotifications(new Notifications(
                     Notifications.ERROR_TYPE,
-                    "Deleted Failed!!",
+                    "Item Removed Failed!",
                     "you have following exception : "+ e.Message +" !!"));
             }
         }

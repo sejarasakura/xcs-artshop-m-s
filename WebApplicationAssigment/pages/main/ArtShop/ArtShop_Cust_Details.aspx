@@ -17,16 +17,15 @@
                 <img src='<%= "https://" + HttpContext.Current.Request.Url.Authority + "/" + art.image%>' width="100%" height="auto">
             </div>
             <div class="col-md-6 card-body d-flex flex-column">
-                <h3 class="text-danger mb-5"><%=art.title%></h3>
-                <p class="font-weight-lighter"><%=art.description%></p>
-                <p class="font-weight-bolder">RM <%=art.price %></p>
+                <h3 class="text-danger mb-5 h2"><%=art.title%></h3>
+                <p class="font-weight-lighter">Art Description :<%=art.description%></p>
+                <p class="font-weight-bold">Art Price : RM <%=art.price %></p>
                 <p class="font-weight-lighter">Date Published : <%= art.date %></p>
-                <img alt="" src="<%= Constant.PROFILE_PIC_URL %>?guid=<%= art.Artist.UserId %>" />
-                <img alt="" src="<%= art.Artist.aspnet_Users.UserExtension.first_name + " " + art.Artist.aspnet_Users.UserExtension.last_name %>" />
-                <img alt="" src="<%= art.Artist.birthday_date %>" />
-                <img alt="" src="<%= art.Artist.description %>" />
-                <p class="mb-5"></p>
-                <p class="mb-5"></p>
+                <p class="p-3 mb-2 bg-light text-dark">-------------------------------------------------------------------------</p>
+                <img alt="" src="<%= Constant.PROFILE_PIC_URL %>?guid=<%= art.Artist.UserId %>" width="66" height="77" />
+                <p class="font-weight-bold">Artist Name :<%= art.Artist.aspnet_Users.UserExtension.first_name + " " + art.Artist.aspnet_Users.UserExtension.last_name %>" </p>
+                <p class="font-weight-lighter">Artist Motto :<%= art.Artist.description %>" </p>
+                <p class="font-weight-lighter">Artist Birthday :<%= art.Artist.birthday_date %>" </p>
                 <p class="mb-5"></p>
                 <asp:Button ID="btnaddtocart" Cssclass="align-self-end btn btn-warning mt-5" runat="server" Text="Add to Shopping Cart" OnClick="btnaddtocart_Click" />
             </div>

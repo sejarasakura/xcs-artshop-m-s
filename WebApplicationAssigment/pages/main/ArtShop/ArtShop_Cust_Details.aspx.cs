@@ -27,7 +27,7 @@ namespace WebApplicationAssigment.pages.main.ArtShop
 
         protected void btnaddtocart_Click(object sender, EventArgs e)
         {
-            Functions.addToCart(Request.QueryString["id"], Response);
+                Functions.addToCart(Request.QueryString["id"], Response);
         }
     }
 
