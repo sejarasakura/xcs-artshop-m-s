@@ -4,6 +4,13 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 <%@ Import namespace="WebApplicationAssigment.commons" %>
+<%@ Import namespace="WebApplicationAssigment.modal" %>
+    <%
+        int id = Int32.Parse(Request["id"]);
+        using (ArtShopEntities db = new ArtShopEntities())
+        {
+            art = db.Arts.Find(id); 
+    %>
     <div class="container-lg mt-4 mb-4">
         <div class="row">
             <div class="col-md-6">
@@ -26,4 +33,5 @@
         </div>
 
     </div>
+   <%}%>
 </asp:Content>
