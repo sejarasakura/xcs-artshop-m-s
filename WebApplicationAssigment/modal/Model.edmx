@@ -1060,6 +1060,30 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PaymentDe__art_i__595B4002">
+          <End Role="Art" Type="Self.Art" Multiplicity="1" />
+          <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Art">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="art_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentDe__payme__58671BC9">
+          <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
+          <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="payment_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Staff__position___4F47C5E3">
           <End Role="Position" Type="Self.Position" Multiplicity="1" />
           <End Role="Staff" Type="Self.Staff" Multiplicity="*" />
@@ -1798,6 +1822,14 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
             <End Role="Payment" EntitySet="Payment" />
           </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__art_i__595B4002" Association="Self.FK__PaymentDe__art_i__595B4002">
+            <End Role="Art" EntitySet="Art" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__payme__58671BC9" Association="Self.FK__PaymentDe__payme__58671BC9">
+            <End Role="Payment" EntitySet="Payment" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK__Staff__position___4F47C5E3" Association="Self.FK__Staff__position___4F47C5E3">
             <End Role="Position" EntitySet="Position" />
             <End Role="Staff" EntitySet="Staff" />
@@ -2329,6 +2361,14 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <End Role="Address" EntitySet="Addresses" />
             <End Role="UserExtension" EntitySet="UserExtensions" />
           </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__art_i__595B4002" Association="ArtShopModel.FK__PaymentDe__art_i__595B4002">
+            <End Role="Art" EntitySet="Arts" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__payme__58671BC9" Association="ArtShopModel.FK__PaymentDe__payme__58671BC9">
+            <End Role="Payment" EntitySet="Payments" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
+          </AssociationSet>
           </EntityContainer>
         <ComplexType Name="aspnet_Membership_GetPassword_Result">
           <Property Type="String" Name="Column1" Nullable="true" MaxLength="128" />
@@ -2442,6 +2482,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <NavigationProperty Name="Category" Relationship="ArtShopModel.FK__Art__category_id__43A1090D" FromRole="Art" ToRole="Category" />
           <NavigationProperty Name="CartDetails" Relationship="ArtShopModel.FK__CartDetai__art_i__41B8C09B" FromRole="Art" ToRole="CartDetail" />
           <NavigationProperty Name="Painting" Relationship="ArtShopModel.FK__Painting__art_id__0C1BC9F9" FromRole="Art" ToRole="Painting" />
+          <NavigationProperty Name="PaymentDetails" Relationship="ArtShopModel.FK__PaymentDe__art_i__595B4002" FromRole="Art" ToRole="PaymentDetail" />
         </EntityType>
         <EntityType Name="Artist">
           <Key>
@@ -2715,6 +2756,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <NavigationProperty Name="aspnet_Users" Relationship="ArtShopModel.FK__Payment__UserId__3DB3258D" FromRole="Payment" ToRole="aspnet_Users" />
           <NavigationProperty Name="PaymentMethod" Relationship="ArtShopModel.FK__Payment__payment__3BCADD1B" FromRole="Payment" ToRole="PaymentMethod" />
           <NavigationProperty Name="PaymentStatu" Relationship="ArtShopModel.FK__Payment__payment__3CBF0154" FromRole="Payment" ToRole="PaymentStatu" />
+          <NavigationProperty Name="PaymentDetails" Relationship="ArtShopModel.FK__PaymentDe__payme__58671BC9" FromRole="Payment" ToRole="PaymentDetail" />
         </EntityType>
         <EntityType Name="PaymentDetail">
           <Key>
@@ -2726,6 +2768,8 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="quantity" Type="Int32" />
           <Property Name="virtual" Type="Boolean" />
           <Property Name="add_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Art" Relationship="ArtShopModel.FK__PaymentDe__art_i__595B4002" FromRole="PaymentDetail" ToRole="Art" />
+          <NavigationProperty Name="Payment" Relationship="ArtShopModel.FK__PaymentDe__payme__58671BC9" FromRole="PaymentDetail" ToRole="Payment" />
         </EntityType>
         <EntityType Name="PaymentMethod">
           <Key>
@@ -3445,6 +3489,30 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
         <Association Name="UserAddress">
           <End Type="ArtShopModel.Address" Role="Address" Multiplicity="*" />
           <End Type="ArtShopModel.UserExtension" Role="UserExtension" Multiplicity="*" />
+        </Association>
+        <Association Name="FK__PaymentDe__art_i__595B4002">
+          <End Type="ArtShopModel.Art" Role="Art" Multiplicity="1" />
+          <End Type="ArtShopModel.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Art">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PaymentDetail">
+              <PropertyRef Name="art_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentDe__payme__58671BC9">
+          <End Type="ArtShopModel.Payment" Role="Payment" Multiplicity="1" />
+          <End Type="ArtShopModel.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PaymentDetail">
+              <PropertyRef Name="payment_id" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         </Schema>
     </edmx:ConceptualModels>

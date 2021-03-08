@@ -18,6 +18,7 @@ namespace WebApplicationAssigment.modal
         public Art()
         {
             this.CartDetails = new HashSet<CartDetail>();
+            this.PaymentDetails = new HashSet<PaymentDetail>();
         }
     
         public int id { get; set; }
@@ -34,5 +35,7 @@ namespace WebApplicationAssigment.modal
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CartDetail> CartDetails { get; set; }
         public virtual Painting Painting { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PaymentDetail> PaymentDetails { get; set; }
     }
 }

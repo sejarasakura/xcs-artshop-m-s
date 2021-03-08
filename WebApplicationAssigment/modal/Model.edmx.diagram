@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9697cf9adc1a4f2895d1cdb3b425541c" Name="Diagram1" ZoomLevel="36" >
+      <Diagram DiagramId="9697cf9adc1a4f2895d1cdb3b425541c" Name="Diagram1" ZoomLevel="86" >
         <EntityTypeShape EntityType="ArtShopModel.ChangePassword" Width="1.5" PointX="6.75" PointY="3.75" />
         <AssociationConnector Association="ArtShopModel.FK__Art__artist_id__3B40CD36" />
         <AssociationConnector Association="ArtShopModel.FK__Art__category_id__3A4CA8FD" />
@@ -39,7 +39,7 @@
         <EntityTypeShape EntityType="ArtShopModel.DeliveryStatu" Width="1.5" PointX="8.25" PointY="1.5" />
         <EntityTypeShape EntityType="ArtShopModel.Painting" Width="1.5" PointX="12" PointY="35" />
         <EntityTypeShape EntityType="ArtShopModel.Payment" Width="1.5" PointX="10.5" PointY="15.625" />
-        <EntityTypeShape EntityType="ArtShopModel.PaymentDetail" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="ArtShopModel.PaymentDetail" Width="1.5" PointX="3.375" PointY="12.375" />
         <EntityTypeShape EntityType="ArtShopModel.PaymentMethod" Width="1.5" PointX="8.25" PointY="15.375" />
         <EntityTypeShape EntityType="ArtShopModel.PaymentStatu" Width="1.5" PointX="8.25" PointY="12.125" />
         <EntityTypeShape EntityType="ArtShopModel.PayPal" Width="1.5" PointX="0.75" PointY="3.75" />
@@ -93,6 +93,8 @@
         <AssociationConnector Association="ArtShopModel.aspnet_UsersInRoles" />
         <AssociationConnector Association="ArtShopModel.DeliveryChainDetails" />
         <AssociationConnector Association="ArtShopModel.UserAddress" />
+        <AssociationConnector Association="ArtShopModel.FK__PaymentDe__art_i__595B4002" />
+        <AssociationConnector Association="ArtShopModel.FK__PaymentDe__payme__58671BC9" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
