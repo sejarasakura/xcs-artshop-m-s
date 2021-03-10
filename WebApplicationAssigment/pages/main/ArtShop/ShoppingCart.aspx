@@ -3,6 +3,8 @@
 <%@ Import Namespace="WebApplicationAssigment.modal" %>
 <%@ Register Src="~/pages/widget/EndPagesSM.ascx" TagPrefix="uc1" TagName="EndPagesSM" %>
 <%@ Register Src="~/pages/widget/StartPageSM.ascx" TagPrefix="uc1" TagName="StartPageSM" %>
+<%@ Register Src="~/pages/main/ArtShop/widget/CartSections.ascx" TagPrefix="uc1" TagName="CartSections" %>
+
 
 
 
@@ -13,7 +15,9 @@
 
 
     <uc1:StartPageSM runat="server" ID="StartPageSM" />
-
+    <div class="container">
+        <uc1:CartSections runat="server" id="CartSections" />
+    </div>
     <div class="container">
 
         <div class="row">

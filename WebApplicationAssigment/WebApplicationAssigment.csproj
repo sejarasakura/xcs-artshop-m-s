@@ -221,6 +221,7 @@
     <Content Include="pages\main\admin\widget\AdminNav.ascx" />
     <Content Include="pages\main\ArtShop\ArtShop_Customer.aspx" />
     <Content Include="pages\main\ArtShop\ArtShop_Cust_Details.aspx" />
+    <Content Include="pages\main\ArtShop\widget\CartSections.ascx" />
     <Content Include="pages\main\ArtShop\ShoppingCart.aspx" />
     <Content Include="pages\main\Authentication\ForgotPassword.aspx" />
     <Content Include="pages\main\Authentication\Profile\Logout.aspx" />
@@ -622,6 +623,13 @@
     <Compile Include="pages\main\ArtShop\ArtShop_Cust_Details.aspx.designer.cs">
       <DependentUpon>ArtShop_Cust_Details.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pages\main\ArtShop\widget\CartSections.ascx.cs">
+      <DependentUpon>CartSections.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\ArtShop\widget\CartSections.ascx.designer.cs">
+      <DependentUpon>CartSections.ascx</DependentUpon>
+    </Compile>
     <Compile Include="pages\main\ArtShop\ShoppingCart.aspx.cs">
       <DependentUpon>ShoppingCart.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -873,9 +881,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="pages\main\ArtShop\widget\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

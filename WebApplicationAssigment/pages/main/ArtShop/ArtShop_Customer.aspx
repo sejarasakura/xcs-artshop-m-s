@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/pages/master/Master.Master" AutoEventWireup="true" CodeBehind="ArtShop_Customer.aspx.cs" Inherits="WebApplicationAssigment.pages.main.ArtShop.ArtShop_Customer" %>
 
 <%@ Import Namespace="WebApplicationAssigment.modal" %>
+<%@ Import Namespace="WebApplicationAssigment.commons" %>
 <%@ Register Src="~/pages/widget/EndPagesSM.ascx" TagPrefix="uc1" TagName="EndPagesSM" %>
 <%@ Register Src="~/pages/widget/StartPageSM.ascx" TagPrefix="uc1" TagName="StartPageSM" %>
 
@@ -56,20 +57,18 @@
             <h5 class="mb-3">Categories</h5>
 
             <div class="text-muted small text-uppercase mb-5">
-
-              <p class="mb-3"><a href="#!" class="card-link-secondary">Vegetables</a></p>
-              <p class="mb-3"><a href="#!" class="card-link-secondary">Fruits</a></p>
-              <p class="mb-3"><a href="#!" class="card-link-secondary">Herbs</a></p>
-              <p class="mb-3"><a href="#!" class="card-link-secondary">Bread</a></p>
-              <p class="mb-3"><a href="#!" class="card-link-secondary">Pasta</a></p>
-              <p class="mb-3"><a href="#!" class="card-link-secondary">Buts</a></p>
-              <p class="mb-3"><a href="#!" class="card-link-secondary">Legumes</a></p>
-              <p class="mb-3"><a href="#!" class="card-link-secondary">Spices</a></p>
-              <p class="mb-3"><a href="#!" class="card-link-secondary">Coffee</a></p>
-              <p class="mb-3"><a href="#!" class="card-link-secondary">Active</a></p>
-              <p class="mb-3"><a href="#!" class="card-link-secondary">Tea</a></p>
-              <p class="mb-3"><a href="#!" class="card-link-secondary">Dry fruits</a></p>
-
+                
+            <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
+                <ItemTemplate>
+                    <p class="mb-3"><a href="#!" class="card-link-secondary"><%# Eval("name") %></a></p>
+                </ItemTemplate>
+            </asp:Repeater>
+                <asp:SqlDataSource
+                    ID="SqlDataSource1"
+                    runat="server"
+                    ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
+                    SelectCommand="SELECT * FROM Category">
+                </asp:SqlDataSource>
             </div>
 
           </section>
@@ -130,7 +129,7 @@
                             <h5 class="mb-0"><%= arts[i].title%></h5>
                             <h6 class="mb-3">BY <%= arts[i].Artist.aspnet_Users.UserExtension.first_name %> <%= arts[i].Artist.aspnet_Users.UserExtension.last_name %></h6>
                             <a href="#" class="btn btn-primary btn-sm mr-1 waves-effect waves-light"><i class='fas fa-cart-plus'></i></a>
-                            <a href="#" class="btn btn-light btn-sm waves-effect waves-light"><i class="fas fa-info-circle pr-2"></i>Details</a>
+                            <a href="<%= Constant.ARTSHOP_URL %>/ArtShop_Cust_Details.aspx?id=<%= arts[i].id %>" class="btn btn-light btn-sm waves-effect waves-light"><i class="fas fa-info-circle pr-2"></i>Details</a>
 
                         </div>
 

@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplicationAssigment.pages.main.ArtShop {
-    
-    
-    public partial class ArtShop_Cust_Details {
-        
+namespace WebApplicationAssigment.pages.main.ArtShop
+{
+
+
+    public partial class ArtShop_Cust_Details
+    {
+
         /// <summary>
         /// btnaddtocart control.
         /// </summary>
