@@ -55,7 +55,7 @@
                         <p class="mb-1">Virtual Product: </p>
                         <p class="mb-1">L &times; W &times; H: </p>
                         <p class="mb-1">Stock Remain: </p>
-                        <p class="mb-1">Weight: </p>
+                        <p class="mb-1">Weight: <%= art.Painting == null? "none" : art.Painting.weight_g + " g" %></p>
                         <hr />
                         <p class="lead font-weight-bold">Description</p>
                         <p><%= art.description %></p>
