@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9697cf9adc1a4f2895d1cdb3b425541c" Name="Diagram1" ZoomLevel="87" >
+      <Diagram DiagramId="9697cf9adc1a4f2895d1cdb3b425541c" Name="Diagram1" ZoomLevel="41" >
         <EntityTypeShape EntityType="ArtShopModel.ChangePassword" Width="1.5" PointX="6.75" PointY="3.75" />
         <AssociationConnector Association="ArtShopModel.FK__Art__artist_id__3B40CD36" />
         <AssociationConnector Association="ArtShopModel.FK__Art__category_id__3A4CA8FD" />
@@ -39,7 +39,7 @@
         <EntityTypeShape EntityType="ArtShopModel.DeliveryStatu" Width="1.5" PointX="17.75" PointY="13.375" />
         <EntityTypeShape EntityType="ArtShopModel.Painting" Width="1.5" PointX="19.875" PointY="23.875" />
         <EntityTypeShape EntityType="ArtShopModel.Payment" Width="1.5" PointX="10.5" PointY="15.625" />
-        <EntityTypeShape EntityType="ArtShopModel.PaymentDetail" Width="1.5" PointX="3.375" PointY="12.375" />
+        <EntityTypeShape EntityType="ArtShopModel.PaymentDetail" Width="1.5" PointX="3.25" PointY="13.5" />
         <EntityTypeShape EntityType="ArtShopModel.PaymentMethod" Width="1.5" PointX="7.625" PointY="12.125" IsExpanded="true" />
         <EntityTypeShape EntityType="ArtShopModel.PaymentStatu" Width="1.5" PointX="12" PointY="20.875" />
         <EntityTypeShape EntityType="ArtShopModel.PayPal" Width="1.5" PointX="0.75" PointY="3.75" />
@@ -80,15 +80,15 @@
         <AssociationConnector Association="ArtShopModel.FK__aspnet_Pr__UserI__4F7CD00D" />
         <AssociationConnector Association="ArtShopModel.FK__Customer__UserId__1AD3FDA4" />
         <AssociationConnector Association="ArtShopModel.FK__Payment__UserId__3DB3258D" ManuallyRouted="true" >
-          <ConnectorPoint PointX="6.406252" PointY="19.5" />
-          <ConnectorPoint PointX="6.406252" PointY="18.99207771341483" />
-          <ConnectorPoint PointX="7" PointY="18.99207771341483" />
-          <ConnectorPoint PointX="7" PointY="18.030742187500003" />
-          <ConnectorPoint PointX="7.510416666666667" PointY="18.030742187500003" />
-          <ConnectorPoint PointX="7.677083333333333" PointY="18.030742187500003" />
-          <ConnectorPoint PointX="9.5416666666666661" PointY="18.030742187500003" />
-          <ConnectorPoint PointX="9.7083333333333339" PointY="18.030742187500003" />
-          <ConnectorPoint PointX="10.5" PointY="18.030742187500003" />
+          <ConnectorPoint PointX="6.3046895" PointY="19.5" />
+          <ConnectorPoint PointX="6.3046895" PointY="18.871182734072406" />
+          <ConnectorPoint PointX="7.510416666666667" PointY="18.871182734072406" />
+          <ConnectorPoint PointX="7.677083333333333" PointY="18.871182734072406" />
+          <ConnectorPoint PointX="9.0729166666666661" PointY="18.871182734072406" />
+          <ConnectorPoint PointX="9.2395833333333339" PointY="18.871182734072406" />
+          <ConnectorPoint PointX="10.166666666666666" PointY="18.871182734072406" />
+          <ConnectorPoint PointX="10.333333333333334" PointY="18.871182734072406" />
+          <ConnectorPoint PointX="10.5" PointY="18.871182734072406" />
         </AssociationConnector>
         <AssociationConnector Association="ArtShopModel.FK__Staff__UserId__1EA48E88" />
         <AssociationConnector Association="ArtShopModel.FK__UserExten__UserI__1B9317B3" />
@@ -98,10 +98,11 @@
         <AssociationConnector Association="ArtShopModel.FK__Delivery__final___12C8C788" />
         <AssociationConnector Association="ArtShopModel.FK__DeliveryC__deliv__178D7CA5" />
         <AssociationConnector Association="ArtShopModel.FK__Payment__payment__3BCADD1B" ManuallyRouted="true" >
-          <ConnectorPoint PointX="9.125" PointY="13.285788796259523" />
-          <ConnectorPoint PointX="10.125" PointY="13.285788796259523" />
-          <ConnectorPoint PointX="10.125" PointY="16.131944314561874" />
-          <ConnectorPoint PointX="10.5" PointY="16.131944314561874" />
+          <ConnectorPoint PointX="9.125" PointY="13.285184476768576" />
+          <ConnectorPoint PointX="10.25" PointY="13.285184476768576" />
+          <ConnectorPoint PointX="10.25" PointY="14.893697916666667" />
+          <ConnectorPoint PointX="10.771215146465249" PointY="14.893697916666667" />
+          <ConnectorPoint PointX="10.771215146465249" PointY="15.625" />
         </AssociationConnector>
         <AssociationConnector Association="ArtShopModel.FK__Payment__payment__3CBF0154" />
         <AssociationConnector Association="ArtShopModel.FK__Staff__position___4F47C5E3" />
@@ -118,29 +119,16 @@
           <ConnectorPoint PointX="12.802083333333334" PointY="19.547587890624996" />
           <ConnectorPoint PointX="12.635416666666666" PointY="19.547587890624996" />
           <ConnectorPoint PointX="12.25" PointY="19.547587890624996" />
-          <ConnectorPoint PointX="12.25" PointY="14.657804649845238" />
-          <ConnectorPoint PointX="11.333333333333334" PointY="14.657804649845238" />
-          <ConnectorPoint PointX="11.166666666666666" PointY="14.657804649845238" />
-          <ConnectorPoint PointX="10.208333333333334" PointY="14.657804649845238" />
-          <ConnectorPoint PointX="10.041666666666666" PointY="14.657804649845238" />
-          <ConnectorPoint PointX="6.208333333333333" PointY="14.657804649845238" />
-          <ConnectorPoint PointX="6.041666666666667" PointY="14.657804649845238" />
-          <ConnectorPoint PointX="5.7395808333333331" PointY="14.657804649845238" />
-          <ConnectorPoint PointX="5.5729141666666671" PointY="14.657804649845238" />
-          <ConnectorPoint PointX="5.25" PointY="14.657804649845238" />
-          <ConnectorPoint PointX="4.875" PointY="14.359758122494299" />
+          <ConnectorPoint PointX="12.25" PointY="14.393026103333726" />
+          <ConnectorPoint PointX="10.333333333333334" PointY="14.393026103333726" />
+          <ConnectorPoint PointX="10.166666666666666" PointY="14.393026103333726" />
+          <ConnectorPoint PointX="6.4895858333333329" PointY="14.393026103333726" />
+          <ConnectorPoint PointX="6.3229191666666669" PointY="14.393026103333726" />
+          <ConnectorPoint PointX="6.083333333333333" PointY="14.393026103333726" />
+          <ConnectorPoint PointX="5.916666666666667" PointY="14.393026103333726" />
+          <ConnectorPoint PointX="4.75" PointY="14.393026103333726" />
         </AssociationConnector>
-        <AssociationConnector Association="ArtShopModel.FK__PaymentDe__payme__58671BC9" ManuallyRouted="true" >
-          <ConnectorPoint PointX="11.25" PointY="15.624999999999998" />
-          <ConnectorPoint PointX="11.25" PointY="14.404836393129443" />
-          <ConnectorPoint PointX="10.208333333333334" PointY="14.404836393129443" />
-          <ConnectorPoint PointX="10.041666666666666" PointY="14.404836393129443" />
-          <ConnectorPoint PointX="6.208333333333333" PointY="14.404836393129443" />
-          <ConnectorPoint PointX="6.041666666666667" PointY="14.404836393129443" />
-          <ConnectorPoint PointX="5.7395808333333331" PointY="14.404836393129443" />
-          <ConnectorPoint PointX="5.5729141666666671" PointY="14.404836393129443" />
-          <ConnectorPoint PointX="5.5" PointY="14.404836393129443" />
-          <ConnectorPoint PointX="4.875" PointY="14.012827541044246" />
+        <AssociationConnector Association="ArtShopModel.FK__PaymentDe__payme__58671BC9" ManuallyRouted="false" >
         </AssociationConnector>
         </Diagram>
     </edmx:Diagrams>
