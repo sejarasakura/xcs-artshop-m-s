@@ -5,6 +5,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <%@ Import Namespace="WebApplicationAssigment.commons" %>
     <%@ Import Namespace="WebApplicationAssigment.modal" %>
+    <%@ Register Src="~/pages/widget/EndPagesSM.ascx" TagPrefix="uc1" TagName="EndPagesSM" %>
+    <%@ Register Src="~/pages/widget/StartPageSM.ascx" TagPrefix="uc1" TagName="StartPageSM" %>
+
+
     <%
         int id = Int32.Parse(Request["id"]);
         id = id == null ? 0 : id;
@@ -12,7 +16,7 @@
         {
             art = db.Arts.Find(id);
     %>
-
+    <uc1:StartPageSM runat="server" ID="StartPageSM" />
     <!--Main layout-->
     <main class="mt-5 pt-4">
         <div class="container dark-grey-text mt-5">
@@ -102,6 +106,6 @@
         </div>
     </main>
     <!--Main layout-->
-
+    <uc1:EndPagesSM runat="server" ID="EndPagesSM" />
     <%}%>
 </asp:Content>

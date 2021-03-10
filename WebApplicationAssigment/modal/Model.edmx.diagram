@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9697cf9adc1a4f2895d1cdb3b425541c" Name="Diagram1" ZoomLevel="41" >
+      <Diagram DiagramId="9697cf9adc1a4f2895d1cdb3b425541c" Name="Diagram1" ZoomLevel="82" >
         <EntityTypeShape EntityType="ArtShopModel.ChangePassword" Width="1.5" PointX="6.75" PointY="3.75" />
         <AssociationConnector Association="ArtShopModel.FK__Art__artist_id__3B40CD36" />
         <AssociationConnector Association="ArtShopModel.FK__Art__category_id__3A4CA8FD" />
@@ -60,12 +60,10 @@
         <EntityTypeShape EntityType="ArtShopModel.vw_aspnet_WebPartState_Paths" Width="1.5" PointX="17.125" PointY="4.625" />
         <EntityTypeShape EntityType="ArtShopModel.vw_aspnet_WebPartState_Shared" Width="1.5" PointX="14.75" PointY="0.75" />
         <EntityTypeShape EntityType="ArtShopModel.vw_aspnet_WebPartState_User" Width="1.5" PointX="14.75" PointY="3.75" />
-        <EntityTypeShape EntityType="ArtShopModel.vw_customer_cart" Width="1.5" PointX="15" PointY="6" />
         <AssociationConnector Association="ArtShopModel.FK__Delivery__destin__10E07F16" />
         <AssociationConnector Association="ArtShopModel.FK__Delivery__source__0FEC5ADD" />
         <AssociationConnector Association="ArtShopModel.FK__DeliveryC__addre__1699586C" />
         <AssociationConnector Association="ArtShopModel.FK__Art__artist_id__44952D46" />
-        <AssociationConnector Association="ArtShopModel.FK__Art__category_id__43A1090D" />
         <AssociationConnector Association="ArtShopModel.FK__CartDetai__art_i__41B8C09B" />
         <AssociationConnector Association="ArtShopModel.FK__Painting__art_id__0C1BC9F9" />
         <AssociationConnector Association="ArtShopModel.FK__Artist__UserId__1CBC4616" />
@@ -98,11 +96,11 @@
         <AssociationConnector Association="ArtShopModel.FK__Delivery__final___12C8C788" />
         <AssociationConnector Association="ArtShopModel.FK__DeliveryC__deliv__178D7CA5" />
         <AssociationConnector Association="ArtShopModel.FK__Payment__payment__3BCADD1B" ManuallyRouted="true" >
-          <ConnectorPoint PointX="9.125" PointY="13.285184476768576" />
-          <ConnectorPoint PointX="10.25" PointY="13.285184476768576" />
+          <ConnectorPoint PointX="9.125" PointY="14.105286458333332" />
+          <ConnectorPoint PointX="10.25" PointY="30.50498086810682" />
           <ConnectorPoint PointX="10.25" PointY="14.893697916666667" />
           <ConnectorPoint PointX="10.771215146465249" PointY="14.893697916666667" />
-          <ConnectorPoint PointX="10.771215146465249" PointY="15.625" />
+          <ConnectorPoint PointX="10.771215146465249" PointY="15.624999999999998" />
         </AssociationConnector>
         <AssociationConnector Association="ArtShopModel.FK__Payment__payment__3CBF0154" />
         <AssociationConnector Association="ArtShopModel.FK__Staff__position___4F47C5E3" />
@@ -110,7 +108,7 @@
         <AssociationConnector Association="ArtShopModel.DeliveryChainDetails" />
         <AssociationConnector Association="ArtShopModel.UserAddress" />
         <AssociationConnector Association="ArtShopModel.FK__PaymentDe__art_i__595B4002" ManuallyRouted="true" >
-          <ConnectorPoint PointX="18.375" PointY="20.5" />
+          <ConnectorPoint PointX="18.375" PointY="20.500000000000004" />
           <ConnectorPoint PointX="18.375" PointY="19.547587890624996" />
           <ConnectorPoint PointX="15.083333333333334" PointY="19.547587890624996" />
           <ConnectorPoint PointX="14.916666666666666" PointY="19.547587890624996" />
@@ -119,17 +117,19 @@
           <ConnectorPoint PointX="12.802083333333334" PointY="19.547587890624996" />
           <ConnectorPoint PointX="12.635416666666666" PointY="19.547587890624996" />
           <ConnectorPoint PointX="12.25" PointY="19.547587890624996" />
-          <ConnectorPoint PointX="12.25" PointY="14.393026103333726" />
-          <ConnectorPoint PointX="10.333333333333334" PointY="14.393026103333726" />
-          <ConnectorPoint PointX="10.166666666666666" PointY="14.393026103333726" />
-          <ConnectorPoint PointX="6.4895858333333329" PointY="14.393026103333726" />
-          <ConnectorPoint PointX="6.3229191666666669" PointY="14.393026103333726" />
-          <ConnectorPoint PointX="6.083333333333333" PointY="14.393026103333726" />
-          <ConnectorPoint PointX="5.916666666666667" PointY="14.393026103333726" />
-          <ConnectorPoint PointX="4.75" PointY="14.393026103333726" />
+          <ConnectorPoint PointX="12.25" PointY="30.395263174878448" />
+          <ConnectorPoint PointX="10.288222063093397" PointY="26.594547596507343" />
+          <ConnectorPoint PointX="10.211777936906605" PointY="26.446446032203266" />
+          <ConnectorPoint PointX="9.97299696078973" PointY="25.983835785307988" />
+          <ConnectorPoint PointX="9.89655283460294" PointY="25.835734221003911" />
+          <ConnectorPoint PointX="7.2882220630933956" PointY="20.782398055722634" />
+          <ConnectorPoint PointX="7.2117779369066044" PointY="20.634296491418556" />
+          <ConnectorPoint PointX="4.75" PointY="15.864889322916667" />
         </AssociationConnector>
         <AssociationConnector Association="ArtShopModel.FK__PaymentDe__payme__58671BC9" ManuallyRouted="false" >
         </AssociationConnector>
+        <AssociationConnector Association="ArtShopModel.CategoryDetails" />
+        <EntityTypeShape EntityType="ArtShopModel.vw_customer_cart2" Width="3.125" PointX="0.75" PointY="6.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

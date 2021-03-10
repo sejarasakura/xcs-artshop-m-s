@@ -283,6 +283,7 @@
     <Content Include="web\lib\js\constant.js" />
     <Content Include="web\lib\js\mdb.ecommerce.min.js" />
     <Content Include="web\lib\js\mdb.min.js" />
+    <Content Include="web\lib\js\_functions.js" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -459,7 +460,7 @@
     <Compile Include="modal\vw_aspnet_WebPartState_User.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="modal\vw_customer_cart.cs">
+    <Compile Include="modal\vw_customer_cart2.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="pages\diagram_reader\ImageViewer.aspx.cs">

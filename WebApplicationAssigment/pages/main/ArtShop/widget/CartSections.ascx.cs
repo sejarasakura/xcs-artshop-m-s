@@ -21,8 +21,8 @@ namespace WebApplicationAssigment.pages.main.ArtShop
                 total = 0;
                 id = (Guid)Functions.getLoginUser().ProviderUserKey;
 
-                IQueryable<vw_customer_cart> x = db.vw_customer_cart.Where(s => s.user_id == id);
-                vw_customer_cart[] y = x.ToArray();
+                IQueryable<vw_customer_cart2> x = db.vw_customer_cart2.Where(s => s.user_id == id);
+                vw_customer_cart2[] y = x.ToArray();
                 for (int i = 0; i < x.Count(); i++)
                 {
                     total += Convert.ToDouble(y[i].price);

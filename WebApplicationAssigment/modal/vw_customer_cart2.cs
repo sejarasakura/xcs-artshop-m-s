@@ -12,15 +12,18 @@ namespace WebApplicationAssigment.modal
     using System;
     using System.Collections.Generic;
     
-    public partial class vw_customer_cart
+    public partial class vw_customer_cart2
     {
+        public int id { get; set; }
         public string image { get; set; }
         public decimal price { get; set; }
+        public string date { get; set; }
         public string title { get; set; }
+        public string description { get; set; }
+        public System.Guid artist_id { get; set; }
+        public bool @virtual { get; set; }
         public System.Guid user_id { get; set; }
-        public Nullable<int> category_id { get; set; }
         public Nullable<int> availability { get; set; }
         public Nullable<System.DateTime> add_date { get; set; }
-        public int art_id { get; set; }
     }
 }

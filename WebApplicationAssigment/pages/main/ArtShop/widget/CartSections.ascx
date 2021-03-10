@@ -22,9 +22,16 @@
                     <%
                         using (ArtShopEntities db = new ArtShopEntities())
                         {
-                            vw_customer_cart[] arts = db.vw_customer_cart.Where(q => q.user_id == id).ToArray();
+                            Painting paint;
+                            string lwh;
+                            vw_customer_cart2[] arts = db.vw_customer_cart2.Where(q => q.user_id == id).ToArray();
                             for (int i = 0; i < arts.Length; i++)
                             {
+                                paint = db.Paintings.Find(arts[i].id);
+
+                                    lwh = (paint == null ? "N/A * " : paint.lenght_mm + " mm * ") +
+                                        (paint == null ? "N/A * " : paint.width_mm + " mm * ") +
+                                        (paint == null ? "N/A" : paint.height_mm + " mm ");
                     %>
                     <div>
                         <asp:CheckBox ID="CheckBox1" runat="server" />
@@ -45,10 +52,10 @@
                                     <div class="d-flex justify-content-between">
                                         <div>
                                             <h5>Blue denim shirt</h5>
-                                            <p class="mb-1 text-muted text-uppercase small">Artist: </p>
-                                            <p class="mb-1 text-muted text-uppercase small">Weight: </p>
-                                            <p class="mb-1 text-muted text-uppercase small">L &times; W &times; H: </p>
-                                            <p class="mb-1 text-muted text-uppercase small">Virtual: </p>
+                                            <p class="mb-1 text-muted text-uppercase small">Creation Date: </p>
+                                            <p class="mb-1 text-muted text-uppercase small">Weight: <%= paint == null?"none": paint.weight_g + "g"%></p>
+                                            <p class="mb-1 text-muted text-uppercase small">L &times; W &times; H: <%= lwh%></p>
+                                            <p class="mb-1 text-muted text-uppercase small">Virtual: <%= arts[i].@virtual? "Yes": "No"%></p>
                                         </div>
                                         <div>
                                             <div class="def-number-input number-input safari_only mb-0 w-100">
@@ -62,10 +69,8 @@
                                         <div>
                                             <a href="#!" type="button" class="card-link-secondary small text-uppercase mr-3 text-danger"><i
                                                 class="fas fa-trash-alt mr-1"></i>Remove item </a>
-                                            <a href="#!" type="button" class="card-link-secondary small text-uppercase"><i
-                                                class="fas fa-heart mr-1"></i>Move to wish list </a>
                                         </div>
-                                        <p class="mb-0"><span><strong id="summary">$17.99</strong></span></p>
+                                        <p class="mb-0"><span><strong id="summary">RM <%= arts[i].price %></strong></span></p>
                                     </div>
                                 </div>
                             </div>

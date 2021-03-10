@@ -12,6 +12,7 @@
     <style>
         table {
             margin: auto !important;
+            width: 460px !important;
         }
         /* Credit to bootsnipp.com for the css for the color graph */
         .colorgraph {
@@ -139,8 +140,22 @@
                                                 var input = document.getElementById("<%= securityQuestions.ClientID%>");
 
                                                 // Show label but insert value into the input:
-                                                new Awesomplete(input, {
-                                                    list: SketchConstant.SECURITY_QUESTIONS
+                                                var comboplete = new Awesomplete(input, {
+                                                    list: SketchConstant.SECURITY_QUESTIONS,
+                                                    minChars: 0
+                                                });
+
+                                                Awesomplete.$('#<%= securityQuestions.ClientID%>').addEventListener("click", function () {
+                                                    if (comboplete.ul.childNodes.length === 0) {
+                                                        comboplete.minChars = 0;
+                                                        comboplete.evaluate();
+                                                    }
+                                                    else if (comboplete.ul.hasAttribute('hidden')) {
+                                                        comboplete.open();
+                                                    }
+                                                    else {
+                                                        comboplete.close();
+                                                    }
                                                 });
                                             </script>
                                         </div>
@@ -426,8 +441,10 @@
                     <ContentTemplate>
                         <div class="container">
                             <uc1:SuccessMessageLarge runat="server" ID="SuccessMessageLarge" />
+                            <center>
                             <asp:Button ID="ContinueButton" runat="server" CssClass="btn btn-success btn-block btn-lg pull-right"
                                 CausesValidation="False" CommandName="Continue" Text="Continue" ValidationGroup="CreateUserWizard1" />
+                            </center>
                         </div>
                     </ContentTemplate>
                 </asp:CompleteWizardStep>
