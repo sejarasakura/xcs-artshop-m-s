@@ -18,7 +18,6 @@ namespace WebApplicationAssigment.modal
         public aspnet_Users()
         {
             this.aspnet_PersonalizationPerUser = new HashSet<aspnet_PersonalizationPerUser>();
-            this.Staffs = new HashSet<Staff>();
             this.aspnet_Roles = new HashSet<aspnet_Roles>();
         }
     
@@ -30,16 +29,16 @@ namespace WebApplicationAssigment.modal
         public bool IsAnonymous { get; set; }
         public System.DateTime LastActivityDate { get; set; }
     
+        public virtual Artist Artist { get; set; }
         public virtual aspnet_Applications aspnet_Applications { get; set; }
         public virtual aspnet_Membership aspnet_Membership { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<aspnet_PersonalizationPerUser> aspnet_PersonalizationPerUser { get; set; }
         public virtual aspnet_Profile aspnet_Profile { get; set; }
-        public virtual Artist Artist { get; set; }
         public virtual Customer Customer { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Staff> Staffs { get; set; }
+        public virtual Staff Staff { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<aspnet_Roles> aspnet_Roles { get; set; }
+        public virtual UserExtension UserExtension { get; set; }
     }
 }

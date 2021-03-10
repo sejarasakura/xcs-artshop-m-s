@@ -3,38 +3,86 @@
 <%@ Register Src="~/pages/widget/Header.ascx" TagPrefix="uc1" TagName="Header" %>
 <%@ Register Src="~/pages/widget/Sidemap.ascx" TagPrefix="uc1" TagName="Sidemap" %>
 <%@ Register Src="~/pages/widget/Footer.ascx" TagPrefix="uc1" TagName="Footer" %>
+<%@ Register Src="~/pages/main/Authentication/Widget/Login.ascx" TagPrefix="uc1" TagName="Login" %>
 
 
 
+
+<%@ Import Namespace="WebApplicationAssigment.commons" %>
 
 <!DOCTYPE html>
 
 <html>
-  <head runat="server">
+<head runat="server">
     <title></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" >
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link href="../../web/lib/css/extensions.css" rel="stylesheet" />
-    <link href="../../web/lib/css/shop.css" rel="stylesheet" />
-    <script src="../../web/lib/js/helpers.js"></script>
-    <script src="../../web/lib/js/lib.js"></script>
+    <link href="<%= "https://" + HttpContext.Current.Request.Url.Authority%>/web/lib/css/extensions.css" rel="stylesheet" />
+    <link href="<%= "https://" + HttpContext.Current.Request.Url.Authority%>/web/lib/css/shop.css" rel="stylesheet" />
+    <link href="<%= "https://" + HttpContext.Current.Request.Url.Authority%>/web/lib/css/main.css" rel="stylesheet" />
+    <script src="<%= "https://" + HttpContext.Current.Request.Url.Authority%>/web/lib/js/helpers.js"></script>
+    <link href="<%= "https://" + HttpContext.Current.Request.Url.Authority%>/content/toastr.css" rel="stylesheet" />
+    <script src="<%= "https://" + HttpContext.Current.Request.Url.Authority%>/Scripts/toastr.min.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-  </head>
+</head>
 <body>
-    <div>
-        <form id="master_form" runat="server">
+    <form id="master_form" runat="server">
+        <div>
             <uc1:Header runat="server" ID="Header" />
 
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-
             </asp:ContentPlaceHolder>
 
             <uc1:Footer runat="server" ID="Footer" />
-        </form>
-    </div>
+        </div>
+        <style>
+        </style>
+        <div id="LoginNavInHeaderContent" class="center-full-pages" style="display: none">
+            <div>
+            <uc1:Login runat="server" ID="LoginNavInHeader" AutoRedirect="false" ValidationGroup="MasterLogin"/>
+            <a href="#" id="CloseLoginNavGations" class="text-secondary no-decolation d-flex justify-content-center">
+                <span style="font-size: 100px; font-weight: 700" class="text-danger">&times;</span>
+            </a>
+            </div>
+        </div>
+    </form>
+    <script>
+        $(document).ready(function () {
+            $('#login_button_in_header').click(function () {
+                $('#LoginNavInHeaderContent').toggle();
+            });
+            $('#CloseLoginNavGations').click(function () {
+                $('#LoginNavInHeaderContent').toggle();
+            });
+        });
+    </script>
+    
+    <script type="text/javascript">
+        $(function () {
+            toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "progressBar": true,
+                "preventDuplicates": false,
+                "positionClass": "toast-bottom-right",
+                "showDuration": "400",
+                "hideDuration": "1000",
+                "timeOut": "7000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+
+            <%= Functions.DisplayNotifications()%>
+        })
+    </script>
 </body>
 </html>

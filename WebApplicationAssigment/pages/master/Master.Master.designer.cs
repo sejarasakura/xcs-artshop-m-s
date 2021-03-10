@@ -24,6 +24,15 @@ namespace WebApplicationAssigment.pages.master
         protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
 
         /// <summary>
+        /// master_form control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm master_form;
+
+        /// <summary>
         /// Header control.
         /// </summary>
         /// <remarks>
@@ -49,5 +58,14 @@ namespace WebApplicationAssigment.pages.master
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::WebApplicationAssigment.pages.widget.Footer Footer;
+
+        /// <summary>
+        /// LoginNavInHeader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebApplicationAssigment.pages.main.Authentication.Widget.Login LoginNavInHeader;
     }
 }

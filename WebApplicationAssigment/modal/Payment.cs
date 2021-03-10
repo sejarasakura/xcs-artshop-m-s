@@ -14,11 +14,23 @@ namespace WebApplicationAssigment.modal
     
     public partial class Payment
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Payment()
+        {
+            this.PaymentDetails = new HashSet<PaymentDetail>();
+        }
+    
         public int id { get; set; }
         public Nullable<int> order_id { get; set; }
         public Nullable<int> payment_method_id { get; set; }
         public Nullable<double> tax_change { get; set; }
         public Nullable<System.DateTime> payment_date { get; set; }
         public string payment_status { get; set; }
+        public System.Guid customer_id { get; set; }
+    
+        public virtual Customer Customer { get; set; }
+        public virtual PaymentMethod PaymentMethod { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PaymentDetail> PaymentDetails { get; set; }
     }
 }
