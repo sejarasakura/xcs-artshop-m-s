@@ -29,6 +29,7 @@ namespace WebApplicationAssigment.modal
         public string description { get; set; }
         public Nullable<int> category_id { get; set; }
         public System.Guid artist_id { get; set; }
+        public bool @virtual { get; set; }
     
         public virtual Artist Artist { get; set; }
         public virtual Category Category { get; set; }

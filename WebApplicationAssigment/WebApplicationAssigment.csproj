@@ -157,7 +157,11 @@
       <DependentUpon>ArtShop.mdf</DependentUpon>
     </Content>
     <Content Include="assets\image\Art\one.jpg" />
+    <Content Include="assets\image\background\background.png" />
+    <Content Include="assets\image\background\CompanyLogoFrame.png" />
     <Content Include="assets\image\hot-deal.png" />
+    <Content Include="assets\image\Map\pin-blue.png" />
+    <Content Include="assets\image\Map\pin-red.png" />
     <Content Include="assets\image\profile.png" />
     <Content Include="assets\image\signature.png" />
     <Content Include="assets\image\no_img.jpg" />
@@ -224,6 +228,8 @@
     <Content Include="pages\main\Authentication\Profile\Change Password.aspx" />
     <Content Include="pages\main\Authentication\Login.aspx" />
     <Content Include="pages\main\Authentication\Register.aspx" />
+    <Content Include="pages\main\Authentication\Test.aspx" />
+    <Content Include="pages\main\Authentication\Widget\AddressPicker.ascx" />
     <Content Include="pages\main\Authentication\Widget\Login.ascx" />
     <Content Include="pages\main\Home.aspx" />
     <Content Include="pages\Payment\CreditAndDebit.aspx" />
@@ -266,6 +272,10 @@
     <Content Include="content\bootstrap-theme.min.css.map" />
     <Content Include="content\bootstrap-theme.css.map" />
     <Content Include="commons\handler\UpdatesHeaderNavigations.ashx" />
+    <Content Include="web\lib\css\mdb.min.css" />
+    <Content Include="web\lib\css\mdb.ecommerce.min.css" />
+    <Content Include="web\lib\js\mdb.ecommerce.min.js" />
+    <Content Include="web\lib\js\mdb.min.js" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -661,6 +671,20 @@
     <Compile Include="pages\main\Authentication\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pages\main\Authentication\Test.aspx.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\Authentication\Test.aspx.designer.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\Authentication\Widget\AddressPicker.ascx.cs">
+      <DependentUpon>AddressPicker.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\Authentication\Widget\AddressPicker.ascx.designer.cs">
+      <DependentUpon>AddressPicker.ascx</DependentUpon>
+    </Compile>
     <Compile Include="pages\main\Authentication\Widget\Login.ascx.cs">
       <DependentUpon>Login.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -849,7 +873,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="pages\main\ArtShop\widget\" />
+  </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>

@@ -1,6 +1,12 @@
 
- html {
+html {
+    background-image: url('/assets/image/background/background.png');
+    background-repeat: repeat;
     box-sizing: border-box;
+}
+body {
+    background-image: url('/assets/image/background/background.png');
+    background-repeat: repeat;
 }
 *, *:before, *:after {
     box-sizing: inherit;
