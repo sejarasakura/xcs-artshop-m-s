@@ -149,27 +149,28 @@ namespace WebApplicationAssigment.commons
                             db.SaveChanges();
                             Functions.EnqueueNewNotifications(new Notifications(
                                 Notifications.SUCCESS_TYPE,
-                                "Successful add to cart!!",
-                                "You have successful added "+ db.Arts.Find(cd.art_id).title +" to cart!!"));
+                                "Successfully added to shopping cart!",
+                                "You have successful added "+ db.Arts.Find(cd.art_id).title +" to your shopping cart!"));
                         }
-                        catch(Exception ex)
+                        catch(Exception)
                         {
                             Functions.EnqueueNewNotifications(new Notifications(
                                 Notifications.ERROR_TYPE,
-                                "Server SQL Error!!",
-                                "SQL: " + ex.Message));
+                                "Art already existed in your cart",
+                                "This art that you are trying to add is already existed in your shopping cart"));
                         }
                     }
                 }
             }
             else
             {
-                Response.Redirect(Constant.LOGIN_URL);
-
                 Functions.EnqueueNewNotifications(new Notifications(
-                    Notifications.ERROR_TYPE,
-                    "Login required!!",
-                    "You must login before addin new item to cart !!"));
+                Notifications.ERROR_TYPE,
+                "Login required!",
+                "You must login before trying to add in new item to cart !!"));
+
+
+                Response.Redirect(Constant.LOGIN_URL);
             }
         }
 
