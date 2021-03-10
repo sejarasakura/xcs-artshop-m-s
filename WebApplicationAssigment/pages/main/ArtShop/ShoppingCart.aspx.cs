@@ -85,16 +85,19 @@ namespace WebApplicationAssigment.pages.main.ArtShop
                     db.CartDetails.Remove(c);
                     db.SaveChanges();
                     GridView1.DataBind();
-                    preview.InnerHtml = Functions.getAlert(
-                        "alert-success","<strong>Deleted Sucessful!</strong> you have remove item form your cart !!"
-                    );
+
+                    Functions.EnqueueNewNotifications(new Notifications(
+                        Notifications.SUCCESS_TYPE,
+                        "Item Removed Sucessfully!",
+                        "You have removed the item from your cart !!"));
                 }
             }
             catch (Exception e)
             {
-                preview.InnerHtml = Functions.getAlert(
-                    "alert-danger", "<strong>Deleted Failed!</strong> you have following exception " + rollno + e +  "!!"
-                );
+                Functions.EnqueueNewNotifications(new Notifications(
+                    Notifications.ERROR_TYPE,
+                    "Item Removed Failed!",
+                    "you have following exception : "+ e.Message +" !!"));
             }
         }
 

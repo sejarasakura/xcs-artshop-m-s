@@ -8,6 +8,7 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using WebApplicationAssigment.commons;
 using WebApplicationAssigment.modal;
 
 namespace WebApplicationAssigment.pages.main.Profile
@@ -131,7 +132,23 @@ namespace WebApplicationAssigment.pages.main.Profile
                     db.Customers.Add(newCustomer);
                 }
 
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                    UserExtension ue = db.UserExtensions.Find(userId);
+                    Functions.EnqueueNewNotifications(new Notifications(
+                        Notifications.SUCCESS_TYPE,
+                        "Successful register!!",
+                        "Your registeration have sucessful. Dear " + 
+                        ue.first_name + " " + ue.last_name + " welcome to sketch!!"));
+                }
+                catch (Exception ex)
+                {
+                    Functions.EnqueueNewNotifications(new Notifications(
+                        Notifications.ERROR_TYPE,
+                        "Server SQL Error!!",
+                        "SQL: " + ex.Message));
+                }
             }
         }
 

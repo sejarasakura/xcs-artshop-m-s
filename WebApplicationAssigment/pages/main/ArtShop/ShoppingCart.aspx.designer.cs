@@ -24,6 +24,15 @@ namespace WebApplicationAssigment.pages.main.ArtShop
         protected global::WebApplicationAssigment.pages.widget.StartPageSM StartPageSM;
 
         /// <summary>
+        /// CartSections control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebApplicationAssigment.pages.main.ArtShop.CartSections CartSections;
+
+        /// <summary>
         /// Label1 control.
         /// </summary>
         /// <remarks>

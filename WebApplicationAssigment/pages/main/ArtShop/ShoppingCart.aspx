@@ -3,6 +3,8 @@
 <%@ Import Namespace="WebApplicationAssigment.modal" %>
 <%@ Register Src="~/pages/widget/EndPagesSM.ascx" TagPrefix="uc1" TagName="EndPagesSM" %>
 <%@ Register Src="~/pages/widget/StartPageSM.ascx" TagPrefix="uc1" TagName="StartPageSM" %>
+<%@ Register Src="~/pages/main/ArtShop/widget/CartSections.ascx" TagPrefix="uc1" TagName="CartSections" %>
+
 
 
 
@@ -13,7 +15,9 @@
 
 
     <uc1:StartPageSM runat="server" ID="StartPageSM" />
-
+    <div class="container">
+        <uc1:CartSections runat="server" id="CartSections" />
+    </div>
     <div class="container">
 
         <div class="row">
@@ -92,13 +96,13 @@
                                 <asp:Label ID="Label6" runat="server" Text='<%# Eval("price", "RM {0:0.00}") %>'></asp:Label>
                             </ItemTemplate>
                         </asp:TemplateField>
-                        <asp:TemplateField HeaderText="Remove" ShowHeader="False">
+                        <asp:TemplateField HeaderText="" ShowHeader="False">
                             <ItemTemplate>
                                 <asp:LinkButton
                                     ID="btnRemoveItem"
                                     runat="server"
                                     CausesValidation="false"
-                                    Text="&#x1F5D1;"
+                                    Text="<i style='font-size:16pt' class='fa fa-trash' aria-hidden='true'></i>"
                                     ControlStyle-CssClass="text-danger"
                                     CommandArgument='<%# Eval("art_id") %>'
                                     OnCommand="btnDeleteEvent" />

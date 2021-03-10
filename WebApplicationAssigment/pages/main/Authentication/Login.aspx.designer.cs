@@ -24,13 +24,13 @@ namespace WebApplicationAssigment.pages.main.Profile
         protected global::WebApplicationAssigment.pages.widget.StartPageSM StartPageSM;
 
         /// <summary>
-        /// Login1 control.
+        /// LoginUserControl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Login Login1;
+        protected global::WebApplicationAssigment.pages.main.Authentication.Widget.Login LoginUserControl;
 
         /// <summary>
         /// EndPagesSM control.

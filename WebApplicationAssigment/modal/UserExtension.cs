@@ -14,6 +14,12 @@ namespace WebApplicationAssigment.modal
     
     public partial class UserExtension
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public UserExtension()
+        {
+            this.Addresses = new HashSet<Address>();
+        }
+    
         public System.Guid UserId { get; set; }
         public string first_name { get; set; }
         public string last_name { get; set; }
@@ -21,5 +27,7 @@ namespace WebApplicationAssigment.modal
         public byte[] picture { get; set; }
     
         public virtual aspnet_Users aspnet_Users { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Address> Addresses { get; set; }
     }
 }

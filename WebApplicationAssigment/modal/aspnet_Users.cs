@@ -18,6 +18,7 @@ namespace WebApplicationAssigment.modal
         public aspnet_Users()
         {
             this.aspnet_PersonalizationPerUser = new HashSet<aspnet_PersonalizationPerUser>();
+            this.Payments = new HashSet<Payment>();
             this.aspnet_Roles = new HashSet<aspnet_Roles>();
         }
     
@@ -36,9 +37,11 @@ namespace WebApplicationAssigment.modal
         public virtual ICollection<aspnet_PersonalizationPerUser> aspnet_PersonalizationPerUser { get; set; }
         public virtual aspnet_Profile aspnet_Profile { get; set; }
         public virtual Customer Customer { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Payment> Payments { get; set; }
         public virtual Staff Staff { get; set; }
+        public virtual UserExtension UserExtension { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<aspnet_Roles> aspnet_Roles { get; set; }
-        public virtual UserExtension UserExtension { get; set; }
     }
 }
