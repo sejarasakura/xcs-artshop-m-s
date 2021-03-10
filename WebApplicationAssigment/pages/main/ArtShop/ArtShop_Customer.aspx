@@ -60,7 +60,7 @@
                 
             <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
                 <ItemTemplate>
-                    <p class="mb-3"><a href="#!" class="card-link-secondary"><%# Eval("name") %></a></p>
+                    <p class="mb-1"><a href="#!" class="card-link-secondary"><%# Eval("name") %></a></p>
                 </ItemTemplate>
             </asp:Repeater>
                 <asp:SqlDataSource
@@ -119,7 +119,7 @@
                         <div class="view zoom z-depth-2 rounded">
                             
                             <img class="img-fluid w-100" src='<%= arts[i].image%>' alt="Sample">
-                            <a href="#!">
+                            <a href="<%= Constant.ARTSHOP_URL %>/ArtShop_Cust_Details.aspx?id=<%= arts[i].id %>">
                                 <div class="mask waves-effect waves-light"></div>
                             </a>
                         </div>

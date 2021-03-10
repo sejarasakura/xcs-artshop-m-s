@@ -273,6 +273,11 @@
     <Content Include="content\bootstrap-theme.min.css.map" />
     <Content Include="content\bootstrap-theme.css.map" />
     <Content Include="commons\handler\UpdatesHeaderNavigations.ashx" />
+    <Content Include="web\lib\awes\awesomplete.base.css" />
+    <Content Include="web\lib\awes\awesomplete.css" />
+    <Content Include="web\lib\awes\awesomplete.js" />
+    <Content Include="web\lib\awes\awesomplete.min.js" />
+    <Content Include="web\lib\awes\awesomplete.theme.css" />
     <Content Include="web\lib\css\mdb.min.css" />
     <Content Include="web\lib\css\mdb.ecommerce.min.css" />
     <Content Include="web\lib\js\mdb.ecommerce.min.js" />
@@ -302,6 +307,8 @@
     <Content Include="assets\image\testing\img1.jpg" />
     <Content Include="assets\image\testing\img2.jpg" />
     <Content Include="assets\image\testing\img3.jpg" />
+    <Content Include="web\lib\awes\awesomplete.css.map" />
+    <Content Include="web\lib\awes\awesomplete.min.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="commons\ArtistSigniture.ashx.cs">

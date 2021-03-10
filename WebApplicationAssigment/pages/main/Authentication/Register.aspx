@@ -58,8 +58,9 @@
                                     <div class="form-group">
                                         <asp:TextBox
                                             runat="server"
-                                            ID="Email"
-                                            class="form-control input-lg"
+                                            ID="Email" 
+                                            TextMode="Email"
+                                            class="form-control input-lg register_email"
                                             placeholder="Emails" />
                                         <asp:RequiredFieldValidator runat="server"
                                             ControlToValidate="Email"
@@ -107,6 +108,16 @@
                                             </div>
                                         </div>
                                     </div>
+                                    
+                                    <script>
+                                        new Awesomplete('.register_email', {
+                                            list: ["aol.com", "att.net", "comcast.net", "facebook.com", "gmail.com", "gmx.com", "googlemail.com", "google.com", "hotmail.com", "hotmail.co.uk", "mac.com", "me.com", "mail.com", "msn.com", "live.com", "sbcglobal.net", "verizon.net", "yahoo.com", "yahoo.co.uk"],
+                                            data: function (text, input) {
+                                                return input.slice(0, input.indexOf("@")) + "@" + text;
+                                            },
+                                            filter: Awesomplete.FILTER_STARTSWITH
+                                        });
+                                    </script>
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-6 col-md-6">
                                             <asp:TextBox

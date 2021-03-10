@@ -19,15 +19,12 @@ namespace WebApplicationAssigment.pages.main.ArtShop
 
         protected void init_data()
         {
-            try
-            {
-            }
-            catch { }
+
         }
 
         protected void btnaddtocart_Click(object sender, EventArgs e)
         {
-                Functions.addToCart(Request.QueryString["id"], Response);
+            Functions.addToCart(Request.QueryString["id"], Response);
         }
     }
 
