@@ -134,6 +134,15 @@
                                                 ErrorMessage="Security Question is a required field.">
                                                 <b>* Security Question is a required field.</b>
                                             </asp:RequiredFieldValidator>
+                                            <script>
+                                                <% TextBox securityQuestions = (TextBox)FindControlRecursive(CreateUserWizard1, "Question");%>
+                                                var input = document.getElementById("<%= securityQuestions.ClientID%>");
+
+                                                // Show label but insert value into the input:
+                                                new Awesomplete(input, {
+                                                    list: SketchConstant.SECURITY_QUESTIONS
+                                                });
+                                            </script>
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-6">
                                             <asp:TextBox

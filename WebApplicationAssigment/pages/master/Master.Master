@@ -36,6 +36,7 @@
     <script type="text/javascript" src="/web/lib/js/helpers.js"></script>
     <script type="text/javascript" src="/Scripts/toastr.min.js"></script>
     <script type="text/javascript" src="/web/lib/js/mdb.min.js"></script>
+    <script type="text/javascript" src="/web/lib/js/constant.js"></script>
     <script type="text/javascript" src="/web/lib/js/mdb.ecommerce.min.js"></script>
     <script type="text/javascript" src="/web/lib/awes/awesomplete.js"></script>
 

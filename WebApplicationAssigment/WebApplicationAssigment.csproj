@@ -280,6 +280,7 @@
     <Content Include="web\lib\awes\awesomplete.theme.css" />
     <Content Include="web\lib\css\mdb.min.css" />
     <Content Include="web\lib\css\mdb.ecommerce.min.css" />
+    <Content Include="web\lib\js\constant.js" />
     <Content Include="web\lib\js\mdb.ecommerce.min.js" />
     <Content Include="web\lib\js\mdb.min.js" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
