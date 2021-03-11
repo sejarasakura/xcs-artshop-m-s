@@ -1,22 +1,3 @@
 *
 !obj\Docker\publish\*
 !obj\Docker\empty\
-
-            <LoggedInTemplate>
-                <% string[] role = Roles.GetRolesForUser(); %>
-
-                <a id="xGeneral" class="btn btn-default sk2_tablinks" href="MyAccount.aspx?id=General">General</a>
-
-                <% if (role.Contains("Artist"))
-                    { %>
-                <a id="xArtist" class="btn btn-default sk2_tablinks" href="MyAccount.aspx?id=Artist">Artist</a>
-                <% } %>
-                <% if (role.Contains("Customer"))
-                    { %>
-                <a id="xCustomer" class="btn btn-default sk2_tablinks" href="MyAccount.aspx?id=Customer">Customer</a>
-                <% } %>
-                <% if (role.Contains("Administrator"))
-                    { %>
-                <a id="xAdministrator" class="btn btn-default sk2_tablinks" href="MyAccount.aspx?id=Administrator">Staff</a>
-                <% } %>
-            </LoggedInTemplate>

@@ -19,7 +19,7 @@
         color: rgba(132,137,145,1);
     }
 
-        .artshop-footer-style :hover {
+        .artshop-footer-style: hover {
             color: rgba(132,137,145,1);
             text-decoration: none;
         }
@@ -61,9 +61,9 @@
 
                 <div class="row">
                     <div class="col-sm-6 artshop-footer-widget">
-                        <h2 class="artshop-footer-title-style">SKETCH</h2>
+                        <h2 class="artshop-footer-title-style">Comapny name</h2>
                         <p class="artshop-footer-style">
-
+                            Company bussiness rules
                         </p>
                     </div>
                     <div class="col-sm-6 artshop-footer-widget">
@@ -141,7 +141,7 @@
     <!-- Add div row and grid-->
     <div class="row ml-1 footer-copyright-style">
         <div>
-            <span class="artshop-footer-style">Copyright © 2019 SKETCH. All Rights Reserved</span>
+            <span class="artshop-footer-style">Copyright © 2019 Brand Exponents. All Rights Reserved</span>
         </div>
         <div class="ml-auto mr-4">
             <!--ml-auto to pull/float right , mr-4/ml-4 adjust pos -->

@@ -16,7 +16,7 @@
     <style>
 body {
     color: #404E67;
-    background: #F5F7FA; 
+    background: #F5F7FA;
    
 }
 .table-wrapper {
@@ -155,7 +155,6 @@ $(document).ready(function(){
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
-<%@ Import namespace="WebApplicationAssigment.commons" %>
     <div class="row">
         <!--<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center"> -->
               <div class="page-header col-xs-12 col-sm-12">
@@ -165,7 +164,7 @@ $(document).ready(function(){
             <div class="col-lg-11 mx-auto">
                 <div class="card border-0 shadow">
                     <div class="card-body p-5">
-                        <img src="<%= Constant.DEFAULT_URL %>/assets/image/background/CompanyLogo.png " class="d-inline-block align-top" width="90" height="64">
+                        <img src="../../../assets/image/background/CompanyLogo.png " class="d-inline-block align-top" width="90" height="64">
                         <!-- Responsive table -->
                           <div class="table-responsive">
         <div class="table-wrapper" style="margin-top: 0px;margin-left: 0px;margin-right: 0px;margin-bottom: 0px;width: 890px;">
@@ -173,17 +172,11 @@ $(document).ready(function(){
                 <div class="row">
                     <div class="col-sm-8"><h2>Employee <b>Details</b></h2></div>
                     <div class="col-sm-4">
-                        
-
-<a href="<%= "https://" + HttpContext.Current.Request.Url.Authority+"/pages/main/Artist/content/AddNewArt.aspx"%>""> 
-    <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button></a>
-                        <a href="<%= "https://" + HttpContext.Current.Request.Url.Authority+"/pages/main/Artist/content/ViewArtSales.aspx"%>"" >
-    <button type="button" class="btn btn-secondary add-new" style="">         Back</button></a> 
+                       <a href="https://localhost:44375/pages/main/Artist/content/AddNewArt.aspx"> <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button></a>
                     </div>
                 </div>
             </div>
-<!--table-->
-     <!--       <table class="table table-bordered">
+            <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th style="width:85px">id</th>
@@ -209,64 +202,7 @@ $(document).ready(function(){
                     </tr>
                        
                 </tbody>
-            </table><br />   -->
-            <!--gridview-->
-           
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" 
-                DataKeyNames="id" ForeColor="#333333" GridLines="None" Height="241px" Width="886px" 
-                OnSelectedIndexChanged="GridView1_SelectedIndexChanged" ShowHeaderWhenEmpty="True" DataSourceID="SqlDataSource1">
-                <AlternatingRowStyle BackColor="White" />
-              
-            <EmptyDataTemplate>
-    <span style="font-size: 12px; font-weight: bold; color: Blue;">No records are available matching your selected
-        filter. Click on "Add New" button to enter new data .. </span>               
-  </EmptyDataTemplate>
-           
-                <Columns>
-                    <asp:BoundField DataField="id" HeaderText="id" ReadOnly="True" SortExpression="id" />
-                    <asp:BoundField DataField="image" HeaderText="image" SortExpression="image" />
-                    <asp:BoundField DataField="title" HeaderText="title" SortExpression="title" />
-                    <asp:BoundField DataField="name" HeaderText="Category" SortExpression="name" />
-                    <asp:BoundField DataField="date" HeaderText="date" SortExpression="date" />
-                    <asp:BoundField DataField="description" HeaderText="description" SortExpression="description" />
-                    <asp:BoundField DataField="price" HeaderText="price" SortExpression="price" />
-                </Columns>
-           
-                <EditRowStyle BackColor="#2461BF" />
-                <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
-                <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-                <RowStyle BackColor="#EFF3FB" />
-                <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
-                <SortedAscendingCellStyle BackColor="#F5F7FB" />
-                <SortedAscendingHeaderStyle BackColor="#6D95E1" />
-                <SortedDescendingCellStyle BackColor="#E9EBEF" />
-                <SortedDescendingHeaderStyle BackColor="#4870BE" />
-            </asp:GridView>
-           
-            <br /><br />
-           
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT Art.description, Art.title, Art.date, Art.price, Art.image,Art.id,Category.name FROM Art INNER JOIN Category ON Art.category_id = Category.id" DeleteCommand="DELETE FROM [Art] WHERE [id] = @id" InsertCommand="INSERT INTO [Art] ([description], [title], [date], [price], [image], [id]) VALUES (@description, @title, @date, @price, @image, @id)" UpdateCommand="UPDATE [Art] SET [description] = @description, [title] = @title, [date] = @date, [price] = @price, [image] = @image WHERE [id] = @id">
-                <DeleteParameters>
-                    <asp:Parameter Name="id" Type="Int32" />
-                </DeleteParameters>
-                <InsertParameters>
-                    <asp:Parameter Name="description" Type="String" />
-                    <asp:Parameter Name="title" Type="String" />
-                    <asp:Parameter Name="date" Type="String" />
-                    <asp:Parameter Name="price" Type="Decimal" />
-                    <asp:Parameter Name="image" Type="String" />
-                    <asp:Parameter Name="id" Type="Int32" />
-                </InsertParameters>
-                <UpdateParameters>
-                    <asp:Parameter Name="description" Type="String" />
-                    <asp:Parameter Name="title" Type="String" />
-                    <asp:Parameter Name="date" Type="String" />
-                    <asp:Parameter Name="price" Type="Decimal" />
-                    <asp:Parameter Name="image" Type="String" />
-                    <asp:Parameter Name="id" Type="Int32" />
-                </UpdateParameters>
-            </asp:SqlDataSource>
+            </table>
         </div>
     </div>
 </div>

@@ -31,12 +31,12 @@
                                     <style>.tatsu-ft7hhskaz4xkhae .tatsu-inline-text-inner{width: 80%;text-align: left;}@media only screen and (min-width:768px) and (max-width: 1024px) {.tatsu-ft7hhskaz4xkhae .tatsu-inline-text-inner{width: 100%;}}</style>
                                     <div class="tatsu-inline-text-inner tatsu-align-center">
                                         <h3 style="text-align: center">
-                                            <span style="color: #ffffff">Life Better, SKETCH Well.</span>
+                                            <span style="color: #ffffff">Convinced ? Well Let’s have a talk then.</span>
                                         </h3>
                                     </div>
                                 </div>
                                 <div class="tatsu-module tatsu-normal-button tatsu-button-wrap align-block block-center  tatsu-ft7hhskbip6asues   ">
-                                    <a class="tatsu-shortcode mediumbtn tatsu-button left-icon circular   bg-animation-none  " href="#" style="" aria-label="Term & Policy" data-gdpr-atts="{}">Contact Us</a>
+                                    <a class="tatsu-shortcode mediumbtn tatsu-button left-icon circular   bg-animation-none  " href="#" style="" aria-label="Contact Us" data-gdpr-atts="{}">Contact Us</a>
                                     <style>.tatsu-ft7hhskbip6asues .tatsu-button{background-color: #ffffff;color: rgba(34,147,215,1) ;box-shadow: 0px 5px 30px 0px rgba(43,43,43,0.2);}</style>
                                 </div>
                             </div>

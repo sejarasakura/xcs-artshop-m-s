@@ -15,11 +15,8 @@ namespace WebApplicationAssigment.modal
     public partial class CartDetail
     {
         public int cart_id { get; set; }
-        public int art_id { get; set; }
+        public Nullable<int> art_id { get; set; }
         public Nullable<int> availability { get; set; }
         public Nullable<System.DateTime> add_date { get; set; }
-    
-        public virtual Art Art { get; set; }
-        public virtual Cart Cart { get; set; }
     }
 }

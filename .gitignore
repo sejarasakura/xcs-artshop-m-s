@@ -347,5 +347,8 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+<<<<<<< HEAD
 
 WebApplicationAssigment/App_Data/ArtShop.mdf
+=======
+>>>>>>> parent of 5d42804 (Merge branch 'develop' into LAI_HONG_WAH)

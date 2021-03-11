@@ -3,35 +3,21 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<%@ Import namespace="WebApplicationAssigment.commons" %>
-<%@ Import namespace="WebApplicationAssigment.modal" %>
-    <%
-        int id = Int32.Parse(Request["id"]);
-        using (ArtShopEntities db = new ArtShopEntities())
-        {
-            art = db.Arts.Find(id); 
-    %>
     <div class="container-lg mt-4 mb-4">
         <div class="row">
             <div class="col-md-6">
-                <img src='<%= "https://" + HttpContext.Current.Request.Url.Authority + "/" + art.image%>' width="100%" height="auto">
+                <img src="../../../assets/image/testing/OK.JPG" width="380" height="640">
             </div>
-            <div class="col-md-6 card-body d-flex flex-column">
-                <h3 class="text-danger mb-5"><%=art.title%></h3>
-                <p class="font-weight-lighter"><%=art.description%></p>
-                <p class="font-weight-bolder">RM <%=art.price %></p>
-                <p class="font-weight-lighter">Date Published : <%= art.date %></p>
-                <img alt="" src="<%= Constant.PROFILE_PIC_URL %>?guid=<%= art.Artist.UserId %>" />
-                <img alt="" src="<%= art.Artist.aspnet_Users.UserExtension.first_name + " " + art.Artist.aspnet_Users.UserExtension.last_name %>" />
-                <img alt="" src="<%= art.Artist.birthday_date %>" />
-                <img alt="" src="<%= art.Artist.description %>" />
-                <p class="mb-5"></p>
-                <p class="mb-5"></p>
-                <p class="mb-5"></p>
-                <asp:Button ID="btnaddtocart" Cssclass="align-self-end btn btn-warning mt-5" runat="server" Text="Add to Shopping Cart" OnClick="btnaddtocart_Click" />
+            <div class="col-md-6">
+                <p style="font-size:30px">Artwork Name</p>
+                <p class="font-weight-lighter">Artwort Description/Artwort Description/Artwort Description/Artwort Description/Artwort Description/Artwort Description/
+                    Artwort Description/Artwort Description/Artwort Description
+                </p>
+                <p class="font-weight-lighter">Artwork Price</p>
+                <p class="font-weight-lighter">Artwork Quantity</p>
+                <button type="button" class="btn btn-warning mt-6">Add to Shopping Cart</button>
             </div>
         </div>
 
     </div>
-   <%}%>
 </asp:Content>

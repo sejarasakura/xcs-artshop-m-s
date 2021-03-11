@@ -14,20 +14,12 @@ namespace WebApplicationAssigment.modal
     
     public partial class Artist
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Artist()
-        {
-            this.Arts = new HashSet<Art>();
-        }
-    
         public System.Guid UserId { get; set; }
         public Nullable<System.DateTime> birthday_date { get; set; }
         public string description { get; set; }
         public byte[] signature { get; set; }
         public byte[] picture { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Art> Arts { get; set; }
         public virtual aspnet_Users aspnet_Users { get; set; }
     }
 }

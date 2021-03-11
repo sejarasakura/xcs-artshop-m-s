@@ -20,6 +20,5 @@ namespace WebApplicationAssigment.modal
         public byte[] picture { get; set; }
     
         public virtual aspnet_Users aspnet_Users { get; set; }
-        public virtual Position Position { get; set; }
     }
 }
