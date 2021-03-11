@@ -29,6 +29,7 @@ namespace WebApplicationAssigment.modal
     
         public virtual DbSet<aspnet_SchemaVersions> aspnet_SchemaVersions { get; set; }
         public virtual DbSet<aspnet_WebEvent_Events> aspnet_WebEvent_Events { get; set; }
+        public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<Art> Arts { get; set; }
         public virtual DbSet<Artist> Artists { get; set; }
         public virtual DbSet<aspnet_Applications> aspnet_Applications { get; set; }
@@ -44,13 +45,24 @@ namespace WebApplicationAssigment.modal
         public virtual DbSet<CartDetail> CartDetails { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
+        public virtual DbSet<Delivery> Deliveries { get; set; }
+        public virtual DbSet<DeliveryChain> DeliveryChains { get; set; }
+        public virtual DbSet<DeliveryCompany> DeliveryCompanies { get; set; }
+        public virtual DbSet<DeliveryStatu> DeliveryStatus { get; set; }
+        public virtual DbSet<Painting> Paintings { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
         public virtual DbSet<PaymentDetail> PaymentDetails { get; set; }
         public virtual DbSet<PaymentMethod> PaymentMethods { get; set; }
+        public virtual DbSet<PaymentStatu> PaymentStatus { get; set; }
         public virtual DbSet<PayPal> PayPals { get; set; }
         public virtual DbSet<Position> Positions { get; set; }
         public virtual DbSet<PublicBank> PublicBanks { get; set; }
         public virtual DbSet<Staff> Staffs { get; set; }
+        public virtual DbSet<UserExtension> UserExtensions { get; set; }
+        public virtual DbSet<avw_AdminUsers> avw_AdminUsers { get; set; }
+        public virtual DbSet<avw_AllUsers> avw_AllUsers { get; set; }
+        public virtual DbSet<avw_ArtistUsers> avw_ArtistUsers { get; set; }
+        public virtual DbSet<avw_CustomerUsers> avw_CustomerUsers { get; set; }
         public virtual DbSet<vw_aspnet_Applications> vw_aspnet_Applications { get; set; }
         public virtual DbSet<vw_aspnet_MembershipUsers> vw_aspnet_MembershipUsers { get; set; }
         public virtual DbSet<vw_aspnet_Profiles> vw_aspnet_Profiles { get; set; }
@@ -60,12 +72,7 @@ namespace WebApplicationAssigment.modal
         public virtual DbSet<vw_aspnet_WebPartState_Paths> vw_aspnet_WebPartState_Paths { get; set; }
         public virtual DbSet<vw_aspnet_WebPartState_Shared> vw_aspnet_WebPartState_Shared { get; set; }
         public virtual DbSet<vw_aspnet_WebPartState_User> vw_aspnet_WebPartState_User { get; set; }
-        public virtual DbSet<vw_customer_cart> vw_customer_cart { get; set; }
-        public virtual DbSet<UserExtension> UserExtensions { get; set; }
-        public virtual DbSet<avw_AdminUsers> avw_AdminUsers { get; set; }
-        public virtual DbSet<avw_ArtistUsers> avw_ArtistUsers { get; set; }
-        public virtual DbSet<avw_CustomerUsers> avw_CustomerUsers { get; set; }
-        public virtual DbSet<avw_AllUsers> avw_AllUsers { get; set; }
+        public virtual DbSet<vw_customer_cart2> vw_customer_cart2 { get; set; }
     
         public virtual ObjectResult<string> aspnet_AnyDataInTables(Nullable<int> tablesToCheck)
         {

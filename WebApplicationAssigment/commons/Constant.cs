@@ -7,9 +7,10 @@ namespace WebApplicationAssigment.commons
 {
     public class Constant
     {
-        public static readonly string COMPANY_CODE = "";
-        public static readonly string COMPANY_NAME = "";
-        public static readonly string COMPANY_LOGO = "";
+        public static readonly string COMPANY_CODE = "30491";
+        public static readonly string COMPANY_NAME = "Sketch";
+        public static readonly string COMPANY_LOGO = DEFAULT_URL + "/assets/image/background/CompanyLogo.png";
+        public static readonly string COMPANY_LOGO_FRAME = DEFAULT_URL + "/assets/image/background/CompanyLogoFrame.png";
         public static readonly string COMPANY_PHONE = "";
 
 
@@ -26,6 +27,9 @@ namespace WebApplicationAssigment.commons
         public static readonly string PROFILE_URL = PAGES_URL + "/main/Authentication/Profile";
         public static readonly string ARTSHOP_URL = PAGES_URL + "/main/ArtShop";
         public static readonly string LIB_URL = DEFAULT_URL + "/web/lib";
+        public static readonly string IMG_URL = DEFAULT_URL + "/assets/image";
+        public static readonly string BLUE_PIN_URL = IMG_URL + "/Map/pin-blue.png";
+        public static readonly string RED_PIN_URL = IMG_URL + "/Map/pin-red.png";
         public static readonly string PROFILE_PIC_URL = DEFAULT_URL + "/commons/UserProfilePicture.ashx";
 
 

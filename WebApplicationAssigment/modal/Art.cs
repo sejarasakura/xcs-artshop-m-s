@@ -19,6 +19,7 @@ namespace WebApplicationAssigment.modal
         {
             this.CartDetails = new HashSet<CartDetail>();
             this.PaymentDetails = new HashSet<PaymentDetail>();
+            this.Categories = new HashSet<Category>();
         }
     
         public int id { get; set; }
@@ -27,14 +28,16 @@ namespace WebApplicationAssigment.modal
         public string date { get; set; }
         public string title { get; set; }
         public string description { get; set; }
-        public Nullable<int> category_id { get; set; }
         public System.Guid artist_id { get; set; }
+        public bool @virtual { get; set; }
     
         public virtual Artist Artist { get; set; }
-        public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CartDetail> CartDetails { get; set; }
+        public virtual Painting Painting { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PaymentDetail> PaymentDetails { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Category> Categories { get; set; }
     }
 }
