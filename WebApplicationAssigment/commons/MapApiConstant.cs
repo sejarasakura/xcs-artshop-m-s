@@ -7,7 +7,7 @@ namespace WebApplicationAssigment.commons
 {
     public class MapApiConstant
     {
-        public static string API_KEY = "AIzaSyDrAOf0xv3aGnttd9VswWfO9CbuRclc1Z4";
+        public static string API_KEY = "";
         public static string ENDPOINT_URL = "https://maps.googleapis.com/maps/api";
         public static string GEOCODE_URL = "https://maps.googleapis.com/maps/api/geocode";
 

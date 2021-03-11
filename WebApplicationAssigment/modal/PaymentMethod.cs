@@ -20,10 +20,9 @@ namespace WebApplicationAssigment.modal
             this.Payments = new HashSet<Payment>();
         }
     
-        public System.Guid id { get; set; }
+        public int id { get; set; }
         public string name { get; set; }
         public string description { get; set; }
-        public string meta_field { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Payment> Payments { get; set; }

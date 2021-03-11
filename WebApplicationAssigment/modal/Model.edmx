@@ -5,20 +5,6 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ArtShopModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Address">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="latitude" Type="float" Nullable="false" />
-          <Property Name="longitude" Type="float" Nullable="false" />
-          <Property Name="details" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="street" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="city" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="state" Type="nvarchar" MaxLength="50" />
-          <Property Name="poscode" Type="nvarchar" MaxLength="50" />
-          <Property Name="country" Type="nvarchar" MaxLength="50" />
-        </EntityType>
         <EntityType Name="Art">
           <Key>
             <PropertyRef Name="id" />
@@ -29,8 +15,8 @@
           <Property Name="date" Type="nvarchar(max)" Nullable="false" />
           <Property Name="title" Type="nvarchar(max)" Nullable="false" />
           <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="category_id" Type="int" />
           <Property Name="artist_id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="virtual" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Artist">
           <Key>
@@ -211,14 +197,6 @@
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="description" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
-        <EntityType Name="CategoryDetails">
-          <Key>
-            <PropertyRef Name="art_id" />
-            <PropertyRef Name="category_id" />
-          </Key>
-          <Property Name="art_id" Type="int" Nullable="false" />
-          <Property Name="category_id" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="UserId" />
@@ -228,112 +206,33 @@
           <Property Name="membership" Type="varchar" MaxLength="1" />
           <Property Name="picture" Type="varbinary(max)" />
         </EntityType>
-        <EntityType Name="Delivery">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="source" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="destination" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="delivery_note" Type="nvarchar" MaxLength="100" />
-          <Property Name="final_delivery_status" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="delivery_company" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="recive_dates" Type="datetime" />
-          <Property Name="recive_prove" Type="varbinary(max)" />
-        </EntityType>
-        <EntityType Name="DeliveryChain">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="arrival_dates" Type="datetime" Nullable="false" />
-          <Property Name="address_id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="delivery_status" Type="uniqueidentifier" />
-          <Property Name="notes" Type="nvarchar" MaxLength="100" Nullable="false" />
-        </EntityType>
-        <EntityType Name="DeliveryChainDetails">
-          <Key>
-            <PropertyRef Name="delivery_id" />
-            <PropertyRef Name="tranfer_chain_id" />
-          </Key>
-          <Property Name="delivery_id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="tranfer_chain_id" Type="uniqueidentifier" Nullable="false" />
-        </EntityType>
-        <EntityType Name="DeliveryCompany">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="company_name" Type="nvarchar" MaxLength="50" />
-          <Property Name="company_phones" Type="nvarchar" MaxLength="50" />
-          <Property Name="description" Type="nvarchar" MaxLength="200" />
-          <Property Name="rm_per_g" Type="float" Nullable="false" />
-          <Property Name="rm_per_cm3" Type="float" Nullable="false" />
-          <Property Name="gradient" Type="float" Nullable="false" />
-          <Property Name="prefence_country" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="oversea_support" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="DeliveryStatus">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="description" Type="nvarchar" MaxLength="100" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Painting">
-          <Key>
-            <PropertyRef Name="art_id" />
-          </Key>
-          <Property Name="art_id" Type="int" Nullable="false" />
-          <Property Name="quantity" Type="int" Nullable="false" />
-          <Property Name="weight_g" Type="int" Nullable="false" />
-          <Property Name="height_mm" Type="int" Nullable="false" />
-          <Property Name="width_mm" Type="int" Nullable="false" />
-          <Property Name="lenght_mm" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="Payment">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="payment_method" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="payment_status" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="order_id" Type="int" />
+          <Property Name="payment_method_id" Type="int" />
           <Property Name="tax_change" Type="float" />
-          <Property Name="net_pay" Type="float" />
-          <Property Name="discount" Type="float" />
-          <Property Name="total_pay" Type="float" />
-          <Property Name="customer_paid" Type="float" />
-          <Property Name="payment_date" Type="datetime" />
-          <Property Name="payment_meta" Type="nvarchar" MaxLength="250" Nullable="false" />
-          <Property Name="notes" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="payment_date" Type="date" />
+          <Property Name="payment_status" Type="nvarchar" MaxLength="10" />
+          <Property Name="customer_id" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="PaymentDetails">
           <Key>
             <PropertyRef Name="payment_id" />
             <PropertyRef Name="art_id" />
           </Key>
-          <Property Name="payment_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="payment_id" Type="int" Nullable="false" />
           <Property Name="art_id" Type="int" Nullable="false" />
-          <Property Name="quantity" Type="int" />
-          <Property Name="virtual" Type="bit" />
-          <Property Name="add_date" Type="datetime" />
+          <Property Name="availability" Type="bit" />
+          <Property Name="add_date" Type="date" />
         </EntityType>
         <EntityType Name="PaymentMethod">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="description" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="meta_field" Type="nvarchar(max)" Nullable="false" />
-        </EntityType>
-        <EntityType Name="PaymentStatus">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="id" Type="int" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="description" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
@@ -373,14 +272,6 @@
           <Property Name="priority" Type="int" Nullable="false" />
           <Property Name="position_id" Type="int" Nullable="false" />
           <Property Name="picture" Type="varbinary(max)" />
-        </EntityType>
-        <EntityType Name="UserAddress">
-          <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="address_id" />
-          </Key>
-          <Property Name="UserId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="address_id" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="UserExtension">
           <Key>
@@ -690,30 +581,23 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.vw_customer_cart2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="vw_customer_cart2">
+warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.vw_customer_cart' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_customer_cart">
           <Key>
-            <PropertyRef Name="id" />
             <PropertyRef Name="image" />
             <PropertyRef Name="price" />
-            <PropertyRef Name="date" />
             <PropertyRef Name="title" />
-            <PropertyRef Name="description" />
-            <PropertyRef Name="artist_id" />
-            <PropertyRef Name="virtual" />
             <PropertyRef Name="user_id" />
+            <PropertyRef Name="art_id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
           <Property Name="image" Type="nvarchar(max)" Nullable="false" />
           <Property Name="price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
-          <Property Name="date" Type="nvarchar(max)" Nullable="false" />
           <Property Name="title" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="description" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="artist_id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="virtual" Type="bit" Nullable="false" />
           <Property Name="user_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="category_id" Type="int" />
           <Property Name="availability" Type="int" />
           <Property Name="add_date" Type="date" />
+          <Property Name="art_id" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK__Art__artist_id__44952D46">
           <End Role="Artist" Type="Self.Artist" Multiplicity="1" />
@@ -724,6 +608,18 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Principal>
             <Dependent Role="Art">
               <PropertyRef Name="artist_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Art__category_id__43A1090D">
+          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Art" Type="Self.Art" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Art">
+              <PropertyRef Name="category_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -907,30 +803,6 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CategoryD__art_i__04459E07">
-          <End Role="Art" Type="Self.Art" Multiplicity="1" />
-          <End Role="CategoryDetails" Type="Self.CategoryDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Art">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="CategoryDetails">
-              <PropertyRef Name="art_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__CategoryD__categ__035179CE">
-          <End Role="Category" Type="Self.Category" Multiplicity="1" />
-          <End Role="CategoryDetails" Type="Self.CategoryDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="CategoryDetails">
-              <PropertyRef Name="category_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Customer__UserId__1AD3FDA4">
           <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="1" />
           <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
@@ -943,151 +815,31 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Delivery__delive__11D4A34F">
-          <End Role="DeliveryCompany" Type="Self.DeliveryCompany" Multiplicity="1" />
-          <End Role="Delivery" Type="Self.Delivery" Multiplicity="*" />
+        <Association Name="FK__Payment__custome__3D2915A8">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="DeliveryCompany">
-              <PropertyRef Name="id" />
+            <Principal Role="Customer">
+              <PropertyRef Name="UserId" />
             </Principal>
-            <Dependent Role="Delivery">
-              <PropertyRef Name="delivery_company" />
+            <Dependent Role="Payment">
+              <PropertyRef Name="customer_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Delivery__destin__10E07F16">
-          <End Role="Address" Type="Self.Address" Multiplicity="1" />
-          <End Role="Delivery" Type="Self.Delivery" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Address">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Delivery">
-              <PropertyRef Name="destination" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Delivery__final___12C8C788">
-          <End Role="DeliveryStatus" Type="Self.DeliveryStatus" Multiplicity="1" />
-          <End Role="Delivery" Type="Self.Delivery" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DeliveryStatus">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Delivery">
-              <PropertyRef Name="final_delivery_status" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Delivery__source__0FEC5ADD">
-          <End Role="Address" Type="Self.Address" Multiplicity="1" />
-          <End Role="Delivery" Type="Self.Delivery" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Address">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Delivery">
-              <PropertyRef Name="source" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__DeliveryC__addre__1699586C">
-          <End Role="Address" Type="Self.Address" Multiplicity="1" />
-          <End Role="DeliveryChain" Type="Self.DeliveryChain" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Address">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="DeliveryChain">
-              <PropertyRef Name="address_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__DeliveryC__deliv__178D7CA5">
-          <End Role="DeliveryStatus" Type="Self.DeliveryStatus" Multiplicity="0..1" />
-          <End Role="DeliveryChain" Type="Self.DeliveryChain" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DeliveryStatus">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="DeliveryChain">
-              <PropertyRef Name="delivery_status" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__DeliveryC__deliv__1A69E950">
-          <End Role="Delivery" Type="Self.Delivery" Multiplicity="1" />
-          <End Role="DeliveryChainDetails" Type="Self.DeliveryChainDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Delivery">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="DeliveryChainDetails">
-              <PropertyRef Name="delivery_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__DeliveryC__tranf__1B5E0D89">
-          <End Role="DeliveryChain" Type="Self.DeliveryChain" Multiplicity="1" />
-          <End Role="DeliveryChainDetails" Type="Self.DeliveryChainDetails" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DeliveryChain">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="DeliveryChainDetails">
-              <PropertyRef Name="tranfer_chain_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Painting__art_id__0C1BC9F9">
-          <End Role="Art" Type="Self.Art" Multiplicity="1" />
-          <End Role="Painting" Type="Self.Painting" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Art">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Painting">
-              <PropertyRef Name="art_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Payment__payment__3BCADD1B">
-          <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="1" />
+        <Association Name="FK__Payment__payment__43D61337">
+          <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="0..1" />
           <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PaymentMethod">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Payment">
-              <PropertyRef Name="payment_method" />
+              <PropertyRef Name="payment_method_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Payment__payment__3CBF0154">
-          <End Role="PaymentStatus" Type="Self.PaymentStatus" Multiplicity="1" />
-          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PaymentStatus">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Payment">
-              <PropertyRef Name="payment_status" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Payment__UserId__3DB3258D">
-          <End Role="aspnet_Users" Type="Self.aspnet_Users" Multiplicity="1" />
-          <End Role="Payment" Type="Self.Payment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="aspnet_Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Payment">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PaymentDe__art_i__595B4002">
+        <Association Name="FK__PaymentDe__art_i__42ACE4D4">
           <End Role="Art" Type="Self.Art" Multiplicity="1" />
           <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1099,7 +851,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__PaymentDe__payme__58671BC9">
+        <Association Name="FK__PaymentDe__payme__3E1D39E1">
           <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
           <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1131,30 +883,6 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
               <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="Staff">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__UserAddre__addre__093F5D4E">
-          <End Role="Address" Type="Self.Address" Multiplicity="1" />
-          <End Role="UserAddress" Type="Self.UserAddress" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Address">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="UserAddress">
-              <PropertyRef Name="address_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__UserAddre__UserI__084B3915">
-          <End Role="UserExtension" Type="Self.UserExtension" Multiplicity="1" />
-          <End Role="UserAddress" Type="Self.UserAddress" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserExtension">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="UserAddress">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
@@ -1503,7 +1231,6 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Parameter Name="Details" Type="ntext" Mode="In" />
         </Function>
         <EntityContainer Name="ArtShopModelStoreContainer">
-          <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Art" EntityType="Self.Art" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Artist" EntityType="Self.Artist" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="aspnet_Applications" EntityType="Self.aspnet_Applications" Schema="dbo" store:Type="Tables" />
@@ -1521,23 +1248,14 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CartDetails" EntityType="Self.CartDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CategoryDetails" EntityType="Self.CategoryDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Delivery" EntityType="Self.Delivery" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DeliveryChain" EntityType="Self.DeliveryChain" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DeliveryChainDetails" EntityType="Self.DeliveryChainDetails" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DeliveryCompany" EntityType="Self.DeliveryCompany" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="DeliveryStatus" EntityType="Self.DeliveryStatus" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Painting" EntityType="Self.Painting" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentDetails" EntityType="Self.PaymentDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="PaymentStatus" EntityType="Self.PaymentStatus" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PayPals" EntityType="Self.PayPals" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PublicBank" EntityType="Self.PublicBank" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UserAddress" EntityType="Self.UserAddress" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserExtension" EntityType="Self.UserExtension" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="avw_AdminUsers" EntityType="Self.avw_AdminUsers" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1718,23 +1436,24 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
     [vw_aspnet_WebPartState_User].[LastUpdatedDate] AS [LastUpdatedDate]
     FROM [dbo].[vw_aspnet_WebPartState_User] AS [vw_aspnet_WebPartState_User]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="vw_customer_cart2" EntityType="Self.vw_customer_cart2" store:Type="Views" store:Schema="dbo">
+          <EntitySet Name="vw_customer_cart" EntityType="Self.vw_customer_cart" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [vw_customer_cart2].[id] AS [id], 
-    [vw_customer_cart2].[image] AS [image], 
-    [vw_customer_cart2].[price] AS [price], 
-    [vw_customer_cart2].[date] AS [date], 
-    [vw_customer_cart2].[title] AS [title], 
-    [vw_customer_cart2].[description] AS [description], 
-    [vw_customer_cart2].[artist_id] AS [artist_id], 
-    [vw_customer_cart2].[virtual] AS [virtual], 
-    [vw_customer_cart2].[user_id] AS [user_id], 
-    [vw_customer_cart2].[availability] AS [availability], 
-    [vw_customer_cart2].[add_date] AS [add_date]
-    FROM [dbo].[vw_customer_cart2] AS [vw_customer_cart2]</DefiningQuery>
+    [vw_customer_cart].[image] AS [image], 
+    [vw_customer_cart].[price] AS [price], 
+    [vw_customer_cart].[title] AS [title], 
+    [vw_customer_cart].[user_id] AS [user_id], 
+    [vw_customer_cart].[category_id] AS [category_id], 
+    [vw_customer_cart].[availability] AS [availability], 
+    [vw_customer_cart].[add_date] AS [add_date], 
+    [vw_customer_cart].[art_id] AS [art_id]
+    FROM [dbo].[vw_customer_cart] AS [vw_customer_cart]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK__Art__artist_id__44952D46" Association="Self.FK__Art__artist_id__44952D46">
             <End Role="Artist" EntitySet="Artist" />
+            <End Role="Art" EntitySet="Art" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Art__category_id__43A1090D" Association="Self.FK__Art__category_id__43A1090D">
+            <End Role="Category" EntitySet="Category" />
             <End Role="Art" EntitySet="Art" />
           </AssociationSet>
           <AssociationSet Name="FK__Artist__UserId__1CBC4616" Association="Self.FK__Artist__UserId__1CBC4616">
@@ -1797,71 +1516,23 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <End Role="Cart" EntitySet="Cart" />
             <End Role="CartDetails" EntitySet="CartDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__CategoryD__art_i__04459E07" Association="Self.FK__CategoryD__art_i__04459E07">
-            <End Role="Art" EntitySet="Art" />
-            <End Role="CategoryDetails" EntitySet="CategoryDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__CategoryD__categ__035179CE" Association="Self.FK__CategoryD__categ__035179CE">
-            <End Role="Category" EntitySet="Category" />
-            <End Role="CategoryDetails" EntitySet="CategoryDetails" />
-          </AssociationSet>
           <AssociationSet Name="FK__Customer__UserId__1AD3FDA4" Association="Self.FK__Customer__UserId__1AD3FDA4">
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
             <End Role="Customer" EntitySet="Customer" />
           </AssociationSet>
-          <AssociationSet Name="FK__Delivery__delive__11D4A34F" Association="Self.FK__Delivery__delive__11D4A34F">
-            <End Role="DeliveryCompany" EntitySet="DeliveryCompany" />
-            <End Role="Delivery" EntitySet="Delivery" />
+          <AssociationSet Name="FK__Payment__custome__3D2915A8" Association="Self.FK__Payment__custome__3D2915A8">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Payment" EntitySet="Payment" />
           </AssociationSet>
-          <AssociationSet Name="FK__Delivery__destin__10E07F16" Association="Self.FK__Delivery__destin__10E07F16">
-            <End Role="Address" EntitySet="Address" />
-            <End Role="Delivery" EntitySet="Delivery" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Delivery__final___12C8C788" Association="Self.FK__Delivery__final___12C8C788">
-            <End Role="DeliveryStatus" EntitySet="DeliveryStatus" />
-            <End Role="Delivery" EntitySet="Delivery" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Delivery__source__0FEC5ADD" Association="Self.FK__Delivery__source__0FEC5ADD">
-            <End Role="Address" EntitySet="Address" />
-            <End Role="Delivery" EntitySet="Delivery" />
-          </AssociationSet>
-          <AssociationSet Name="FK__DeliveryC__addre__1699586C" Association="Self.FK__DeliveryC__addre__1699586C">
-            <End Role="Address" EntitySet="Address" />
-            <End Role="DeliveryChain" EntitySet="DeliveryChain" />
-          </AssociationSet>
-          <AssociationSet Name="FK__DeliveryC__deliv__178D7CA5" Association="Self.FK__DeliveryC__deliv__178D7CA5">
-            <End Role="DeliveryStatus" EntitySet="DeliveryStatus" />
-            <End Role="DeliveryChain" EntitySet="DeliveryChain" />
-          </AssociationSet>
-          <AssociationSet Name="FK__DeliveryC__deliv__1A69E950" Association="Self.FK__DeliveryC__deliv__1A69E950">
-            <End Role="Delivery" EntitySet="Delivery" />
-            <End Role="DeliveryChainDetails" EntitySet="DeliveryChainDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__DeliveryC__tranf__1B5E0D89" Association="Self.FK__DeliveryC__tranf__1B5E0D89">
-            <End Role="DeliveryChain" EntitySet="DeliveryChain" />
-            <End Role="DeliveryChainDetails" EntitySet="DeliveryChainDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Painting__art_id__0C1BC9F9" Association="Self.FK__Painting__art_id__0C1BC9F9">
-            <End Role="Art" EntitySet="Art" />
-            <End Role="Painting" EntitySet="Painting" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Payment__payment__3BCADD1B" Association="Self.FK__Payment__payment__3BCADD1B">
+          <AssociationSet Name="FK__Payment__payment__43D61337" Association="Self.FK__Payment__payment__43D61337">
             <End Role="PaymentMethod" EntitySet="PaymentMethod" />
             <End Role="Payment" EntitySet="Payment" />
           </AssociationSet>
-          <AssociationSet Name="FK__Payment__payment__3CBF0154" Association="Self.FK__Payment__payment__3CBF0154">
-            <End Role="PaymentStatus" EntitySet="PaymentStatus" />
-            <End Role="Payment" EntitySet="Payment" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Payment__UserId__3DB3258D" Association="Self.FK__Payment__UserId__3DB3258D">
-            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-            <End Role="Payment" EntitySet="Payment" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PaymentDe__art_i__595B4002" Association="Self.FK__PaymentDe__art_i__595B4002">
+          <AssociationSet Name="FK__PaymentDe__art_i__42ACE4D4" Association="Self.FK__PaymentDe__art_i__42ACE4D4">
             <End Role="Art" EntitySet="Art" />
             <End Role="PaymentDetails" EntitySet="PaymentDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__PaymentDe__payme__58671BC9" Association="Self.FK__PaymentDe__payme__58671BC9">
+          <AssociationSet Name="FK__PaymentDe__payme__3E1D39E1" Association="Self.FK__PaymentDe__payme__3E1D39E1">
             <End Role="Payment" EntitySet="Payment" />
             <End Role="PaymentDetails" EntitySet="PaymentDetails" />
           </AssociationSet>
@@ -1872,14 +1543,6 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <AssociationSet Name="FK__Staff__UserId__1EA48E88" Association="Self.FK__Staff__UserId__1EA48E88">
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
             <End Role="Staff" EntitySet="Staff" />
-          </AssociationSet>
-          <AssociationSet Name="FK__UserAddre__addre__093F5D4E" Association="Self.FK__UserAddre__addre__093F5D4E">
-            <End Role="Address" EntitySet="Address" />
-            <End Role="UserAddress" EntitySet="UserAddress" />
-          </AssociationSet>
-          <AssociationSet Name="FK__UserAddre__UserI__084B3915" Association="Self.FK__UserAddre__UserI__084B3915">
-            <End Role="UserExtension" EntitySet="UserExtension" />
-            <End Role="UserAddress" EntitySet="UserAddress" />
           </AssociationSet>
           <AssociationSet Name="FK__UserExten__UserI__1B9317B3" Association="Self.FK__UserExten__UserI__1B9317B3">
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
@@ -2224,7 +1887,6 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           </FunctionImport>
           <EntitySet Name="aspnet_SchemaVersions" EntityType="ArtShopModel.aspnet_SchemaVersions" />
           <EntitySet Name="aspnet_WebEvent_Events" EntityType="ArtShopModel.aspnet_WebEvent_Events" />
-          <EntitySet Name="Addresses" EntityType="ArtShopModel.Address" />
           <EntitySet Name="Arts" EntityType="ArtShopModel.Art" />
           <EntitySet Name="Artists" EntityType="ArtShopModel.Artist" />
           <EntitySet Name="aspnet_Applications" EntityType="ArtShopModel.aspnet_Applications" />
@@ -2240,56 +1902,28 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <EntitySet Name="CartDetails" EntityType="ArtShopModel.CartDetail" />
           <EntitySet Name="Categories" EntityType="ArtShopModel.Category" />
           <EntitySet Name="Customers" EntityType="ArtShopModel.Customer" />
-          <EntitySet Name="Deliveries" EntityType="ArtShopModel.Delivery" />
-          <EntitySet Name="DeliveryChains" EntityType="ArtShopModel.DeliveryChain" />
-          <EntitySet Name="DeliveryCompanies" EntityType="ArtShopModel.DeliveryCompany" />
-          <EntitySet Name="DeliveryStatus" EntityType="ArtShopModel.DeliveryStatu" />
-          <EntitySet Name="Paintings" EntityType="ArtShopModel.Painting" />
           <EntitySet Name="Payments" EntityType="ArtShopModel.Payment" />
           <EntitySet Name="PaymentDetails" EntityType="ArtShopModel.PaymentDetail" />
           <EntitySet Name="PaymentMethods" EntityType="ArtShopModel.PaymentMethod" />
-          <EntitySet Name="PaymentStatus" EntityType="ArtShopModel.PaymentStatu" />
           <EntitySet Name="PayPals" EntityType="ArtShopModel.PayPal" />
           <EntitySet Name="Positions" EntityType="ArtShopModel.Position" />
           <EntitySet Name="PublicBanks" EntityType="ArtShopModel.PublicBank" />
           <EntitySet Name="Staffs" EntityType="ArtShopModel.Staff" />
-          <EntitySet Name="UserExtensions" EntityType="ArtShopModel.UserExtension" />
-          <EntitySet Name="avw_AdminUsers" EntityType="ArtShopModel.avw_AdminUsers" />
-          <EntitySet Name="avw_AllUsers" EntityType="ArtShopModel.avw_AllUsers" />
-          <EntitySet Name="avw_ArtistUsers" EntityType="ArtShopModel.avw_ArtistUsers" />
-          <EntitySet Name="avw_CustomerUsers" EntityType="ArtShopModel.avw_CustomerUsers" />
-          <EntitySet Name="vw_aspnet_Applications" EntityType="ArtShopModel.vw_aspnet_Applications" />
-          <EntitySet Name="vw_aspnet_MembershipUsers" EntityType="ArtShopModel.vw_aspnet_MembershipUsers" />
-          <EntitySet Name="vw_aspnet_Profiles" EntityType="ArtShopModel.vw_aspnet_Profiles" />
-          <EntitySet Name="vw_aspnet_Roles" EntityType="ArtShopModel.vw_aspnet_Roles" />
-          <EntitySet Name="vw_aspnet_Users" EntityType="ArtShopModel.vw_aspnet_Users" />
-          <EntitySet Name="vw_aspnet_UsersInRoles" EntityType="ArtShopModel.vw_aspnet_UsersInRoles" />
-          <EntitySet Name="vw_aspnet_WebPartState_Paths" EntityType="ArtShopModel.vw_aspnet_WebPartState_Paths" />
-          <EntitySet Name="vw_aspnet_WebPartState_Shared" EntityType="ArtShopModel.vw_aspnet_WebPartState_Shared" />
-          <EntitySet Name="vw_aspnet_WebPartState_User" EntityType="ArtShopModel.vw_aspnet_WebPartState_User" />
-          <AssociationSet Name="FK__Delivery__destin__10E07F16" Association="ArtShopModel.FK__Delivery__destin__10E07F16">
-            <End Role="Address" EntitySet="Addresses" />
-            <End Role="Delivery" EntitySet="Deliveries" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Delivery__source__0FEC5ADD" Association="ArtShopModel.FK__Delivery__source__0FEC5ADD">
-            <End Role="Address" EntitySet="Addresses" />
-            <End Role="Delivery" EntitySet="Deliveries" />
-          </AssociationSet>
-          <AssociationSet Name="FK__DeliveryC__addre__1699586C" Association="ArtShopModel.FK__DeliveryC__addre__1699586C">
-            <End Role="Address" EntitySet="Addresses" />
-            <End Role="DeliveryChain" EntitySet="DeliveryChains" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Art__artist_id__44952D46" Association="ArtShopModel.FK__Art__artist_id__44952D46">
+          <AssociationSet Name="FK__Art__artist_id__3B40CD36" Association="ArtShopModel.FK__Art__artist_id__3B40CD36">
             <End Role="Artist" EntitySet="Artists" />
             <End Role="Art" EntitySet="Arts" />
           </AssociationSet>
-          <AssociationSet Name="FK__CartDetai__art_i__41B8C09B" Association="ArtShopModel.FK__CartDetai__art_i__41B8C09B">
+          <AssociationSet Name="FK__Art__category_id__3A4CA8FD" Association="ArtShopModel.FK__Art__category_id__3A4CA8FD">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Art" EntitySet="Arts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__CartDetai__art_i__40F9A68C" Association="ArtShopModel.FK__CartDetai__art_i__40F9A68C">
             <End Role="Art" EntitySet="Arts" />
             <End Role="CartDetail" EntitySet="CartDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__Painting__art_id__0C1BC9F9" Association="ArtShopModel.FK__Painting__art_id__0C1BC9F9">
+          <AssociationSet Name="FK__PaymentDe__art_i__3F115E1A" Association="ArtShopModel.FK__PaymentDe__art_i__3F115E1A">
             <End Role="Art" EntitySet="Arts" />
-            <End Role="Painting" EntitySet="Paintings" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__Artist__UserId__1CBC4616" Association="ArtShopModel.FK__Artist__UserId__1CBC4616">
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
@@ -2335,17 +1969,9 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
             <End Role="Customer" EntitySet="Customers" />
           </AssociationSet>
-          <AssociationSet Name="FK__Payment__UserId__3DB3258D" Association="ArtShopModel.FK__Payment__UserId__3DB3258D">
-            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-            <End Role="Payment" EntitySet="Payments" />
-          </AssociationSet>
           <AssociationSet Name="FK__Staff__UserId__1EA48E88" Association="ArtShopModel.FK__Staff__UserId__1EA48E88">
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
             <End Role="Staff" EntitySet="Staffs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__UserExten__UserI__1B9317B3" Association="ArtShopModel.FK__UserExten__UserI__1B9317B3">
-            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-            <End Role="UserExtension" EntitySet="UserExtensions" />
           </AssociationSet>
           <AssociationSet Name="FK__Cart__user_id__3C34F16F" Association="ArtShopModel.FK__Cart__user_id__3C34F16F">
             <End Role="Customer" EntitySet="Customers" />
@@ -2355,25 +1981,17 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <End Role="Cart" EntitySet="Carts" />
             <End Role="CartDetail" EntitySet="CartDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__Delivery__delive__11D4A34F" Association="ArtShopModel.FK__Delivery__delive__11D4A34F">
-            <End Role="DeliveryCompany" EntitySet="DeliveryCompanies" />
-            <End Role="Delivery" EntitySet="Deliveries" />
+          <AssociationSet Name="FK__Payment__custome__3D2915A8" Association="ArtShopModel.FK__Payment__custome__3D2915A8">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Payment" EntitySet="Payments" />
           </AssociationSet>
-          <AssociationSet Name="FK__Delivery__final___12C8C788" Association="ArtShopModel.FK__Delivery__final___12C8C788">
-            <End Role="DeliveryStatu" EntitySet="DeliveryStatus" />
-            <End Role="Delivery" EntitySet="Deliveries" />
-          </AssociationSet>
-          <AssociationSet Name="FK__DeliveryC__deliv__178D7CA5" Association="ArtShopModel.FK__DeliveryC__deliv__178D7CA5">
-            <End Role="DeliveryStatu" EntitySet="DeliveryStatus" />
-            <End Role="DeliveryChain" EntitySet="DeliveryChains" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Payment__payment__3BCADD1B" Association="ArtShopModel.FK__Payment__payment__3BCADD1B">
+          <AssociationSet Name="FK__Payment__payment__43D61337" Association="ArtShopModel.FK__Payment__payment__43D61337">
             <End Role="PaymentMethod" EntitySet="PaymentMethods" />
             <End Role="Payment" EntitySet="Payments" />
           </AssociationSet>
-          <AssociationSet Name="FK__Payment__payment__3CBF0154" Association="ArtShopModel.FK__Payment__payment__3CBF0154">
-            <End Role="PaymentStatu" EntitySet="PaymentStatus" />
+          <AssociationSet Name="FK__PaymentDe__payme__3E1D39E1" Association="ArtShopModel.FK__PaymentDe__payme__3E1D39E1">
             <End Role="Payment" EntitySet="Payments" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__Staff__position___4F47C5E3" Association="ArtShopModel.FK__Staff__position___4F47C5E3">
             <End Role="Position" EntitySet="Positions" />
@@ -2383,27 +2001,25 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
           </AssociationSet>
-          <AssociationSet Name="DeliveryChainDetails" Association="ArtShopModel.DeliveryChainDetails">
-            <End Role="Delivery" EntitySet="Deliveries" />
-            <End Role="DeliveryChain" EntitySet="DeliveryChains" />
-          </AssociationSet>
-          <AssociationSet Name="UserAddress" Association="ArtShopModel.UserAddress">
-            <End Role="Address" EntitySet="Addresses" />
+          <EntitySet Name="vw_aspnet_Applications" EntityType="ArtShopModel.vw_aspnet_Applications" />
+          <EntitySet Name="vw_aspnet_MembershipUsers" EntityType="ArtShopModel.vw_aspnet_MembershipUsers" />
+          <EntitySet Name="vw_aspnet_Profiles" EntityType="ArtShopModel.vw_aspnet_Profiles" />
+          <EntitySet Name="vw_aspnet_Roles" EntityType="ArtShopModel.vw_aspnet_Roles" />
+          <EntitySet Name="vw_aspnet_Users" EntityType="ArtShopModel.vw_aspnet_Users" />
+          <EntitySet Name="vw_aspnet_UsersInRoles" EntityType="ArtShopModel.vw_aspnet_UsersInRoles" />
+          <EntitySet Name="vw_aspnet_WebPartState_Paths" EntityType="ArtShopModel.vw_aspnet_WebPartState_Paths" />
+          <EntitySet Name="vw_aspnet_WebPartState_Shared" EntityType="ArtShopModel.vw_aspnet_WebPartState_Shared" />
+          <EntitySet Name="vw_aspnet_WebPartState_User" EntityType="ArtShopModel.vw_aspnet_WebPartState_User" />
+          <EntitySet Name="vw_customer_cart" EntityType="ArtShopModel.vw_customer_cart" />
+          <EntitySet Name="UserExtensions" EntityType="ArtShopModel.UserExtension" />
+          <AssociationSet Name="FK__UserExten__UserI__1B9317B3" Association="ArtShopModel.FK__UserExten__UserI__1B9317B3">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
             <End Role="UserExtension" EntitySet="UserExtensions" />
           </AssociationSet>
-          <AssociationSet Name="FK__PaymentDe__art_i__595B4002" Association="ArtShopModel.FK__PaymentDe__art_i__595B4002">
-            <End Role="Art" EntitySet="Arts" />
-            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PaymentDe__payme__58671BC9" Association="ArtShopModel.FK__PaymentDe__payme__58671BC9">
-            <End Role="Payment" EntitySet="Payments" />
-            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
-          </AssociationSet>
-          <AssociationSet Name="CategoryDetails" Association="ArtShopModel.CategoryDetails">
-            <End Role="Art" EntitySet="Arts" />
-            <End Role="Category" EntitySet="Categories" />
-          </AssociationSet>
-          <EntitySet Name="vw_customer_cart2" EntityType="ArtShopModel.vw_customer_cart2" />
+          <EntitySet Name="avw_AdminUsers" EntityType="ArtShopModel.avw_AdminUsers" />
+          <EntitySet Name="avw_ArtistUsers" EntityType="ArtShopModel.avw_ArtistUsers" />
+          <EntitySet Name="avw_CustomerUsers" EntityType="ArtShopModel.avw_CustomerUsers" />
+          <EntitySet Name="avw_AllUsers" EntityType="ArtShopModel.avw_AllUsers" />
           </EntityContainer>
         <ComplexType Name="aspnet_Membership_GetPassword_Result">
           <Property Type="String" Name="Column1" Nullable="true" MaxLength="128" />
@@ -2483,24 +2099,6 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="ExceptionType" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Address">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Guid" Nullable="false" />
-          <Property Name="latitude" Type="Double" Nullable="false" />
-          <Property Name="longitude" Type="Double" Nullable="false" />
-          <Property Name="details" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="street" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="city" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="poscode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Deliveries" Relationship="ArtShopModel.FK__Delivery__destin__10E07F16" FromRole="Address" ToRole="Delivery" />
-          <NavigationProperty Name="Deliveries1" Relationship="ArtShopModel.FK__Delivery__source__0FEC5ADD" FromRole="Address" ToRole="Delivery" />
-          <NavigationProperty Name="DeliveryChains" Relationship="ArtShopModel.FK__DeliveryC__addre__1699586C" FromRole="Address" ToRole="DeliveryChain" />
-          <NavigationProperty Name="UserExtensions" Relationship="ArtShopModel.UserAddress" FromRole="Address" ToRole="UserExtension" />
-        </EntityType>
         <EntityType Name="Art">
           <Key>
             <PropertyRef Name="id" />
@@ -2511,13 +2109,12 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="date" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="category_id" Type="Int32" />
           <Property Name="artist_id" Type="Guid" Nullable="false" />
-          <NavigationProperty Name="Artist" Relationship="ArtShopModel.FK__Art__artist_id__44952D46" FromRole="Art" ToRole="Artist" />
-          <NavigationProperty Name="CartDetails" Relationship="ArtShopModel.FK__CartDetai__art_i__41B8C09B" FromRole="Art" ToRole="CartDetail" />
-          <NavigationProperty Name="Painting" Relationship="ArtShopModel.FK__Painting__art_id__0C1BC9F9" FromRole="Art" ToRole="Painting" />
-          <NavigationProperty Name="PaymentDetails" Relationship="ArtShopModel.FK__PaymentDe__art_i__595B4002" FromRole="Art" ToRole="PaymentDetail" />
-          <Property Name="virtual" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Categories" Relationship="ArtShopModel.CategoryDetails" FromRole="Art" ToRole="Category" />
+          <NavigationProperty Name="Artist" Relationship="ArtShopModel.FK__Art__artist_id__3B40CD36" FromRole="Art" ToRole="Artist" />
+          <NavigationProperty Name="Category" Relationship="ArtShopModel.FK__Art__category_id__3A4CA8FD" FromRole="Art" ToRole="Category" />
+          <NavigationProperty Name="CartDetails" Relationship="ArtShopModel.FK__CartDetai__art_i__40F9A68C" FromRole="Art" ToRole="CartDetail" />
+          <NavigationProperty Name="PaymentDetails" Relationship="ArtShopModel.FK__PaymentDe__art_i__3F115E1A" FromRole="Art" ToRole="PaymentDetail" />
         </EntityType>
         <EntityType Name="Artist">
           <Key>
@@ -2528,7 +2125,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="signature" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="Arts" Relationship="ArtShopModel.FK__Art__artist_id__44952D46" FromRole="Artist" ToRole="Art" />
+          <NavigationProperty Name="Arts" Relationship="ArtShopModel.FK__Art__artist_id__3B40CD36" FromRole="Artist" ToRole="Art" />
           <NavigationProperty Name="aspnet_Users" Relationship="ArtShopModel.FK__Artist__UserId__1CBC4616" FromRole="Artist" ToRole="aspnet_Users" />
         </EntityType>
         <EntityType Name="aspnet_Applications">
@@ -2645,10 +2242,9 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <NavigationProperty Name="aspnet_PersonalizationPerUser" Relationship="ArtShopModel.FK__aspnet_Pe__UserI__76969D2E" FromRole="aspnet_Users" ToRole="aspnet_PersonalizationPerUser" />
           <NavigationProperty Name="aspnet_Profile" Relationship="ArtShopModel.FK__aspnet_Pr__UserI__4F7CD00D" FromRole="aspnet_Users" ToRole="aspnet_Profile" />
           <NavigationProperty Name="Customer" Relationship="ArtShopModel.FK__Customer__UserId__1AD3FDA4" FromRole="aspnet_Users" ToRole="Customer" />
-          <NavigationProperty Name="Payments" Relationship="ArtShopModel.FK__Payment__UserId__3DB3258D" FromRole="aspnet_Users" ToRole="Payment" />
           <NavigationProperty Name="Staff" Relationship="ArtShopModel.FK__Staff__UserId__1EA48E88" FromRole="aspnet_Users" ToRole="Staff" />
-          <NavigationProperty Name="UserExtension" Relationship="ArtShopModel.FK__UserExten__UserI__1B9317B3" FromRole="aspnet_Users" ToRole="UserExtension" />
           <NavigationProperty Name="aspnet_Roles" Relationship="ArtShopModel.aspnet_UsersInRoles" FromRole="aspnet_Users" ToRole="aspnet_Roles" />
+          <NavigationProperty Name="UserExtension" Relationship="ArtShopModel.FK__UserExten__UserI__1B9317B3" FromRole="aspnet_Users" ToRole="UserExtension" />
         </EntityType>
         <EntityType Name="Card">
           <Key>
@@ -2681,7 +2277,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="art_id" Type="Int32" Nullable="false" />
           <Property Name="availability" Type="Int32" />
           <Property Name="add_date" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Art" Relationship="ArtShopModel.FK__CartDetai__art_i__41B8C09B" FromRole="CartDetail" ToRole="Art" />
+          <NavigationProperty Name="Art" Relationship="ArtShopModel.FK__CartDetai__art_i__40F9A68C" FromRole="CartDetail" ToRole="Art" />
           <NavigationProperty Name="Cart" Relationship="ArtShopModel.FK__CartDetai__cart___40058253" FromRole="CartDetail" ToRole="Cart" />
         </EntityType>
         <EntityType Name="Category">
@@ -2691,7 +2287,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Arts1" Relationship="ArtShopModel.CategoryDetails" FromRole="Category" ToRole="Art" />
+          <NavigationProperty Name="Arts" Relationship="ArtShopModel.FK__Art__category_id__3A4CA8FD" FromRole="Category" ToRole="Art" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -2703,127 +2299,43 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="aspnet_Users" Relationship="ArtShopModel.FK__Customer__UserId__1AD3FDA4" FromRole="Customer" ToRole="aspnet_Users" />
           <NavigationProperty Name="Carts" Relationship="ArtShopModel.FK__Cart__user_id__3C34F16F" FromRole="Customer" ToRole="Cart" />
-        </EntityType>
-        <EntityType Name="Delivery">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Guid" Nullable="false" />
-          <Property Name="source" Type="Guid" Nullable="false" />
-          <Property Name="destination" Type="Guid" Nullable="false" />
-          <Property Name="delivery_note" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="final_delivery_status" Type="Guid" Nullable="false" />
-          <Property Name="delivery_company" Type="Guid" Nullable="false" />
-          <Property Name="recive_dates" Type="DateTime" Precision="3" />
-          <Property Name="recive_prove" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="Address" Relationship="ArtShopModel.FK__Delivery__destin__10E07F16" FromRole="Delivery" ToRole="Address" />
-          <NavigationProperty Name="Address1" Relationship="ArtShopModel.FK__Delivery__source__0FEC5ADD" FromRole="Delivery" ToRole="Address" />
-          <NavigationProperty Name="DeliveryCompany" Relationship="ArtShopModel.FK__Delivery__delive__11D4A34F" FromRole="Delivery" ToRole="DeliveryCompany" />
-          <NavigationProperty Name="DeliveryStatu" Relationship="ArtShopModel.FK__Delivery__final___12C8C788" FromRole="Delivery" ToRole="DeliveryStatu" />
-          <NavigationProperty Name="DeliveryChains" Relationship="ArtShopModel.DeliveryChainDetails" FromRole="Delivery" ToRole="DeliveryChain" />
-        </EntityType>
-        <EntityType Name="DeliveryChain">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Guid" Nullable="false" />
-          <Property Name="arrival_dates" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="address_id" Type="Guid" Nullable="false" />
-          <Property Name="delivery_status" Type="Guid" />
-          <Property Name="notes" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Address" Relationship="ArtShopModel.FK__DeliveryC__addre__1699586C" FromRole="DeliveryChain" ToRole="Address" />
-          <NavigationProperty Name="DeliveryStatu" Relationship="ArtShopModel.FK__DeliveryC__deliv__178D7CA5" FromRole="DeliveryChain" ToRole="DeliveryStatu" />
-          <NavigationProperty Name="Deliveries" Relationship="ArtShopModel.DeliveryChainDetails" FromRole="DeliveryChain" ToRole="Delivery" />
-        </EntityType>
-        <EntityType Name="DeliveryCompany">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Guid" Nullable="false" />
-          <Property Name="company_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="company_phones" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="rm_per_g" Type="Double" Nullable="false" />
-          <Property Name="rm_per_cm3" Type="Double" Nullable="false" />
-          <Property Name="gradient" Type="Double" Nullable="false" />
-          <Property Name="prefence_country" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="oversea_support" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Deliveries" Relationship="ArtShopModel.FK__Delivery__delive__11D4A34F" FromRole="DeliveryCompany" ToRole="Delivery" />
-        </EntityType>
-        <EntityType Name="DeliveryStatu">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Guid" Nullable="false" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Deliveries" Relationship="ArtShopModel.FK__Delivery__final___12C8C788" FromRole="DeliveryStatu" ToRole="Delivery" />
-          <NavigationProperty Name="DeliveryChains" Relationship="ArtShopModel.FK__DeliveryC__deliv__178D7CA5" FromRole="DeliveryStatu" ToRole="DeliveryChain" />
-        </EntityType>
-        <EntityType Name="Painting">
-          <Key>
-            <PropertyRef Name="art_id" />
-          </Key>
-          <Property Name="art_id" Type="Int32" Nullable="false" />
-          <Property Name="quantity" Type="Int32" Nullable="false" />
-          <Property Name="weight_g" Type="Int32" Nullable="false" />
-          <Property Name="height_mm" Type="Int32" Nullable="false" />
-          <Property Name="width_mm" Type="Int32" Nullable="false" />
-          <Property Name="lenght_mm" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Art" Relationship="ArtShopModel.FK__Painting__art_id__0C1BC9F9" FromRole="Painting" ToRole="Art" />
+          <NavigationProperty Name="Payments" Relationship="ArtShopModel.FK__Payment__custome__3D2915A8" FromRole="Customer" ToRole="Payment" />
         </EntityType>
         <EntityType Name="Payment">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Guid" Nullable="false" />
-          <Property Name="payment_method" Type="Guid" Nullable="false" />
-          <Property Name="payment_status" Type="Guid" Nullable="false" />
-          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="order_id" Type="Int32" />
+          <Property Name="payment_method_id" Type="Int32" />
           <Property Name="tax_change" Type="Double" />
-          <Property Name="net_pay" Type="Double" />
-          <Property Name="discount" Type="Double" />
-          <Property Name="total_pay" Type="Double" />
-          <Property Name="customer_paid" Type="Double" />
-          <Property Name="payment_date" Type="DateTime" Precision="3" />
-          <Property Name="payment_meta" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="notes" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="aspnet_Users" Relationship="ArtShopModel.FK__Payment__UserId__3DB3258D" FromRole="Payment" ToRole="aspnet_Users" />
-          <NavigationProperty Name="PaymentMethod" Relationship="ArtShopModel.FK__Payment__payment__3BCADD1B" FromRole="Payment" ToRole="PaymentMethod" />
-          <NavigationProperty Name="PaymentStatu" Relationship="ArtShopModel.FK__Payment__payment__3CBF0154" FromRole="Payment" ToRole="PaymentStatu" />
-          <NavigationProperty Name="PaymentDetails" Relationship="ArtShopModel.FK__PaymentDe__payme__58671BC9" FromRole="Payment" ToRole="PaymentDetail" />
+          <Property Name="payment_date" Type="DateTime" Precision="0" />
+          <Property Name="payment_status" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="customer_id" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="ArtShopModel.FK__Payment__custome__3D2915A8" FromRole="Payment" ToRole="Customer" />
+          <NavigationProperty Name="PaymentMethod" Relationship="ArtShopModel.FK__Payment__payment__43D61337" FromRole="Payment" ToRole="PaymentMethod" />
+          <NavigationProperty Name="PaymentDetails" Relationship="ArtShopModel.FK__PaymentDe__payme__3E1D39E1" FromRole="Payment" ToRole="PaymentDetail" />
         </EntityType>
         <EntityType Name="PaymentDetail">
           <Key>
             <PropertyRef Name="payment_id" />
             <PropertyRef Name="art_id" />
           </Key>
-          <Property Name="payment_id" Type="Guid" Nullable="false" />
+          <Property Name="payment_id" Type="Int32" Nullable="false" />
           <Property Name="art_id" Type="Int32" Nullable="false" />
-          <Property Name="quantity" Type="Int32" />
-          <Property Name="virtual" Type="Boolean" />
-          <Property Name="add_date" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Art" Relationship="ArtShopModel.FK__PaymentDe__art_i__595B4002" FromRole="PaymentDetail" ToRole="Art" />
-          <NavigationProperty Name="Payment" Relationship="ArtShopModel.FK__PaymentDe__payme__58671BC9" FromRole="PaymentDetail" ToRole="Payment" />
+          <Property Name="availability" Type="Boolean" />
+          <Property Name="add_date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Art" Relationship="ArtShopModel.FK__PaymentDe__art_i__3F115E1A" FromRole="PaymentDetail" ToRole="Art" />
+          <NavigationProperty Name="Payment" Relationship="ArtShopModel.FK__PaymentDe__payme__3E1D39E1" FromRole="PaymentDetail" ToRole="Payment" />
         </EntityType>
         <EntityType Name="PaymentMethod">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="meta_field" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Payments" Relationship="ArtShopModel.FK__Payment__payment__3BCADD1B" FromRole="PaymentMethod" ToRole="Payment" />
-        </EntityType>
-        <EntityType Name="PaymentStatu">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Guid" Nullable="false" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Payments" Relationship="ArtShopModel.FK__Payment__payment__3CBF0154" FromRole="PaymentStatu" ToRole="Payment" />
+          <NavigationProperty Name="Payments" Relationship="ArtShopModel.FK__Payment__payment__43D61337" FromRole="PaymentMethod" ToRole="Payment" />
         </EntityType>
         <EntityType Name="PayPal">
           <Key>
@@ -2865,326 +2377,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <NavigationProperty Name="aspnet_Users" Relationship="ArtShopModel.FK__Staff__UserId__1EA48E88" FromRole="Staff" ToRole="aspnet_Users" />
           <NavigationProperty Name="Position" Relationship="ArtShopModel.FK__Staff__position___4F47C5E3" FromRole="Staff" ToRole="Position" />
         </EntityType>
-        <EntityType Name="UserExtension">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="first_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="last_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="aspnet_Users" Relationship="ArtShopModel.FK__UserExten__UserI__1B9317B3" FromRole="UserExtension" ToRole="aspnet_Users" />
-          <NavigationProperty Name="Addresses" Relationship="ArtShopModel.UserAddress" FromRole="UserExtension" ToRole="Address" />
-        </EntityType>
-        <EntityType Name="avw_AdminUsers">
-          <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="UserName" />
-            <PropertyRef Name="IsApproved" />
-            <PropertyRef Name="IsLockedOut" />
-            <PropertyRef Name="CreateDate" />
-            <PropertyRef Name="LastActivityDate" />
-            <PropertyRef Name="LastLoginDate" />
-            <PropertyRef Name="LastLockoutDate" />
-            <PropertyRef Name="LastPasswordChangedDate" />
-            <PropertyRef Name="first_name" />
-            <PropertyRef Name="last_name" />
-            <PropertyRef Name="gender" />
-            <PropertyRef Name="position_id" />
-            <PropertyRef Name="priority" />
-          </Key>
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="LoweredEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
-          <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
-          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LastLockoutDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LastPasswordChangedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="first_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="last_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="position_id" Type="Int32" Nullable="false" />
-          <Property Name="priority" Type="Int32" Nullable="false" />
-          <Property Name="private_pic" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="avw_AllUsers">
-          <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="UserName" />
-            <PropertyRef Name="IsApproved" />
-            <PropertyRef Name="IsLockedOut" />
-            <PropertyRef Name="CreateDate" />
-            <PropertyRef Name="LastActivityDate" />
-            <PropertyRef Name="LastLoginDate" />
-            <PropertyRef Name="LastLockoutDate" />
-            <PropertyRef Name="LastPasswordChangedDate" />
-            <PropertyRef Name="first_name" />
-            <PropertyRef Name="last_name" />
-            <PropertyRef Name="gender" />
-            <PropertyRef Name="RoleName" />
-            <PropertyRef Name="RoleId" />
-          </Key>
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="LoweredEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
-          <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
-          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LastLockoutDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LastPasswordChangedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="first_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="last_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="RoleId" Type="Guid" Nullable="false" />
-          <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="avw_ArtistUsers">
-          <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="UserName" />
-            <PropertyRef Name="IsApproved" />
-            <PropertyRef Name="IsLockedOut" />
-            <PropertyRef Name="CreateDate" />
-            <PropertyRef Name="LastActivityDate" />
-            <PropertyRef Name="LastLoginDate" />
-            <PropertyRef Name="LastLockoutDate" />
-            <PropertyRef Name="LastPasswordChangedDate" />
-            <PropertyRef Name="first_name" />
-            <PropertyRef Name="last_name" />
-            <PropertyRef Name="gender" />
-          </Key>
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="LoweredEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
-          <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
-          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LastLockoutDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LastPasswordChangedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="first_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="last_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="birthday_date" Type="DateTime" Precision="0" />
-          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="signature" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="private_pic" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="avw_CustomerUsers">
-          <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="UserName" />
-            <PropertyRef Name="IsApproved" />
-            <PropertyRef Name="IsLockedOut" />
-            <PropertyRef Name="CreateDate" />
-            <PropertyRef Name="LastActivityDate" />
-            <PropertyRef Name="LastLoginDate" />
-            <PropertyRef Name="LastLockoutDate" />
-            <PropertyRef Name="LastPasswordChangedDate" />
-            <PropertyRef Name="first_name" />
-            <PropertyRef Name="last_name" />
-            <PropertyRef Name="gender" />
-          </Key>
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="LoweredEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
-          <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
-          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LastLockoutDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LastPasswordChangedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="first_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="last_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="birthday_date" Type="DateTime" Precision="0" />
-          <Property Name="membership" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-          <Property Name="private_pic" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="vw_aspnet_Applications">
-          <Key>
-            <PropertyRef Name="ApplicationName" />
-            <PropertyRef Name="LoweredApplicationName" />
-            <PropertyRef Name="ApplicationId" />
-          </Key>
-          <Property Name="ApplicationName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="LoweredApplicationName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="vw_aspnet_MembershipUsers">
-          <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="PasswordFormat" />
-            <PropertyRef Name="IsApproved" />
-            <PropertyRef Name="IsLockedOut" />
-            <PropertyRef Name="CreateDate" />
-            <PropertyRef Name="LastLoginDate" />
-            <PropertyRef Name="LastPasswordChangedDate" />
-            <PropertyRef Name="LastLockoutDate" />
-            <PropertyRef Name="FailedPasswordAttemptCount" />
-            <PropertyRef Name="FailedPasswordAttemptWindowStart" />
-            <PropertyRef Name="FailedPasswordAnswerAttemptCount" />
-            <PropertyRef Name="FailedPasswordAnswerAttemptWindowStart" />
-            <PropertyRef Name="ApplicationId" />
-            <PropertyRef Name="UserName" />
-            <PropertyRef Name="IsAnonymous" />
-            <PropertyRef Name="LastActivityDate" />
-          </Key>
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="PasswordFormat" Type="Int32" Nullable="false" />
-          <Property Name="MobilePIN" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="LoweredEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="PasswordQuestion" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="PasswordAnswer" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
-          <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
-          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LastPasswordChangedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LastLockoutDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="FailedPasswordAttemptCount" Type="Int32" Nullable="false" />
-          <Property Name="FailedPasswordAttemptWindowStart" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="FailedPasswordAnswerAttemptCount" Type="Int32" Nullable="false" />
-          <Property Name="FailedPasswordAnswerAttemptWindowStart" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="MobileAlias" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
-          <Property Name="IsAnonymous" Type="Boolean" Nullable="false" />
-          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="vw_aspnet_Profiles">
-          <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="LastUpdatedDate" />
-          </Key>
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="DataSize" Type="Int32" />
-        </EntityType>
-        <EntityType Name="vw_aspnet_Roles">
-          <Key>
-            <PropertyRef Name="ApplicationId" />
-            <PropertyRef Name="RoleId" />
-            <PropertyRef Name="RoleName" />
-            <PropertyRef Name="LoweredRoleName" />
-          </Key>
-          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
-          <Property Name="RoleId" Type="Guid" Nullable="false" />
-          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="LoweredRoleName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="vw_aspnet_Users">
-          <Key>
-            <PropertyRef Name="ApplicationId" />
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="UserName" />
-            <PropertyRef Name="LoweredUserName" />
-            <PropertyRef Name="IsAnonymous" />
-            <PropertyRef Name="LastActivityDate" />
-          </Key>
-          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="LoweredUserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="MobileAlias" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
-          <Property Name="IsAnonymous" Type="Boolean" Nullable="false" />
-          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="vw_aspnet_UsersInRoles">
-          <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="RoleId" />
-          </Key>
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="RoleId" Type="Guid" Nullable="false" />
-        </EntityType>
-        <EntityType Name="vw_aspnet_WebPartState_Paths">
-          <Key>
-            <PropertyRef Name="ApplicationId" />
-            <PropertyRef Name="PathId" />
-            <PropertyRef Name="Path" />
-            <PropertyRef Name="LoweredPath" />
-          </Key>
-          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
-          <Property Name="PathId" Type="Guid" Nullable="false" />
-          <Property Name="Path" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-          <Property Name="LoweredPath" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="vw_aspnet_WebPartState_Shared">
-          <Key>
-            <PropertyRef Name="PathId" />
-            <PropertyRef Name="LastUpdatedDate" />
-          </Key>
-          <Property Name="PathId" Type="Guid" Nullable="false" />
-          <Property Name="DataSize" Type="Int32" />
-          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="vw_aspnet_WebPartState_User">
-          <Key>
-            <PropertyRef Name="LastUpdatedDate" />
-          </Key>
-          <Property Name="PathId" Type="Guid" />
-          <Property Name="UserId" Type="Guid" />
-          <Property Name="DataSize" Type="Int32" />
-          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <Association Name="FK__Delivery__destin__10E07F16">
-          <End Type="ArtShopModel.Address" Role="Address" Multiplicity="1" />
-          <End Type="ArtShopModel.Delivery" Role="Delivery" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Address">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Delivery">
-              <PropertyRef Name="destination" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Delivery__source__0FEC5ADD">
-          <End Type="ArtShopModel.Address" Role="Address" Multiplicity="1" />
-          <End Type="ArtShopModel.Delivery" Role="Delivery" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Address">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Delivery">
-              <PropertyRef Name="source" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__DeliveryC__addre__1699586C">
-          <End Type="ArtShopModel.Address" Role="Address" Multiplicity="1" />
-          <End Type="ArtShopModel.DeliveryChain" Role="DeliveryChain" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Address">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="DeliveryChain">
-              <PropertyRef Name="address_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Art__artist_id__44952D46">
+        <Association Name="FK__Art__artist_id__3B40CD36">
           <End Type="ArtShopModel.Artist" Role="Artist" Multiplicity="1" />
           <End Type="ArtShopModel.Art" Role="Art" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3196,7 +2389,19 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CartDetai__art_i__41B8C09B">
+        <Association Name="FK__Art__category_id__3A4CA8FD">
+          <End Type="ArtShopModel.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="ArtShopModel.Art" Role="Art" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Art">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__CartDetai__art_i__40F9A68C">
           <End Type="ArtShopModel.Art" Role="Art" Multiplicity="1" />
           <End Type="ArtShopModel.CartDetail" Role="CartDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3208,14 +2413,14 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Painting__art_id__0C1BC9F9">
+        <Association Name="FK__PaymentDe__art_i__3F115E1A">
           <End Type="ArtShopModel.Art" Role="Art" Multiplicity="1" />
-          <End Type="ArtShopModel.Painting" Role="Painting" Multiplicity="0..1" />
+          <End Type="ArtShopModel.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Art">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Painting">
+            <Dependent Role="PaymentDetail">
               <PropertyRef Name="art_id" />
             </Dependent>
           </ReferentialConstraint>
@@ -3352,18 +2557,6 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Payment__UserId__3DB3258D">
-          <End Type="ArtShopModel.aspnet_Users" Role="aspnet_Users" Multiplicity="1" />
-          <End Type="ArtShopModel.Payment" Role="Payment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="aspnet_Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Payment">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Staff__UserId__1EA48E88">
           <End Type="ArtShopModel.aspnet_Users" Role="aspnet_Users" Multiplicity="1" />
           <End Type="ArtShopModel.Staff" Role="Staff" Multiplicity="0..1" />
@@ -3372,18 +2565,6 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
               <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="Staff">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__UserExten__UserI__1B9317B3">
-          <End Type="ArtShopModel.aspnet_Users" Role="aspnet_Users" Multiplicity="1" />
-          <End Type="ArtShopModel.UserExtension" Role="UserExtension" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="aspnet_Users">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="UserExtension">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
@@ -3412,63 +2593,39 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Delivery__delive__11D4A34F">
-          <End Type="ArtShopModel.DeliveryCompany" Role="DeliveryCompany" Multiplicity="1" />
-          <End Type="ArtShopModel.Delivery" Role="Delivery" Multiplicity="*" />
+        <Association Name="FK__Payment__custome__3D2915A8">
+          <End Type="ArtShopModel.Customer" Role="Customer" Multiplicity="1" />
+          <End Type="ArtShopModel.Payment" Role="Payment" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="DeliveryCompany">
-              <PropertyRef Name="id" />
+            <Principal Role="Customer">
+              <PropertyRef Name="UserId" />
             </Principal>
-            <Dependent Role="Delivery">
-              <PropertyRef Name="delivery_company" />
+            <Dependent Role="Payment">
+              <PropertyRef Name="customer_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Delivery__final___12C8C788">
-          <End Type="ArtShopModel.DeliveryStatu" Role="DeliveryStatu" Multiplicity="1" />
-          <End Type="ArtShopModel.Delivery" Role="Delivery" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DeliveryStatu">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Delivery">
-              <PropertyRef Name="final_delivery_status" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__DeliveryC__deliv__178D7CA5">
-          <End Type="ArtShopModel.DeliveryStatu" Role="DeliveryStatu" Multiplicity="0..1" />
-          <End Type="ArtShopModel.DeliveryChain" Role="DeliveryChain" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DeliveryStatu">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="DeliveryChain">
-              <PropertyRef Name="delivery_status" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Payment__payment__3BCADD1B">
-          <End Type="ArtShopModel.PaymentMethod" Role="PaymentMethod" Multiplicity="1" />
+        <Association Name="FK__Payment__payment__43D61337">
+          <End Type="ArtShopModel.PaymentMethod" Role="PaymentMethod" Multiplicity="0..1" />
           <End Type="ArtShopModel.Payment" Role="Payment" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="PaymentMethod">
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Payment">
-              <PropertyRef Name="payment_method" />
+              <PropertyRef Name="payment_method_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Payment__payment__3CBF0154">
-          <End Type="ArtShopModel.PaymentStatu" Role="PaymentStatu" Multiplicity="1" />
-          <End Type="ArtShopModel.Payment" Role="Payment" Multiplicity="*" />
+        <Association Name="FK__PaymentDe__payme__3E1D39E1">
+          <End Type="ArtShopModel.Payment" Role="Payment" Multiplicity="1" />
+          <End Type="ArtShopModel.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="PaymentStatu">
+            <Principal Role="Payment">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Payment">
-              <PropertyRef Name="payment_status" />
+            <Dependent Role="PaymentDetail">
+              <PropertyRef Name="payment_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3488,65 +2645,316 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <End Type="ArtShopModel.aspnet_Roles" Role="aspnet_Roles" Multiplicity="*" />
           <End Type="ArtShopModel.aspnet_Users" Role="aspnet_Users" Multiplicity="*" />
         </Association>
-        <Association Name="DeliveryChainDetails">
-          <End Type="ArtShopModel.Delivery" Role="Delivery" Multiplicity="*" />
-          <End Type="ArtShopModel.DeliveryChain" Role="DeliveryChain" Multiplicity="*" />
-        </Association>
-        <Association Name="UserAddress">
-          <End Type="ArtShopModel.Address" Role="Address" Multiplicity="*" />
-          <End Type="ArtShopModel.UserExtension" Role="UserExtension" Multiplicity="*" />
-        </Association>
-        <Association Name="FK__PaymentDe__art_i__595B4002">
-          <End Type="ArtShopModel.Art" Role="Art" Multiplicity="1" />
-          <End Type="ArtShopModel.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Art">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="PaymentDetail">
-              <PropertyRef Name="art_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PaymentDe__payme__58671BC9">
-          <End Type="ArtShopModel.Payment" Role="Payment" Multiplicity="1" />
-          <End Type="ArtShopModel.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Payment">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="PaymentDetail">
-              <PropertyRef Name="payment_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="CategoryDetails">
-          <End Type="ArtShopModel.Art" Role="Art" Multiplicity="*" />
-          <End Type="ArtShopModel.Category" Role="Category" Multiplicity="*" />
-        </Association>
-        <EntityType Name="vw_customer_cart2">
+        <EntityType Name="vw_aspnet_Applications">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="ApplicationName" />
+            <PropertyRef Name="LoweredApplicationName" />
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Name="ApplicationName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LoweredApplicationName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vw_aspnet_MembershipUsers">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="PasswordFormat" />
+            <PropertyRef Name="IsApproved" />
+            <PropertyRef Name="IsLockedOut" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="LastLoginDate" />
+            <PropertyRef Name="LastPasswordChangedDate" />
+            <PropertyRef Name="LastLockoutDate" />
+            <PropertyRef Name="FailedPasswordAttemptCount" />
+            <PropertyRef Name="FailedPasswordAttemptWindowStart" />
+            <PropertyRef Name="FailedPasswordAnswerAttemptCount" />
+            <PropertyRef Name="FailedPasswordAnswerAttemptWindowStart" />
+            <PropertyRef Name="ApplicationId" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="IsAnonymous" />
+            <PropertyRef Name="LastActivityDate" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="PasswordFormat" Type="Int32" Nullable="false" />
+          <Property Name="MobilePIN" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LoweredEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordQuestion" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordAnswer" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+          <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastPasswordChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLockoutDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FailedPasswordAttemptCount" Type="Int32" Nullable="false" />
+          <Property Name="FailedPasswordAttemptWindowStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FailedPasswordAnswerAttemptCount" Type="Int32" Nullable="false" />
+          <Property Name="FailedPasswordAnswerAttemptWindowStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="MobileAlias" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="IsAnonymous" Type="Boolean" Nullable="false" />
+          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="vw_aspnet_Profiles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="LastUpdatedDate" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DataSize" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vw_aspnet_Roles">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+            <PropertyRef Name="RoleId" />
+            <PropertyRef Name="RoleName" />
+            <PropertyRef Name="LoweredRoleName" />
+          </Key>
+          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="RoleId" Type="Guid" Nullable="false" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LoweredRoleName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vw_aspnet_Users">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="LoweredUserName" />
+            <PropertyRef Name="IsAnonymous" />
+            <PropertyRef Name="LastActivityDate" />
+          </Key>
+          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LoweredUserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="MobileAlias" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="IsAnonymous" Type="Boolean" Nullable="false" />
+          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="vw_aspnet_UsersInRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="RoleId" Type="Guid" Nullable="false" />
+        </EntityType>
+        <EntityType Name="vw_aspnet_WebPartState_Paths">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+            <PropertyRef Name="PathId" />
+            <PropertyRef Name="Path" />
+            <PropertyRef Name="LoweredPath" />
+          </Key>
+          <Property Name="ApplicationId" Type="Guid" Nullable="false" />
+          <Property Name="PathId" Type="Guid" Nullable="false" />
+          <Property Name="Path" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LoweredPath" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="vw_aspnet_WebPartState_Shared">
+          <Key>
+            <PropertyRef Name="PathId" />
+            <PropertyRef Name="LastUpdatedDate" />
+          </Key>
+          <Property Name="PathId" Type="Guid" Nullable="false" />
+          <Property Name="DataSize" Type="Int32" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="vw_aspnet_WebPartState_User">
+          <Key>
+            <PropertyRef Name="LastUpdatedDate" />
+          </Key>
+          <Property Name="PathId" Type="Guid" />
+          <Property Name="UserId" Type="Guid" />
+          <Property Name="DataSize" Type="Int32" />
+          <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="vw_customer_cart">
+          <Key>
             <PropertyRef Name="image" />
             <PropertyRef Name="price" />
-            <PropertyRef Name="date" />
             <PropertyRef Name="title" />
-            <PropertyRef Name="description" />
-            <PropertyRef Name="artist_id" />
-            <PropertyRef Name="virtual" />
             <PropertyRef Name="user_id" />
+            <PropertyRef Name="art_id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="image" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="date" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="artist_id" Type="Guid" Nullable="false" />
-          <Property Name="virtual" Type="Boolean" Nullable="false" />
           <Property Name="user_id" Type="Guid" Nullable="false" />
+          <Property Name="category_id" Type="Int32" />
           <Property Name="availability" Type="Int32" />
           <Property Name="add_date" Type="DateTime" Precision="0" />
+          <Property Name="art_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserExtension">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="first_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="last_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="aspnet_Users" Relationship="ArtShopModel.FK__UserExten__UserI__1B9317B3" FromRole="UserExtension" ToRole="aspnet_Users" />
+        </EntityType>
+        <Association Name="FK__UserExten__UserI__1B9317B3">
+          <End Type="ArtShopModel.aspnet_Users" Role="aspnet_Users" Multiplicity="1" />
+          <End Type="ArtShopModel.UserExtension" Role="UserExtension" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="aspnet_Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserExtension">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="avw_AdminUsers">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="IsApproved" />
+            <PropertyRef Name="IsLockedOut" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="LastActivityDate" />
+            <PropertyRef Name="LastLoginDate" />
+            <PropertyRef Name="LastLockoutDate" />
+            <PropertyRef Name="LastPasswordChangedDate" />
+            <PropertyRef Name="first_name" />
+            <PropertyRef Name="last_name" />
+            <PropertyRef Name="gender" />
+            <PropertyRef Name="position_id" />
+            <PropertyRef Name="priority" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LoweredEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+          <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLockoutDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastPasswordChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="first_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="last_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="position_id" Type="Int32" Nullable="false" />
+          <Property Name="priority" Type="Int32" Nullable="false" />
+          <Property Name="private_pic" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="avw_ArtistUsers">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="IsApproved" />
+            <PropertyRef Name="IsLockedOut" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="LastActivityDate" />
+            <PropertyRef Name="LastLoginDate" />
+            <PropertyRef Name="LastLockoutDate" />
+            <PropertyRef Name="LastPasswordChangedDate" />
+            <PropertyRef Name="first_name" />
+            <PropertyRef Name="last_name" />
+            <PropertyRef Name="gender" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LoweredEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+          <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLockoutDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastPasswordChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="first_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="last_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="birthday_date" Type="DateTime" Precision="0" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="signature" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="private_pic" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="avw_CustomerUsers">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="IsApproved" />
+            <PropertyRef Name="IsLockedOut" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="LastActivityDate" />
+            <PropertyRef Name="LastLoginDate" />
+            <PropertyRef Name="LastLockoutDate" />
+            <PropertyRef Name="LastPasswordChangedDate" />
+            <PropertyRef Name="first_name" />
+            <PropertyRef Name="last_name" />
+            <PropertyRef Name="gender" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LoweredEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+          <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLockoutDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastPasswordChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="first_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="last_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="birthday_date" Type="DateTime" Precision="0" />
+          <Property Name="membership" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="private_pic" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="avw_AllUsers">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="UserName" />
+            <PropertyRef Name="IsApproved" />
+            <PropertyRef Name="IsLockedOut" />
+            <PropertyRef Name="CreateDate" />
+            <PropertyRef Name="LastActivityDate" />
+            <PropertyRef Name="LastLoginDate" />
+            <PropertyRef Name="LastLockoutDate" />
+            <PropertyRef Name="LastPasswordChangedDate" />
+            <PropertyRef Name="first_name" />
+            <PropertyRef Name="last_name" />
+            <PropertyRef Name="gender" />
+            <PropertyRef Name="RoleName" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="LoweredEmail" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+          <Property Name="IsLockedOut" Type="Boolean" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLoginDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastLockoutDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastPasswordChangedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="first_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="last_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="RoleId" Type="Guid" Nullable="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -3706,32 +3114,17 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Addresses">
-            <EntityTypeMapping TypeName="ArtShopModel.Address">
-              <MappingFragment StoreEntitySet="Address">
-                <ScalarProperty Name="country" ColumnName="country" />
-                <ScalarProperty Name="poscode" ColumnName="poscode" />
-                <ScalarProperty Name="state" ColumnName="state" />
-                <ScalarProperty Name="city" ColumnName="city" />
-                <ScalarProperty Name="street" ColumnName="street" />
-                <ScalarProperty Name="details" ColumnName="details" />
-                <ScalarProperty Name="longitude" ColumnName="longitude" />
-                <ScalarProperty Name="latitude" ColumnName="latitude" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Arts">
-            <EntityTypeMapping TypeName="ArtShopModel.Art">
+            <EntityTypeMapping TypeName="IsTypeOf(ArtShopModel.Art)">
               <MappingFragment StoreEntitySet="Art">
-                <ScalarProperty Name="virtual" ColumnName="virtual" />
-                <ScalarProperty Name="artist_id" ColumnName="artist_id" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="date" ColumnName="date" />
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="artist_id" ColumnName="artist_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -3899,81 +3292,15 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Deliveries">
-            <EntityTypeMapping TypeName="ArtShopModel.Delivery">
-              <MappingFragment StoreEntitySet="Delivery">
-                <ScalarProperty Name="recive_prove" ColumnName="recive_prove" />
-                <ScalarProperty Name="recive_dates" ColumnName="recive_dates" />
-                <ScalarProperty Name="delivery_company" ColumnName="delivery_company" />
-                <ScalarProperty Name="final_delivery_status" ColumnName="final_delivery_status" />
-                <ScalarProperty Name="delivery_note" ColumnName="delivery_note" />
-                <ScalarProperty Name="destination" ColumnName="destination" />
-                <ScalarProperty Name="source" ColumnName="source" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DeliveryChains">
-            <EntityTypeMapping TypeName="ArtShopModel.DeliveryChain">
-              <MappingFragment StoreEntitySet="DeliveryChain">
-                <ScalarProperty Name="notes" ColumnName="notes" />
-                <ScalarProperty Name="delivery_status" ColumnName="delivery_status" />
-                <ScalarProperty Name="address_id" ColumnName="address_id" />
-                <ScalarProperty Name="arrival_dates" ColumnName="arrival_dates" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DeliveryCompanies">
-            <EntityTypeMapping TypeName="ArtShopModel.DeliveryCompany">
-              <MappingFragment StoreEntitySet="DeliveryCompany">
-                <ScalarProperty Name="oversea_support" ColumnName="oversea_support" />
-                <ScalarProperty Name="prefence_country" ColumnName="prefence_country" />
-                <ScalarProperty Name="gradient" ColumnName="gradient" />
-                <ScalarProperty Name="rm_per_cm3" ColumnName="rm_per_cm3" />
-                <ScalarProperty Name="rm_per_g" ColumnName="rm_per_g" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="company_phones" ColumnName="company_phones" />
-                <ScalarProperty Name="company_name" ColumnName="company_name" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="DeliveryStatus">
-            <EntityTypeMapping TypeName="ArtShopModel.DeliveryStatu">
-              <MappingFragment StoreEntitySet="DeliveryStatus">
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Paintings">
-            <EntityTypeMapping TypeName="ArtShopModel.Painting">
-              <MappingFragment StoreEntitySet="Painting">
-                <ScalarProperty Name="lenght_mm" ColumnName="lenght_mm" />
-                <ScalarProperty Name="width_mm" ColumnName="width_mm" />
-                <ScalarProperty Name="height_mm" ColumnName="height_mm" />
-                <ScalarProperty Name="weight_g" ColumnName="weight_g" />
-                <ScalarProperty Name="quantity" ColumnName="quantity" />
-                <ScalarProperty Name="art_id" ColumnName="art_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Payments">
             <EntityTypeMapping TypeName="ArtShopModel.Payment">
               <MappingFragment StoreEntitySet="Payment">
-                <ScalarProperty Name="notes" ColumnName="notes" />
-                <ScalarProperty Name="payment_meta" ColumnName="payment_meta" />
-                <ScalarProperty Name="payment_date" ColumnName="payment_date" />
-                <ScalarProperty Name="customer_paid" ColumnName="customer_paid" />
-                <ScalarProperty Name="total_pay" ColumnName="total_pay" />
-                <ScalarProperty Name="discount" ColumnName="discount" />
-                <ScalarProperty Name="net_pay" ColumnName="net_pay" />
-                <ScalarProperty Name="tax_change" ColumnName="tax_change" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="customer_id" ColumnName="customer_id" />
                 <ScalarProperty Name="payment_status" ColumnName="payment_status" />
-                <ScalarProperty Name="payment_method" ColumnName="payment_method" />
+                <ScalarProperty Name="payment_date" ColumnName="payment_date" />
+                <ScalarProperty Name="tax_change" ColumnName="tax_change" />
+                <ScalarProperty Name="payment_method_id" ColumnName="payment_method_id" />
+                <ScalarProperty Name="order_id" ColumnName="order_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -3982,8 +3309,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <EntityTypeMapping TypeName="ArtShopModel.PaymentDetail">
               <MappingFragment StoreEntitySet="PaymentDetails">
                 <ScalarProperty Name="add_date" ColumnName="add_date" />
-                <ScalarProperty Name="virtual" ColumnName="virtual" />
-                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="availability" ColumnName="availability" />
                 <ScalarProperty Name="art_id" ColumnName="art_id" />
                 <ScalarProperty Name="payment_id" ColumnName="payment_id" />
               </MappingFragment>
@@ -3992,16 +3318,6 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <EntitySetMapping Name="PaymentMethods">
             <EntityTypeMapping TypeName="ArtShopModel.PaymentMethod">
               <MappingFragment StoreEntitySet="PaymentMethod">
-                <ScalarProperty Name="meta_field" ColumnName="meta_field" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PaymentStatus">
-            <EntityTypeMapping TypeName="ArtShopModel.PaymentStatu">
-              <MappingFragment StoreEntitySet="PaymentStatus">
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -4049,113 +3365,14 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="UserExtensions">
-            <EntityTypeMapping TypeName="ArtShopModel.UserExtension">
-              <MappingFragment StoreEntitySet="UserExtension">
-                <ScalarProperty Name="picture" ColumnName="picture" />
-                <ScalarProperty Name="gender" ColumnName="gender" />
-                <ScalarProperty Name="last_name" ColumnName="last_name" />
-                <ScalarProperty Name="first_name" ColumnName="first_name" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="avw_AdminUsers">
-            <EntityTypeMapping TypeName="ArtShopModel.avw_AdminUsers">
-              <MappingFragment StoreEntitySet="avw_AdminUsers">
-                <ScalarProperty Name="private_pic" ColumnName="private_pic" />
-                <ScalarProperty Name="priority" ColumnName="priority" />
-                <ScalarProperty Name="position_id" ColumnName="position_id" />
-                <ScalarProperty Name="picture" ColumnName="picture" />
-                <ScalarProperty Name="gender" ColumnName="gender" />
-                <ScalarProperty Name="last_name" ColumnName="last_name" />
-                <ScalarProperty Name="first_name" ColumnName="first_name" />
-                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
-                <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
-                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
-                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
-                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
-                <ScalarProperty Name="LoweredEmail" ColumnName="LoweredEmail" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="avw_AllUsers">
-            <EntityTypeMapping TypeName="ArtShopModel.avw_AllUsers">
-              <MappingFragment StoreEntitySet="avw_AllUsers">
-                <ScalarProperty Name="picture" ColumnName="picture" />
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
-                <ScalarProperty Name="gender" ColumnName="gender" />
-                <ScalarProperty Name="last_name" ColumnName="last_name" />
-                <ScalarProperty Name="first_name" ColumnName="first_name" />
-                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
-                <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
-                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
-                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
-                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
-                <ScalarProperty Name="LoweredEmail" ColumnName="LoweredEmail" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="avw_ArtistUsers">
-            <EntityTypeMapping TypeName="ArtShopModel.avw_ArtistUsers">
-              <MappingFragment StoreEntitySet="avw_ArtistUsers">
-                <ScalarProperty Name="private_pic" ColumnName="private_pic" />
-                <ScalarProperty Name="signature" ColumnName="signature" />
-                <ScalarProperty Name="description" ColumnName="description" />
-                <ScalarProperty Name="birthday_date" ColumnName="birthday_date" />
-                <ScalarProperty Name="picture" ColumnName="picture" />
-                <ScalarProperty Name="gender" ColumnName="gender" />
-                <ScalarProperty Name="last_name" ColumnName="last_name" />
-                <ScalarProperty Name="first_name" ColumnName="first_name" />
-                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
-                <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
-                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
-                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
-                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
-                <ScalarProperty Name="LoweredEmail" ColumnName="LoweredEmail" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="avw_CustomerUsers">
-            <EntityTypeMapping TypeName="ArtShopModel.avw_CustomerUsers">
-              <MappingFragment StoreEntitySet="avw_CustomerUsers">
-                <ScalarProperty Name="private_pic" ColumnName="private_pic" />
-                <ScalarProperty Name="membership" ColumnName="membership" />
-                <ScalarProperty Name="birthday_date" ColumnName="birthday_date" />
-                <ScalarProperty Name="picture" ColumnName="picture" />
-                <ScalarProperty Name="gender" ColumnName="gender" />
-                <ScalarProperty Name="last_name" ColumnName="last_name" />
-                <ScalarProperty Name="first_name" ColumnName="first_name" />
-                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
-                <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
-                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
-                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
-                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
-                <ScalarProperty Name="LoweredEmail" ColumnName="LoweredEmail" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+          <AssociationSetMapping Name="aspnet_UsersInRoles" TypeName="ArtShopModel.aspnet_UsersInRoles" StoreEntitySet="aspnet_UsersInRoles">
+            <EndProperty Name="aspnet_Users">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="aspnet_Roles">
+              <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
           <EntitySetMapping Name="vw_aspnet_Applications">
             <EntityTypeMapping TypeName="ArtShopModel.vw_aspnet_Applications">
               <MappingFragment StoreEntitySet="vw_aspnet_Applications">
@@ -4265,52 +3482,124 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="aspnet_UsersInRoles" TypeName="ArtShopModel.aspnet_UsersInRoles" StoreEntitySet="aspnet_UsersInRoles">
-            <EndProperty Name="aspnet_Users">
-              <ScalarProperty Name="UserId" ColumnName="UserId" />
-            </EndProperty>
-            <EndProperty Name="aspnet_Roles">
-              <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="DeliveryChainDetails" TypeName="ArtShopModel.DeliveryChainDetails" StoreEntitySet="DeliveryChainDetails">
-            <EndProperty Name="DeliveryChain">
-              <ScalarProperty Name="id" ColumnName="tranfer_chain_id" />
-            </EndProperty>
-            <EndProperty Name="Delivery">
-              <ScalarProperty Name="id" ColumnName="delivery_id" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="UserAddress" TypeName="ArtShopModel.UserAddress" StoreEntitySet="UserAddress">
-            <EndProperty Name="UserExtension">
-              <ScalarProperty Name="UserId" ColumnName="UserId" />
-            </EndProperty>
-            <EndProperty Name="Address">
-              <ScalarProperty Name="id" ColumnName="address_id" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="CategoryDetails" TypeName="ArtShopModel.CategoryDetails" StoreEntitySet="CategoryDetails">
-            <EndProperty Name="Category">
-              <ScalarProperty Name="id" ColumnName="category_id" />
-            </EndProperty>
-            <EndProperty Name="Art">
-              <ScalarProperty Name="id" ColumnName="art_id" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <EntitySetMapping Name="vw_customer_cart2">
-            <EntityTypeMapping TypeName="ArtShopModel.vw_customer_cart2">
-              <MappingFragment StoreEntitySet="vw_customer_cart2">
+          <EntitySetMapping Name="vw_customer_cart">
+            <EntityTypeMapping TypeName="ArtShopModel.vw_customer_cart">
+              <MappingFragment StoreEntitySet="vw_customer_cart">
+                <ScalarProperty Name="art_id" ColumnName="art_id" />
                 <ScalarProperty Name="add_date" ColumnName="add_date" />
                 <ScalarProperty Name="availability" ColumnName="availability" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
-                <ScalarProperty Name="virtual" ColumnName="virtual" />
-                <ScalarProperty Name="artist_id" ColumnName="artist_id" />
-                <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="title" ColumnName="title" />
-                <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="image" ColumnName="image" />
-                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserExtensions">
+            <EntityTypeMapping TypeName="ArtShopModel.UserExtension">
+              <MappingFragment StoreEntitySet="UserExtension">
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="avw_AdminUsers">
+            <EntityTypeMapping TypeName="ArtShopModel.avw_AdminUsers">
+              <MappingFragment StoreEntitySet="avw_AdminUsers">
+                <ScalarProperty Name="private_pic" ColumnName="private_pic" />
+                <ScalarProperty Name="priority" ColumnName="priority" />
+                <ScalarProperty Name="position_id" ColumnName="position_id" />
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
+                <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="LoweredEmail" ColumnName="LoweredEmail" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="avw_ArtistUsers">
+            <EntityTypeMapping TypeName="ArtShopModel.avw_ArtistUsers">
+              <MappingFragment StoreEntitySet="avw_ArtistUsers">
+                <ScalarProperty Name="private_pic" ColumnName="private_pic" />
+                <ScalarProperty Name="signature" ColumnName="signature" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="birthday_date" ColumnName="birthday_date" />
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
+                <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="LoweredEmail" ColumnName="LoweredEmail" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="avw_CustomerUsers">
+            <EntityTypeMapping TypeName="ArtShopModel.avw_CustomerUsers">
+              <MappingFragment StoreEntitySet="avw_CustomerUsers">
+                <ScalarProperty Name="private_pic" ColumnName="private_pic" />
+                <ScalarProperty Name="membership" ColumnName="membership" />
+                <ScalarProperty Name="birthday_date" ColumnName="birthday_date" />
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
+                <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="LoweredEmail" ColumnName="LoweredEmail" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="avw_AllUsers">
+            <EntityTypeMapping TypeName="ArtShopModel.avw_AllUsers">
+              <MappingFragment StoreEntitySet="avw_AllUsers">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
+                <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="LoweredEmail" ColumnName="LoweredEmail" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

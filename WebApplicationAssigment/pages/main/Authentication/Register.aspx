@@ -12,7 +12,6 @@
     <style>
         table {
             margin: auto !important;
-            width: 460px !important;
         }
         /* Credit to bootsnipp.com for the css for the color graph */
         .colorgraph {
@@ -59,9 +58,8 @@
                                     <div class="form-group">
                                         <asp:TextBox
                                             runat="server"
-                                            ID="Email" 
-                                            TextMode="Email"
-                                            class="form-control input-lg register_email"
+                                            ID="Email"
+                                            class="form-control input-lg"
                                             placeholder="Emails" />
                                         <asp:RequiredFieldValidator runat="server"
                                             ControlToValidate="Email"
@@ -109,16 +107,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
-                                    <script>
-                                        new Awesomplete('.register_email', {
-                                            list: ["aol.com", "att.net", "comcast.net", "facebook.com", "gmail.com", "gmx.com", "googlemail.com", "google.com", "hotmail.com", "hotmail.co.uk", "mac.com", "me.com", "mail.com", "msn.com", "live.com", "sbcglobal.net", "verizon.net", "yahoo.com", "yahoo.co.uk"],
-                                            data: function (text, input) {
-                                                return input.slice(0, input.indexOf("@")) + "@" + text;
-                                            },
-                                            filter: Awesomplete.FILTER_STARTSWITH
-                                        });
-                                    </script>
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-6 col-md-6">
                                             <asp:TextBox
@@ -135,29 +123,6 @@
                                                 ErrorMessage="Security Question is a required field.">
                                                 <b>* Security Question is a required field.</b>
                                             </asp:RequiredFieldValidator>
-                                            <script>
-                                                <% TextBox securityQuestions = (TextBox)FindControlRecursive(CreateUserWizard1, "Question");%>
-                                                var input = document.getElementById("<%= securityQuestions.ClientID%>");
-
-                                                // Show label but insert value into the input:
-                                                var comboplete = new Awesomplete(input, {
-                                                    list: SketchConstant.SECURITY_QUESTIONS,
-                                                    minChars: 0
-                                                });
-
-                                                Awesomplete.$('#<%= securityQuestions.ClientID%>').addEventListener("click", function () {
-                                                    if (comboplete.ul.childNodes.length === 0) {
-                                                        comboplete.minChars = 0;
-                                                        comboplete.evaluate();
-                                                    }
-                                                    else if (comboplete.ul.hasAttribute('hidden')) {
-                                                        comboplete.open();
-                                                    }
-                                                    else {
-                                                        comboplete.close();
-                                                    }
-                                                });
-                                            </script>
                                         </div>
                                         <div class="col-xs-12 col-sm-6 col-md-6">
                                             <asp:TextBox
@@ -441,10 +406,8 @@
                     <ContentTemplate>
                         <div class="container">
                             <uc1:SuccessMessageLarge runat="server" ID="SuccessMessageLarge" />
-                            <center>
                             <asp:Button ID="ContinueButton" runat="server" CssClass="btn btn-success btn-block btn-lg pull-right"
                                 CausesValidation="False" CommandName="Continue" Text="Continue" ValidationGroup="CreateUserWizard1" />
-                            </center>
                         </div>
                     </ContentTemplate>
                 </asp:CompleteWizardStep>

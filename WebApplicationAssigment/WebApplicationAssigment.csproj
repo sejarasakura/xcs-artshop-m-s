@@ -153,15 +153,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\ArtShop_log.ldf">
-      <DependentUpon>ArtShop.mdf</DependentUpon>
-    </Content>
     <Content Include="assets\image\Art\one.jpg" />
-    <Content Include="assets\image\background\background.png" />
-    <Content Include="assets\image\background\CompanyLogoFrame.png" />
     <Content Include="assets\image\hot-deal.png" />
-    <Content Include="assets\image\Map\pin-blue.png" />
-    <Content Include="assets\image\Map\pin-red.png" />
     <Content Include="assets\image\profile.png" />
     <Content Include="assets\image\signature.png" />
     <Content Include="assets\image\no_img.jpg" />
@@ -201,6 +194,9 @@
     <Content Include="pages\main\Artist\content\ViewArtSales.aspx" />
     <Content Include="pages\main\Artist\widget\title.ascx" />
     <Content Include="App_Data\ArtShop.mdf" />
+    <Content Include="App_Data\ArtShop_log.ldf">
+      <DependentUpon>ArtShop.mdf</DependentUpon>
+    </Content>
     <Content Include="assets\image\background\CompanyLogo.png" />
     <Content Include="assets\image\background\sky-bg.jpg" />
     <Content Include="assets\image\testing\OK.jpg" />
@@ -221,7 +217,6 @@
     <Content Include="pages\main\admin\widget\AdminNav.ascx" />
     <Content Include="pages\main\ArtShop\ArtShop_Customer.aspx" />
     <Content Include="pages\main\ArtShop\ArtShop_Cust_Details.aspx" />
-    <Content Include="pages\main\ArtShop\widget\CartSections.ascx" />
     <Content Include="pages\main\ArtShop\ShoppingCart.aspx" />
     <Content Include="pages\main\Authentication\ForgotPassword.aspx" />
     <Content Include="pages\main\Authentication\Profile\Logout.aspx" />
@@ -229,8 +224,6 @@
     <Content Include="pages\main\Authentication\Profile\Change Password.aspx" />
     <Content Include="pages\main\Authentication\Login.aspx" />
     <Content Include="pages\main\Authentication\Register.aspx" />
-    <Content Include="pages\main\Authentication\Test.aspx" />
-    <Content Include="pages\main\Authentication\Widget\AddressPicker.ascx" />
     <Content Include="pages\main\Authentication\Widget\Login.ascx" />
     <Content Include="pages\main\Home.aspx" />
     <Content Include="pages\Payment\CreditAndDebit.aspx" />
@@ -273,17 +266,6 @@
     <Content Include="content\bootstrap-theme.min.css.map" />
     <Content Include="content\bootstrap-theme.css.map" />
     <Content Include="commons\handler\UpdatesHeaderNavigations.ashx" />
-    <Content Include="web\lib\awes\awesomplete.base.css" />
-    <Content Include="web\lib\awes\awesomplete.css" />
-    <Content Include="web\lib\awes\awesomplete.js" />
-    <Content Include="web\lib\awes\awesomplete.min.js" />
-    <Content Include="web\lib\awes\awesomplete.theme.css" />
-    <Content Include="web\lib\css\mdb.min.css" />
-    <Content Include="web\lib\css\mdb.ecommerce.min.css" />
-    <Content Include="web\lib\js\constant.js" />
-    <Content Include="web\lib\js\mdb.ecommerce.min.js" />
-    <Content Include="web\lib\js\mdb.min.js" />
-    <Content Include="web\lib\js\_functions.js" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -309,8 +291,6 @@
     <Content Include="assets\image\testing\img1.jpg" />
     <Content Include="assets\image\testing\img2.jpg" />
     <Content Include="assets\image\testing\img3.jpg" />
-    <Content Include="web\lib\awes\awesomplete.css.map" />
-    <Content Include="web\lib\awes\awesomplete.min.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="commons\ArtistSigniture.ashx.cs">
@@ -330,9 +310,6 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="modal\Address.cs">
-      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="modal\Art.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -391,21 +368,6 @@
     <Compile Include="modal\Customer.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="modal\Delivery.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\DeliveryChain.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\DeliveryCompany.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\DeliveryStatu.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\Painting.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="modal\Payment.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -413,9 +375,6 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="modal\PaymentMethod.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\PaymentStatu.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="modal\PayPal.cs">
@@ -460,7 +419,7 @@
     <Compile Include="modal\vw_aspnet_WebPartState_User.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="modal\vw_customer_cart2.cs">
+    <Compile Include="modal\vw_customer_cart.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="pages\diagram_reader\ImageViewer.aspx.cs">
@@ -632,13 +591,6 @@
     <Compile Include="pages\main\ArtShop\ArtShop_Cust_Details.aspx.designer.cs">
       <DependentUpon>ArtShop_Cust_Details.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pages\main\ArtShop\widget\CartSections.ascx.cs">
-      <DependentUpon>CartSections.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\main\ArtShop\widget\CartSections.ascx.designer.cs">
-      <DependentUpon>CartSections.ascx</DependentUpon>
-    </Compile>
     <Compile Include="pages\main\ArtShop\ShoppingCart.aspx.cs">
       <DependentUpon>ShoppingCart.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -687,20 +639,6 @@
     </Compile>
     <Compile Include="pages\main\Authentication\Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="pages\main\Authentication\Test.aspx.cs">
-      <DependentUpon>Test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\main\Authentication\Test.aspx.designer.cs">
-      <DependentUpon>Test.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="pages\main\Authentication\Widget\AddressPicker.ascx.cs">
-      <DependentUpon>AddressPicker.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\main\Authentication\Widget\AddressPicker.ascx.designer.cs">
-      <DependentUpon>AddressPicker.ascx</DependentUpon>
     </Compile>
     <Compile Include="pages\main\Authentication\Widget\Login.ascx.cs">
       <DependentUpon>Login.ascx</DependentUpon>

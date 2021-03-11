@@ -6,8 +6,8 @@
         <div id="logreg-forms" style="padding: 20px;">
             <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Sign in</h1>
             <div class="social-login">
-                <button class="btn facebook-btn social-btn" style="margin:0;padding:6px;" type="button"><span><i class="fab fa-facebook-f"></i> Sign in with Facebook</span> </button>
-                <button class="btn google-btn social-btn" style="margin:0;padding:6px;" type="button"><span><i class="fab fa-google-plus-g"></i> Sign in with Google+</span> </button>
+                <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Sign in with Facebook</span> </button>
+                <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Sign in with Google+</span> </button>
             </div>
             <p style="text-align: center">OR  </p>
             <asp:TextBox ID="UserName" runat="server" class="form-control" placeholder="username" />
@@ -23,9 +23,7 @@
             <b class="text-danger text-center">
                 <asp:Literal ID="FailureText" runat="server"></asp:Literal>
             </b>
-            <div class="float-right">
-                <asp:Button CssClass="btn btn-success btn-block pull-right" ID="Login" CommandName="Login" runat="server" Text="Sing In"></asp:Button>
-            </div>
+            <asp:Button CssClass="btn btn-success btn-block" ID="Login" CommandName="Login" runat="server" Text="Sing In"></asp:Button>
             <a href="/pages/main/Authentication/ForgotPassword.aspx" id="forgot_pswd">Forgot password?</a>
             <hr>
             <a href="/pages/main/Authentication/Register.aspx" class="text-white btn btn-primary" id="btn-signup"><i class="fas fa-user-plus"></i> Sign up New Account</a>

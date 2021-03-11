@@ -27,6 +27,7 @@ namespace WebApplicationAssigment.pages.main.Artist.content
             art.date = this.DateCreation.Text;
             art.price = decimal.Parse(this.Price.Text);
             art.artist_id = (Guid)Functions.getLoginUser().ProviderUserKey;
+            art.category_id = int.Parse(this.Category.SelectedItem.Value);
             using (ArtShopEntities db = new ArtShopEntities())
             {
                 art.id = db.Arts.OrderByDescending(u => u.id).FirstOrDefault().id + 1; ;

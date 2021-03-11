@@ -44,18 +44,14 @@
         transition-duration: 0.7s;
     }
 
+    #tatsu-footer-container {
+        margin-top: 25px;
+        margin-bottom: 15px;
+    }
+
     .footer-copyright-style{
-        padding-top: 10px;
-        padding-right: 10px;
-        padding-bottom: 10px;
-        padding-left: 30px;
-    }
-    #bottom-widgets{
-        background-image: url('/assets/image/background/background.png');
-        background-repeat: repeat;
-    }
-    #tatsu-footer-container{
-        padding-top: 20px;
+        margin: 10px;
+        padding-left: 20px;
     }
 </style>
 <footer id="bottom-widgets">

@@ -56,7 +56,6 @@ namespace WebApplicationAssigment.pages.main.Profile
             {
                 custCheckBox.Checked = false;
                 custExtensions.Visible = false;
-                firstTime = false;
             }
             artExtensions.Visible = artistCheckBox.Checked;
         }

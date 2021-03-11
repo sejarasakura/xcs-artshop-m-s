@@ -18,6 +18,7 @@ namespace WebApplicationAssigment.modal
         public Customer()
         {
             this.Carts = new HashSet<Cart>();
+            this.Payments = new HashSet<Payment>();
         }
     
         public System.Guid UserId { get; set; }
@@ -28,5 +29,7 @@ namespace WebApplicationAssigment.modal
         public virtual aspnet_Users aspnet_Users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cart> Carts { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Payment> Payments { get; set; }
     }
 }

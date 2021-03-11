@@ -28,8 +28,8 @@ namespace WebApplicationAssigment.modal
         public string first_name { get; set; }
         public string last_name { get; set; }
         public string gender { get; set; }
+        public byte[] picture { get; set; }
         public string RoleName { get; set; }
         public System.Guid RoleId { get; set; }
-        public byte[] picture { get; set; }
     }
 }

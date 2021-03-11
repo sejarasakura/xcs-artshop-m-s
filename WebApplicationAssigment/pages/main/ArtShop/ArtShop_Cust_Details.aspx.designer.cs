@@ -7,40 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplicationAssigment.pages.main.ArtShop
-{
-
-
-    public partial class ArtShop_Cust_Details
-    {
-
-        /// <summary>
-        /// StartPageSM control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebApplicationAssigment.pages.widget.StartPageSM StartPageSM;
-
-        /// <summary>
-        /// quantity control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox quantity;
-
-        /// <summary>
-        /// RegularExpressionValidator1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
-
+namespace WebApplicationAssigment.pages.main.ArtShop {
+    
+    
+    public partial class ArtShop_Cust_Details {
+        
         /// <summary>
         /// btnaddtocart control.
         /// </summary>
@@ -49,14 +20,5 @@ namespace WebApplicationAssigment.pages.main.ArtShop
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnaddtocart;
-
-        /// <summary>
-        /// EndPagesSM control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::WebApplicationAssigment.pages.widget.EndPagesSM EndPagesSM;
     }
 }

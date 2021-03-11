@@ -17,7 +17,7 @@ namespace WebApplicationAssigment.modal
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Category()
         {
-            this.Arts1 = new HashSet<Art>();
+            this.Arts = new HashSet<Art>();
         }
     
         public int id { get; set; }
@@ -25,6 +25,6 @@ namespace WebApplicationAssigment.modal
         public string description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Art> Arts1 { get; set; }
+        public virtual ICollection<Art> Arts { get; set; }
     }
 }

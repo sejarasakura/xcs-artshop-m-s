@@ -25,10 +25,8 @@
 
 
             <div class="panel panel-default">
-                <div class="panel-heading"><i class="fa fa-user fa-1x"></i> | My Account</div>
-                <div class="panel-body">
-                    <a href="http://bootnipets.com">Changes Password</a>
-                </div>
+                <div class="panel-heading">Website <i class="fa fa-link fa-1x"></i></div>
+                <div class="panel-body"><a href="http://bootnipets.com">bootnipets.com</a></div>
                 <div class="panel-body">
                     <asp:LoginStatus ID="LoginStatus1" runat="server" />
                 </div>
@@ -46,7 +44,6 @@
                         <% string[] role = Roles.GetRolesForUser(viewMember.UserName); %>
 
                         <li class="active"><a data-toggle="tab" href="#general">General</a></li>
-                        <li class=""><a data-toggle="tab" href="#address">My Address</a></li>
 
                         <% if (role.Contains("Artist"))
                             { %>
@@ -186,12 +183,7 @@
                             
                             <hr />
                         </div>
-                        
-                        <div class="tab-pane" id="address">
-                            <h2></h2>
 
-                            <hr />
-                        </div>
                         <% if (role.Contains("Artist"))
                             { %>
                         <div class="tab-pane" id="artist">
