@@ -17,7 +17,7 @@
             <div class="mb-3">
                 <div class="pt-4 wish-list">
 
-                    <h5 class="mb-4">Cart (<span>2</span> items)</h5>
+                    <h5 class="mb-4">Cart (<span>2</span> items / <span>2</span> items)</h5>
                     <!-- Cart Items -->
                     <%
                         using (ArtShopEntities db = new ArtShopEntities())
@@ -34,7 +34,7 @@
                                         (paint == null ? "N/A" : paint.height_mm + " mm ");
                     %>
                     <div>
-                        <asp:CheckBox ID="CheckBox1" runat="server" />
+                        <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="True" CommandName='<%#Eval("arts[i].id")%>' OnCheckedChanged="CheckBox1_CheckedChanged" />
                         <div class="row mb-4">
                             <div class="col-md-5 col-lg-3 col-xl-3">
                                 <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
@@ -67,8 +67,9 @@
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div>
-                                            <a href="#!" type="button" class="card-link-secondary small text-uppercase mr-3 text-danger"><i
-                                                class="fas fa-trash-alt mr-1"></i>Remove item </a>
+                                            <a href="/pages/main/ArtShop/DeleteCart.ashx?cid=<%= cart_id %>&id=<%= arts[i].id %>" 
+                                                type="button" 
+                                                class="card-link-secondary small text-uppercase mr-3 text-danger"><i class="fas fa-trash-alt mr-1"></i>Remove item</a>
                                         </div>
                                         <p class="mb-0"><span><strong id="summary">RM <%= arts[i].price %></strong></span></p>
                                     </div>

@@ -291,6 +291,7 @@
     <Content Include="web\lib\js\mdb.min.js" />
     <Content Include="web\lib\js\_functions.js" />
     <Content Include="pages\main\Authentication\updatesProfilesSessions.ashx" />
+    <Content Include="pages\main\ArtShop\DeleteCart.ashx" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -640,6 +641,9 @@
     </Compile>
     <Compile Include="pages\main\ArtShop\ArtShop_Cust_Details.aspx.designer.cs">
       <DependentUpon>ArtShop_Cust_Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\ArtShop\DeleteCart.ashx.cs">
+      <DependentUpon>DeleteCart.ashx</DependentUpon>
     </Compile>
     <Compile Include="pages\main\ArtShop\widget\CartSections.ascx.cs">
       <DependentUpon>CartSections.ascx</DependentUpon>

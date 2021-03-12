@@ -1,5 +1,9 @@
 ﻿<%@ Page Title="Add New Art" Language="C#" MasterPageFile="~/pages/master/Master.Master" AutoEventWireup="true" CodeBehind="AddNewArt.aspx.cs" Inherits="WebApplicationAssigment.pages.main.Artist.content.AddNewArt" %>
 <%@ Register Src="~/pages/widget/StartPage.ascx" TagPrefix="uc1" TagName="StartPage" %>
+<%@ Register Src="~/pages/widget/StartPageSM.ascx" TagPrefix="uc1" TagName="StartPageSM" %>
+<%@ Register Src="~/pages/widget/EndPagesSM.ascx" TagPrefix="uc1" TagName="EndPagesSM" %>
+
+
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -10,7 +14,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    <uc1:StartPageSM runat="server" ID="StartPageSM" />
    <div class="container">
   <div class="row">               
           <div class="page-header col-xs-12 col-sm-12">
@@ -21,11 +25,10 @@
   </div>
 
   <div class="row">
-      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-3">
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
        
-
-          <!--Title-->
-            <div class="row">
+        <!--Title-->
+        <div class="row">
         <div class="col-md-12">
             <div class="form-group">
               <label for="usr">Art Title:</label>
@@ -189,14 +192,14 @@
           <asp:Button ID="btnSubmit" runat="server" class="btn btn-primary" Text="Add Art" OnClick="btnSubmit_Click" />
               </div>
         
-      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xs-offset-3">
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
             <asp:Image CssClass="center" ImageUrl="~/assets/image/no_img.jpg" ID="Image1" runat="server" length="700px" Width="500px" />  
       </div>
     </div>
   
-
+       
        
 </div>
-
+<uc1:EndPagesSM runat="server" ID="EndPagesSM" />
 </asp:Content>
 

@@ -11,7 +11,8 @@ namespace WebApplicationAssigment.pages.main.ArtShop
 {
     public partial class CartSections : System.Web.UI.UserControl
     {
-        private int cart_id = 0;
+        protected vw_customer_cart2[] arts;
+        protected int cart_id = 0;
         public Guid id;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -96,6 +97,11 @@ namespace WebApplicationAssigment.pages.main.ArtShop
                     "Deleted Failed!!",
                     "you have following exception : " + e.Message + " !!"));
             }
+        }
+
+        protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
