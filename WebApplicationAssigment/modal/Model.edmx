@@ -12,12 +12,12 @@
           <Property Name="id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="latitude" Type="float" Nullable="false" />
           <Property Name="longitude" Type="float" Nullable="false" />
-          <Property Name="details" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="street" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="city" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="state" Type="nvarchar" MaxLength="50" />
-          <Property Name="poscode" Type="nvarchar" MaxLength="50" />
-          <Property Name="country" Type="nvarchar" MaxLength="50" />
+          <Property Name="details" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="street" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="city" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="state" Type="nvarchar" MaxLength="100" />
+          <Property Name="poscode" Type="nvarchar" MaxLength="10" />
+          <Property Name="country" Type="nvarchar" MaxLength="70" />
         </EntityType>
         <EntityType Name="Art">
           <Key>
@@ -688,6 +688,32 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="UserId" Type="uniqueidentifier" />
           <Property Name="DataSize" Type="int" />
           <Property Name="LastUpdatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.vw_customer_cart' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_customer_cart">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="image" />
+            <PropertyRef Name="price" />
+            <PropertyRef Name="date" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="description" />
+            <PropertyRef Name="artist_id" />
+            <PropertyRef Name="virtual" />
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="image" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="date" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="artist_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="virtual" Type="bit" Nullable="false" />
+          <Property Name="user_id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="availability" Type="int" />
+          <Property Name="add_date" Type="date" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHOP-M-S\WEBAPPLICATIONASSIGMENT\APP_DATA\ARTSHOP.MDF.dbo.vw_customer_cart2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -1718,6 +1744,21 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
     [vw_aspnet_WebPartState_User].[LastUpdatedDate] AS [LastUpdatedDate]
     FROM [dbo].[vw_aspnet_WebPartState_User] AS [vw_aspnet_WebPartState_User]</DefiningQuery>
           </EntitySet>
+          <EntitySet Name="vw_customer_cart" EntityType="Self.vw_customer_cart" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_customer_cart].[id] AS [id], 
+    [vw_customer_cart].[image] AS [image], 
+    [vw_customer_cart].[price] AS [price], 
+    [vw_customer_cart].[date] AS [date], 
+    [vw_customer_cart].[title] AS [title], 
+    [vw_customer_cart].[description] AS [description], 
+    [vw_customer_cart].[artist_id] AS [artist_id], 
+    [vw_customer_cart].[virtual] AS [virtual], 
+    [vw_customer_cart].[user_id] AS [user_id], 
+    [vw_customer_cart].[availability] AS [availability], 
+    [vw_customer_cart].[add_date] AS [add_date]
+    FROM [dbo].[vw_customer_cart] AS [vw_customer_cart]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="vw_customer_cart2" EntityType="Self.vw_customer_cart2" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vw_customer_cart2].[id] AS [id], 
@@ -2404,6 +2445,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <End Role="Category" EntitySet="Categories" />
           </AssociationSet>
           <EntitySet Name="vw_customer_cart2" EntityType="ArtShopModel.vw_customer_cart2" />
+          <EntitySet Name="vw_customer_cart" EntityType="ArtShopModel.vw_customer_cart" />
           </EntityContainer>
         <ComplexType Name="aspnet_Membership_GetPassword_Result">
           <Property Type="String" Name="Column1" Nullable="true" MaxLength="128" />
@@ -2490,12 +2532,12 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="id" Type="Guid" Nullable="false" />
           <Property Name="latitude" Type="Double" Nullable="false" />
           <Property Name="longitude" Type="Double" Nullable="false" />
-          <Property Name="details" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="street" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="city" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="state" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="poscode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="details" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="street" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="state" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="poscode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="country" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Deliveries" Relationship="ArtShopModel.FK__Delivery__destin__10E07F16" FromRole="Address" ToRole="Delivery" />
           <NavigationProperty Name="Deliveries1" Relationship="ArtShopModel.FK__Delivery__source__0FEC5ADD" FromRole="Address" ToRole="Delivery" />
           <NavigationProperty Name="DeliveryChains" Relationship="ArtShopModel.FK__DeliveryC__addre__1699586C" FromRole="Address" ToRole="DeliveryChain" />
@@ -3548,6 +3590,30 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="availability" Type="Int32" />
           <Property Name="add_date" Type="DateTime" Precision="0" />
         </EntityType>
+        <EntityType Name="vw_customer_cart">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="image" />
+            <PropertyRef Name="price" />
+            <PropertyRef Name="date" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="description" />
+            <PropertyRef Name="artist_id" />
+            <PropertyRef Name="virtual" />
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="image" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="date" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="artist_id" Type="Guid" Nullable="false" />
+          <Property Name="virtual" Type="Boolean" Nullable="false" />
+          <Property Name="user_id" Type="Guid" Nullable="false" />
+          <Property Name="availability" Type="Int32" />
+          <Property Name="add_date" Type="DateTime" Precision="0" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -4300,6 +4366,23 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <EntitySetMapping Name="vw_customer_cart2">
             <EntityTypeMapping TypeName="ArtShopModel.vw_customer_cart2">
               <MappingFragment StoreEntitySet="vw_customer_cart2">
+                <ScalarProperty Name="add_date" ColumnName="add_date" />
+                <ScalarProperty Name="availability" ColumnName="availability" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="virtual" ColumnName="virtual" />
+                <ScalarProperty Name="artist_id" ColumnName="artist_id" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_customer_cart">
+            <EntityTypeMapping TypeName="ArtShopModel.vw_customer_cart">
+              <MappingFragment StoreEntitySet="vw_customer_cart">
                 <ScalarProperty Name="add_date" ColumnName="add_date" />
                 <ScalarProperty Name="availability" ColumnName="availability" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />

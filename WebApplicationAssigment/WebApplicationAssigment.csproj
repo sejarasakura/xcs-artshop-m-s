@@ -232,6 +232,12 @@
     <Content Include="pages\main\Authentication\Test.aspx" />
     <Content Include="pages\main\Authentication\Widget\AddressPicker.ascx" />
     <Content Include="pages\main\Authentication\Widget\Login.ascx" />
+    <Content Include="pages\main\Authentication\Widget\ProfileAddress.ascx" />
+    <Content Include="pages\main\Authentication\Widget\ProfileAdmin.ascx" />
+    <Content Include="pages\main\Authentication\Widget\ProfileArtist.ascx" />
+    <Content Include="pages\main\Authentication\Widget\ProfileCustomer.ascx" />
+    <Content Include="pages\main\Authentication\Widget\ProfileGeneral.ascx" />
+    <Content Include="pages\main\Authentication\Widget\ProfileCourier.ascx" />
     <Content Include="pages\main\Home.aspx" />
     <Content Include="pages\Payment\CreditAndDebit.aspx" />
     <Content Include="pages\Payment\DeliveryInformation.aspx" />
@@ -248,7 +254,7 @@
     <Content Include="pages\widget\Header.ascx" />
     <Content Include="pages\widget\HotDeals.ascx" />
     <Content Include="pages\widget\ProfilePicture.ascx" />
-    <Content Include="pages\widget\ProfileWidget.ascx" />
+    <Content Include="pages\main\Authentication\Widget\ProfileWidget.ascx" />
     <Content Include="pages\widget\Sidemap.ascx" />
     <Content Include="pages\widget\StartPageSM.ascx" />
     <Content Include="pages\widget\StartPage.ascx" />
@@ -284,6 +290,7 @@
     <Content Include="web\lib\js\mdb.ecommerce.min.js" />
     <Content Include="web\lib\js\mdb.min.js" />
     <Content Include="web\lib\js\_functions.js" />
+    <Content Include="pages\main\Authentication\updatesProfilesSessions.ashx" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -309,7 +316,6 @@
     <Content Include="assets\image\testing\img1.jpg" />
     <Content Include="assets\image\testing\img2.jpg" />
     <Content Include="assets\image\testing\img3.jpg" />
-    <Content Include="web\lib\awes\awesomplete.css.map" />
     <Content Include="web\lib\awes\awesomplete.min.js.map" />
   </ItemGroup>
   <ItemGroup>
@@ -458,6 +464,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="modal\vw_aspnet_WebPartState_User.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\vw_customer_cart.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="modal\vw_customer_cart2.cs">
@@ -695,6 +704,9 @@
     <Compile Include="pages\main\Authentication\Test.aspx.designer.cs">
       <DependentUpon>Test.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pages\main\Authentication\updatesProfilesSessions.ashx.cs">
+      <DependentUpon>updatesProfilesSessions.ashx</DependentUpon>
+    </Compile>
     <Compile Include="pages\main\Authentication\Widget\AddressPicker.ascx.cs">
       <DependentUpon>AddressPicker.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -708,6 +720,48 @@
     </Compile>
     <Compile Include="pages\main\Authentication\Widget\Login.ascx.designer.cs">
       <DependentUpon>Login.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\Authentication\Widget\ProfileAddress.ascx.cs">
+      <DependentUpon>ProfileAddress.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\Authentication\Widget\ProfileAddress.ascx.designer.cs">
+      <DependentUpon>ProfileAddress.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\Authentication\Widget\ProfileAdmin.ascx.cs">
+      <DependentUpon>ProfileAdmin.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\Authentication\Widget\ProfileAdmin.ascx.designer.cs">
+      <DependentUpon>ProfileAdmin.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\Authentication\Widget\ProfileArtist.ascx.cs">
+      <DependentUpon>ProfileArtist.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\Authentication\Widget\ProfileArtist.ascx.designer.cs">
+      <DependentUpon>ProfileArtist.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\Authentication\Widget\ProfileCustomer.ascx.cs">
+      <DependentUpon>ProfileCustomer.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\Authentication\Widget\ProfileCustomer.ascx.designer.cs">
+      <DependentUpon>ProfileCustomer.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\Authentication\Widget\ProfileGeneral.ascx.cs">
+      <DependentUpon>ProfileGeneral.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\Authentication\Widget\ProfileGeneral.ascx.designer.cs">
+      <DependentUpon>ProfileGeneral.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\Authentication\Widget\ProfileCourier.ascx.cs">
+      <DependentUpon>ProfileCourier.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\Authentication\Widget\ProfileCourier.ascx.designer.cs">
+      <DependentUpon>ProfileCourier.ascx</DependentUpon>
     </Compile>
     <Compile Include="pages\main\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
@@ -828,11 +882,11 @@
     <Compile Include="pages\widget\ProfilePicture.ascx.designer.cs">
       <DependentUpon>ProfilePicture.ascx</DependentUpon>
     </Compile>
-    <Compile Include="pages\widget\ProfileWidget.ascx.cs">
+    <Compile Include="pages\main\Authentication\Widget\ProfileWidget.ascx.cs">
       <DependentUpon>ProfileWidget.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="pages\widget\ProfileWidget.ascx.designer.cs">
+    <Compile Include="pages\main\Authentication\Widget\ProfileWidget.ascx.designer.cs">
       <DependentUpon>ProfileWidget.ascx</DependentUpon>
     </Compile>
     <Compile Include="pages\widget\Sidemap.ascx.cs">

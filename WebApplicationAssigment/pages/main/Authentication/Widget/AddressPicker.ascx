@@ -37,13 +37,13 @@
             type="text"
             placeholder="To "
             />
-        <button disabled style="margin-bottom: 30px" id="procide-booking" type="button" id="submit" class="btn btn-lg btn-info" data-toggle="modal" data-target="#myModal">
+        <button disabled style="margin-bottom: 30px" id="procide-booking" type="button" class="btn btn-lg btn-info" >
             Confirm Location
         </button>
 
         <input type="hidden" id="form_latlng" name="form_latlng" value="" runat="server"/>
-        <input type="hidden" id="to_latlng" name="to_latlng" value="" runat="server"/>
         <input type="hidden" id="form_address" name="form_address" value="" runat="server"/>
+        <input type="hidden" id="to_latlng" name="to_latlng" value="" runat="server"/>
         <input type="hidden" id="to_address" name="to_address" value="" runat="server"/>
 
         <div class="btn-group" id="form-to">

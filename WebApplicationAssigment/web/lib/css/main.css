@@ -28,3 +28,31 @@ a.no-decolation {
     a.no-decolation:hover {
         text-decoration: none;
     }
+
+
+.custom-scrollbar-js,
+.custom-scrollbar-css {
+    overflow-y: visible;
+}
+
+
+/* Custom Scrollbar using CSS */
+.custom-scrollbar-css {
+    overflow-y: scroll;
+}
+
+    /* scrollbar width */
+    .custom-scrollbar-css::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    /* scrollbar track */
+    .custom-scrollbar-css::-webkit-scrollbar-track {
+        background: #eee;
+    }
+
+    /* scrollbar handle */
+    .custom-scrollbar-css::-webkit-scrollbar-thumb {
+        border-radius: 1rem;
+        background-color: #aaa;
+    }

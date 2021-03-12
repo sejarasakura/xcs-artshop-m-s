@@ -5,10 +5,6 @@
 <%@ Register Src="~/pages/widget/StartPageSM.ascx" TagPrefix="uc1" TagName="StartPageSM" %>
 <%@ Register Src="~/pages/main/ArtShop/widget/CartSections.ascx" TagPrefix="uc1" TagName="CartSections" %>
 
-
-
-
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

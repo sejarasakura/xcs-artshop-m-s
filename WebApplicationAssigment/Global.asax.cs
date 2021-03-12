@@ -32,6 +32,12 @@ namespace WebApplicationAssigment
                     "Welcome Guess !!",
                     "System initalizes complete, first time on sketch? <a style='color: rgb(90, 203, 255)' href='" + Constant.REGISTER_URL + "'>Register Now</a>. Already have new account? <a style='color: rgb(90, 203, 255)' href='" + Constant.LOGIN_URL + "'>Login Now</a>."));
             }
+            List<bool> status = new List<bool>();
+            for (int i = 0; i < 10; i++)
+            {
+                status.Add(false);
+            }
+            HttpContext.Current.Session[Constant.ADMIN_NAVIGATION_SESSION] = status;
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

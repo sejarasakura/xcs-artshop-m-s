@@ -6,6 +6,8 @@ using System.Web;
 using System.Web.Security;
 using System.Security.Principal;
 using WebApplicationAssigment.modal;
+using System.Web.SessionState;
+
 namespace WebApplicationAssigment.commons
 {
     public class Functions
@@ -38,11 +40,10 @@ namespace WebApplicationAssigment.commons
             return user;
         }
 
-        internal static List<bool> getAdminBarStatus(HttpRequest request)
+        public static List<bool> getAdminBarStatus(HttpContext context)
         {
-            var sessionContent = HttpContext.Current.Session[Constant.ADMIN_NAVIGATION_SESSION];
-            List<bool> status;
-            if (sessionContent == null)
+            List<bool> status = (List<bool>) context.Session[Constant.ADMIN_NAVIGATION_SESSION];
+            if (status == null)
             {
                 status = new List<bool>();
                 for(int i = 0; i < 10; i++)
@@ -50,16 +51,12 @@ namespace WebApplicationAssigment.commons
                     status.Add(false);
                 }
             }
-            else
-            {
-                status = (List<bool>)sessionContent;
-            }
             return status;
         }
 
-        internal static void setAdminBarStatus(HttpRequest request, List<bool> refer)
+        public static void setAdminBarStatus(HttpContext context, List<bool> refer)
         {
-            HttpContext.Current.Session[Constant.ADMIN_NAVIGATION_SESSION] = refer;
+            context.Session[Constant.ADMIN_NAVIGATION_SESSION] = refer;
         }
 
         public static string getAlert(string css_class, string error)

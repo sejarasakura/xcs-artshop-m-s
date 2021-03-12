@@ -11,10 +11,9 @@ namespace WebApplicationAssigment.commons
 {
     public class MapApiProvider
     {
-        public static async Task<dynamic> GetReverseGeocodingAsync(float lag, float lng)
+        public static dynamic GetReverseGeocoding(float lag, float lng)
         {
-            string result = await HttpsLoad.instance
-                .GetAsync(MapApiConstant.GetReverseGeocodingUrl(lag, lng));
+            string result = HttpsLoad.instance.Get(MapApiConstant.GetReverseGeocodingUrl(lag, lng));
 
             return JsonConvert.DeserializeObject(result);
         }

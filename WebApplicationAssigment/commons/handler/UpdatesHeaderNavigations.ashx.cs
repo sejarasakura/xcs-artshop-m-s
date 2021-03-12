@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
+using System.Web.SessionState;
 
 namespace WebApplicationAssigment.commons.handler
 {
     /// <summary>
     /// Summary description for UpdatesHeaderNavigations
     /// </summary>
-    public class UpdatesHeaderNavigations : IHttpHandler
+    public class UpdatesHeaderNavigations : IHttpHandler, IRequiresSessionState
     {
 
         public void ProcessRequest(HttpContext context)
         {
-
             context.Response.ContentType = "text/plain";
             string count = context.Request.QueryString["c"] != null ? context.Request.QueryString["c"].ToString() : "";
             if (count.Count() == 0)
@@ -29,8 +29,8 @@ namespace WebApplicationAssigment.commons.handler
                 return;
             }
             int x = int.Parse(count);
-            List<bool> refer = Functions.getAdminBarStatus(context.Request);
-            Functions.setAdminBarStatus(context.Request, refer);
+            List<bool> refer = Functions.getAdminBarStatus(context);
+            Functions.setAdminBarStatus(context, refer);
             context.Response.Write("Count is done");
         }
 

@@ -24,15 +24,6 @@ namespace WebApplicationAssigment.pages.main.Authentication.Widget
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden form_latlng;
 
         /// <summary>
-        /// to_latlng control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden to_latlng;
-
-        /// <summary>
         /// form_address control.
         /// </summary>
         /// <remarks>
@@ -40,6 +31,15 @@ namespace WebApplicationAssigment.pages.main.Authentication.Widget
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden form_address;
+
+        /// <summary>
+        /// to_latlng control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden to_latlng;
 
         /// <summary>
         /// to_address control.
