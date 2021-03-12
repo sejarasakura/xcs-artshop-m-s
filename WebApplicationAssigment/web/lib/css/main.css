@@ -8,3 +8,51 @@
     line-height: 30px;
     color: rgba(132,137,145,1);
 }
+
+.center-full-pages {
+    width: 100%;
+    min-height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(calc(50vw - 50%), calc(50vh - 50%));
+    background-color: rgba(10, 10, 10, 0.6);
+    z-index: 100000;
+    transition: all 2s linear;
+}
+
+a.no-decolation {
+    text-decoration: none;
+}
+
+    a.no-decolation:hover {
+        text-decoration: none;
+    }
+
+
+.custom-scrollbar-js,
+.custom-scrollbar-css {
+    overflow-y: visible;
+}
+
+
+/* Custom Scrollbar using CSS */
+.custom-scrollbar-css {
+    overflow-y: scroll;
+}
+
+    /* scrollbar width */
+    .custom-scrollbar-css::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    /* scrollbar track */
+    .custom-scrollbar-css::-webkit-scrollbar-track {
+        background: #eee;
+    }
+
+    /* scrollbar handle */
+    .custom-scrollbar-css::-webkit-scrollbar-thumb {
+        border-radius: 1rem;
+        background-color: #aaa;
+    }

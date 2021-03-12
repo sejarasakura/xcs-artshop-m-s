@@ -15,20 +15,11 @@ namespace WebApplicationAssigment.pages.main.ArtShop
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            init_data();
         }
 
         protected void init_data()
         {
-            try
-            {
-                int id = Int32.Parse(Request["id"]);
-                using (ArtShopEntities db = new ArtShopEntities())
-                {
-                    art = db.Arts.Find(id); 
-                }
-            }
-            catch { }
+
         }
 
         protected void btnaddtocart_Click(object sender, EventArgs e)

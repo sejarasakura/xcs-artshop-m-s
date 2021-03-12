@@ -15,6 +15,15 @@ namespace WebApplicationAssigment.pages.main.Artist.content
     {
 
         /// <summary>
+        /// StartPageSM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebApplicationAssigment.pages.widget.StartPageSM StartPageSM;
+
+        /// <summary>
         /// GridView1 control.
         /// </summary>
         /// <remarks>
@@ -31,5 +40,14 @@ namespace WebApplicationAssigment.pages.main.Artist.content
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+
+        /// <summary>
+        /// EndPagesSM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebApplicationAssigment.pages.widget.EndPagesSM EndPagesSM;
     }
 }

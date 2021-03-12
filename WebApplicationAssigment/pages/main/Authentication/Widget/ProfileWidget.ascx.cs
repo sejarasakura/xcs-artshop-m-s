@@ -14,6 +14,14 @@ namespace WebApplicationAssigment.pages.widget
         protected MembershipUser viewMember;
         protected MembershipUser loginMember;
         protected bool isAdminLogin = false;
+        protected string type = "#general";
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            if (Session["AccountMenuSession"] == null)
+                Session["AccountMenuSession"] = type;
+            else
+                type = (string)Session["AccountMenuSession"];
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             string[] role = Roles.GetRolesForUser(Functions.getLoginUser().UserName);
@@ -21,17 +29,6 @@ namespace WebApplicationAssigment.pages.widget
             isAdminLogin = role.Contains("Administrator");
             viewMember = getUsers();
             loginMember = Functions.getLoginUser();
-            setAccesbility();
-        }
-
-        
-        protected void setAccesbility()
-        {
-            TextBox emails = (TextBox)LoginView1.FindControl("Emails");
-            TextBox firstName = (TextBox)LoginView1.FindControl("firstName");
-            TextBox lastName = (TextBox)LoginView1.FindControl("lastName");
-
-            emails.ReadOnly = true;
         }
         protected MembershipUser getUsers()
         {
