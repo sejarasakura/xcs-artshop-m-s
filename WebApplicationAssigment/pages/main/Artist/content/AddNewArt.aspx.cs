@@ -53,5 +53,10 @@ namespace WebApplicationAssigment.pages.main.Artist.content
         {
 
         }
+
+        protected void NonVirtual_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -60,14 +60,14 @@
                 
             <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
                 <ItemTemplate>
-                    <p class="mb-1"><a href="#!" class="card-link-secondary"><%# Eval("name") %></a></p>
+                    <p class="mb-1"><a href="?cid=<%# Eval("id") %>" class="card-link-secondary"><span style='background-color: <%# Eval("color") %>' class="badge mr-1"><%# Eval("name") %></span></a></p>
                 </ItemTemplate>
             </asp:Repeater>
                 <asp:SqlDataSource
                     ID="SqlDataSource1"
                     runat="server"
                     ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
-                    SelectCommand="SELECT * FROM Category">
+                    SelectCommand="SELECT * FROM Category ORDER BY permission_level DESC">
                 </asp:SqlDataSource>
             </div>
 
@@ -106,7 +106,7 @@
             <%
             using (ArtShopEntities db = new ArtShopEntities())
             {
-                arts = db.Arts.ToArray();
+                Art[] arts = db.Arts.ToArray();
                 for (i = 0; i < arts.Length; i++)
                 {
             %>
@@ -125,12 +125,10 @@
                         </div>
 
                         <div class="text-center pt-4">
-
                             <h5 class="mb-0"><%= arts[i].title%></h5>
                             <h6 class="mb-3">BY <%= arts[i].Artist.aspnet_Users.UserExtension.first_name %> <%= arts[i].Artist.aspnet_Users.UserExtension.last_name %></h6>
-                            <a href="#" class="btn btn-primary btn-sm mr-1 waves-effect waves-light"><i class='fas fa-cart-plus'></i></a>
+                            <a href="AddToCart.ashx?pid=<%= arts[i].id %>" class="btn btn-primary btn-sm mr-1 waves-effect waves-light"><i class='fas fa-cart-plus'></i></a>
                             <a href="<%= Constant.ARTSHOP_URL %>/ArtShop_Cust_Details.aspx?id=<%= arts[i].id %>" class="btn btn-light btn-sm waves-effect waves-light"><i class="fas fa-info-circle pr-2"></i>Details</a>
-
                         </div>
 
                     </div>

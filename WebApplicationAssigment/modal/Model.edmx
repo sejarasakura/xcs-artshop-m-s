@@ -201,7 +201,8 @@
           <Property Name="cart_id" Type="int" Nullable="false" />
           <Property Name="art_id" Type="int" Nullable="false" />
           <Property Name="availability" Type="int" />
-          <Property Name="add_date" Type="date" />
+          <Property Name="checked" Type="bit" Nullable="false" />
+          <Property Name="add_date" Type="datetime" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -209,7 +210,10 @@
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="description" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="description" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="color" Type="nvarchar" MaxLength="7" Nullable="false" />
+          <Property Name="enable" Type="bit" Nullable="false" />
+          <Property Name="permission_level" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="CategoryDetails">
           <Key>
@@ -713,6 +717,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="virtual" Type="bit" Nullable="false" />
           <Property Name="user_id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="availability" Type="int" />
+          <Property Name="checked" Type="bit" />
           <Property Name="add_date" Type="date" />
         </EntityType>
         <!--Errors Found During Generation:
@@ -739,7 +744,12 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="virtual" Type="bit" Nullable="false" />
           <Property Name="user_id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="availability" Type="int" />
+          <Property Name="checked" Type="bit" />
           <Property Name="add_date" Type="date" />
+          <Property Name="weight_g" Type="int" />
+          <Property Name="height_mm" Type="int" />
+          <Property Name="lenght_mm" Type="int" />
+          <Property Name="width_mm" Type="int" />
         </EntityType>
         <Association Name="FK__Art__artist_id__44952D46">
           <End Role="Artist" Type="Self.Artist" Multiplicity="1" />
@@ -909,7 +919,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CartDetai__art_i__41B8C09B">
+        <Association Name="FK__CartDetai__art_i__2882FE7D">
           <End Role="Art" Type="Self.Art" Multiplicity="1" />
           <End Role="CartDetails" Type="Self.CartDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -921,7 +931,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CartDetai__cart___40058253">
+        <Association Name="FK__CartDetai__cart___278EDA44">
           <End Role="Cart" Type="Self.Cart" Multiplicity="1" />
           <End Role="CartDetails" Type="Self.CartDetails" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1756,6 +1766,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
     [vw_customer_cart].[virtual] AS [virtual], 
     [vw_customer_cart].[user_id] AS [user_id], 
     [vw_customer_cart].[availability] AS [availability], 
+    [vw_customer_cart].[checked] AS [checked], 
     [vw_customer_cart].[add_date] AS [add_date]
     FROM [dbo].[vw_customer_cart] AS [vw_customer_cart]</DefiningQuery>
           </EntitySet>
@@ -1771,7 +1782,12 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
     [vw_customer_cart2].[virtual] AS [virtual], 
     [vw_customer_cart2].[user_id] AS [user_id], 
     [vw_customer_cart2].[availability] AS [availability], 
-    [vw_customer_cart2].[add_date] AS [add_date]
+    [vw_customer_cart2].[checked] AS [checked], 
+    [vw_customer_cart2].[add_date] AS [add_date], 
+    [vw_customer_cart2].[weight_g] AS [weight_g], 
+    [vw_customer_cart2].[height_mm] AS [height_mm], 
+    [vw_customer_cart2].[lenght_mm] AS [lenght_mm], 
+    [vw_customer_cart2].[width_mm] AS [width_mm]
     FROM [dbo].[vw_customer_cart2] AS [vw_customer_cart2]</DefiningQuery>
           </EntitySet>
           <AssociationSet Name="FK__Art__artist_id__44952D46" Association="Self.FK__Art__artist_id__44952D46">
@@ -1830,11 +1846,11 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Cart" EntitySet="Cart" />
           </AssociationSet>
-          <AssociationSet Name="FK__CartDetai__art_i__41B8C09B" Association="Self.FK__CartDetai__art_i__41B8C09B">
+          <AssociationSet Name="FK__CartDetai__art_i__2882FE7D" Association="Self.FK__CartDetai__art_i__2882FE7D">
             <End Role="Art" EntitySet="Art" />
             <End Role="CartDetails" EntitySet="CartDetails" />
           </AssociationSet>
-          <AssociationSet Name="FK__CartDetai__cart___40058253" Association="Self.FK__CartDetai__cart___40058253">
+          <AssociationSet Name="FK__CartDetai__cart___278EDA44" Association="Self.FK__CartDetai__cart___278EDA44">
             <End Role="Cart" EntitySet="Cart" />
             <End Role="CartDetails" EntitySet="CartDetails" />
           </AssociationSet>
@@ -2722,9 +2738,10 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="cart_id" Type="Int32" Nullable="false" />
           <Property Name="art_id" Type="Int32" Nullable="false" />
           <Property Name="availability" Type="Int32" />
-          <Property Name="add_date" Type="DateTime" Precision="0" />
+          <Property Name="add_date" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Art" Relationship="ArtShopModel.FK__CartDetai__art_i__41B8C09B" FromRole="CartDetail" ToRole="Art" />
           <NavigationProperty Name="Cart" Relationship="ArtShopModel.FK__CartDetai__cart___40058253" FromRole="CartDetail" ToRole="Cart" />
+          <Property Name="checked" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -2732,8 +2749,11 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Arts1" Relationship="ArtShopModel.CategoryDetails" FromRole="Category" ToRole="Art" />
+          <Property Name="color" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
+          <Property Name="enable" Type="Boolean" Nullable="false" />
+          <Property Name="permission_level" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -3589,6 +3609,11 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="user_id" Type="Guid" Nullable="false" />
           <Property Name="availability" Type="Int32" />
           <Property Name="add_date" Type="DateTime" Precision="0" />
+          <Property Name="checked" Type="Boolean" />
+          <Property Name="weight_g" Type="Int32" />
+          <Property Name="height_mm" Type="Int32" />
+          <Property Name="lenght_mm" Type="Int32" />
+          <Property Name="width_mm" Type="Int32" />
         </EntityType>
         <EntityType Name="vw_customer_cart">
           <Key>
@@ -3613,6 +3638,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="user_id" Type="Guid" Nullable="false" />
           <Property Name="availability" Type="Int32" />
           <Property Name="add_date" Type="DateTime" Precision="0" />
+          <Property Name="checked" Type="Boolean" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -3939,6 +3965,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <EntitySetMapping Name="CartDetails">
             <EntityTypeMapping TypeName="ArtShopModel.CartDetail">
               <MappingFragment StoreEntitySet="CartDetails">
+                <ScalarProperty Name="checked" ColumnName="checked" />
                 <ScalarProperty Name="add_date" ColumnName="add_date" />
                 <ScalarProperty Name="availability" ColumnName="availability" />
                 <ScalarProperty Name="art_id" ColumnName="art_id" />
@@ -3949,6 +3976,9 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="ArtShopModel.Category">
               <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="permission_level" ColumnName="permission_level" />
+                <ScalarProperty Name="enable" ColumnName="enable" />
+                <ScalarProperty Name="color" ColumnName="color" />
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -4366,6 +4396,11 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <EntitySetMapping Name="vw_customer_cart2">
             <EntityTypeMapping TypeName="ArtShopModel.vw_customer_cart2">
               <MappingFragment StoreEntitySet="vw_customer_cart2">
+                <ScalarProperty Name="width_mm" ColumnName="width_mm" />
+                <ScalarProperty Name="lenght_mm" ColumnName="lenght_mm" />
+                <ScalarProperty Name="height_mm" ColumnName="height_mm" />
+                <ScalarProperty Name="weight_g" ColumnName="weight_g" />
+                <ScalarProperty Name="checked" ColumnName="checked" />
                 <ScalarProperty Name="add_date" ColumnName="add_date" />
                 <ScalarProperty Name="availability" ColumnName="availability" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
@@ -4383,6 +4418,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <EntitySetMapping Name="vw_customer_cart">
             <EntityTypeMapping TypeName="ArtShopModel.vw_customer_cart">
               <MappingFragment StoreEntitySet="vw_customer_cart">
+                <ScalarProperty Name="checked" ColumnName="checked" />
                 <ScalarProperty Name="add_date" ColumnName="add_date" />
                 <ScalarProperty Name="availability" ColumnName="availability" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />

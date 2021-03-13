@@ -1,4 +1,5 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.EntityFrameworkCore.Design.3.1.13\build\net461\Microsoft.EntityFrameworkCore.Design.props" Condition="Exists('..\packages\Microsoft.EntityFrameworkCore.Design.3.1.13\build\net461\Microsoft.EntityFrameworkCore.Design.props')" />
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -67,10 +68,58 @@
     <Reference Include="Microsoft.AspNetCore.Routing.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNetCore.Routing.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Routing.Abstractions.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.1\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.HashCode.1.1.1\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=3.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.EntityFrameworkCore, Version=3.1.13.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.3.1.13\lib\netstandard2.0\Microsoft.EntityFrameworkCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.Abstractions, Version=3.1.13.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.Abstractions.3.1.13\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.Design, Version=3.1.13.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.Design.3.1.13\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.Relational, Version=3.1.13.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.EntityFrameworkCore.Relational.3.1.13\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Relational.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Abstractions, Version=3.1.13.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Abstractions.3.1.13\lib\netstandard2.0\Microsoft.Extensions.Caching.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Caching.Memory, Version=3.1.13.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Caching.Memory.3.1.13\lib\netstandard2.0\Microsoft.Extensions.Caching.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=3.1.13.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.3.1.13\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=3.1.13.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Abstractions.3.1.13\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=3.1.13.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Configuration.Binder.3.1.13\lib\netstandard2.0\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=3.1.13.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.3.1.13\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=3.1.13.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.3.1.13\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=3.1.13.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.3.1.13\lib\netstandard2.0\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=3.1.13.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.3.1.13\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=3.1.13.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.3.1.13\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Extensions.Primitives, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Primitives.5.0.0\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
@@ -95,27 +144,55 @@
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
+    <Reference Include="System.Collections.Immutable, Version=1.2.5.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.1.7.1\lib\net461\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.7.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration.ConfigurationManager, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Configuration.ConfigurationManager.4.6.0\lib\net461\System.Configuration.ConfigurationManager.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.OracleClient" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.7.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
     <Reference Include="System.IO.Pipelines, Version=5.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.IO.Pipelines.5.0.1\lib\net461\System.IO.Pipelines.dll</HintPath>
     </Reference>
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net" />
     <Reference Include="System.Numerics" />
     <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection.TypeExtensions, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Reflection.TypeExtensions.4.6.0\lib\net461\System.Reflection.TypeExtensions.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.4.6.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Permissions, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Permissions.4.6.0\lib\net461\System.Security.Permissions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.4.6.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Text.Encodings.Web, Version=5.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Text.Encodings.Web.5.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
     </Reference>
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -151,6 +228,19 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="Z.EntityFramework.Extensions, Version=4.0.106.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Z.EntityFramework.Extensions.4.0.106\lib\net45\Z.EntityFramework.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Z.EntityFramework.Extensions.EFCore, Version=3.1.23.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Z.EntityFramework.Extensions.EFCore.3.1.23\lib\netstandard2.0\Z.EntityFramework.Extensions.EFCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Z.EntityFramework.Plus.EFCore, Version=3.1.23.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Z.EntityFramework.Plus.EFCore.3.1.23\lib\netstandard2.0\Z.EntityFramework.Plus.EFCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Z.Expressions.Eval, Version=4.0.34.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Z.Expressions.Eval.4.0.34\lib\net45\Z.Expressions.Eval.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\ArtShop_log.ldf">
@@ -184,6 +274,7 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="icons.ico" />
     <Content Include="pages\diagram_reader\ImageViewer.aspx" />
     <Content Include="pages\main\admin\BestArtReport.aspx" />
     <Content Include="pages\main\admin\CreateRole.aspx" />
@@ -199,6 +290,7 @@
     <Content Include="pages\main\Artist\content\AddNewArt.aspx" />
     <Content Include="pages\main\Artist\content\ReadUpdateDeleteArt.aspx" />
     <Content Include="pages\main\Artist\content\ViewArtSales.aspx" />
+    <Content Include="pages\main\Artist\widget\AddUpdatesCategory.ascx" />
     <Content Include="pages\main\Artist\widget\title.ascx" />
     <Content Include="App_Data\ArtShop.mdf" />
     <Content Include="assets\image\background\CompanyLogo.png" />
@@ -228,6 +320,8 @@
     <Content Include="pages\main\Authentication\Profile\MyAccount.aspx" />
     <Content Include="pages\main\Authentication\Profile\Change Password.aspx" />
     <Content Include="pages\main\Authentication\Login.aspx" />
+    <Content Include="pages\main\Authentication\Profile\MyGalley.aspx" />
+    <Content Include="pages\main\Authentication\Profile\MyOrder.aspx" />
     <Content Include="pages\main\Authentication\Register.aspx" />
     <Content Include="pages\main\Authentication\Test.aspx" />
     <Content Include="pages\main\Authentication\Widget\AddressPicker.ascx" />
@@ -238,7 +332,10 @@
     <Content Include="pages\main\Authentication\Widget\ProfileCustomer.ascx" />
     <Content Include="pages\main\Authentication\Widget\ProfileGeneral.ascx" />
     <Content Include="pages\main\Authentication\Widget\ProfileCourier.ascx" />
+    <Content Include="pages\main\Delivery\Delivery.aspx" />
+    <Content Include="pages\main\Delivery\widget\DeliveryChain.ascx" />
     <Content Include="pages\main\Home.aspx" />
+    <Content Include="pages\Payment\CheckOut.aspx" />
     <Content Include="pages\Payment\CreditAndDebit.aspx" />
     <Content Include="pages\Payment\DeliveryInformation.aspx" />
     <Content Include="pages\Payment\OnlineBanking.aspx" />
@@ -292,6 +389,7 @@
     <Content Include="web\lib\js\_functions.js" />
     <Content Include="pages\main\Authentication\updatesProfilesSessions.ashx" />
     <Content Include="pages\main\ArtShop\DeleteCart.ashx" />
+    <Content Include="pages\main\ArtShop\AddToCart.ashx" />
     <None Include="Scripts\jquery-3.5.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -547,6 +645,13 @@
     <Compile Include="pages\main\Artist\content\ViewArtSales.aspx.designer.cs">
       <DependentUpon>ViewArtSales.aspx</DependentUpon>
     </Compile>
+    <Compile Include="pages\main\Artist\widget\AddUpdatesCategory.ascx.cs">
+      <DependentUpon>AddUpdatesCategory.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\Artist\widget\AddUpdatesCategory.ascx.designer.cs">
+      <DependentUpon>AddUpdatesCategory.ascx</DependentUpon>
+    </Compile>
     <Compile Include="pages\main\Artist\widget\title.ascx.cs">
       <DependentUpon>title.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -628,6 +733,9 @@
     <Compile Include="pages\main\admin\widget\AdminNav.ascx.designer.cs">
       <DependentUpon>AdminNav.ascx</DependentUpon>
     </Compile>
+    <Compile Include="pages\main\ArtShop\AddToCart.ashx.cs">
+      <DependentUpon>AddToCart.ashx</DependentUpon>
+    </Compile>
     <Compile Include="pages\main\ArtShop\ArtShop_Customer.aspx.cs">
       <DependentUpon>ArtShop_Customer.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -693,6 +801,20 @@
     </Compile>
     <Compile Include="pages\main\Authentication\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\Authentication\Profile\MyGalley.aspx.cs">
+      <DependentUpon>MyGalley.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\Authentication\Profile\MyGalley.aspx.designer.cs">
+      <DependentUpon>MyGalley.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\Authentication\Profile\MyOrder.aspx.cs">
+      <DependentUpon>MyOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\Authentication\Profile\MyOrder.aspx.designer.cs">
+      <DependentUpon>MyOrder.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\main\Authentication\Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
@@ -767,6 +889,20 @@
     <Compile Include="pages\main\Authentication\Widget\ProfileCourier.ascx.designer.cs">
       <DependentUpon>ProfileCourier.ascx</DependentUpon>
     </Compile>
+    <Compile Include="pages\main\Delivery\Delivery.aspx.cs">
+      <DependentUpon>Delivery.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\Delivery\Delivery.aspx.designer.cs">
+      <DependentUpon>Delivery.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="pages\main\Delivery\widget\DeliveryChain.ascx.cs">
+      <DependentUpon>DeliveryChain.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\main\Delivery\widget\DeliveryChain.ascx.designer.cs">
+      <DependentUpon>DeliveryChain.ascx</DependentUpon>
+    </Compile>
     <Compile Include="pages\main\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -780,6 +916,13 @@
     </Compile>
     <Compile Include="pages\master\Master.Master.designer.cs">
       <DependentUpon>Master.Master</DependentUpon>
+    </Compile>
+    <Compile Include="pages\Payment\CheckOut.aspx.cs">
+      <DependentUpon>CheckOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="pages\Payment\CheckOut.aspx.designer.cs">
+      <DependentUpon>CheckOut.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\Payment\CreditAndDebit.aspx.cs">
       <DependentUpon>CreditAndDebit.aspx</DependentUpon>
@@ -956,6 +1099,9 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>icons.ico</ApplicationIcon>
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
@@ -991,6 +1137,7 @@
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
     <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.EntityFrameworkCore.Design.3.1.13\build\net461\Microsoft.EntityFrameworkCore.Design.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.EntityFrameworkCore.Design.3.1.13\build\net461\Microsoft.EntityFrameworkCore.Design.props'))" />
   </Target>
   <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
