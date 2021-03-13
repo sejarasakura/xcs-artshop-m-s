@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.SessionState;
 using WebApplicationAssigment.modal;
 
 namespace WebApplicationAssigment.commons
@@ -9,7 +10,7 @@ namespace WebApplicationAssigment.commons
     /// <summary>
     /// Summary description for UserProfilePicture
     /// </summary>
-    public class UserProfilePicture : IHttpHandler
+    public class UserProfilePicture : IHttpHandler, IRequiresSessionState
     {
 
         public void ProcessRequest(HttpContext context)

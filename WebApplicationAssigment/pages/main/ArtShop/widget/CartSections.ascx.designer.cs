@@ -7,29 +7,38 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplicationAssigment.pages.widget
+namespace WebApplicationAssigment.pages.main.ArtShop
 {
 
 
-    public partial class ProfileWidget
+    public partial class CartSections
     {
 
         /// <summary>
-        /// LoginView2 control.
+        /// NoCartFound control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LoginView LoginView2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl NoCartFound;
 
         /// <summary>
-        /// LoginView1 control.
+        /// GotCart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LoginView LoginView1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl GotCart;
+
+        /// <summary>
+        /// CheckBox1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox CheckBox1;
     }
 }

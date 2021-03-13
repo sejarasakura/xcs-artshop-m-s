@@ -16,9 +16,5 @@ namespace WebApplicationAssigment.pages.main.Profile
 
         }
 
-        protected void Login1_LoggedIn(object sender, EventArgs e)
-        {
-            Response.Redirect(Constant.HOME_URL);
-        }
     }
 }
