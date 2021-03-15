@@ -52,12 +52,9 @@
                     <p class="mb-1 font-weight-light">State: <span class="font-italic"> <%=addresss[i].state %> </span></p>
                     <p class="mb-1 font-weight-light">Poscode: <span class="font-italic"> <%=addresss[i].poscode %> </span></p>
                     <p class="mb-1 font-weight-light">Country: <span class="font-italic"> <%=addresss[i].country %> </span></p>
-                    <a href="MyAccount.aspx?<%= param_type == "edit"? "": "type=edit&id=" + addresss[i].id %>" class="btn btn-lg btn-warning">
-                        <%= param_type != "edit"? "EDIT": "CANCEL" %></a>
-                    <a href="MyAccount.aspx?<%= "type=remove&id=" + addresss[i].id %>" class="btn btn-lg btn-danger">
-                        Remove</a>
-                    <a href="MyAccount.aspx?<%= param_type == "show"? "": "type=show&id=" + addresss[i].id %>" class="btn btn-success">
-                        <%= param_type != "show"? "SHOW IN MAP": "CANCEL" %></a>
+                    <a href="MyAccount.aspx?<%= "type=remove&id=" + addresss[i].id %>" class="btn btn-lg btn-danger">Remove</a>
+                    <a href="MyAccount.aspx?<%= param_type == "show" && param_id == addresss[i].id.ToString() ? "" : "type=show&id=" + addresss[i].id %>" class="btn btn-success">
+                        <%= param_type == "show" && param_id == addresss[i].id.ToString()? "CANCEL" : "SHOW IN MAP" %></a>
                   </div>
                 </div>
             <%
@@ -68,7 +65,7 @@
                 style="margin-bottom: 20px;margin-top: 20px" 
                 ID="procide_map" 
                 runat="server" 
-                Text="Add New Address" 
+                Text="Add New Address"
                 CssClass="btn btn-info"
                 ValidationGroup="ProfileAddress"
                 OnClick="procide_map_Click"/>
@@ -90,7 +87,14 @@
         
         <script>
             function initMap() {
-                const myLatLng = { lat: 3.140853, lng: 101.693207 };
+                <% if (this.display_in_map)
+            { %>
+                const myLatLng = { lat: <%= address.latitude %>, lng: <%= address.longitude %> };
+                <% }
+            else
+            { %>
+                    const myLatLng = { lat: 3.140853, lng: 101.693207 };
+                <% } %>
                 const geocoder = new google.maps.Geocoder();
 
                 const map = new google.maps.Map(document.getElementById("map"), {
@@ -135,8 +139,33 @@
                     fitCurrentBound(marker_form.getPosition(), map);
                     writeToInput(marker_form.getPosition(), input_form_lat);
                 });
-
-                fitCurrentBound(marker_form.getPosition(), map);
+                <%if(!this.display_in_map){ %>
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        (position) => {
+                            const pos = {
+                                lat: position.coords.latitude,
+                                lng: position.coords.longitude
+                            };
+                            marker_form.setPosition(pos);
+                            map.setCenter(pos);
+                            reverseLatLng(geocoder, input_form, marker_form, map, input_form_address);
+                            writeToInput(marker_form.getPosition(), input_form_lat);
+                        },
+                        () => {
+                            handleLocationError(true, infoWindow, map.getCenter(), map);
+                        }
+                    );
+                } else {
+                    // Browser doesn't support Geolocation
+                    handleLocationError(false, infoWindow, map.getCenter(), map);
+                }
+                <%}else{ %>
+                marker_form.setPosition(myLatLng);
+                <%} %>
+                reverseLatLng(geocoder, input_form, marker_form, map, input_form_address);
+                writeToInput(marker_form.getPosition(), input_form_lat);
+                fitCurrentBound(myLatLng, map);
             }
 
             function reverseLatLng(geocoder, input, marker, map, input_address) {
@@ -194,6 +223,15 @@
                 map.fitBounds(bounds);
             }
 
+            function handleLocationError(browserHasGeolocation, infoWindow, pos, map) {
+                infoWindow.setPosition(pos);
+                infoWindow.setContent(
+                    browserHasGeolocation
+                        ? "Error: The Geolocation service failed."
+                        : "Error: Your browser doesn't support geolocation."
+                );
+                infoWindow.open(map);
+            }
         </script>
     </div>
 </div>

@@ -13,5 +13,14 @@ namespace WebApplicationAssigment.pages.main.Authentication
 
     public partial class Test
     {
+
+        /// <summary>
+        /// AddressPicker control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::WebApplicationAssigment.pages.main.Authentication.Widget.AddressPicker AddressPicker;
     }
 }

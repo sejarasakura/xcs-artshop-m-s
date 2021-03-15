@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
 using System.Web.Security;
 using System.Web.SessionState;
 using WebApplicationAssigment.commons;
@@ -13,7 +14,11 @@ namespace WebApplicationAssigment
 
         protected void Application_Start(object sender, EventArgs e)
         {
+            HttpConfiguration config = GlobalConfiguration.Configuration;
 
+            config.Formatters.JsonFormatter
+                        .SerializerSettings
+                        .ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
         }
 
         protected void Session_Start(object sender, EventArgs e)
@@ -21,6 +26,7 @@ namespace WebApplicationAssigment
             if (HttpContext.Current.Request.IsAuthenticated)
             {
                 Functions.EnqueueNewNotifications(new Notifications(
+                    1,
                     Notifications.SUCCESS_TYPE,
                     "Welcome "+ Functions.getLoginUser().UserName + " !!",
                     "System initalizes complete, welcome back to sketch. <a style='color: rgb(90, 203, 255)' href='" + Constant.ARTSHOP_URL + "/ArtShop_Customer.aspx'>Having shops now</a>"));

@@ -10,6 +10,7 @@ namespace WebApplicationAssigment.pages.main.ArtShop
 {
     public partial class ArtShop_Customer : System.Web.UI.Page
     {
+        public Category cat;
         public Art[] arts;
         public int i;
         protected void Page_Load(object sender, EventArgs e)

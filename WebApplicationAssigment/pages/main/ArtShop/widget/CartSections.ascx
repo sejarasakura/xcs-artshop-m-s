@@ -17,88 +17,85 @@
             <div class="mb-3">
                 <div class="pt-4 wish-list">
 
-                    <h5 class="mb-4">Cart (<span>2</span> items / <span>2</span> items)</h5>
+                    <h5 class="mb-4">Cart (<span><asp:Label ID="lblCount" runat="server" Text="Label"></asp:Label></span> items / <span>
+                        <asp:Label ID="lblTotal" runat="server" Text="Label"></asp:Label></span> items)</h5>
                     <!-- Cart Items -->
-                    <%
-                        using (ArtShopEntities db = new ArtShopEntities())
-                        {
-                            Painting paint;
-                            string lwh;
-                            vw_customer_cart2[] arts = db.vw_customer_cart2.Where(q => q.user_id == id).ToArray();
-                            for (int i = 0; i < arts.Length; i++)
-                            {
-                                paint = db.Paintings.Find(arts[i].id);
+                    <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
+                        <ItemTemplate>
+                            <!-- START -->
 
-                                    lwh = (paint == null ? "N/A * " : paint.lenght_mm + " mm * ") +
-                                        (paint == null ? "N/A * " : paint.width_mm + " mm * ") +
-                                        (paint == null ? "N/A" : paint.height_mm + " mm ");
-                    %>
-                    <div>
-                        <asp:CheckBox ID="CheckBox1" runat="server" AutoPostBack="True" CommandName='<%#Eval("arts[i].id")%>' OnCheckedChanged="CheckBox1_CheckedChanged" />
-                        <div class="row mb-4">
-                            <div class="col-md-5 col-lg-3 col-xl-3">
-                                <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
-                                    <img class="img-fluid w-100" src="<%= arts[i].image %>" alt="Sample">
-                                    <a href="#!">
-                                        <div class="mask">
-                                            <img class="img-fluid w-100" src="<%= arts[i].image %>">
-                                            <div class="mask rgba-black-slight"></div>
+                            <div>
+                                <asp:CheckBox
+                                    Checked='<%# Eval("checked") %>'
+                                    ID="CheckBox1"
+                                    runat="server"
+                                    AutoPostBack="True"
+                                    CommandName='<%# Eval("id")%>'
+                                    OnCheckedChanged="CheckBox1_CheckedChanged" />
+                                <div class="row mb-4">
+                                    <div class="col-md-5 col-lg-3 col-xl-3">
+                                        <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
+                                            <img class="img-fluid w-100" src="<%# Eval("image") %>" alt="Sample">
+                                            <a href="#!">
+                                                <div class="mask">
+                                                    <img class="img-fluid w-100" src="<%# Eval("image") %>">
+                                                    <div class="mask rgba-black-slight"></div>
+                                                </div>
+                                            </a>
                                         </div>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-7 col-lg-9 col-xl-9">
-                                <div>
-                                    <div class="d-flex justify-content-between">
+                                    </div>
+                                    <div class="col-md-7 col-lg-9 col-xl-9">
                                         <div>
-                                            <h5>Blue denim shirt</h5>
-                                            <p class="mb-1 text-muted text-uppercase small">Creation Date: </p>
-                                            <p class="mb-1 text-muted text-uppercase small">Weight: <%= paint == null?"none": paint.weight_g + "g"%></p>
-                                            <p class="mb-1 text-muted text-uppercase small">L &times; W &times; H: <%= lwh%></p>
-                                            <p class="mb-1 text-muted text-uppercase small">Virtual: <%= arts[i].@virtual? "Yes": "No"%></p>
-                                        </div>
-                                        <div>
-                                            <div class="def-number-input number-input safari_only mb-0 w-100">
-                                                <input class="quantity" min="0" name="quantity" value="1" type="number">
+                                            <div class="d-flex justify-content-between">
+                                                <div>
+                                                    <h5><%# Eval("title") %></h5>
+                                                    <p class="mb-1 text-muted text-uppercase small">Creation Date: <%# Eval("date") %></p>
+                                                    <p class="mb-1 text-muted text-uppercase small">Weight: <%# Eval("weight_g") + "g"%></p>
+                                                    <p class="mb-1 text-muted text-uppercase small">L &times; W &times; H: <%# createdLWH(Eval("lenght_mm"), Eval("width_mm"), Eval("height_mm"))%></p>
+                                                    <p class="mb-1 text-muted text-uppercase small">Virtual: <%# (bool)Eval("virtual")? "Yes": "No"%></p>
+                                                </div>
+                                                <div>
+                                                    <div class="def-number-input number-input safari_only mb-0 w-100">
+                                                        <asp:TextBox
+                                                            ID="input_number"
+                                                            runat="server"
+                                                            TextMode="Number"
+                                                            CssClass="form-control quantity"
+                                                            OnTextChanged="input_number_TextChanged"
+                                                            CommandName='<%# Eval("id")%>'
+                                                            Enabled='<%# !(bool)Eval("virtual") %>'
+                                                            AutoPostBack="true"
+                                                            Text='<%# Eval("availability") %>' />
+                                                    </div>
+                                                    <small id="passwordHelpBlock" class="form-text text-muted text-center">(Note, 1 piece)
+                                                    </small>
+                                                </div>
                                             </div>
-                                            <small id="passwordHelpBlock" class="form-text text-muted text-center">(Note, 1 piece)
-                                            </small>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <a href="/pages/main/ArtShop/DeleteCart.ashx?cid=<%= cart_id %>&id=<%# Eval("id") %>"
+                                                        type="button"
+                                                        class="card-link-secondary small text-uppercase mr-3 text-danger"><i class="fas fa-trash-alt mr-1"></i>Remove item</a>
+                                                </div>
+                                                <p class="mb-0"><span><strong id="summary">RM <%# Eval("price") %></strong></span></p>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <a href="/pages/main/ArtShop/DeleteCart.ashx?cid=<%= cart_id %>&id=<%= arts[i].id %>" 
-                                                type="button" 
-                                                class="card-link-secondary small text-uppercase mr-3 text-danger"><i class="fas fa-trash-alt mr-1"></i>Remove item</a>
-                                        </div>
-                                        <p class="mb-0"><span><strong id="summary">RM <%= arts[i].price %></strong></span></p>
                                     </div>
                                 </div>
+                                <hr class="mb-4">
                             </div>
-                        </div>
-                    </div>
-                    <hr class="mb-4">
-                    <%
-                            }
-                        }
-                    %>
+                            <!-- END -->
+                        </ItemTemplate>
+                    </asp:Repeater>
+                    <asp:SqlDataSource ID="SqlDataSource1" runat="server"
+                        ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
+                        SelectCommand="SELECT * FROM [vw_customer_cart2] WHERE ([user_id] = @user_id) ORDER BY add_date DESC;">
+                    </asp:SqlDataSource>
                     <!-- Cart Items -->
                     <p class="text-primary mb-0">
-                        <i class="fas fa-info-circle mr-1"></i>Do not delay the purchase, adding
-            items to your cart does not mean booking them.
+                        <i class="fas fa-info-circle mr-1"></i>Do not delay the purchase, adding items to your cart does not mean booking them.
                     </p>
 
-                </div>
-            </div>
-            <!-- Card -->
-
-            <!-- Card -->
-            <div class="mb-3">
-                <div class="pt-4">
-
-                    <h5 class="mb-4">Expected shipping delivery</h5>
-
-                    <p class="mb-0">Thu., 12.03. - Mon., 16.03.</p>
                 </div>
             </div>
             <!-- Card -->
@@ -138,12 +135,21 @@
                     <h5 class="mb-3">The total amount of</h5>
 
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">Temporary amount
-              <span>$25.98</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center px-0">Shipping
-              <span>Gratis</span>
-                        </li>
+
+                        <asp:Repeater ID="Repeater2" runat="server" DataSourceID="SqlDataSource2">
+                            <ItemTemplate>
+                                <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0"><%# Eval("title") %>
+                                    <span>RM <%# (decimal)Eval("price") * ((int)Eval("availability"))%></span>
+                                </li>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                        <asp:SqlDataSource ID="SqlDataSource2" runat="server"
+                            ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
+                            SelectCommand="SELECT * FROM [vw_customer_cart2] WHERE (([checked] = @checked) AND ([user_id] = @user_id)) ORDER BY add_date DESC;">
+                            <SelectParameters>
+                                <asp:Parameter DefaultValue="true" Name="checked" Type="Boolean" />
+                            </SelectParameters>
+                        </asp:SqlDataSource>
                         <li class="list-group-item d-flex justify-content-between align-items-center border-0 px-0 mb-3">
                             <div>
                                 <strong>The total amount of</strong>
@@ -151,11 +157,11 @@
                                     <p class="mb-0">(including VAT)</p>
                                 </strong>
                             </div>
-                            <span><strong>$53.98</strong></span>
+                            <span><strong>
+                                <asp:Label ID="lblTotalPrice" runat="server" Text="Label"></asp:Label></strong></span>
                         </li>
                     </ul>
-
-                    <button type="button" class="btn btn-primary btn-block">go to checkout</button>
+                    <asp:Button ID="btnCheckout" runat="server" Text="go to checkout" CssClass="btn btn-primary from-contol" />
 
                 </div>
             </div>

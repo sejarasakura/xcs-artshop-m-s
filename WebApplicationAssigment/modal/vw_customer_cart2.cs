@@ -25,5 +25,10 @@ namespace WebApplicationAssigment.modal
         public System.Guid user_id { get; set; }
         public Nullable<int> availability { get; set; }
         public Nullable<System.DateTime> add_date { get; set; }
+        public Nullable<bool> @checked { get; set; }
+        public Nullable<int> weight_g { get; set; }
+        public Nullable<int> height_mm { get; set; }
+        public Nullable<int> lenght_mm { get; set; }
+        public Nullable<int> width_mm { get; set; }
     }
 }

@@ -15,6 +15,11 @@ namespace WebApplicationAssigment.pages.main.ArtShop
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            using (ArtShopEntities db = new ArtShopEntities())
+            {
+                art = db.Arts.Find(int.Parse(Request.QueryString["id"]));
+                quantity.Enabled = !art.@virtual;
+            }
         }
 
         protected void init_data()
@@ -24,7 +29,12 @@ namespace WebApplicationAssigment.pages.main.ArtShop
 
         protected void btnaddtocart_Click(object sender, EventArgs e)
         {
-            Functions.addToCart(Request.QueryString["id"], Response);
+            int quan = 1;
+            int.TryParse(this.quantity.Text, out quan);
+            Functions.addToCart(
+                productId: Request.QueryString["id"],
+                Response: Response, 
+                quantity: quan);
         }
     }
 

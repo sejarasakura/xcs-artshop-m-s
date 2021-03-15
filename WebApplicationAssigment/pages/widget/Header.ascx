@@ -20,7 +20,7 @@
             <asp:LoginView ID="LoginView1" runat="server">
                 <AnonymousTemplate>
                     <li class="nav-item">
-                        <a class="nav-link" id="login_button_in_header" href="#">Login</a>
+                        <a class="nav-link" id="login_button_in_header" href="#">Login</a> 
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<%= Constant.AUTH_URL %>/Register.aspx">Sign Up</a>
@@ -33,6 +33,8 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item mt-3" href="<%= Constant.PROFILE_URL %>/MyOrder.aspx">My Order</a>
+                            <a class="dropdown-item mt-3" href="<%= Constant.PROFILE_URL %>/MyAccount.aspx">My Delivery</a>
                             <a class="dropdown-item mt-3" href="<%= Constant.PROFILE_URL %>/MyAccount.aspx">Account Details</a>
                             <a class="dropdown-item mt-3" href="<%= Constant.PROFILE_URL %>/Change Password.aspx">Change Password</a>
                             <a class="dropdown-item mt-3" href="<%= Constant.PROFILE_URL %>/Logout.aspx">Logout</a>

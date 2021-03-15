@@ -20,7 +20,9 @@ namespace WebApplicationAssigment.modal
         public int height_mm { get; set; }
         public int width_mm { get; set; }
         public int lenght_mm { get; set; }
+        public System.Guid source { get; set; }
     
         public virtual Art Art { get; set; }
+        public virtual Address Address { get; set; }
     }
 }
