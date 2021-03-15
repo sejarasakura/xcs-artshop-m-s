@@ -102,40 +102,6 @@ namespace WebApplicationAssigment.pages.main.ArtShop
         {
             return avb_id >= 1 ? "Yes" : "No";
         }
-        protected void btnDeleteEvent(object sender, CommandEventArgs e)
-        {
-            int crow;
-            crow = Convert.ToInt32(e.CommandArgument.ToString());
-            deleterowdata(crow);
-
-            using (ArtShopEntities db = new ArtShopEntities())
-                check_cart_count(db);
-        }
-
-        private void deleterowdata(int rollno)
-        {
-            try
-            {
-                using (ArtShopEntities db = new ArtShopEntities())
-                {
-                    CartDetail c = db.CartDetails.Find(cart_id, rollno);
-                    db.CartDetails.Remove(c);
-                    db.SaveChanges();
-
-                    Functions.EnqueueNewNotifications(new Notifications(
-                        Notifications.SUCCESS_TYPE,
-                        "Deleted Sucessful!!",
-                        "you have remove item form your cart !!"));
-                }
-            }
-            catch (Exception e)
-            {
-                Functions.EnqueueNewNotifications(new Notifications(
-                    Notifications.ERROR_TYPE,
-                    "Deleted Failed!!",
-                    "you have following exception : " + e.Message + " !!"));
-            }
-        }
 
         protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {

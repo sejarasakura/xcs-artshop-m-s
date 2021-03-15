@@ -26,6 +26,7 @@ namespace WebApplicationAssigment
             if (HttpContext.Current.Request.IsAuthenticated)
             {
                 Functions.EnqueueNewNotifications(new Notifications(
+                    1,
                     Notifications.SUCCESS_TYPE,
                     "Welcome "+ Functions.getLoginUser().UserName + " !!",
                     "System initalizes complete, welcome back to sketch. <a style='color: rgb(90, 203, 255)' href='" + Constant.ARTSHOP_URL + "/ArtShop_Customer.aspx'>Having shops now</a>"));

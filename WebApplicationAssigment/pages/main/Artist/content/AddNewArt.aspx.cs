@@ -10,6 +10,7 @@ using WebApplicationAssigment.commons;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using WebApplicationAssigment.pages.main.ArtShop;
+using System.Web.Security;
 
 namespace WebApplicationAssigment.pages.main.Artist.content
 {
@@ -25,7 +26,8 @@ namespace WebApplicationAssigment.pages.main.Artist.content
             using (ArtShopEntities db = new ArtShopEntities())
             {
                 allcats = new List<CategoryCopy>();
-                db.Categories.ToList().ForEach(c => allcats.Add(new CategoryCopy(c)));
+                int p_level = Roles.GetRolesForUser().Contains("Administrator") ? 1 : 0;
+                db.Categories.Where(c => c.enable == true && c.permission_level == p_level).ToList().ForEach(c => allcats.Add(new CategoryCopy(c)));
                 allCatStr = JsonConvert.SerializeObject(allcats);
             }
         }
