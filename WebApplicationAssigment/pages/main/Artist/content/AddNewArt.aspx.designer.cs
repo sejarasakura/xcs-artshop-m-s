@@ -51,22 +51,22 @@ namespace WebApplicationAssigment.pages.main.Artist.content
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
 
         /// <summary>
-        /// Category control.
+        /// txtCategory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList Category;
+        protected global::System.Web.UI.WebControls.TextBox txtCategory;
 
         /// <summary>
-        /// SqlDataSource1 control.
+        /// realCatergory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden realCatergory;
 
         /// <summary>
         /// Discription control.
@@ -150,6 +150,15 @@ namespace WebApplicationAssigment.pages.main.Artist.content
         protected global::System.Web.UI.WebControls.FileUpload xFileUpload;
 
         /// <summary>
+        /// Virtual control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox Virtual;
+
+        /// <summary>
         /// NotVirtualExtensions control.
         /// </summary>
         /// <remarks>
@@ -168,22 +177,49 @@ namespace WebApplicationAssigment.pages.main.Artist.content
         protected global::System.Web.UI.WebControls.TextBox txbQuantity;
 
         /// <summary>
-        /// RequiredFieldValidator7 control.
+        /// ext10 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator7;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ext10;
 
         /// <summary>
-        /// rangeValidator4 control.
+        /// ext9 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator rangeValidator4;
+        protected global::System.Web.UI.WebControls.RangeValidator ext9;
+
+        /// <summary>
+        /// ddlAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlAddress;
+
+        /// <summary>
+        /// SqlDataSource1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+
+        /// <summary>
+        /// Button1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button1;
 
         /// <summary>
         /// txbWeight control.
@@ -195,22 +231,22 @@ namespace WebApplicationAssigment.pages.main.Artist.content
         protected global::System.Web.UI.WebControls.TextBox txbWeight;
 
         /// <summary>
-        /// RequiredFieldValidator5 control.
+        /// ext8 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator5;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ext8;
 
         /// <summary>
-        /// rangeValidator3 control.
+        /// ext7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator rangeValidator3;
+        protected global::System.Web.UI.WebControls.RangeValidator ext7;
 
         /// <summary>
         /// txbLL control.
@@ -222,22 +258,22 @@ namespace WebApplicationAssigment.pages.main.Artist.content
         protected global::System.Web.UI.WebControls.TextBox txbLL;
 
         /// <summary>
-        /// RequiredFieldValidator3 control.
+        /// ext6 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ext6;
 
         /// <summary>
-        /// rangeValidator2 control.
+        /// ext5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator rangeValidator2;
+        protected global::System.Web.UI.WebControls.RangeValidator ext5;
 
         /// <summary>
         /// txbWW control.
@@ -249,22 +285,22 @@ namespace WebApplicationAssigment.pages.main.Artist.content
         protected global::System.Web.UI.WebControls.TextBox txbWW;
 
         /// <summary>
-        /// RequiredFieldValidator2 control.
+        /// ext4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ext4;
 
         /// <summary>
-        /// rangeValidator1 control.
+        /// ext3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator rangeValidator1;
+        protected global::System.Web.UI.WebControls.RangeValidator ext3;
 
         /// <summary>
         /// txbHH control.
@@ -276,31 +312,22 @@ namespace WebApplicationAssigment.pages.main.Artist.content
         protected global::System.Web.UI.WebControls.TextBox txbHH;
 
         /// <summary>
-        /// val1 control.
+        /// ext2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator val1;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ext2;
 
         /// <summary>
-        /// rangeValidator control.
+        /// ext1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RangeValidator rangeValidator;
-
-        /// <summary>
-        /// NonVirtual control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox NonVirtual;
+        protected global::System.Web.UI.WebControls.RangeValidator ext1;
 
         /// <summary>
         /// btnSubmit control.

@@ -32,11 +32,13 @@ namespace WebApplicationAssigment.modal
         public Nullable<System.DateTime> payment_date { get; set; }
         public string payment_meta { get; set; }
         public string notes { get; set; }
+        public Nullable<System.Guid> destinations_id { get; set; }
     
         public virtual aspnet_Users aspnet_Users { get; set; }
         public virtual PaymentMethod PaymentMethod { get; set; }
         public virtual PaymentStatu PaymentStatu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PaymentDetail> PaymentDetails { get; set; }
+        public virtual Address Address { get; set; }
     }
 }

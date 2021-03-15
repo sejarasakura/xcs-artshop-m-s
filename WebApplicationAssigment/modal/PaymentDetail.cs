@@ -19,6 +19,7 @@ namespace WebApplicationAssigment.modal
         public Nullable<int> quantity { get; set; }
         public Nullable<bool> @virtual { get; set; }
         public Nullable<System.DateTime> add_date { get; set; }
+        public double delivery_fee { get; set; }
     
         public virtual Art Art { get; set; }
         public virtual Payment Payment { get; set; }

@@ -5,6 +5,8 @@
 <%@ Register Src="~/pages/widget/EndPagesSM.ascx" TagPrefix="uc1" TagName="EndPagesSM" %>
 
 
+<%@ Import Namespace="WebApplicationAssigment.modal" %>
+<%@ Import Namespace="WebApplicationAssigment.commons" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -43,14 +45,14 @@
                                 mode="multiline"
                                 runat="server" />
                             <asp:RequiredFieldValidator
-                                CssClass="alert alert-danger"
+                                            ForeColor="red"
                                 runat="server"
                                 ID="RequiredFieldValidator1"
                                 ControlToValidate="TitleText"
                                 ValidationGroup="AddNewArt"
                                 ErrorMessage="Please enter your title!" />
                             <asp:RegularExpressionValidator
-                                CssClass="alert alert-danger"
+                                            ForeColor="red"
                                 Display="Dynamic"
                                 ControlToValidate="Discription"
                                 ValidationGroup="AddNewArt"
@@ -61,15 +63,98 @@
                         </div>
                     </div>
                 </div>
+                
+                <div>
+                    <fieldset class="form-group border p-3">
+                        <legend class="w-auto px-2">General</legend>
                 <!--Category-->
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="usr">Category:</label>
-                            <asp:DropDownList ID="Category" runat="server" DataSourceID="SqlDataSource1" DataTextField="name" DataValueField="id" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
-                            </asp:DropDownList>
-                            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [name], [id] FROM [Category]"></asp:SqlDataSource>
+                                <div id="cat_preview" style="margin-bottom: 10px">
+                                </div>
+                                <asp:TextBox
+                                    runat="server"
+                                    data-multiple
+                                    ID="txtCategory"
+                                    ValidationGroup="AddNewArt"
+                                    class="form-control input-lg"
+                                    placeholder="Choose category" />
+                                <input
+                                    type="hidden"
+                                    value="[]"
+                                    id="realCatergory"
+                                    runat="server"/>
+                            <style>
+                                .delete{
+                                    cursor: pointer;
+                                }
+                            </style>
+                                <script>
+                                    var input = document.getElementById("<%= txtCategory.ClientID%>");
+                                    var actualImputs = document.getElementById("<%= realCatergory.ClientID%>");
+                                    var cat_preview = document.getElementById("cat_preview");
+                                    var x_selected = [];
+                                    // Show label but insert value into the input:
+                                    var comboplete = new Awesomplete(input, {
+                                        list: <%= allCatStr %>,
+                                        minChars: 0,
+                                        filter: function (text, input) {
+                                            return Awesomplete.FILTER_CONTAINS(text.value.name, input);
+                                        },
+                                        item: function (text, input) {
+                                            var realImput = input.match(/[^,]*$/)[0];
+                                            var html = '<span style="background-color: ' + text.value.color + '; padding: 5px" class="badge mr-1 card-link-secondary">' + text.value.name + "</span>";
+                                            return Awesomplete.$.create("li", {
+                                                innerHTML: html,
+                                            });
+                                        },
+                                        replace: function (text) {
+                                            if (!x_selected.includes(text.value.id)) {
+                                                x_selected.push(text.value.id)
+                                                var before = this.input.value.match(/^.+,\s*|/)[0];
+                                                this.input.value = "";
+                                                actualImputs.value = JSON.stringify(x_selected);
 
+                                                var innerHTML = '<span style="background-color: ' + text.value.color + '; padding: 5px" class="badge mr-1 card-link-secondary">' + text.value.name + " <span onclick=\"deletedataintcat(this, " + text.value.id + ")\"><i class='delete fa fa-times text-danger' aria-hidden='true'></i></span></span>";
+                                                $(document).ready(function () {
+                                                    $("#cat_preview").append(innerHTML);
+                                                });
+                                            }
+                                        }
+                                    });
+
+                                    Awesomplete.$('#<%= txtCategory.ClientID%>').addEventListener("click", function () {
+                                        if (comboplete.ul.childNodes.length === 0) {
+                                            comboplete.minChars = 0;
+                                            comboplete.evaluate();
+                                        }
+                                        else if (comboplete.ul.hasAttribute('hidden')) {
+                                            comboplete.open();
+                                        }
+                                        else {
+                                            comboplete.close();
+                                        }
+                                    });
+
+                                    function deletedataintcat(t, variable) {
+                                        x_selected.remove(variable);
+                                        actualImputs.value = JSON.stringify(x_selected);
+                                        $(t).parent().hide();
+                                    }
+
+                                    Array.prototype.remove = function () {
+                                        var what, a = arguments, L = a.length, ax;
+                                        while (L && this.length) {
+                                            what = a[--L];
+                                            while ((ax = this.indexOf(what)) !== -1) {
+                                                this.splice(ax, 1);
+                                            }
+                                        }
+                                        return this;
+                                    };
+                                </script>
                         </div>
                     </div>
                 </div>
@@ -77,7 +162,6 @@
                 <!--Discription-->
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="form-group">
                             <label for="usr">Discription:</label>
                             <asp:TextBox
                                 CssClass="form-control"
@@ -88,14 +172,14 @@
                                 mode="multiline"
                                 runat="server" />
                             <asp:RequiredFieldValidator
-                                CssClass="alert alert-danger"
+                                            ForeColor="red"
                                 runat="server"
                                 ID="RequiredFieldValidator4"
                                 ControlToValidate="Discription"
                                 ValidationGroup="AddNewArt"
                                 ErrorMessage="Please enter your description!" />
                             <asp:RegularExpressionValidator
-                                CssClass="alert alert-danger"
+                                            ForeColor="red"
                                 Display="Dynamic"
                                 ControlToValidate="Discription"
                                 ValidationGroup="AddNewArt"
@@ -104,13 +188,11 @@
                                 runat="server"
                                 ErrorMessage="The description only accept max 250 word only" />
                         </div>
-                    </div>
                 </div>
 
                 <!--Price-->
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="form-group">
                             <label for="usr">Price :</label>
                             <asp:TextBox
                                 CssClass="form-control"
@@ -119,14 +201,14 @@
                                 Text=""
                                 runat="server" />
                             <asp:RequiredFieldValidator
-                                CssClass="alert alert-danger"
+                                            ForeColor="red"
                                 runat="server"
                                 ID="RequiredFieldValidator"
                                 ValidationGroup="AddNewArt"
                                 ControlToValidate="Price"
                                 ErrorMessage="Please enter the sales price!" />
                             <asp:RegularExpressionValidator
-                                CssClass="alert alert-danger"
+                                            ForeColor="red"
                                 Display="Dynamic"
                                 ValidationGroup="AddNewArt"
                                 ControlToValidate="Price"
@@ -135,13 +217,11 @@
                                 runat="server"
                                 ErrorMessage="The price too large" />
                         </div>
-                    </div>
                 </div>
 
                 <!--Date Creation-->
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="form-group">
                             <label for="pwd">Date creation:</label>
                             <asp:TextBox
                                 type="date"
@@ -151,20 +231,18 @@
                                 placeholder="Please Enter date creation"
                                 runat="server" />
                             <asp:RequiredFieldValidator
-                                CssClass="alert alert-danger"
+                                            ForeColor="red"
                                 runat="server"
                                 ValidationGroup="AddNewArt"
                                 ID="RequiredFieldValidator6"
                                 ControlToValidate="DateCreation"
                                 ErrorMessage="Please enter date of creation!" />
                         </div>
-                    </div>
                 </div>
 
 
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="form-group">
                             <label for="pwd">Upload Image:</label>
                             <asp:FileUpload
                                 type="file"
@@ -175,6 +253,21 @@
                                 ID="xFileUpload"
                                 placeholder="Upload your profile picture"
                                 runat="server" />
+                        </div>
+                </div>
+                    </fieldset>
+                </div>
+                
+                <!--Toogle switch-->
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="pull-right" style="margin: 10px">
+                            <asp:CheckBox
+                                AutoPostBack="true" Checked="false"
+                                OnCheckedChanged="NonVirtual_CheckedChanged"
+                                ID="Virtual"
+                                runat="server" />
+                            <span style="color: #888">Virtual Product</span>
                         </div>
                     </div>
                 </div>
@@ -195,7 +288,7 @@
                                         placeholder="Please Enter quantity available"
                                         runat="server" />
                                     <asp:RequiredFieldValidator
-                                        ID="RequiredFieldValidator7"
+                                        ID="ext10"
                                         runat="server"
                                         SetFocusOnError="true"
                                         Display="Dynamic"
@@ -204,7 +297,7 @@
                                         ErrorMessage="Number Required"
                                         ForeColor="Red" />
                                     <asp:RangeValidator
-                                        ID="rangeValidator4"
+                                        ID="ext9"
                                         runat="server"
                                         ErrorMessage="*Value too large"
                                         SetFocusOnError="true"
@@ -215,6 +308,36 @@
                                         Type="Integer"
                                         MinimumValue="1"
                                         MaximumValue="999999" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                                <label for="pwd">Shipment source:</label>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <asp:DropDownList 
+                                        ID="ddlAddress" 
+                                        CssClass="form-control"
+                                        runat="server"
+                                        DataSourceID="SqlDataSource1"
+                                        DataTextField="details"
+                                        DataValueField="id" 
+                                        AppendDataBoundItems="true">
+                                        <asp:ListItem Text="Please select" Value="" />
+                                    </asp:DropDownList>
+                                    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT * FROM [vW_users_address] WHERE ([UserId] = @UserId)">
+                                        <SelectParameters>
+                                            
+                                        </SelectParameters>
+                                    </asp:SqlDataSource>
+                                </div>
+                                <div class="col-md-4">
+                                    <asp:Button 
+                                        CssClass="btn btn-success btn-sm"
+                                        OnClick="Button1_Click"
+                                        ID="Button1" 
+                                        runat="server" 
+                                        Text="Add New" />
                                 </div>
                             </div>
                         </div>
@@ -230,7 +353,7 @@
                                         placeholder="Please Enter weight available"
                                         runat="server" />
                                     <asp:RequiredFieldValidator
-                                        ID="RequiredFieldValidator5"
+                                        ID="ext8"
                                         runat="server"
                                         SetFocusOnError="true"
                                         Display="Dynamic"
@@ -239,7 +362,7 @@
                                         ErrorMessage="Number Required"
                                         ForeColor="Red" />
                                     <asp:RangeValidator
-                                        ID="rangeValidator3"
+                                        ID="ext7"
                                         runat="server"
                                         ErrorMessage="Value too large"
                                         SetFocusOnError="true"
@@ -266,7 +389,7 @@
                                         placeholder="Length"
                                         runat="server" />
                                     <asp:RequiredFieldValidator
-                                        ID="RequiredFieldValidator3"
+                                        ID="ext6"
                                         runat="server"
                                         SetFocusOnError="true"
                                         Display="Dynamic"
@@ -275,7 +398,7 @@
                                         ErrorMessage="Number Required"
                                         ForeColor="Red" />
                                     <asp:RangeValidator
-                                        ID="rangeValidator2"
+                                        ID="ext5"
                                         runat="server"
                                         ErrorMessage="Value too large"
                                         SetFocusOnError="true"
@@ -296,7 +419,7 @@
                                             placeholder="Width"
                                             runat="server" />
                                         <asp:RequiredFieldValidator
-                                            ID="RequiredFieldValidator2"
+                                            ID="ext4"
                                             runat="server"
                                             SetFocusOnError="true"
                                             Display="Dynamic"
@@ -305,7 +428,7 @@
                                             ErrorMessage="Number Required"
                                             ForeColor="Red" />
                                         <asp:RangeValidator
-                                            ID="rangeValidator1"
+                                            ID="ext3"
                                             runat="server"
                                             ErrorMessage="Value too large"
                                             SetFocusOnError="true"
@@ -328,7 +451,7 @@
                                             placeholder="Height"
                                             runat="server" />
                                         <asp:RequiredFieldValidator
-                                            ID="val1"
+                                            ID="ext2"
                                             runat="server"
                                             SetFocusOnError="true"
                                             Display="Dynamic"
@@ -337,7 +460,7 @@
                                             ErrorMessage="Number Required"
                                             ForeColor="Red" />
                                         <asp:RangeValidator
-                                            ID="rangeValidator"
+                                            ID="ext1"
                                             runat="server"
                                             ErrorMessage="Value too large"
                                             SetFocusOnError="true"
@@ -354,20 +477,7 @@
                         </div>
                     </fieldset>
                 </div>
-                <!--Toogle switch-->
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="pull-right" style="margin: 10px">
-                            <asp:CheckBox
-                                AutoPostBack="true" Checked="true"
-                                OnCheckedChanged="NonVirtual_CheckedChanged"
-                                ID="NonVirtual"
-                                runat="server" />
-                            <span style="color: #888">Virtual Product</span>
-                        </div>
-                    </div>
-                </div>
-
+                
 
                 <!-- Load picture functions -->
                 <script type="text/javascript">
@@ -389,7 +499,8 @@
                 </script>
 
                 <a class="btn btn-secondary" href="<%= "https://" + HttpContext.Current.Request.Url.Authority+"/pages/main/Artist/content/ReadUpdateDeleteArt.aspx"%>">Back</a>
-                <asp:Button ID="btnSubmit" runat="server" class="btn btn-primary" Text="Add Art" OnClick="btnSubmit_Click" />
+                <asp:Button ID="btnSubmit" runat="server" class="btn btn-primary" Text="Add Art" OnClick="btnSubmit_Click" 
+                                ValidationGroup="AddNewArt"/>
             </div>
 
             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">

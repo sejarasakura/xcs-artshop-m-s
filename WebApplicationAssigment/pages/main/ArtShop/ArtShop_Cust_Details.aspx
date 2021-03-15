@@ -34,15 +34,27 @@
 
                         <h3 class="text-danger mb-5"><%=art.title%></h3>
                         <div class="mb-3">
-                            <a href="">
-                                <span class="badge purple mr-1">Category 2</span>
-                            </a>
-                            <a href="">
-                                <span class="badge blue mr-1">New</span>
-                            </a>
-                            <a href="">
-                                <span class="badge red mr-1">Bestseller</span>
-                            </a>
+                            <asp:Repeater ID="Repeater1" runat="server" DataSourceID="SqlDataSource1">
+                                <ItemTemplate>
+                                    <span class="mb-1">
+                                        <a href="ArtShop_Customer.aspx?cid=<%# Eval("id") %>" class="card-link-secondary">
+                                            <span
+                                                style='background-color: <%# Eval("color") %>; padding: 5px'
+                                                class="badge mr-1"><%# Eval("name") %>
+                                            </span>
+                                        </a>
+                                    </span>
+                                </ItemTemplate>
+                            </asp:Repeater>
+                            <asp:SqlDataSource
+                                ID="SqlDataSource1"
+                                runat="server"
+                                ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
+                                SelectCommand="SELECT * FROM Category INNER JOIN CategoryDetails ON CategoryDetails.category_id = Category.id WHERE CategoryDetails.art_id = @art_id ORDER BY permission_level DESC">
+                                <SelectParameters>
+                                    <asp:querystringparameter name="art_id" type="Int32" querystringfield="id" />
+                                </SelectParameters>
+                            </asp:SqlDataSource>
                         </div>
 
                         <p class="lead">
@@ -64,8 +76,10 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <asp:TextBox ID="quantity" runat="server" Txet="1" CssClass="form-control"></asp:TextBox>
-                                <asp:RegularExpressionValidator ID="RegularExpressionValidator1"
-                                    ControlToValidate="quantity" runat="server"
+                                <asp:RegularExpressionValidator 
+                                    ID="RegularExpressionValidator1"
+                                    ControlToValidate="quantity" 
+                                    runat="server"
                                     ErrorMessage="Only Numbers allowed"
                                     ValidationExpression="\d+">
                                 </asp:RegularExpressionValidator>

@@ -21,6 +21,8 @@ namespace WebApplicationAssigment.modal
             this.Deliveries1 = new HashSet<Delivery>();
             this.DeliveryChains = new HashSet<DeliveryChain>();
             this.UserExtensions = new HashSet<UserExtension>();
+            this.Paintings = new HashSet<Painting>();
+            this.Payments = new HashSet<Payment>();
         }
     
         public System.Guid id { get; set; }
@@ -41,5 +43,9 @@ namespace WebApplicationAssigment.modal
         public virtual ICollection<DeliveryChain> DeliveryChains { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserExtension> UserExtensions { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Painting> Paintings { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Payment> Payments { get; set; }
     }
 }

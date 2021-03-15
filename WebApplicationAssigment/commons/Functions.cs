@@ -7,6 +7,9 @@ using System.Web.Security;
 using System.Security.Principal;
 using WebApplicationAssigment.modal;
 using System.Web.SessionState;
+using System.Data.Entity.Migrations;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace WebApplicationAssigment.commons
 {
@@ -101,7 +104,7 @@ namespace WebApplicationAssigment.commons
             }
         }
 
-        public static void addToCart(string productId, HttpResponse Response)
+        public static void addToCart(string productId, HttpResponse Response, int quantity = 1)
         {
             CartDetail cd = new CartDetail();
             if (HttpContext.Current.User.Identity.IsAuthenticated)
@@ -134,27 +137,62 @@ namespace WebApplicationAssigment.commons
                         //string userid = Session["UserId"].ToString(); //user id for the logged in user
                         string productid = productId; //get product id from the selected product
                         int pidininteger = Int32.Parse(productid);
+                        Art product = db.Arts.Find(pidininteger);
 
                         cd.art_id = pidininteger; //art id
-                        cd.availability = 1; //1 means available
+                        cd.availability = product.@virtual? 1: quantity; //1 means available
                         cd.add_date = DateTime.Now; //added item must be recorded on real time\
                         cd.cart_id = cart.id;
 
-                        db.CartDetails.Add(cd);
-                        try
+                        CartDetail old_details = db.CartDetails.Find(cart.id, cd.art_id);
+                        if(old_details != null)
                         {
-                            db.SaveChanges();
-                            Functions.EnqueueNewNotifications(new Notifications(
-                                Notifications.SUCCESS_TYPE,
-                                "Successfully added to shopping cart!",
-                                "You have successful added "+ db.Arts.Find(cd.art_id).title +" to your shopping cart!"));
+                            if (old_details.Art.@virtual)
+                            {
+                                Functions.EnqueueNewNotifications(new Notifications(
+                                    Notifications.ERROR_TYPE,
+                                    "Art already existed in your cart",
+                                    "This art that you are trying to add is already existed in your shopping cart"));
+                            }
+                            else
+                            {
+                                old_details.availability = old_details.availability + quantity;
+                                db.CartDetails.AddOrUpdate(old_details);
+                                try
+                                {
+                                    db.SaveChanges();
+                                    Functions.EnqueueNewNotifications(new Notifications(
+                                        Notifications.SUCCESS_TYPE,
+                                        "Successfully update the quantity!",
+                                        "You have successful updates \"" + old_details.Art.title + "\" to your shopping cart to " + old_details.availability + " !"));
+                                }
+                                catch (Exception)
+                                {
+                                    Functions.EnqueueNewNotifications(new Notifications(
+                                        Notifications.ERROR_TYPE,
+                                        "Art already existed in your cart",
+                                        "This art that you are trying to add is already existed in your shopping cart"));
+                                }
+                            }
                         }
-                        catch(Exception)
+                        else
                         {
-                            Functions.EnqueueNewNotifications(new Notifications(
-                                Notifications.ERROR_TYPE,
-                                "Art already existed in your cart",
-                                "This art that you are trying to add is already existed in your shopping cart"));
+                            db.CartDetails.Add(cd);
+                            try
+                            {
+                                db.SaveChanges();
+                                Functions.EnqueueNewNotifications(new Notifications(
+                                    Notifications.SUCCESS_TYPE,
+                                    "Successfully added to shopping cart!",
+                                    "You have successful added " + db.Arts.Find(cd.art_id).title + " to your shopping cart!"));
+                            }
+                            catch (Exception)
+                            {
+                                Functions.EnqueueNewNotifications(new Notifications(
+                                    Notifications.ERROR_TYPE,
+                                    "Art already existed in your cart",
+                                    "This art that you are trying to add is already existed in your shopping cart"));
+                            }
                         }
                     }
                 }
