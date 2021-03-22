@@ -432,6 +432,7 @@
       <DependentUpon>ArtistSigniture.ashx</DependentUpon>
     </Compile>
     <Compile Include="commons\Constant.cs" />
+    <Compile Include="commons\DeliveryChainUI.cs" />
     <Compile Include="commons\Functions.cs" />
     <Compile Include="commons\handler\UpdatesHeaderNavigations.ashx.cs">
       <DependentUpon>UpdatesHeaderNavigations.ashx</DependentUpon>
