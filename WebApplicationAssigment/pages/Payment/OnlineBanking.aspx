@@ -30,6 +30,7 @@
                             <asp:TextBox
                                 CssClass="form-control"
                                 ID="CardName"
+                                placeholder="Enter public bank username..."
                                 runat="server"
                                 Text=''>
                             </asp:TextBox>
@@ -39,7 +40,7 @@
                                 runat="server"
                                 ID="RequiredFieldValidator008"
                                 ControlToValidate="CardName"
-                                ErrorMessage="Please enter your full name!" />
+                                ErrorMessage="Please enter valid username!" />
                             <asp:RegularExpressionValidator
                                 ValidationGroup="CARD"
                                 ForeColor="Red"
@@ -65,6 +66,7 @@
                             <asp:TextBox
                                 CssClass="form-control"
                                 ID="CardPass"
+                                placeholder="Enter password..."
                                 runat="server"
                                 TextMode="Password"
                                 Text=''>
