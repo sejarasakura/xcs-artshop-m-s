@@ -18,8 +18,6 @@
                 </h4>
             </div>
             <div class="card-body">
-
-
                 <!--CardNumber-->
                 <div class="row">
                     <div class="col-md-12">
