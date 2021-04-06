@@ -27,7 +27,8 @@ namespace WebApplicationAssigment.pages.main.Artist.content
             {
                 allcats = new List<CategoryCopy>();
                 int p_level = Roles.GetRolesForUser().Contains("Administrator") ? 1 : 0;
-                db.Categories.Where(c => c.enable == true && c.permission_level == p_level).ToList().ForEach(c => allcats.Add(new CategoryCopy(c)));
+                db.Categories.Where(c => c.enable == true && c.permission_level <= p_level)
+                    .ToList().ForEach(c => allcats.Add(new CategoryCopy(c)));
                 allCatStr = JsonConvert.SerializeObject(allcats);
             }
         }
@@ -63,6 +64,15 @@ namespace WebApplicationAssigment.pages.main.Artist.content
                 for (int i = 0; i < data.Count; i++)
                 {
                     art.Categories.Add(db.Categories.Find(data[i].ToObject<int>()));
+                }
+
+                if (!Virtual.Checked)
+                {
+                    art.Categories.Add(db.Categories.Find(7));
+                }
+                else
+                {
+                    art.Categories.Add(db.Categories.Find(8));
                 }
 
                 if (!Virtual.Checked)

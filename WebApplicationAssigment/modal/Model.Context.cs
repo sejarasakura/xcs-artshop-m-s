@@ -75,6 +75,7 @@ namespace WebApplicationAssigment.modal
         public virtual DbSet<vw_customer_cart2> vw_customer_cart2 { get; set; }
         public virtual DbSet<vw_customer_cart> vw_customer_cart { get; set; }
         public virtual DbSet<vW_users_address> vW_users_address { get; set; }
+        public virtual DbSet<Page> Pages { get; set; }
     
         public virtual ObjectResult<string> aspnet_AnyDataInTables(Nullable<int> tablesToCheck)
         {
