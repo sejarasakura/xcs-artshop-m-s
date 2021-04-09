@@ -111,7 +111,6 @@ namespace WebApplicationAssigment.pages.main.Artist.content
             art.price = decimal.Parse(this.Price.Text);
             art.artist_id = (Guid)Functions.getLoginUser().ProviderUserKey;
             JArray data = (JArray)JsonConvert.DeserializeObject(realCatergory.Value);
-            art.id = db.Arts.OrderByDescending(u => u.id).FirstOrDefault().id + 1; ;
             string fileName = art.id + "-" + art.title.Replace(" ", "-");
             string exe = new FileInfo(xFileUpload.PostedFile.FileName).Extension;
             art.image = "/assets/image/Art/" + fileName + exe;
@@ -145,9 +144,36 @@ namespace WebApplicationAssigment.pages.main.Artist.content
 
                 art.Painting = p;
             }
+
+            if (!this.editMode)
+            {
+                art.id = db.Arts.OrderByDescending(u => u.id).FirstOrDefault().id + 1; ;
+            }
+            else
+            {
+                art.id = artId;
+            }
             return art;
         }
         protected void addNew()
+        {
+            using (ArtShopEntities db = new ArtShopEntities())
+            {
+                Art art = getData(db);
+                try
+                {
+                    db.Arts.Add(art);
+                    db.SaveChanges();
+                }
+                catch (Exception x)
+                {
+                    Console.Out.WriteLine(x.Message);
+                }
+            }
+            Response.Redirect("ReadUpdateDeleteArt.aspx");
+        }
+        
+        protected void updates()
         {
             using (ArtShopEntities db = new ArtShopEntities())
             {

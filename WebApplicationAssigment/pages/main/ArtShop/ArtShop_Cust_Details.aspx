@@ -59,9 +59,9 @@
 
                         <p class="lead">
                             <span class="mr-1">
-                                <del>$200</del>
+                                <del>RM <%= art.price *1.5m %></del>
                             </span>
-                            <span>$100</span>
+                            <span>RM <%= art.price %></span>
                         </p>
                         
                         <p class="mb-1">Creations Date: <i><%= art.date %></i></p>
