@@ -69,15 +69,6 @@ namespace WebApplicationAssigment.pages.main.Authentication.Widget
         protected global::System.Web.UI.WebControls.RadioButton radioFemale;
 
         /// <summary>
-        /// birthdayDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox birthdayDate;
-
-        /// <summary>
         /// Question control.
         /// </summary>
         /// <remarks>
@@ -112,5 +103,14 @@ namespace WebApplicationAssigment.pages.main.Authentication.Widget
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator AnswerRequired;
+
+        /// <summary>
+        /// Button2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button Button2;
     }
 }

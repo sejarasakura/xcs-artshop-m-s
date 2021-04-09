@@ -11,6 +11,8 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using WebApplicationAssigment.pages.main.ArtShop;
 using System.Web.Security;
+using System.Data.Entity.Migrations;
+using Microsoft.EntityFrameworkCore;
 
 namespace WebApplicationAssigment.pages.main.Artist.content
 {
@@ -68,7 +70,7 @@ namespace WebApplicationAssigment.pages.main.Artist.content
         protected void btnSubmit_Click(object sender, EventArgs e) {
             if (this.editMode)
             {
-
+                updates();
             }
             else
             {
@@ -164,10 +166,17 @@ namespace WebApplicationAssigment.pages.main.Artist.content
                 {
                     db.Arts.Add(art);
                     db.SaveChanges();
+                    Functions.EnqueueNewNotifications(new Notifications(
+                        Notifications.SUCCESS_TYPE,
+                        "Added new art",
+                        "you have done the adding id="+art.id+" !!"));
                 }
-                catch (Exception x)
+                catch (Exception ex)
                 {
-                    Console.Out.WriteLine(x.Message);
+                    Functions.EnqueueNewNotifications(new Notifications(
+                        Notifications.ERROR_TYPE,
+                        "Add record Failed!!",
+                        "you have following exception : " + ex.Message + " !!"));
                 }
             }
             Response.Redirect("ReadUpdateDeleteArt.aspx");
@@ -180,12 +189,19 @@ namespace WebApplicationAssigment.pages.main.Artist.content
                 Art art = getData(db);
                 try
                 {
-                    db.Arts.Add(art);
+                    db.Arts.AddOrUpdate(art);
                     db.SaveChanges();
+                    Functions.EnqueueNewNotifications(new Notifications(
+                        Notifications.SUCCESS_TYPE,
+                        "Update completed",
+                        "you have done the updates !!"));
                 }
-                catch (Exception x)
+                catch (Exception ex)
                 {
-                    Console.Out.WriteLine(x.Message);
+                    Functions.EnqueueNewNotifications(new Notifications(
+                        Notifications.ERROR_TYPE,
+                        "Update Failed!!",
+                        "you have following exception : " + ex.Message + " !!"));
                 }
             }
             Response.Redirect("ReadUpdateDeleteArt.aspx");

@@ -29,7 +29,8 @@
             <%
                 using (ArtShopEntities db = new ArtShopEntities())
                 {
-                    Address[] addresss = db.UserExtensions.Find(Functions.getLoginUser().ProviderUserKey).Addresses.ToArray();
+                    Address[] addresss = db.UserExtensions.Find(Functions.getLoginUser().ProviderUserKey).Addresses == null? new Address[0]:
+                        db.UserExtensions.Find(Functions.getLoginUser().ProviderUserKey).Addresses.ToArray();
                     for (int i = 0; i < addresss.Length; i++)
                     {
             %>

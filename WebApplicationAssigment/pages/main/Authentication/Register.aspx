@@ -354,13 +354,13 @@
                                                                 onchange="previewFile2()"
                                                                 CssClass="form-control"
                                                                 ID="FileUploader2"
-                                                                placeholder="Upload your profile picture"
+                                                                placeholder="Upload your signature picture"
                                                                 runat="server" />
                                                         </div>
                                                     </div>
                                                     <div class="col-xs-12 col-sm-6 col-md-6">
-                                                        <asp:Image CssClass="center img-circle pull-right"
-                                                            ImageUrl="~/assets/image/profile.png"
+                                                        <asp:Image CssClass="center pull-right"
+                                                            ImageUrl="~/assets/image/signature.png"
                                                             ID="Image2"
                                                             runat="server"
                                                             Height="100px"

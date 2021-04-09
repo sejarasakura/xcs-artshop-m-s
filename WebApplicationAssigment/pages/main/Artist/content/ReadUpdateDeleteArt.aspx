@@ -59,7 +59,13 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Delete" SortExpression="delete">
                         <ItemTemplate>
-                            <asp:Button CssClass="btn btn-danger" ID="Button1" runat="server" Text="Delete"></asp:Button>
+                            <asp:Button 
+                                CssClass="btn btn-danger"
+                                ID="Button1" 
+                                runat="server" 
+                                Text="Delete" 
+                                OnClick="Delete"
+                                CommandArgument='<%# Eval("order_id")  %>'></asp:Button>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>
