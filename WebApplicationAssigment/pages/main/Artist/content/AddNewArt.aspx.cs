@@ -19,6 +19,8 @@ namespace WebApplicationAssigment.pages.main.Artist.content
         protected List<Category> catergories = new List<Category>();
         protected List<CategoryCopy> allcats;
         protected string allCatStr;
+        protected string artId;
+        protected bool editMode;
 
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -31,6 +33,8 @@ namespace WebApplicationAssigment.pages.main.Artist.content
                     .ToList().ForEach(c => allcats.Add(new CategoryCopy(c)));
                 allCatStr = JsonConvert.SerializeObject(allcats);
             }
+            artId = Request.QueryString["id"];
+            editMode = artId != null;
         }
          
         protected void Page_Load(object sender, EventArgs e)
@@ -38,57 +42,116 @@ namespace WebApplicationAssigment.pages.main.Artist.content
             if (!Page.IsPostBack)
             {
                 setValidatorAndVisible(true);
+                if (editMode)
+                {
+                    using (ArtShopEntities db = new ArtShopEntities())
+                    {
+                        try
+                        {
+                            Art art = db.Arts.Find(int.Parse(artId));
+                            this.putData(art);
+                        }
+                        catch (Exception ex)
+                        {
+                            Functions.EnqueueNewNotifications(new Notifications(
+                                Notifications.ERROR_TYPE,
+                                "Art not found!!",
+                                "you have following exception : " + ex.Message + " !!"));
+                        }
+                    }
+                    btnSubmit.Text = "Updates Art";
+                }
             }
 
         }
 
-        protected void btnSubmit_Click(object sender, EventArgs e)
+        protected void btnSubmit_Click(object sender, EventArgs e) {
+            if (this.editMode)
+            {
+
+            }
+            else
+            {
+                addNew();
+            }
+        }
+
+        protected void putData(Art art)
+        {
+            List<int> catrgory_data = new List<int>();
+            string catergory_preview = "";
+            art.Categories.ToList().ForEach(c => catrgory_data.Add(c.id));
+            art.Categories.ToList().ForEach(c => catergory_preview += "<span style='background-color: " + c.color + "; padding: 5px' class='badge mr-1 card-link-secondary'>" + c.name + " <span onclick=\"deletedataintcat(this, " + c.id + ")\"><i class='delete fa fa-times text-danger' aria-hidden='true'></i></span></span>");
+            this.TitleText.Text = art.title;
+            this.Discription.Text = art.description;
+            this.DateCreation.Text = art.date;
+            this.Price.Text = art.price.ToString();
+            this.cat_preview.InnerHtml = catergory_preview;
+            this.realCatergory.Value = JsonConvert.SerializeObject(catrgory_data);
+            this.Image1.ImageUrl = art.image;
+            this.Virtual.Checked = art.@virtual;
+            setValidatorAndVisible(!art.@virtual);
+            if (!art.@virtual)
+            {
+                this.txbQuantity.Text = art.Painting.quantity.ToString();
+                this.txbWeight.Text = art.Painting.width_mm.ToString();
+                this.txbLL.Text = art.Painting.lenght_mm.ToString();
+                this.txbWW.Text = art.Painting.width_mm.ToString();
+                this.txbHH.Text = art.Painting.height_mm.ToString();
+                this.address_preview.InnerHtml = art.Painting.Address.details;
+            }
+        }
+        protected Art getData(ArtShopEntities db)
         {
             Art art = new Art();
-          //  Art atr2;
+            //  Art atr2;
             art.title = this.TitleText.Text;
             art.description = this.Discription.Text;
             art.date = this.DateCreation.Text;
             art.price = decimal.Parse(this.Price.Text);
             art.artist_id = (Guid)Functions.getLoginUser().ProviderUserKey;
             JArray data = (JArray)JsonConvert.DeserializeObject(realCatergory.Value);
+            art.id = db.Arts.OrderByDescending(u => u.id).FirstOrDefault().id + 1; ;
+            string fileName = art.id + "-" + art.title.Replace(" ", "-");
+            string exe = new FileInfo(xFileUpload.PostedFile.FileName).Extension;
+            art.image = "/assets/image/Art/" + fileName + exe;
+            art.@virtual = Virtual.Checked;
+            xFileUpload.SaveAs(Server.MapPath("~/assets/image/Art/") + fileName + exe);
+
+            for (int i = 0; i < data.Count; i++)
+            {
+                art.Categories.Add(db.Categories.Find(data[i].ToObject<int>()));
+            }
+
+            if (!Virtual.Checked)
+            {
+                art.Categories.Add(db.Categories.Find(7));
+            }
+            else
+            {
+                art.Categories.Add(db.Categories.Find(8));
+            }
+
+            if (!Virtual.Checked)
+            {
+                Painting p = new Painting();
+                p.art_id = art.id;
+                p.quantity = int.Parse(this.txbQuantity.Text);
+                p.weight_g = int.Parse(this.txbWeight.Text);
+                p.lenght_mm = int.Parse(this.txbLL.Text);
+                p.width_mm = int.Parse(this.txbWW.Text);
+                p.height_mm = int.Parse(this.txbHH.Text);
+                p.Address = db.Addresses.Find(Guid.Parse(ddlAddress.SelectedValue));
+
+                art.Painting = p;
+            }
+            return art;
+        }
+        protected void addNew()
+        {
             using (ArtShopEntities db = new ArtShopEntities())
             {
-                art.id = db.Arts.OrderByDescending(u => u.id).FirstOrDefault().id + 1; ;
-                string fileName = art.id + "-" + art.title.Replace(" ", "-");
-                string exe = new FileInfo(xFileUpload.PostedFile.FileName).Extension;
-                art.image = "/assets/image/Art/" + fileName + exe;
-                art.@virtual = Virtual.Checked;
-                xFileUpload.SaveAs(Server.MapPath("~/assets/image/Art/") + fileName + exe);
-
-                for (int i = 0; i < data.Count; i++)
-                {
-                    art.Categories.Add(db.Categories.Find(data[i].ToObject<int>()));
-                }
-
-                if (!Virtual.Checked)
-                {
-                    art.Categories.Add(db.Categories.Find(7));
-                }
-                else
-                {
-                    art.Categories.Add(db.Categories.Find(8));
-                }
-
-                if (!Virtual.Checked)
-                {
-                    Painting p = new Painting();
-                    p.art_id = art.id;
-                    p.quantity = int.Parse(this.txbQuantity.Text);
-                    p.weight_g = int.Parse(this.txbWeight.Text);
-                    p.lenght_mm = int.Parse(this.txbLL.Text);
-                    p.width_mm = int.Parse(this.txbWW.Text);
-                    p.height_mm = int.Parse(this.txbHH.Text);
-                    p.Address = db.Addresses.Find(Guid.Parse(ddlAddress.SelectedValue));
-
-                    db.Paintings.Add(p);
-                }
-
+                Art art = getData(db);
                 try
                 {
                     db.Arts.Add(art);

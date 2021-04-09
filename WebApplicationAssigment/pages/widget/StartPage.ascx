@@ -1,4 +1,16 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="StartPage.ascx.cs"  Inherits="WebApplicationAssigment.pages.widget.StartPage"  %>
+<%@ Register Src="~/pages/widget/Sidemap.ascx" TagPrefix="uc1" TagName="Sidemap" %>
+
+
+<style>
+    .sidemap-holder {
+        z-index: 10000;
+        position: absolute;
+    }
+</style>
+<div style="">
+    
+<div style="">
 
  <div style="border-color:#FFF" class="tatsu-action-backgorund-sk tatsu-section  tatsu-bg-overlay   tatsu-clearfix" data-title="" data-headerscheme="background--dark">
     <div class="tatsu-section-pad clearfix" data-padding="{&quot;d&quot;:&quot;120px 0px 120px 0px&quot;}" data-padding-top="120px" style="padding-top: 222px;">
@@ -161,3 +173,10 @@
         }
     </style>
 </div>
+    
+    <div style="background-color: #55000000">
+        <uc1:Sidemap runat="server" ID="Sidemap" />
+    </div>
+</div>
+</div>
+

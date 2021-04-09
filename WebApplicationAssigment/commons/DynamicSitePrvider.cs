@@ -152,9 +152,9 @@ public class DynamicSiteMapProvider : StaticSiteMapProvider
         myXmlTextWriter.WriteStartElement("siteMapNode");
 
         //Title attribute set
-        myXmlTextWriter.WriteAttributeString("title", "Art Works.com");
+        myXmlTextWriter.WriteAttributeString("title", "SKETCH.com");
         myXmlTextWriter.WriteAttributeString("description", "This is home");//Description attribute set
-        myXmlTextWriter.WriteAttributeString("url", "~/pages/Home.aspx");//URL attribute set
+        myXmlTextWriter.WriteAttributeString("url", "~/pages/main/Home.aspx");//URL attribute set
         //Loop and create the main Menu nodes that are represented by folders that were included
         foreach (SiteMapNode node in ParentNode.ChildNodes)
         {
