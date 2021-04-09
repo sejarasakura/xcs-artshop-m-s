@@ -151,7 +151,7 @@ namespace WebApplicationAssigment.pages.main.Artist.content
             }
             else
             {
-                art.id = artId;
+                art.id = int.Parse(artId);
             }
             return art;
         }

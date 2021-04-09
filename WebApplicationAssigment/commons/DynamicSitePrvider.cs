@@ -108,19 +108,19 @@ public class DynamicSiteMapProvider : StaticSiteMapProvider
     {
         SiteMapNode siteMapNode = new SiteMapNode(this, "Haha-1", "Payment Node", "Payment", "Procide payment");
         AddNode(siteMapNode, parentNode);
-        //List<Order> orders;
-        //using (WebApplication1.model.ArtGalleryV2Entities db = new WebApplication1.model.ArtGalleryV2Entities())
-        //{
-        //    orders = db.Orders.SqlQuery("SELECT * FROM [Order]").ToList();
-        //    foreach (Order order in orders)
-        //        AddNode(
-        //            new SiteMapNode(this,
-        //            order.order_id + "key4",
-        //            PAGE_DIR + "Payment.aspx?order=" + order.order_id,
-        //            String.Format("#{0:D10}", order.order_id),
-        //            String.Format("#{0:D10}", order.order_id)),
-        //            siteMapNode);
-        //}
+        List<Payment> orders;
+        using (ArtShopEntities db = new ArtShopEntities())
+        {
+            orders = db.Payments.SqlQuery("SELECT * FROM [Payment]").ToList();
+            foreach (Payment pay in orders)
+                AddNode(
+                    new SiteMapNode(this,
+                    pay.id + "-payment",
+                    PAGE_DIR + "Payment.aspx?order=" + pay.id,
+                    String.Format("#{0:D10}", pay.id),
+                    String.Format("#{0:D10}", pay.id)),
+                    siteMapNode);
+        }
     }
     public void RebuildSiteMap()
     {
