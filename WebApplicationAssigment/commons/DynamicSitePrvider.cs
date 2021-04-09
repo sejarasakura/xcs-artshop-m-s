@@ -93,15 +93,15 @@ public class DynamicSiteMapProvider : StaticSiteMapProvider
         using (ArtShopEntities db = new ArtShopEntities())
         {
             arts = db.Arts.SqlQuery("SELECT * FROM [Art]").ToList();
-            //foreach(Art art in arts)
-            //    AddNode(
-            //        new SiteMapNode(this,
-            //        art.art_id + "key3", 
-            //        PAGE_DIR + "SingleProduct.aspx?id=" +
-            //        art.art_id,
-            //        art.name,
-            //        art.name), 
-            //        siteMapNode);
+            foreach (Art art in arts)
+                AddNode(
+                    new SiteMapNode(this,
+                    art.id + "-art-products",
+                    PAGE_DIR + "main/ArtShop/ArtShop_Cust_Details.aspx?id=" +
+                    art.id,
+                    art.title,
+                    art.title),
+                    siteMapNode);
         }
     }
     public void AddPaymentNode()
@@ -154,7 +154,7 @@ public class DynamicSiteMapProvider : StaticSiteMapProvider
         //Title attribute set
         myXmlTextWriter.WriteAttributeString("title", "SKETCH.com");
         myXmlTextWriter.WriteAttributeString("description", "This is home");//Description attribute set
-        myXmlTextWriter.WriteAttributeString("url", "~/pages/main/Home.aspx");//URL attribute set
+        myXmlTextWriter.WriteAttributeString("url", "~");//URL attribute set
         //Loop and create the main Menu nodes that are represented by folders that were included
         foreach (SiteMapNode node in ParentNode.ChildNodes)
         {
