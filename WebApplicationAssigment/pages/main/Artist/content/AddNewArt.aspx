@@ -21,8 +21,8 @@
     <div class="container">
         <div class="row">
             <div class="page-header col-xs-12 col-sm-12">
-                <h1 style="font-size: 28px">Add New Art </h1>
-                <p style="font-family: 'Bauhaus 93'">Add your new arts to sell.</p>
+                <h1 style="font-size: 28px"><%= editMode? "Edit art": "Add New Art"%></h1>
+                <p style="font-family: 'Bauhaus 93'"><%= editMode? "Change your art details": "Add your new arts to sell."%></p>
 
             </div>
         </div>
@@ -72,7 +72,10 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="usr">Category:</label>
-                                <div id="cat_preview" style="margin-bottom: 10px">
+                                <div
+                                    runat="server"
+                                    id="cat_preview" 
+                                    style="margin-bottom: 10px">
                                 </div>
                                 <asp:TextBox
                                     runat="server"
@@ -94,8 +97,8 @@
                                 <script>
                                     var input = document.getElementById("<%= txtCategory.ClientID%>");
                                     var actualImputs = document.getElementById("<%= realCatergory.ClientID%>");
-                                    var cat_preview = document.getElementById("cat_preview");
-                                    var x_selected = [];
+                                    var cat_preview = document.getElementById("<%= cat_preview.ClientID%>");
+                                    var x_selected = <%= this.realCatergory.Value%>;
                                     // Show label but insert value into the input:
                                     var comboplete = new Awesomplete(input, {
                                         list: <%= allCatStr %>,
@@ -119,7 +122,7 @@
 
                                                 var innerHTML = '<span style="background-color: ' + text.value.color + '; padding: 5px" class="badge mr-1 card-link-secondary">' + text.value.name + " <span onclick=\"deletedataintcat(this, " + text.value.id + ")\"><i class='delete fa fa-times text-danger' aria-hidden='true'></i></span></span>";
                                                 $(document).ready(function () {
-                                                    $("#cat_preview").append(innerHTML);
+                                                    $("#<%= cat_preview.ClientID%>").append(innerHTML);
                                                 });
                                             }
                                         }
@@ -330,6 +333,9 @@
                                             
                                         </SelectParameters>
                                     </asp:SqlDataSource>
+                                    <div runat="server" id="address_preview">
+
+                                    </div>
                                 </div>
                                 <div class="col-md-4">
                                     <asp:Button 

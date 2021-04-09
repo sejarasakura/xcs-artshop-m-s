@@ -29,17 +29,19 @@
     <link rel="stylesheet" href="/web/lib/css/shop.css" />
     <link rel="stylesheet" href="/web/lib/css/main.css" />
     <link rel="stylesheet" href="/content/toastr.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" />
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="/web/lib/js/helpers.js"></script>
     <script type="text/javascript" src="/Scripts/toastr.min.js"></script>
     <script type="text/javascript" src="/web/lib/js/mdb.min.js"></script>
     <script type="text/javascript" src="/web/lib/js/constant.js"></script>
     <script type="text/javascript" src="/web/lib/js/mdb.ecommerce.min.js"></script>
     <script type="text/javascript" src="/web/lib/awes/awesomplete.js"></script>
-
+    
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>

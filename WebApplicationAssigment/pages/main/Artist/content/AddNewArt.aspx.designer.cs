@@ -51,6 +51,15 @@ namespace WebApplicationAssigment.pages.main.Artist.content
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator1;
 
         /// <summary>
+        /// cat_preview control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cat_preview;
+
+        /// <summary>
         /// txtCategory control.
         /// </summary>
         /// <remarks>
@@ -211,6 +220,15 @@ namespace WebApplicationAssigment.pages.main.Artist.content
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
+
+        /// <summary>
+        /// address_preview control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl address_preview;
 
         /// <summary>
         /// Button1 control.

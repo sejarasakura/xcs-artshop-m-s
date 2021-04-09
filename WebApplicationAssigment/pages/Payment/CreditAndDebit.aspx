@@ -18,8 +18,6 @@
                 </h4>
             </div>
             <div class="card-body">
-
-
                 <!--CardNumber-->
                 <div class="row">
                     <div class="col-md-12">
@@ -28,7 +26,7 @@
                             <asp:TextBox
                                 CssClass="form-control"
                                 ID="CardNumber"
-                                placeholder="please enter card number!"
+                                placeholder="Enter card number..."
                                 runat="server" />
                             <asp:RequiredFieldValidator
                                 ValidationGroup="CARD"
@@ -59,6 +57,7 @@
                             <asp:TextBox
                                 CssClass="form-control"
                                 ID="CardName"
+                                placeholder="Enter card holder name..."
                                 runat="server"
                                 Text=''>
                             </asp:TextBox>
@@ -92,6 +91,7 @@
                                 type="date"
                                 CssClass="form-control"
                                 ID="CardExp"
+                                placeholder="Enter card exp date..."
                                 runat="server"
                                 Text=''>
                             </asp:TextBox>
@@ -110,6 +110,7 @@
                             <asp:TextBox
                                 CssClass="form-control"
                                 ID="CardCcv"
+                                placeholder="Enter card ccv..."
                                 runat="server"
                                 Text=''>
                             </asp:TextBox>
@@ -119,7 +120,7 @@
                                 runat="server"
                                 ID="RequiredFieldValidator010"
                                 ControlToValidate="CardCcv"
-                                ErrorMessage="Please enter your ccv" />
+                                ErrorMessage="Please enter your ccv!" />
                             <asp:RegularExpressionValidator
                                 ValidationGroup="CARD"
                                 ForeColor="Red"
@@ -133,38 +134,6 @@
                     </div>
                 </div>
 
-
-                <!--Password-->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="usr">Password :</label>
-                            <asp:TextBox
-                                CssClass="form-control"
-                                ID="CardPass"
-                                runat="server"
-                                TextMode="Password"
-                                Text=''>
-                            </asp:TextBox>
-                            <asp:RequiredFieldValidator
-                                ValidationGroup="CARD"
-                                ForeColor="Red"
-                                runat="server"
-                                ID="RequiredFieldValidator005"
-                                ControlToValidate="CardPass"
-                                ErrorMessage="Please enter your password!" />
-                            <asp:RegularExpressionValidator
-                                ValidationGroup="CARD"
-                                ForeColor="Red"
-                                Display="Dynamic"
-                                ControlToValidate="CardPass"
-                                ID="RegularExpressionValidator005"
-                                ValidationExpression="[a-zA-Z0-9]{8,50}$"
-                                runat="server"
-                                ErrorMessage="The password only accept 8 to 50 word and must be number or character" />
-                        </div>
-                    </div>
-                </div>
 
 
 

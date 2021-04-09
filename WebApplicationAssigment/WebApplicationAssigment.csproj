@@ -432,6 +432,8 @@
       <DependentUpon>ArtistSigniture.ashx</DependentUpon>
     </Compile>
     <Compile Include="commons\Constant.cs" />
+    <Compile Include="commons\DeliveryChainUI.cs" />
+    <Compile Include="commons\DynamicSitePrvider.cs" />
     <Compile Include="commons\Functions.cs" />
     <Compile Include="commons\handler\UpdatesHeaderNavigations.ashx.cs">
       <DependentUpon>UpdatesHeaderNavigations.ashx</DependentUpon>
@@ -516,6 +518,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="modal\DeliveryStatu.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\Page.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="modal\Painting.cs">
