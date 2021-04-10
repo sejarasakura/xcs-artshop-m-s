@@ -22,7 +22,7 @@ namespace WebApplicationAssigment.modal
         public int lenght_mm { get; set; }
         public System.Guid source { get; set; }
     
-        public virtual Art Art { get; set; }
         public virtual Address Address { get; set; }
+        public virtual Art Art { get; set; }
     }
 }

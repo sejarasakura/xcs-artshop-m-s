@@ -49,6 +49,7 @@ namespace WebApplicationAssigment.modal
         public virtual DbSet<DeliveryChain> DeliveryChains { get; set; }
         public virtual DbSet<DeliveryCompany> DeliveryCompanies { get; set; }
         public virtual DbSet<DeliveryStatu> DeliveryStatus { get; set; }
+        public virtual DbSet<Page> Pages { get; set; }
         public virtual DbSet<Painting> Paintings { get; set; }
         public virtual DbSet<Payment> Payments { get; set; }
         public virtual DbSet<PaymentDetail> PaymentDetails { get; set; }
@@ -58,6 +59,7 @@ namespace WebApplicationAssigment.modal
         public virtual DbSet<Position> Positions { get; set; }
         public virtual DbSet<PublicBank> PublicBanks { get; set; }
         public virtual DbSet<Staff> Staffs { get; set; }
+        public virtual DbSet<UserAddress> UserAddresses { get; set; }
         public virtual DbSet<UserExtension> UserExtensions { get; set; }
         public virtual DbSet<avw_AdminUsers> avw_AdminUsers { get; set; }
         public virtual DbSet<avw_AllUsers> avw_AllUsers { get; set; }
@@ -72,10 +74,9 @@ namespace WebApplicationAssigment.modal
         public virtual DbSet<vw_aspnet_WebPartState_Paths> vw_aspnet_WebPartState_Paths { get; set; }
         public virtual DbSet<vw_aspnet_WebPartState_Shared> vw_aspnet_WebPartState_Shared { get; set; }
         public virtual DbSet<vw_aspnet_WebPartState_User> vw_aspnet_WebPartState_User { get; set; }
-        public virtual DbSet<vw_customer_cart2> vw_customer_cart2 { get; set; }
         public virtual DbSet<vw_customer_cart> vw_customer_cart { get; set; }
+        public virtual DbSet<vw_customer_cart2> vw_customer_cart2 { get; set; }
         public virtual DbSet<vW_users_address> vW_users_address { get; set; }
-        public virtual DbSet<Page> Pages { get; set; }
     
         public virtual ObjectResult<string> aspnet_AnyDataInTables(Nullable<int> tablesToCheck)
         {

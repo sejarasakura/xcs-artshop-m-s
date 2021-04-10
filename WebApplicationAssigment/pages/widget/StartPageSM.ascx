@@ -8,11 +8,7 @@
         position: absolute;
     }
 </style>
-<div style="height: 110px;">
-    
-<div style="position: relative">
-
-    <div style="border-color: #FFF; position: absolute" class="tatsu-action-backgorund-sk tatsu-section  tatsu-bg-overlay   tatsu-clearfix" data-title="" data-headerscheme="background--dark">
+    <div style="border-color: #FFF;"  class="tatsu-action-backgorund-sk tatsu-section  tatsu-bg-overlay   tatsu-clearfix" data-title="" data-headerscheme="background--dark">
 
         <div class="tatsu-section-pad clearfix" data-padding="{&quot;d&quot;:&quot;10px 0px 10px 0px&quot;}" data-padding-top="1px">
         </div>
@@ -149,9 +145,7 @@
             }
         </style>
     </div>
-    
-    <div style="position: absolute">
+    <div style="margin-bottom: 20px;">
+
         <uc1:Sidemap runat="server" ID="Sidemap" />
     </div>
-</div>
-</div>

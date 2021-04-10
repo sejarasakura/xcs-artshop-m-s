@@ -17,6 +17,7 @@ namespace WebApplicationAssigment.modal
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Delivery()
         {
+            this.PaymentDetails = new HashSet<PaymentDetail>();
             this.DeliveryChains = new HashSet<DeliveryChain>();
         }
     
@@ -33,6 +34,8 @@ namespace WebApplicationAssigment.modal
         public virtual Address Address1 { get; set; }
         public virtual DeliveryCompany DeliveryCompany { get; set; }
         public virtual DeliveryStatu DeliveryStatu { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PaymentDetail> PaymentDetails { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DeliveryChain> DeliveryChains { get; set; }
     }

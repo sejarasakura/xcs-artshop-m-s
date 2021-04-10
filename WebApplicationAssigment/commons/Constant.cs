@@ -35,5 +35,7 @@ namespace WebApplicationAssigment.commons
 
         public static readonly string ERROR_MESSAGE_SESSION = "UsersErrorMessages";
         public static readonly string ADMIN_NAVIGATION_SESSION = "AdminNAvigation";
+        public static readonly string ACCOUNT_SESSION = "BankAccountSessions";
+
     }
 }

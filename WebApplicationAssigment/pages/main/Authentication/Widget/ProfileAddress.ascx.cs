@@ -41,7 +41,7 @@ namespace WebApplicationAssigment.pages.main.Authentication.Widget
                     try
                     {
                         Address add = db.Addresses.Find(Guid.Parse(param_id));
-                        db.UserExtensions.Find(Functions.getLoginUser().ProviderUserKey).Addresses.Remove(add);
+                        db.UserExtensions.Find(Functions.getLoginUser().ProviderUserKey).UserAddresses.Remove(add);
                         db.SaveChanges();
                         Functions.EnqueueNewNotifications(new Notifications(
                             Notifications.SUCCESS_TYPE,
@@ -101,7 +101,7 @@ namespace WebApplicationAssigment.pages.main.Authentication.Widget
                         q.poscode == address.poscode &&
                         q.country == address.country
                         ).FirstOrDefault();
-                    if (db.UserExtensions.Find(Functions.getLoginUser().ProviderUserKey).Addresses.Contains(old_address))
+                    if (db.UserExtensions.Find(Functions.getLoginUser().ProviderUserKey).UserAddresses.Contains(old_address))
                     {
                         Functions.EnqueueNewNotifications(new Notifications(
                             Notifications.ERROR_TYPE,
@@ -114,9 +114,9 @@ namespace WebApplicationAssigment.pages.main.Authentication.Widget
                         {
                             address.id = Guid.NewGuid();
                             if (old_address != null)
-                                db.UserExtensions.Find(Functions.getLoginUser().ProviderUserKey).Addresses.Add(old_address);
+                                db.UserExtensions.Find(Functions.getLoginUser().ProviderUserKey).UserAddresses.Add(old_address);
                             else
-                                db.UserExtensions.Find(Functions.getLoginUser().ProviderUserKey).Addresses.Add(address);
+                                db.UserExtensions.Find(Functions.getLoginUser().ProviderUserKey).UserAddresses.Add(address);
                             db.SaveChanges();
                             Functions.EnqueueNewNotifications(new Notifications(
                                 Notifications.SUCCESS_TYPE,

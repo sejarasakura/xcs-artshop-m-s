@@ -142,6 +142,7 @@
                 <button type="button" class="btn btn-danger" data-dismiss="card">Return</button>
                 <asp:Button
                     ValidationGroup="CARD"
+                     OnClick="Button1_Click"
                     CssClass="btn btn-success pull-right"
                     Style="margin-left: 20px"
                     Text="Continue Payment"

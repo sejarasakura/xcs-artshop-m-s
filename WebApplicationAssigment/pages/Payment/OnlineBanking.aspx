@@ -103,7 +103,7 @@
                     Text="Login"
                     runat="server"
                     ID="Button1"
-                    PostBackUrl="~/pages/Payment/PublicBank.aspx" />
+                     OnClick="Button1_Click" />
             </div>
         </div>
     </div>

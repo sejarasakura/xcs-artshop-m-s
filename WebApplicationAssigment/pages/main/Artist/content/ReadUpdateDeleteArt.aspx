@@ -65,7 +65,7 @@
                                 runat="server" 
                                 Text="Delete" 
                                 OnClick="Delete"
-                                CommandArgument='<%# Eval("order_id")  %>'></asp:Button>
+                                CommandArgument='<%# Eval("id")  %>'></asp:Button>
                         </ItemTemplate>
                     </asp:TemplateField>
                 </Columns>

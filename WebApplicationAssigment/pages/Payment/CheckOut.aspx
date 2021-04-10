@@ -32,7 +32,11 @@
 
                                     <!-- First name -->
                                     <div class="md-form md-outline mb-0 mb-lg-4">
-                                        <input type="text" id="firstName" class="form-control mb-0 mb-lg-2">
+                                        <asp:TextBox
+                                            CssClass="form-control mb-0"
+                                            ID="first"
+                                            runat="server">
+                                        </asp:TextBox>
                                         <label for="firstName">First name</label>
                                     </div>
 
@@ -44,7 +48,11 @@
 
                                     <!-- Last name -->
                                     <div class="md-form md-outline">
-                                        <input type="text" id="lastName" class="form-control">
+                                        <asp:TextBox
+                                            CssClass="form-control mb-0"
+                                            ID="last"
+                                            runat="server">
+                                        </asp:TextBox>
                                         <label for="lastName">Last name</label>
                                     </div>
 
@@ -56,60 +64,27 @@
 
                             <!-- Company name -->
                             <div class="md-form md-outline my-0">
-                                <input type="text" id="companyName" class="form-control mb-0">
+                                <asp:TextBox
+                                    CssClass="form-control mb-0"
+                                    ID="companyName"
+                                    runat="server">
+                                </asp:TextBox>
                                 <label for="companyName">Company name (optional)</label>
-                            </div>
-
-                            <!-- Country -->
-                            <div class="d-flex flex-wrap">
-                                <div class="select-outline position-relative w-100">
-                                    <select class="mdb-select md-form md-outline">
-                                        <option value="" disabled selected>Choose your option</option>
-                                        <option value="1">Option 1</option>
-                                        <option value="2">Option 2</option>
-                                        <option value="3">Option 3</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <!-- Address Part 1 -->
-                            <div class="md-form md-outline mt-0">
-                                <input type="text" id="form14" placeholder="House number and street name" class="form-control">
-                            </div>
-
-                            <!-- Address Part 2 -->
-                            <div class="md-form md-outline">
-                                <input type="text" id="form15" placeholder="Apartment, suite, unit etc. (optional)"
-                                    class="form-control">
-                            </div>
-
-                            <!-- Postcode / ZIP -->
-                            <div class="md-form md-outline">
-                                <input type="text" id="form16" class="form-control">
-                                <label for="form16">Postcode / ZIP</label>
-                            </div>
-
-                            <!-- Town / City -->
-                            <div class="md-form md-outline">
-                                <input type="text" id="form17" class="form-control">
-                                <label for="form17">Town / City</label>
                             </div>
 
                             <!-- Phone -->
                             <div class="md-form md-outline">
-                                <input type="number" id="form18" class="form-control">
+                                <asp:TextBox
+                                    CssClass="form-control mb-0"
+                                    ID="phone"
+                                    runat="server">
+                                </asp:TextBox>
                                 <label for="form18">Phone</label>
-                            </div>
-
-                            <!-- Email address -->
-                            <div class="md-form md-outline">
-                                <input type="email" id="form19" class="form-control">
-                                <label for="form19">Email address</label>
                             </div>
 
                             <!-- Additional information -->
                             <div class="md-form md-outline">
-                                <textarea id="form76" class="md-textarea form-control" rows="4"></textarea>
+                                <textarea id="form76" class="md-textarea form-control" runat="server" rows="4"></textarea>
                                 <label for="form76">Additional information</label>
                             </div>
 

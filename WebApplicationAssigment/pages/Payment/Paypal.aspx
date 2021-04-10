@@ -153,6 +153,7 @@
                     Style="margin-left: 20px"
                     Text="Continue Payment"
                     runat="server"
+                     OnClick="confirmPayment"
                     ID="Button1" />
             </div>
         </div>
