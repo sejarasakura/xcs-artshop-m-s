@@ -57,6 +57,7 @@
                             <label for="usr">Date Payment :</label>
                             <asp:Label
                                 CssClass="form-control"
+                                type="date"
                                 ID="CardPass"
                                 runat="server"
                                 Text='2021-02-25  8.45.25PM'>
@@ -91,6 +92,7 @@
                     Text="Confirm"
                     runat="server"
                     ID="Button1"
+                    OnClick="confirmPayment"
                     PostBackUrl="~/pages/Payment/PaymentSuccess.aspx" />
             </div>
         </div>

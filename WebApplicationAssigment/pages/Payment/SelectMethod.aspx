@@ -21,11 +21,11 @@
                     <div class="col-sm-4">
                         <div class="card">
                             <div class="card-body">
-                                <a href="<%= Constant.DEFAULT_URL %>/pages/Payment/Paypal.aspx" style="margin-bottom: 30px; margin-top:30px;">
+                                <a href="<%= Constant.DEFAULT_URL %>/pages/Payment/Paypal.aspx?id=<%=this.paymentId %>" style="margin-bottom: 30px; margin-top:30px;">
                                     <img src="<%= Constant.DEFAULT_URL %>/assets/image/Payment/paypal.jpg" style="height: 65px;">
                                 </a>
                                 <br />
-                                <a href="<%= Constant.DEFAULT_URL %>/pages/Payment/Paypal.aspx" class="btn btn-primary" style="margin-top:20px;">
+                                <a href="<%= Constant.DEFAULT_URL %>/pages/Payment/Paypal.aspx?id=<%=this.paymentId %>" class="btn btn-primary" style="margin-top:20px;">
                                     Checkout with paypal
                                 </a>
                             </div>
@@ -34,11 +34,11 @@
                     <div class="col-sm-4">
                         <div class="card">
                             <div class="card-body">
-                                <a href="<%= Constant.DEFAULT_URL %>/pages/Payment/CreditAndDebit.aspx" style="margin-bottom: 30px; margin-top:30px;">
+                                <a href="<%= Constant.DEFAULT_URL %>/pages/Payment/CreditAndDebit.aspx?id=<%=this.paymentId %>" style="margin-bottom: 30px; margin-top:30px;">
                                     <img src="<%= Constant.DEFAULT_URL %>/assets/image/Payment/visamaster.jpg" style="height: 65px;">
                                 </a>
                                 <br />
-                                <a href="<%= Constant.DEFAULT_URL %>/pages/Payment/CreditAndDebit.aspx" class="btn btn-primary" style="margin-top:20px;">
+                                <a href="<%= Constant.DEFAULT_URL %>/pages/Payment/CreditAndDebit.aspx?id=<%=this.paymentId %>" class="btn btn-primary" style="margin-top:20px;">
                                     Using credit or debitcard
                                 </a>
                             </div>
@@ -47,11 +47,11 @@
                     <div class="col-sm-4">
                         <div class="card">
                             <div class="card-body">
-                                <a href="<%= Constant.DEFAULT_URL %>/pages/Payment/OnlineBanking.aspx" style="margin-bottom: 30px; margin-top:30px;">
+                                <a href="<%= Constant.DEFAULT_URL %>/pages/Payment/OnlineBanking.aspx?id=<%=this.paymentId %>" style="margin-bottom: 30px; margin-top:30px;">
                                     <img src="<%= Constant.DEFAULT_URL %>/assets/image/Payment/onlinebanking.jpg" style="height: 65px;">
                                 </a>
                                 <br />
-                                <a href="<%= Constant.DEFAULT_URL %>/pages/Payment/OnlineBanking.aspx" class="btn btn-primary" style="margin-top:20px;">
+                                <a href="<%= Constant.DEFAULT_URL %>/pages/Payment/OnlineBanking.aspx?id=<%=this.paymentId %>" class="btn btn-primary" style="margin-top:20px;">
                                     Pay by online banking
                                 </a>
                             </div>

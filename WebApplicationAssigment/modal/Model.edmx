@@ -285,6 +285,16 @@
           <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="description" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <EntityType Name="Pages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" />
+          <Property Name="description" Type="nvarchar" MaxLength="100" />
+          <Property Name="file_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="parent_id" Type="int" />
+        </EntityType>
         <EntityType Name="Painting">
           <Key>
             <PropertyRef Name="art_id" />
@@ -326,6 +336,7 @@
           <Property Name="virtual" Type="bit" />
           <Property Name="add_date" Type="datetime" />
           <Property Name="delivery_fee" Type="float" Nullable="false" />
+          <Property Name="delivery_id" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="PaymentMethod">
           <Key>
@@ -1189,6 +1200,18 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PaymentDe__deliv__505BE5AD">
+          <End Role="Delivery" Type="Self.Delivery" Multiplicity="0..1" />
+          <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Delivery">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PaymentDetails">
+              <PropertyRef Name="delivery_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__PaymentDe__payme__20ACD28B">
           <End Role="Payment" Type="Self.Payment" Multiplicity="1" />
           <End Role="PaymentDetails" Type="Self.PaymentDetails" Multiplicity="*" />
@@ -1618,6 +1641,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <EntitySet Name="DeliveryChainDetails" EntityType="Self.DeliveryChainDetails" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DeliveryCompany" EntityType="Self.DeliveryCompany" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DeliveryStatus" EntityType="Self.DeliveryStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pages" EntityType="Self.Pages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Painting" EntityType="Self.Painting" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Payment" EntityType="Self.Payment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PaymentDetails" EntityType="Self.PaymentDetails" Schema="dbo" store:Type="Tables" />
@@ -1994,6 +2018,10 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           </AssociationSet>
           <AssociationSet Name="FK__PaymentDe__art_i__595B4002" Association="Self.FK__PaymentDe__art_i__595B4002">
             <End Role="Art" EntitySet="Art" />
+            <End Role="PaymentDetails" EntitySet="PaymentDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__deliv__505BE5AD" Association="Self.FK__PaymentDe__deliv__505BE5AD">
+            <End Role="Delivery" EntitySet="Delivery" />
             <End Role="PaymentDetails" EntitySet="PaymentDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__PaymentDe__payme__20ACD28B" Association="Self.FK__PaymentDe__payme__20ACD28B">
@@ -2379,6 +2407,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <EntitySet Name="DeliveryChains" EntityType="ArtShopModel.DeliveryChain" />
           <EntitySet Name="DeliveryCompanies" EntityType="ArtShopModel.DeliveryCompany" />
           <EntitySet Name="DeliveryStatus" EntityType="ArtShopModel.DeliveryStatu" />
+          <EntitySet Name="Pages" EntityType="ArtShopModel.Page" />
           <EntitySet Name="Paintings" EntityType="ArtShopModel.Painting" />
           <EntitySet Name="Payments" EntityType="ArtShopModel.Payment" />
           <EntitySet Name="PaymentDetails" EntityType="ArtShopModel.PaymentDetail" />
@@ -2388,6 +2417,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <EntitySet Name="Positions" EntityType="ArtShopModel.Position" />
           <EntitySet Name="PublicBanks" EntityType="ArtShopModel.PublicBank" />
           <EntitySet Name="Staffs" EntityType="ArtShopModel.Staff" />
+          <EntitySet Name="UserAddresses" EntityType="ArtShopModel.UserAddress" />
           <EntitySet Name="UserExtensions" EntityType="ArtShopModel.UserExtension" />
           <EntitySet Name="avw_AdminUsers" EntityType="ArtShopModel.avw_AdminUsers" />
           <EntitySet Name="avw_AllUsers" EntityType="ArtShopModel.avw_AllUsers" />
@@ -2402,6 +2432,9 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <EntitySet Name="vw_aspnet_WebPartState_Paths" EntityType="ArtShopModel.vw_aspnet_WebPartState_Paths" />
           <EntitySet Name="vw_aspnet_WebPartState_Shared" EntityType="ArtShopModel.vw_aspnet_WebPartState_Shared" />
           <EntitySet Name="vw_aspnet_WebPartState_User" EntityType="ArtShopModel.vw_aspnet_WebPartState_User" />
+          <EntitySet Name="vw_customer_cart" EntityType="ArtShopModel.vw_customer_cart" />
+          <EntitySet Name="vw_customer_cart2" EntityType="ArtShopModel.vw_customer_cart2" />
+          <EntitySet Name="vW_users_address" EntityType="ArtShopModel.vW_users_address" />
           <AssociationSet Name="FK__Delivery__destin__10E07F16" Association="ArtShopModel.FK__Delivery__destin__10E07F16">
             <End Role="Address" EntitySet="Addresses" />
             <End Role="Delivery" EntitySet="Deliveries" />
@@ -2414,17 +2447,33 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <End Role="Address" EntitySet="Addresses" />
             <End Role="DeliveryChain" EntitySet="DeliveryChains" />
           </AssociationSet>
+          <AssociationSet Name="FK__Painting__source__17236851" Association="ArtShopModel.FK__Painting__source__17236851">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Painting" EntitySet="Paintings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Payment__destina__21A0F6C4" Association="ArtShopModel.FK__Payment__destina__21A0F6C4">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserAddre__addre__093F5D4E" Association="ArtShopModel.FK__UserAddre__addre__093F5D4E">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="UserAddress" EntitySet="UserAddresses" />
+          </AssociationSet>
           <AssociationSet Name="FK__Art__artist_id__44952D46" Association="ArtShopModel.FK__Art__artist_id__44952D46">
             <End Role="Artist" EntitySet="Artists" />
             <End Role="Art" EntitySet="Arts" />
           </AssociationSet>
-          <AssociationSet Name="FK__CartDetai__art_i__41B8C09B" Association="ArtShopModel.FK__CartDetai__art_i__41B8C09B">
+          <AssociationSet Name="FK__CartDetai__art_i__2882FE7D" Association="ArtShopModel.FK__CartDetai__art_i__2882FE7D">
             <End Role="Art" EntitySet="Arts" />
             <End Role="CartDetail" EntitySet="CartDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__Painting__art_id__0C1BC9F9" Association="ArtShopModel.FK__Painting__art_id__0C1BC9F9">
             <End Role="Art" EntitySet="Arts" />
             <End Role="Painting" EntitySet="Paintings" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__art_i__595B4002" Association="ArtShopModel.FK__PaymentDe__art_i__595B4002">
+            <End Role="Art" EntitySet="Arts" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__Artist__UserId__1CBC4616" Association="ArtShopModel.FK__Artist__UserId__1CBC4616">
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
@@ -2470,7 +2519,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
             <End Role="Customer" EntitySet="Customers" />
           </AssociationSet>
-          <AssociationSet Name="FK__Payment__UserId__3DB3258D" Association="ArtShopModel.FK__Payment__UserId__3DB3258D">
+          <AssociationSet Name="FK__Payment__UserId__1FB8AE52" Association="ArtShopModel.FK__Payment__UserId__1FB8AE52">
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
             <End Role="Payment" EntitySet="Payments" />
           </AssociationSet>
@@ -2486,7 +2535,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <End Role="Customer" EntitySet="Customers" />
             <End Role="Cart" EntitySet="Carts" />
           </AssociationSet>
-          <AssociationSet Name="FK__CartDetai__cart___40058253" Association="ArtShopModel.FK__CartDetai__cart___40058253">
+          <AssociationSet Name="FK__CartDetai__cart___278EDA44" Association="ArtShopModel.FK__CartDetai__cart___278EDA44">
             <End Role="Cart" EntitySet="Carts" />
             <End Role="CartDetail" EntitySet="CartDetails" />
           </AssociationSet>
@@ -2498,56 +2547,45 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             <End Role="DeliveryStatu" EntitySet="DeliveryStatus" />
             <End Role="Delivery" EntitySet="Deliveries" />
           </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__deliv__505BE5AD" Association="ArtShopModel.FK__PaymentDe__deliv__505BE5AD">
+            <End Role="Delivery" EntitySet="Deliveries" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
+          </AssociationSet>
           <AssociationSet Name="FK__DeliveryC__deliv__178D7CA5" Association="ArtShopModel.FK__DeliveryC__deliv__178D7CA5">
             <End Role="DeliveryStatu" EntitySet="DeliveryStatus" />
             <End Role="DeliveryChain" EntitySet="DeliveryChains" />
           </AssociationSet>
-          <AssociationSet Name="FK__Payment__payment__3BCADD1B" Association="ArtShopModel.FK__Payment__payment__3BCADD1B">
+          <AssociationSet Name="FK__Payment__payment__1DD065E0" Association="ArtShopModel.FK__Payment__payment__1DD065E0">
             <End Role="PaymentMethod" EntitySet="PaymentMethods" />
             <End Role="Payment" EntitySet="Payments" />
           </AssociationSet>
-          <AssociationSet Name="FK__Payment__payment__3CBF0154" Association="ArtShopModel.FK__Payment__payment__3CBF0154">
+          <AssociationSet Name="FK__Payment__payment__1EC48A19" Association="ArtShopModel.FK__Payment__payment__1EC48A19">
             <End Role="PaymentStatu" EntitySet="PaymentStatus" />
             <End Role="Payment" EntitySet="Payments" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PaymentDe__payme__20ACD28B" Association="ArtShopModel.FK__PaymentDe__payme__20ACD28B">
+            <End Role="Payment" EntitySet="Payments" />
+            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
           </AssociationSet>
           <AssociationSet Name="FK__Staff__position___4F47C5E3" Association="ArtShopModel.FK__Staff__position___4F47C5E3">
             <End Role="Position" EntitySet="Positions" />
             <End Role="Staff" EntitySet="Staffs" />
           </AssociationSet>
+          <AssociationSet Name="FK__UserAddre__UserI__084B3915" Association="ArtShopModel.FK__UserAddre__UserI__084B3915">
+            <End Role="UserExtension" EntitySet="UserExtensions" />
+            <End Role="UserAddress" EntitySet="UserAddresses" />
+          </AssociationSet>
           <AssociationSet Name="aspnet_UsersInRoles" Association="ArtShopModel.aspnet_UsersInRoles">
             <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
             <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-          </AssociationSet>
-          <AssociationSet Name="DeliveryChainDetails" Association="ArtShopModel.DeliveryChainDetails">
-            <End Role="Delivery" EntitySet="Deliveries" />
-            <End Role="DeliveryChain" EntitySet="DeliveryChains" />
-          </AssociationSet>
-          <AssociationSet Name="UserAddress" Association="ArtShopModel.UserAddress">
-            <End Role="Address" EntitySet="Addresses" />
-            <End Role="UserExtension" EntitySet="UserExtensions" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PaymentDe__art_i__595B4002" Association="ArtShopModel.FK__PaymentDe__art_i__595B4002">
-            <End Role="Art" EntitySet="Arts" />
-            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PaymentDe__payme__58671BC9" Association="ArtShopModel.FK__PaymentDe__payme__58671BC9">
-            <End Role="Payment" EntitySet="Payments" />
-            <End Role="PaymentDetail" EntitySet="PaymentDetails" />
           </AssociationSet>
           <AssociationSet Name="CategoryDetails" Association="ArtShopModel.CategoryDetails">
             <End Role="Art" EntitySet="Arts" />
             <End Role="Category" EntitySet="Categories" />
           </AssociationSet>
-          <EntitySet Name="vw_customer_cart2" EntityType="ArtShopModel.vw_customer_cart2" />
-          <EntitySet Name="vw_customer_cart" EntityType="ArtShopModel.vw_customer_cart" />
-          <AssociationSet Name="FK__Painting__source__17236851" Association="ArtShopModel.FK__Painting__source__17236851">
-            <End Role="Address" EntitySet="Addresses" />
-            <End Role="Painting" EntitySet="Paintings" />
-          </AssociationSet>
-          <EntitySet Name="vW_users_address" EntityType="ArtShopModel.vW_users_address" />
-          <AssociationSet Name="FK__Payment__destina__21A0F6C4" Association="ArtShopModel.FK__Payment__destina__21A0F6C4">
-            <End Role="Address" EntitySet="Addresses" />
-            <End Role="Payment" EntitySet="Payments" />
+          <AssociationSet Name="DeliveryChainDetails" Association="ArtShopModel.DeliveryChainDetails">
+            <End Role="Delivery" EntitySet="Deliveries" />
+            <End Role="DeliveryChain" EntitySet="DeliveryChains" />
           </AssociationSet>
           </EntityContainer>
         <ComplexType Name="aspnet_Membership_GetPassword_Result">
@@ -2644,9 +2682,9 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <NavigationProperty Name="Deliveries" Relationship="ArtShopModel.FK__Delivery__destin__10E07F16" FromRole="Address" ToRole="Delivery" />
           <NavigationProperty Name="Deliveries1" Relationship="ArtShopModel.FK__Delivery__source__0FEC5ADD" FromRole="Address" ToRole="Delivery" />
           <NavigationProperty Name="DeliveryChains" Relationship="ArtShopModel.FK__DeliveryC__addre__1699586C" FromRole="Address" ToRole="DeliveryChain" />
-          <NavigationProperty Name="UserExtensions" Relationship="ArtShopModel.UserAddress" FromRole="Address" ToRole="UserExtension" />
           <NavigationProperty Name="Paintings" Relationship="ArtShopModel.FK__Painting__source__17236851" FromRole="Address" ToRole="Painting" />
           <NavigationProperty Name="Payments" Relationship="ArtShopModel.FK__Payment__destina__21A0F6C4" FromRole="Address" ToRole="Payment" />
+          <NavigationProperty Name="UserAddresses" Relationship="ArtShopModel.FK__UserAddre__addre__093F5D4E" FromRole="Address" ToRole="UserAddress" />
         </EntityType>
         <EntityType Name="Art">
           <Key>
@@ -2659,11 +2697,11 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="artist_id" Type="Guid" Nullable="false" />
+          <Property Name="virtual" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Artist" Relationship="ArtShopModel.FK__Art__artist_id__44952D46" FromRole="Art" ToRole="Artist" />
-          <NavigationProperty Name="CartDetails" Relationship="ArtShopModel.FK__CartDetai__art_i__41B8C09B" FromRole="Art" ToRole="CartDetail" />
+          <NavigationProperty Name="CartDetails" Relationship="ArtShopModel.FK__CartDetai__art_i__2882FE7D" FromRole="Art" ToRole="CartDetail" />
           <NavigationProperty Name="Painting" Relationship="ArtShopModel.FK__Painting__art_id__0C1BC9F9" FromRole="Art" ToRole="Painting" />
           <NavigationProperty Name="PaymentDetails" Relationship="ArtShopModel.FK__PaymentDe__art_i__595B4002" FromRole="Art" ToRole="PaymentDetail" />
-          <Property Name="virtual" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Categories" Relationship="ArtShopModel.CategoryDetails" FromRole="Art" ToRole="Category" />
         </EntityType>
         <EntityType Name="Artist">
@@ -2792,7 +2830,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <NavigationProperty Name="aspnet_PersonalizationPerUser" Relationship="ArtShopModel.FK__aspnet_Pe__UserI__76969D2E" FromRole="aspnet_Users" ToRole="aspnet_PersonalizationPerUser" />
           <NavigationProperty Name="aspnet_Profile" Relationship="ArtShopModel.FK__aspnet_Pr__UserI__4F7CD00D" FromRole="aspnet_Users" ToRole="aspnet_Profile" />
           <NavigationProperty Name="Customer" Relationship="ArtShopModel.FK__Customer__UserId__1AD3FDA4" FromRole="aspnet_Users" ToRole="Customer" />
-          <NavigationProperty Name="Payments" Relationship="ArtShopModel.FK__Payment__UserId__3DB3258D" FromRole="aspnet_Users" ToRole="Payment" />
+          <NavigationProperty Name="Payments" Relationship="ArtShopModel.FK__Payment__UserId__1FB8AE52" FromRole="aspnet_Users" ToRole="Payment" />
           <NavigationProperty Name="Staff" Relationship="ArtShopModel.FK__Staff__UserId__1EA48E88" FromRole="aspnet_Users" ToRole="Staff" />
           <NavigationProperty Name="UserExtension" Relationship="ArtShopModel.FK__UserExten__UserI__1B9317B3" FromRole="aspnet_Users" ToRole="UserExtension" />
           <NavigationProperty Name="aspnet_Roles" Relationship="ArtShopModel.aspnet_UsersInRoles" FromRole="aspnet_Users" ToRole="aspnet_Roles" />
@@ -2817,7 +2855,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="remark" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="user_id" Type="Guid" Nullable="false" />
           <NavigationProperty Name="Customer" Relationship="ArtShopModel.FK__Cart__user_id__3C34F16F" FromRole="Cart" ToRole="Customer" />
-          <NavigationProperty Name="CartDetails" Relationship="ArtShopModel.FK__CartDetai__cart___40058253" FromRole="Cart" ToRole="CartDetail" />
+          <NavigationProperty Name="CartDetails" Relationship="ArtShopModel.FK__CartDetai__cart___278EDA44" FromRole="Cart" ToRole="CartDetail" />
         </EntityType>
         <EntityType Name="CartDetail">
           <Key>
@@ -2827,10 +2865,10 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="cart_id" Type="Int32" Nullable="false" />
           <Property Name="art_id" Type="Int32" Nullable="false" />
           <Property Name="availability" Type="Int32" />
-          <Property Name="add_date" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Art" Relationship="ArtShopModel.FK__CartDetai__art_i__41B8C09B" FromRole="CartDetail" ToRole="Art" />
-          <NavigationProperty Name="Cart" Relationship="ArtShopModel.FK__CartDetai__cart___40058253" FromRole="CartDetail" ToRole="Cart" />
           <Property Name="checked" Type="Boolean" Nullable="false" />
+          <Property Name="add_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Art" Relationship="ArtShopModel.FK__CartDetai__art_i__2882FE7D" FromRole="CartDetail" ToRole="Art" />
+          <NavigationProperty Name="Cart" Relationship="ArtShopModel.FK__CartDetai__cart___278EDA44" FromRole="CartDetail" ToRole="Cart" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -2839,10 +2877,10 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Arts1" Relationship="ArtShopModel.CategoryDetails" FromRole="Category" ToRole="Art" />
           <Property Name="color" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="true" />
           <Property Name="enable" Type="Boolean" Nullable="false" />
           <Property Name="permission_level" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Arts" Relationship="ArtShopModel.CategoryDetails" FromRole="Category" ToRole="Art" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
@@ -2871,6 +2909,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <NavigationProperty Name="Address1" Relationship="ArtShopModel.FK__Delivery__source__0FEC5ADD" FromRole="Delivery" ToRole="Address" />
           <NavigationProperty Name="DeliveryCompany" Relationship="ArtShopModel.FK__Delivery__delive__11D4A34F" FromRole="Delivery" ToRole="DeliveryCompany" />
           <NavigationProperty Name="DeliveryStatu" Relationship="ArtShopModel.FK__Delivery__final___12C8C788" FromRole="Delivery" ToRole="DeliveryStatu" />
+          <NavigationProperty Name="PaymentDetails" Relationship="ArtShopModel.FK__PaymentDe__deliv__505BE5AD" FromRole="Delivery" ToRole="PaymentDetail" />
           <NavigationProperty Name="DeliveryChains" Relationship="ArtShopModel.DeliveryChainDetails" FromRole="Delivery" ToRole="DeliveryChain" />
         </EntityType>
         <EntityType Name="DeliveryChain">
@@ -2911,6 +2950,16 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <NavigationProperty Name="Deliveries" Relationship="ArtShopModel.FK__Delivery__final___12C8C788" FromRole="DeliveryStatu" ToRole="Delivery" />
           <NavigationProperty Name="DeliveryChains" Relationship="ArtShopModel.FK__DeliveryC__deliv__178D7CA5" FromRole="DeliveryStatu" ToRole="DeliveryChain" />
         </EntityType>
+        <EntityType Name="Page">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="file_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="parent_id" Type="Int32" />
+        </EntityType>
         <EntityType Name="Painting">
           <Key>
             <PropertyRef Name="art_id" />
@@ -2921,9 +2970,9 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="height_mm" Type="Int32" Nullable="false" />
           <Property Name="width_mm" Type="Int32" Nullable="false" />
           <Property Name="lenght_mm" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Art" Relationship="ArtShopModel.FK__Painting__art_id__0C1BC9F9" FromRole="Painting" ToRole="Art" />
           <Property Name="source" Type="Guid" Nullable="false" />
           <NavigationProperty Name="Address" Relationship="ArtShopModel.FK__Painting__source__17236851" FromRole="Painting" ToRole="Address" />
+          <NavigationProperty Name="Art" Relationship="ArtShopModel.FK__Painting__art_id__0C1BC9F9" FromRole="Painting" ToRole="Art" />
         </EntityType>
         <EntityType Name="Payment">
           <Key>
@@ -2933,6 +2982,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="payment_method" Type="Guid" Nullable="false" />
           <Property Name="payment_status" Type="Guid" Nullable="false" />
           <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="destinations_id" Type="Guid" />
           <Property Name="tax_change" Type="Double" />
           <Property Name="net_pay" Type="Double" />
           <Property Name="discount" Type="Double" />
@@ -2941,12 +2991,11 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="payment_date" Type="DateTime" Precision="3" />
           <Property Name="payment_meta" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="notes" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="aspnet_Users" Relationship="ArtShopModel.FK__Payment__UserId__3DB3258D" FromRole="Payment" ToRole="aspnet_Users" />
-          <NavigationProperty Name="PaymentMethod" Relationship="ArtShopModel.FK__Payment__payment__3BCADD1B" FromRole="Payment" ToRole="PaymentMethod" />
-          <NavigationProperty Name="PaymentStatu" Relationship="ArtShopModel.FK__Payment__payment__3CBF0154" FromRole="Payment" ToRole="PaymentStatu" />
-          <NavigationProperty Name="PaymentDetails" Relationship="ArtShopModel.FK__PaymentDe__payme__58671BC9" FromRole="Payment" ToRole="PaymentDetail" />
-          <Property Name="destinations_id" Type="Guid" />
           <NavigationProperty Name="Address" Relationship="ArtShopModel.FK__Payment__destina__21A0F6C4" FromRole="Payment" ToRole="Address" />
+          <NavigationProperty Name="aspnet_Users" Relationship="ArtShopModel.FK__Payment__UserId__1FB8AE52" FromRole="Payment" ToRole="aspnet_Users" />
+          <NavigationProperty Name="PaymentMethod" Relationship="ArtShopModel.FK__Payment__payment__1DD065E0" FromRole="Payment" ToRole="PaymentMethod" />
+          <NavigationProperty Name="PaymentStatu" Relationship="ArtShopModel.FK__Payment__payment__1EC48A19" FromRole="Payment" ToRole="PaymentStatu" />
+          <NavigationProperty Name="PaymentDetails" Relationship="ArtShopModel.FK__PaymentDe__payme__20ACD28B" FromRole="Payment" ToRole="PaymentDetail" />
         </EntityType>
         <EntityType Name="PaymentDetail">
           <Key>
@@ -2958,9 +3007,11 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="quantity" Type="Int32" />
           <Property Name="virtual" Type="Boolean" />
           <Property Name="add_date" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="Art" Relationship="ArtShopModel.FK__PaymentDe__art_i__595B4002" FromRole="PaymentDetail" ToRole="Art" />
-          <NavigationProperty Name="Payment" Relationship="ArtShopModel.FK__PaymentDe__payme__58671BC9" FromRole="PaymentDetail" ToRole="Payment" />
           <Property Name="delivery_fee" Type="Double" Nullable="false" />
+          <Property Name="delivery_id" Type="Guid" />
+          <NavigationProperty Name="Art" Relationship="ArtShopModel.FK__PaymentDe__art_i__595B4002" FromRole="PaymentDetail" ToRole="Art" />
+          <NavigationProperty Name="Delivery" Relationship="ArtShopModel.FK__PaymentDe__deliv__505BE5AD" FromRole="PaymentDetail" ToRole="Delivery" />
+          <NavigationProperty Name="Payment" Relationship="ArtShopModel.FK__PaymentDe__payme__20ACD28B" FromRole="PaymentDetail" ToRole="Payment" />
         </EntityType>
         <EntityType Name="PaymentMethod">
           <Key>
@@ -2970,7 +3021,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="meta_field" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Payments" Relationship="ArtShopModel.FK__Payment__payment__3BCADD1B" FromRole="PaymentMethod" ToRole="Payment" />
+          <NavigationProperty Name="Payments" Relationship="ArtShopModel.FK__Payment__payment__1DD065E0" FromRole="PaymentMethod" ToRole="Payment" />
         </EntityType>
         <EntityType Name="PaymentStatu">
           <Key>
@@ -2979,7 +3030,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="id" Type="Guid" Nullable="false" />
           <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="description" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Payments" Relationship="ArtShopModel.FK__Payment__payment__3CBF0154" FromRole="PaymentStatu" ToRole="Payment" />
+          <NavigationProperty Name="Payments" Relationship="ArtShopModel.FK__Payment__payment__1EC48A19" FromRole="PaymentStatu" ToRole="Payment" />
         </EntityType>
         <EntityType Name="PayPal">
           <Key>
@@ -3021,6 +3072,17 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <NavigationProperty Name="aspnet_Users" Relationship="ArtShopModel.FK__Staff__UserId__1EA48E88" FromRole="Staff" ToRole="aspnet_Users" />
           <NavigationProperty Name="Position" Relationship="ArtShopModel.FK__Staff__position___4F47C5E3" FromRole="Staff" ToRole="Position" />
         </EntityType>
+        <EntityType Name="UserAddress">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="address_id" />
+          </Key>
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="address_id" Type="Guid" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Address" Relationship="ArtShopModel.FK__UserAddre__addre__093F5D4E" FromRole="UserAddress" ToRole="Address" />
+          <NavigationProperty Name="UserExtension" Relationship="ArtShopModel.FK__UserAddre__UserI__084B3915" FromRole="UserAddress" ToRole="UserExtension" />
+        </EntityType>
         <EntityType Name="UserExtension">
           <Key>
             <PropertyRef Name="UserId" />
@@ -3031,7 +3093,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="gender" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="picture" Type="Binary" MaxLength="Max" FixedLength="false" />
           <NavigationProperty Name="aspnet_Users" Relationship="ArtShopModel.FK__UserExten__UserI__1B9317B3" FromRole="UserExtension" ToRole="aspnet_Users" />
-          <NavigationProperty Name="Addresses" Relationship="ArtShopModel.UserAddress" FromRole="UserExtension" ToRole="Address" />
+          <NavigationProperty Name="UserAddresses" Relationship="ArtShopModel.FK__UserAddre__UserI__084B3915" FromRole="UserExtension" ToRole="UserAddress" />
         </EntityType>
         <EntityType Name="avw_AdminUsers">
           <Key>
@@ -3304,6 +3366,84 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <Property Name="DataSize" Type="Int32" />
           <Property Name="LastUpdatedDate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
+        <EntityType Name="vw_customer_cart">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="image" />
+            <PropertyRef Name="price" />
+            <PropertyRef Name="date" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="description" />
+            <PropertyRef Name="artist_id" />
+            <PropertyRef Name="virtual" />
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="image" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="date" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="artist_id" Type="Guid" Nullable="false" />
+          <Property Name="virtual" Type="Boolean" Nullable="false" />
+          <Property Name="user_id" Type="Guid" Nullable="false" />
+          <Property Name="availability" Type="Int32" />
+          <Property Name="checked" Type="Boolean" />
+          <Property Name="add_date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="vw_customer_cart2">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="image" />
+            <PropertyRef Name="price" />
+            <PropertyRef Name="date" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="description" />
+            <PropertyRef Name="artist_id" />
+            <PropertyRef Name="virtual" />
+            <PropertyRef Name="user_id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="image" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="date" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="artist_id" Type="Guid" Nullable="false" />
+          <Property Name="virtual" Type="Boolean" Nullable="false" />
+          <Property Name="user_id" Type="Guid" Nullable="false" />
+          <Property Name="availability" Type="Int32" />
+          <Property Name="checked" Type="Boolean" />
+          <Property Name="add_date" Type="DateTime" Precision="0" />
+          <Property Name="weight_g" Type="Int32" />
+          <Property Name="height_mm" Type="Int32" />
+          <Property Name="lenght_mm" Type="Int32" />
+          <Property Name="width_mm" Type="Int32" />
+        </EntityType>
+        <EntityType Name="vW_users_address">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="latitude" />
+            <PropertyRef Name="longitude" />
+            <PropertyRef Name="details" />
+            <PropertyRef Name="street" />
+            <PropertyRef Name="city" />
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="address_id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="latitude" Type="Double" Nullable="false" />
+          <Property Name="longitude" Type="Double" Nullable="false" />
+          <Property Name="details" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="street" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="state" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="poscode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="country" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Guid" Nullable="false" />
+          <Property Name="address_id" Type="Guid" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
         <Association Name="FK__Delivery__destin__10E07F16">
           <End Type="ArtShopModel.Address" Role="Address" Multiplicity="1" />
           <End Type="ArtShopModel.Delivery" Role="Delivery" Multiplicity="*" />
@@ -3340,6 +3480,42 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Painting__source__17236851">
+          <End Type="ArtShopModel.Address" Role="Address" Multiplicity="1" />
+          <End Type="ArtShopModel.Painting" Role="Painting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Painting">
+              <PropertyRef Name="source" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Payment__destina__21A0F6C4">
+          <End Type="ArtShopModel.Address" Role="Address" Multiplicity="0..1" />
+          <End Type="ArtShopModel.Payment" Role="Payment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Payment">
+              <PropertyRef Name="destinations_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserAddre__addre__093F5D4E">
+          <End Type="ArtShopModel.Address" Role="Address" Multiplicity="1" />
+          <End Type="ArtShopModel.UserAddress" Role="UserAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="UserAddress">
+              <PropertyRef Name="address_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Art__artist_id__44952D46">
           <End Type="ArtShopModel.Artist" Role="Artist" Multiplicity="1" />
           <End Type="ArtShopModel.Art" Role="Art" Multiplicity="*" />
@@ -3352,7 +3528,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CartDetai__art_i__41B8C09B">
+        <Association Name="FK__CartDetai__art_i__2882FE7D">
           <End Type="ArtShopModel.Art" Role="Art" Multiplicity="1" />
           <End Type="ArtShopModel.CartDetail" Role="CartDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3372,6 +3548,18 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Painting">
+              <PropertyRef Name="art_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentDe__art_i__595B4002">
+          <End Type="ArtShopModel.Art" Role="Art" Multiplicity="1" />
+          <End Type="ArtShopModel.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Art">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PaymentDetail">
               <PropertyRef Name="art_id" />
             </Dependent>
           </ReferentialConstraint>
@@ -3508,7 +3696,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Payment__UserId__3DB3258D">
+        <Association Name="FK__Payment__UserId__1FB8AE52">
           <End Type="ArtShopModel.aspnet_Users" Role="aspnet_Users" Multiplicity="1" />
           <End Type="ArtShopModel.Payment" Role="Payment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3556,7 +3744,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__CartDetai__cart___40058253">
+        <Association Name="FK__CartDetai__cart___278EDA44">
           <End Type="ArtShopModel.Cart" Role="Cart" Multiplicity="1" />
           <End Type="ArtShopModel.CartDetail" Role="CartDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3592,6 +3780,18 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PaymentDe__deliv__505BE5AD">
+          <End Type="ArtShopModel.Delivery" Role="Delivery" Multiplicity="0..1" />
+          <End Type="ArtShopModel.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Delivery">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PaymentDetail">
+              <PropertyRef Name="delivery_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__DeliveryC__deliv__178D7CA5">
           <End Type="ArtShopModel.DeliveryStatu" Role="DeliveryStatu" Multiplicity="0..1" />
           <End Type="ArtShopModel.DeliveryChain" Role="DeliveryChain" Multiplicity="*" />
@@ -3604,7 +3804,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Payment__payment__3BCADD1B">
+        <Association Name="FK__Payment__payment__1DD065E0">
           <End Type="ArtShopModel.PaymentMethod" Role="PaymentMethod" Multiplicity="1" />
           <End Type="ArtShopModel.Payment" Role="Payment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3616,7 +3816,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Payment__payment__3CBF0154">
+        <Association Name="FK__Payment__payment__1EC48A19">
           <End Type="ArtShopModel.PaymentStatu" Role="PaymentStatu" Multiplicity="1" />
           <End Type="ArtShopModel.Payment" Role="Payment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -3625,6 +3825,18 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Principal>
             <Dependent Role="Payment">
               <PropertyRef Name="payment_status" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PaymentDe__payme__20ACD28B">
+          <End Type="ArtShopModel.Payment" Role="Payment" Multiplicity="1" />
+          <End Type="ArtShopModel.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Payment">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="PaymentDetail">
+              <PropertyRef Name="payment_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -3640,147 +3852,29 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__UserAddre__UserI__084B3915">
+          <End Type="ArtShopModel.UserExtension" Role="UserExtension" Multiplicity="1" />
+          <End Type="ArtShopModel.UserAddress" Role="UserAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserExtension">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserAddress">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="aspnet_UsersInRoles">
           <End Type="ArtShopModel.aspnet_Roles" Role="aspnet_Roles" Multiplicity="*" />
           <End Type="ArtShopModel.aspnet_Users" Role="aspnet_Users" Multiplicity="*" />
-        </Association>
-        <Association Name="DeliveryChainDetails">
-          <End Type="ArtShopModel.Delivery" Role="Delivery" Multiplicity="*" />
-          <End Type="ArtShopModel.DeliveryChain" Role="DeliveryChain" Multiplicity="*" />
-        </Association>
-        <Association Name="UserAddress">
-          <End Type="ArtShopModel.Address" Role="Address" Multiplicity="*" />
-          <End Type="ArtShopModel.UserExtension" Role="UserExtension" Multiplicity="*" />
-        </Association>
-        <Association Name="FK__PaymentDe__art_i__595B4002">
-          <End Type="ArtShopModel.Art" Role="Art" Multiplicity="1" />
-          <End Type="ArtShopModel.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Art">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="PaymentDetail">
-              <PropertyRef Name="art_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PaymentDe__payme__58671BC9">
-          <End Type="ArtShopModel.Payment" Role="Payment" Multiplicity="1" />
-          <End Type="ArtShopModel.PaymentDetail" Role="PaymentDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Payment">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="PaymentDetail">
-              <PropertyRef Name="payment_id" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
         <Association Name="CategoryDetails">
           <End Type="ArtShopModel.Art" Role="Art" Multiplicity="*" />
           <End Type="ArtShopModel.Category" Role="Category" Multiplicity="*" />
         </Association>
-        <EntityType Name="vw_customer_cart2">
-          <Key>
-            <PropertyRef Name="id" />
-            <PropertyRef Name="image" />
-            <PropertyRef Name="price" />
-            <PropertyRef Name="date" />
-            <PropertyRef Name="title" />
-            <PropertyRef Name="description" />
-            <PropertyRef Name="artist_id" />
-            <PropertyRef Name="virtual" />
-            <PropertyRef Name="user_id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="image" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="date" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="artist_id" Type="Guid" Nullable="false" />
-          <Property Name="virtual" Type="Boolean" Nullable="false" />
-          <Property Name="user_id" Type="Guid" Nullable="false" />
-          <Property Name="availability" Type="Int32" />
-          <Property Name="add_date" Type="DateTime" Precision="0" />
-          <Property Name="checked" Type="Boolean" />
-          <Property Name="weight_g" Type="Int32" />
-          <Property Name="height_mm" Type="Int32" />
-          <Property Name="lenght_mm" Type="Int32" />
-          <Property Name="width_mm" Type="Int32" />
-        </EntityType>
-        <EntityType Name="vw_customer_cart">
-          <Key>
-            <PropertyRef Name="id" />
-            <PropertyRef Name="image" />
-            <PropertyRef Name="price" />
-            <PropertyRef Name="date" />
-            <PropertyRef Name="title" />
-            <PropertyRef Name="description" />
-            <PropertyRef Name="artist_id" />
-            <PropertyRef Name="virtual" />
-            <PropertyRef Name="user_id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="image" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="price" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
-          <Property Name="date" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="artist_id" Type="Guid" Nullable="false" />
-          <Property Name="virtual" Type="Boolean" Nullable="false" />
-          <Property Name="user_id" Type="Guid" Nullable="false" />
-          <Property Name="availability" Type="Int32" />
-          <Property Name="add_date" Type="DateTime" Precision="0" />
-          <Property Name="checked" Type="Boolean" />
-        </EntityType>
-        <Association Name="FK__Painting__source__17236851">
-          <End Type="ArtShopModel.Address" Role="Address" Multiplicity="1" />
-          <End Type="ArtShopModel.Painting" Role="Painting" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Address">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Painting">
-              <PropertyRef Name="source" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="vW_users_address">
-          <Key>
-            <PropertyRef Name="id" />
-            <PropertyRef Name="latitude" />
-            <PropertyRef Name="longitude" />
-            <PropertyRef Name="details" />
-            <PropertyRef Name="street" />
-            <PropertyRef Name="city" />
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="address_id" />
-          </Key>
-          <Property Name="id" Type="Guid" Nullable="false" />
-          <Property Name="latitude" Type="Double" Nullable="false" />
-          <Property Name="longitude" Type="Double" Nullable="false" />
-          <Property Name="details" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="street" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="city" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="state" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="poscode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="country" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
-          <Property Name="UserId" Type="Guid" Nullable="false" />
-          <Property Name="address_id" Type="Guid" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <Association Name="FK__Payment__destina__21A0F6C4">
-          <End Type="ArtShopModel.Address" Role="Address" Multiplicity="0..1" />
-          <End Type="ArtShopModel.Payment" Role="Payment" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Address">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Payment">
-              <PropertyRef Name="destinations_id" />
-            </Dependent>
-          </ReferentialConstraint>
+        <Association Name="DeliveryChainDetails">
+          <End Type="ArtShopModel.Delivery" Role="Delivery" Multiplicity="*" />
+          <End Type="ArtShopModel.DeliveryChain" Role="DeliveryChain" Multiplicity="*" />
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -4107,8 +4201,8 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <EntitySetMapping Name="CartDetails">
             <EntityTypeMapping TypeName="ArtShopModel.CartDetail">
               <MappingFragment StoreEntitySet="CartDetails">
-                <ScalarProperty Name="checked" ColumnName="checked" />
                 <ScalarProperty Name="add_date" ColumnName="add_date" />
+                <ScalarProperty Name="checked" ColumnName="checked" />
                 <ScalarProperty Name="availability" ColumnName="availability" />
                 <ScalarProperty Name="art_id" ColumnName="art_id" />
                 <ScalarProperty Name="cart_id" ColumnName="cart_id" />
@@ -4186,6 +4280,17 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Pages">
+            <EntityTypeMapping TypeName="ArtShopModel.Page">
+              <MappingFragment StoreEntitySet="Pages">
+                <ScalarProperty Name="parent_id" ColumnName="parent_id" />
+                <ScalarProperty Name="file_name" ColumnName="file_name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Paintings">
             <EntityTypeMapping TypeName="ArtShopModel.Painting">
               <MappingFragment StoreEntitySet="Painting">
@@ -4202,7 +4307,6 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <EntitySetMapping Name="Payments">
             <EntityTypeMapping TypeName="ArtShopModel.Payment">
               <MappingFragment StoreEntitySet="Payment">
-                <ScalarProperty Name="destinations_id" ColumnName="destinations_id" />
                 <ScalarProperty Name="notes" ColumnName="notes" />
                 <ScalarProperty Name="payment_meta" ColumnName="payment_meta" />
                 <ScalarProperty Name="payment_date" ColumnName="payment_date" />
@@ -4211,6 +4315,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
                 <ScalarProperty Name="discount" ColumnName="discount" />
                 <ScalarProperty Name="net_pay" ColumnName="net_pay" />
                 <ScalarProperty Name="tax_change" ColumnName="tax_change" />
+                <ScalarProperty Name="destinations_id" ColumnName="destinations_id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="payment_status" ColumnName="payment_status" />
                 <ScalarProperty Name="payment_method" ColumnName="payment_method" />
@@ -4221,6 +4326,7 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
           <EntitySetMapping Name="PaymentDetails">
             <EntityTypeMapping TypeName="ArtShopModel.PaymentDetail">
               <MappingFragment StoreEntitySet="PaymentDetails">
+                <ScalarProperty Name="delivery_id" ColumnName="delivery_id" />
                 <ScalarProperty Name="delivery_fee" ColumnName="delivery_fee" />
                 <ScalarProperty Name="add_date" ColumnName="add_date" />
                 <ScalarProperty Name="virtual" ColumnName="virtual" />
@@ -4286,6 +4392,15 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
                 <ScalarProperty Name="picture" ColumnName="picture" />
                 <ScalarProperty Name="position_id" ColumnName="position_id" />
                 <ScalarProperty Name="priority" ColumnName="priority" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserAddresses">
+            <EntityTypeMapping TypeName="ArtShopModel.UserAddress">
+              <MappingFragment StoreEntitySet="UserAddress">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="address_id" ColumnName="address_id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -4506,47 +4621,11 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="aspnet_UsersInRoles" TypeName="ArtShopModel.aspnet_UsersInRoles" StoreEntitySet="aspnet_UsersInRoles">
-            <EndProperty Name="aspnet_Users">
-              <ScalarProperty Name="UserId" ColumnName="UserId" />
-            </EndProperty>
-            <EndProperty Name="aspnet_Roles">
-              <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="DeliveryChainDetails" TypeName="ArtShopModel.DeliveryChainDetails" StoreEntitySet="DeliveryChainDetails">
-            <EndProperty Name="DeliveryChain">
-              <ScalarProperty Name="id" ColumnName="tranfer_chain_id" />
-            </EndProperty>
-            <EndProperty Name="Delivery">
-              <ScalarProperty Name="id" ColumnName="delivery_id" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="UserAddress" TypeName="ArtShopModel.UserAddress" StoreEntitySet="UserAddress">
-            <EndProperty Name="UserExtension">
-              <ScalarProperty Name="UserId" ColumnName="UserId" />
-            </EndProperty>
-            <EndProperty Name="Address">
-              <ScalarProperty Name="id" ColumnName="address_id" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="CategoryDetails" TypeName="ArtShopModel.CategoryDetails" StoreEntitySet="CategoryDetails">
-            <EndProperty Name="Category">
-              <ScalarProperty Name="id" ColumnName="category_id" />
-            </EndProperty>
-            <EndProperty Name="Art">
-              <ScalarProperty Name="id" ColumnName="art_id" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <EntitySetMapping Name="vw_customer_cart2">
-            <EntityTypeMapping TypeName="ArtShopModel.vw_customer_cart2">
-              <MappingFragment StoreEntitySet="vw_customer_cart2">
-                <ScalarProperty Name="width_mm" ColumnName="width_mm" />
-                <ScalarProperty Name="lenght_mm" ColumnName="lenght_mm" />
-                <ScalarProperty Name="height_mm" ColumnName="height_mm" />
-                <ScalarProperty Name="weight_g" ColumnName="weight_g" />
-                <ScalarProperty Name="checked" ColumnName="checked" />
+          <EntitySetMapping Name="vw_customer_cart">
+            <EntityTypeMapping TypeName="ArtShopModel.vw_customer_cart">
+              <MappingFragment StoreEntitySet="vw_customer_cart">
                 <ScalarProperty Name="add_date" ColumnName="add_date" />
+                <ScalarProperty Name="checked" ColumnName="checked" />
                 <ScalarProperty Name="availability" ColumnName="availability" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="virtual" ColumnName="virtual" />
@@ -4560,11 +4639,15 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="vw_customer_cart">
-            <EntityTypeMapping TypeName="ArtShopModel.vw_customer_cart">
-              <MappingFragment StoreEntitySet="vw_customer_cart">
-                <ScalarProperty Name="checked" ColumnName="checked" />
+          <EntitySetMapping Name="vw_customer_cart2">
+            <EntityTypeMapping TypeName="ArtShopModel.vw_customer_cart2">
+              <MappingFragment StoreEntitySet="vw_customer_cart2">
+                <ScalarProperty Name="width_mm" ColumnName="width_mm" />
+                <ScalarProperty Name="lenght_mm" ColumnName="lenght_mm" />
+                <ScalarProperty Name="height_mm" ColumnName="height_mm" />
+                <ScalarProperty Name="weight_g" ColumnName="weight_g" />
                 <ScalarProperty Name="add_date" ColumnName="add_date" />
+                <ScalarProperty Name="checked" ColumnName="checked" />
                 <ScalarProperty Name="availability" ColumnName="availability" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="virtual" ColumnName="virtual" />
@@ -4596,6 +4679,30 @@ warning 6002: The table/view 'C:\USERS\ITSUKA KOTORI\DOCUMENTS\GITHUB\XCS-ARTSHO
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="aspnet_UsersInRoles" TypeName="ArtShopModel.aspnet_UsersInRoles" StoreEntitySet="aspnet_UsersInRoles">
+            <EndProperty Name="aspnet_Users">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+            <EndProperty Name="aspnet_Roles">
+              <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="CategoryDetails" TypeName="ArtShopModel.CategoryDetails" StoreEntitySet="CategoryDetails">
+            <EndProperty Name="Category">
+              <ScalarProperty Name="id" ColumnName="category_id" />
+            </EndProperty>
+            <EndProperty Name="Art">
+              <ScalarProperty Name="id" ColumnName="art_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="DeliveryChainDetails" TypeName="ArtShopModel.DeliveryChainDetails" StoreEntitySet="DeliveryChainDetails">
+            <EndProperty Name="DeliveryChain">
+              <ScalarProperty Name="id" ColumnName="tranfer_chain_id" />
+            </EndProperty>
+            <EndProperty Name="Delivery">
+              <ScalarProperty Name="id" ColumnName="delivery_id" />
+            </EndProperty>
+          </AssociationSetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

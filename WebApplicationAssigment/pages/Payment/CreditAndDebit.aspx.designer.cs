@@ -123,33 +123,6 @@ namespace WebApplicationAssigment.pages.Payment
         protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator010;
 
         /// <summary>
-        /// CardPass control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox CardPass;
-
-        /// <summary>
-        /// RequiredFieldValidator005 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator005;
-
-        /// <summary>
-        /// RegularExpressionValidator005 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator005;
-
-        /// <summary>
         /// Button1 control.
         /// </summary>
         /// <remarks>

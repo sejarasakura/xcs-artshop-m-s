@@ -30,6 +30,7 @@
                             <asp:TextBox
                                 CssClass="form-control"
                                 ID="CardName"
+                                placeholder="Enter public bank username..."
                                 runat="server"
                                 Text=''>
                             </asp:TextBox>
@@ -39,16 +40,7 @@
                                 runat="server"
                                 ID="RequiredFieldValidator008"
                                 ControlToValidate="CardName"
-                                ErrorMessage="Please enter your full name!" />
-                            <asp:RegularExpressionValidator
-                                ValidationGroup="CARD"
-                                ForeColor="Red"
-                                Display="Dynamic"
-                                ControlToValidate="CardName"
-                                ID="RegularExpressionValidator008"
-                                ValidationExpression="[a-zA-Z ]{0,20}$"
-                                runat="server"
-                                ErrorMessage="The full name only accept max 20 word and must be character only" />
+                                ErrorMessage="Please enter valid username!" />
                         </div>
                     </div>
                 </div>
@@ -65,6 +57,7 @@
                             <asp:TextBox
                                 CssClass="form-control"
                                 ID="CardPass"
+                                placeholder="Enter password..."
                                 runat="server"
                                 TextMode="Password"
                                 Text=''>
@@ -101,7 +94,7 @@
                     Text="Login"
                     runat="server"
                     ID="Button1"
-                    PostBackUrl="~/pages/Payment/PublicBank.aspx" />
+                     OnClick="Button1_Click" />
             </div>
         </div>
     </div>

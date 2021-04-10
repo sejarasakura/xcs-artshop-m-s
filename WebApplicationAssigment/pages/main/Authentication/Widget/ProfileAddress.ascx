@@ -29,7 +29,8 @@
             <%
                 using (ArtShopEntities db = new ArtShopEntities())
                 {
-                    Address[] addresss = db.UserExtensions.Find(Functions.getLoginUser().ProviderUserKey).Addresses.ToArray();
+                    UserAddress[] addresss = db.UserExtensions.Find(Functions.getLoginUser().ProviderUserKey).UserAddresses == null? new UserAddress[0]:
+                        db.UserExtensions.Find(Functions.getLoginUser().ProviderUserKey).UserAddresses.ToArray();
                     for (int i = 0; i < addresss.Length; i++)
                     {
             %>
@@ -38,23 +39,23 @@
                     <h3 class="">Address <%= 1 + i %></h3>
                     <p class="card-text">
                         ADDREASS ID
-                        <span class="float-right"><%= addresss[i].id %></span>
+                        <span class="float-right"><%= addresss[i].Address.id %></span>
                     </p>
                       <p class="card-text text-uppercase">
                         <b>lat / long</b>
-                        <span class="float-right"><%= addresss[i].latitude + ", " + addresss[i].longitude%></span>
+                        <span class="float-right"><%= addresss[i].Address.latitude + ", " + addresss[i].Address.longitude%></span>
                     </p>
                     <p class="">
-                        <%= addresss[i].details %>
+                        <%= addresss[i].Address.details %>
                     </p>
-                    <p class="mb-1 font-weight-light">Street: <span class="font-italic"> <%=addresss[i].street %> </span></p>
-                    <p class="mb-1 font-weight-light">City: <span class="font-italic"> <%=addresss[i].city %> </span></p>
-                    <p class="mb-1 font-weight-light">State: <span class="font-italic"> <%=addresss[i].state %> </span></p>
-                    <p class="mb-1 font-weight-light">Poscode: <span class="font-italic"> <%=addresss[i].poscode %> </span></p>
-                    <p class="mb-1 font-weight-light">Country: <span class="font-italic"> <%=addresss[i].country %> </span></p>
-                    <a href="MyAccount.aspx?<%= "type=remove&id=" + addresss[i].id %>" class="btn btn-lg btn-danger">Remove</a>
-                    <a href="MyAccount.aspx?<%= param_type == "show" && param_id == addresss[i].id.ToString() ? "" : "type=show&id=" + addresss[i].id %>" class="btn btn-success">
-                        <%= param_type == "show" && param_id == addresss[i].id.ToString()? "CANCEL" : "SHOW IN MAP" %></a>
+                    <p class="mb-1 font-weight-light">Street: <span class="font-italic"> <%=addresss[i].Address.street %> </span></p>
+                    <p class="mb-1 font-weight-light">City: <span class="font-italic"> <%=addresss[i].Address.city %> </span></p>
+                    <p class="mb-1 font-weight-light">State: <span class="font-italic"> <%=addresss[i].Address.state %> </span></p>
+                    <p class="mb-1 font-weight-light">Poscode: <span class="font-italic"> <%=addresss[i].Address.poscode %> </span></p>
+                    <p class="mb-1 font-weight-light">Country: <span class="font-italic"> <%=addresss[i].Address.country %> </span></p>
+                    <a href="MyAccount.aspx?<%= "type=remove&id=" + addresss[i].Address.id %>" class="btn btn-lg btn-danger">Remove</a>
+                    <a href="MyAccount.aspx?<%= param_type == "show" && param_id == addresss[i].Address.id.ToString() ? "" : "type=show&id=" + addresss[i].Address.id %>" class="btn btn-success">
+                        <%= param_type == "show" && param_id == addresss[i].Address.id.ToString()? "CANCEL" : "SHOW IN MAP" %></a>
                   </div>
                 </div>
             <%

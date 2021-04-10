@@ -29,7 +29,7 @@
                             <asp:TextBox
                                 CssClass="form-control"
                                 ID="CardNumber"
-                                placeholder="please enter card number!"
+                                placeholder="Enter account number..."
                                 runat="server" />
                             <asp:RequiredFieldValidator
                                 ValidationGroup="CARD"
@@ -37,16 +37,16 @@
                                 runat="server"
                                 ID="RequiredFieldValidator007"
                                 ControlToValidate="CardNumber"
-                                ErrorMessage="Please enter card number!" />
+                                ErrorMessage="Please enter paypal account number!" />
                             <asp:RegularExpressionValidator
                                 ValidationGroup="CARD"
                                 ForeColor="Red"
                                 Display="Dynamic"
                                 ControlToValidate="CardNumber"
                                 ID="RegularExpressionValidator007"
-                                ValidationExpression="[0-9]{16}$"
+                                ValidationExpression="[0-9]{10}$"
                                 runat="server"
-                                ErrorMessage="The card numbe rmust be 16 number. " />
+                                ErrorMessage="Please enter a valid account! " />
                         </div>
                     </div>
                 </div>
@@ -60,6 +60,7 @@
                             <asp:TextBox
                                 CssClass="form-control"
                                 ID="CardName"
+                                placeholder="Enter account holder name..."
                                 runat="server"
                                 Text=''>
                             </asp:TextBox>
@@ -69,7 +70,7 @@
                                 runat="server"
                                 ID="RequiredFieldValidator008"
                                 ControlToValidate="CardName"
-                                ErrorMessage="Please enter your full name!" />
+                                ErrorMessage="Please enter name!" />
                             <asp:RegularExpressionValidator
                                 ValidationGroup="CARD"
                                 ForeColor="Red"
@@ -92,6 +93,7 @@
                             <asp:TextBox
                                 CssClass="form-control"
                                 ID="CardExp"
+                                placeholder="Enter email..."
                                 runat="server"
                                 Text=''>
                             </asp:TextBox>
@@ -101,7 +103,7 @@
                                 runat="server"
                                 ID="RequiredFieldValidator009"
                                 ControlToValidate="CardExp"
-                                ErrorMessage="Please enter card exp date!" />
+                                ErrorMessage="Please enter email!" />
                         </div>
                     </div>
                 </div>
@@ -115,6 +117,7 @@
                             <asp:TextBox
                                 CssClass="form-control"
                                 ID="CardPass"
+                                placeholder="Enter password..."
                                 runat="server"
                                 TextMode="Password"
                                 Text=''>
@@ -150,6 +153,7 @@
                     Style="margin-left: 20px"
                     Text="Continue Payment"
                     runat="server"
+                     OnClick="confirmPayment"
                     ID="Button1" />
             </div>
         </div>

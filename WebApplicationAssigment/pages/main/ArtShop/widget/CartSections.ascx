@@ -161,7 +161,7 @@
                                 <asp:Label ID="lblTotalPrice" runat="server" Text="Label"></asp:Label></strong></span>
                         </li>
                     </ul>
-                    <asp:Button ID="btnCheckout" runat="server" Text="go to checkout" CssClass="btn btn-primary from-contol" />
+                    <asp:Button OnClick="btnCheckout_event" ID="btnCheckout" runat="server" Text="go to checkout" CssClass="btn btn-primary from-contol" />
 
                 </div>
             </div>

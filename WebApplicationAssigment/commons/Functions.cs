@@ -200,9 +200,9 @@ namespace WebApplicationAssigment.commons
             else
             {
                 Functions.EnqueueNewNotifications(new Notifications(
-                Notifications.ERROR_TYPE,
-                "Login required!",
-                "You must login before trying to add in new item to cart !!"));
+                    Notifications.ERROR_TYPE,
+                    "Login required!",
+                    "You must login before trying to add in new item to cart !!"));
 
 
                 Response.Redirect(Constant.LOGIN_URL);
@@ -282,6 +282,84 @@ namespace WebApplicationAssigment.commons
         public static string FormatNotificationScript(Notifications notifications)
         {
             return "toastr[\"" + notifications.type + "\"](\"" + notifications.detail + "\", \"" + notifications.title + "\"); ";
+        }
+
+        public static bool checkValidPayment(String param)
+        {
+            Guid id;
+            if (param == null) { 
+                HttpContext.Current.Response.Redirect("~/pages/Payment/PaymentInvalid.aspx");
+                return false;
+            }
+            id = Guid.Parse(param);
+            if (id == null)
+            {
+                HttpContext.Current.Response.Redirect("~/pages/Payment/PaymentInvalid.aspx");
+                return false;
+            }
+            using (ArtShopEntities db = new ArtShopEntities())
+            {
+                Payment p = db.Payments.Find(id);
+                if(p == null)
+                {
+                    HttpContext.Current.Response.Redirect("~/pages/Payment/PaymentInvalid.aspx");
+                    return false;
+                }
+                switch (p.PaymentStatu.id.ToString())
+                {
+                    case "80e85ebb-7401-45be-8080-4d16df2177bf":
+                        return true;
+                        break;//Fail
+                    case "20bd9f32-b531-4b7f-a89a-80babe9aa707":
+                        return true;
+                        break;//Padding
+                    default:
+                        HttpContext.Current.Response.Redirect("~/pages/Payment/PaymentInvalid.aspx");
+                        return false;
+                        break;
+                }
+            }
+        }
+
+        public static void sendPaymentMail(modal.Payment payment)
+        {
+            MembershipUser user = Functions.getLoginUser();
+            var m_content = "";
+            m_content += "Hi, Dear user " + user.UserName + ", <br /><br />";
+            m_content += "Thank for your expense in our store and buy our expensive art<br />";
+            m_content += "You have buy the folllowing art: <br /><table style=''>";
+            m_content += "<tr>";
+            m_content += "<th> Title </th>";
+            m_content += "<th> Quantity </th>";
+            m_content += "<th></th>";
+            m_content += "<th> Single Price </th>";
+            m_content += "</tr>";
+            foreach (PaymentDetail art in payment.PaymentDetails)
+            {
+                m_content += "<tr>";
+                m_content += "<td>" + art.Art.title + "</td>";
+                m_content += "<td>" + art.quantity + "</td>";
+                m_content += "<td> * </td>";
+                m_content += "<td>" + art.Art.price + "</td>";
+                m_content += "</tr>";
+            }
+            m_content += "</table>" +
+                "Total payment : " + payment.total_pay + "<br />";
+            m_content += "Paid By " + payment.PaymentMethod.name + " [ " + payment.payment_meta + " ]. <br />";
+            m_content += "<br /><br />Thak you so much !!";
+
+            bool sended = SendMail.send_mail(
+               "Placed Payment",
+               "This notice confirms that your has purchase our product in Art Salse.com  !!",
+               m_content,
+               user.Email
+           );
+        }
+
+        public static double caculateDeliveryFees(vw_customer_cart2 paint, int quantity)
+        {
+            double x = (paint.weight_g??0) * 12.0 / 1000.0;
+            return x < 5 ? 5 : x;
         }
     }
 }

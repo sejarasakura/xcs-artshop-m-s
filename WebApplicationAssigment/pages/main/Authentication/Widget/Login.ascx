@@ -24,7 +24,7 @@
                 <asp:Literal ID="FailureText" runat="server"></asp:Literal>
             </b>
             <div class="float-right">
-                <asp:Button CssClass="btn btn-success btn-block pull-right" ID="Login" CommandName="Login" runat="server" Text="Sing In"></asp:Button>
+                <asp:Button CssClass="btn btn-success btn-block pull-right" ID="Login" CommandName="Login" runat="server" Text="Sign In"></asp:Button>
             </div>
             <a href="/pages/main/Authentication/ForgotPassword.aspx" id="forgot_pswd">Forgot password?</a>
             <hr>

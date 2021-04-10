@@ -22,8 +22,6 @@
     <div class="row">
         <div class="col-sm-3">
             <!--left col-->
-
-
             <div class="text-center">
                 <img src="<%= Constant.PROFILE_PIC_URL %>?guid=<%= (Guid)viewMember.ProviderUserKey %>" class="avatar img-circle img-thumbnail" alt="avatar">
                 <h6>Upload a different photo...</h6>
@@ -31,20 +29,15 @@
             </div>
             <hr />
             <br>
-
-
             <div class="panel panel-default">
                 <div class="panel-heading"><i class="fa fa-user fa-1x"></i> | My Account</div>
                 <div class="panel-body">
-                    <a href="http://bootnipets.com">Changes Password</a>
+                    <a href="https://localhost:44375/pages/main/Authentication/Profile/Change%20Password.aspx">Changes Password</a>
                 </div>
                 <div class="panel-body">
                     <asp:LoginStatus ID="LoginStatus1" runat="server" />
                 </div>
-
             </div>
-
-
         </div>
         <!--/col-3-->
         <div class="col-sm-9">
@@ -66,6 +59,7 @@
                         <li class="profiles-switch" id="tab-customer" u-id="customer"><a data-toggle="tab" href="#customer">Customer</a></li>
                         <% } %>
                         <% if (role.Contains("Administrator"))
+
                             { %>
                         <li class="profiles-switch" id="tab-staff" u-id="staff"><a data-toggle="tab" href="#staff">Staff</a></li>
                         <% } %>

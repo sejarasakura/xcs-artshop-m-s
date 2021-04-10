@@ -13,5 +13,9 @@ namespace WebApplicationAssigment.pages.main.Authentication.Widget
         {
 
         }
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

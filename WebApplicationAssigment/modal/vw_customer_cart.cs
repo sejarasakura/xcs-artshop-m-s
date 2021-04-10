@@ -24,7 +24,7 @@ namespace WebApplicationAssigment.modal
         public bool @virtual { get; set; }
         public System.Guid user_id { get; set; }
         public Nullable<int> availability { get; set; }
-        public Nullable<System.DateTime> add_date { get; set; }
         public Nullable<bool> @checked { get; set; }
+        public Nullable<System.DateTime> add_date { get; set; }
     }
 }

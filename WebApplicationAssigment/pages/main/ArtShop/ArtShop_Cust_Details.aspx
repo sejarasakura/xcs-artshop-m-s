@@ -59,15 +59,15 @@
 
                         <p class="lead">
                             <span class="mr-1">
-                                <del>$200</del>
+                                <del>RM <%= art.price *1.5m %></del>
                             </span>
-                            <span>$100</span>
+                            <span>RM <%= art.price %></span>
                         </p>
                         
-                        <p class="mb-1">Creations Date: <i></i></p>
-                        <p class="mb-1">Virtual Product: <i></i></p>
-                        <p class="mb-1">L &times; W &times; H: <i></i></p>
-                        <p class="mb-1">Stock Remain: <i></i></p>
+                        <p class="mb-1">Creations Date: <i><%= art.date %></i></p>
+                        <p class="mb-1">Virtual Product: <i> <%= art.@virtual? "Yes": "No"%></i></p>
+                        <p class="mb-1">L &times; W &times; H: <i><%= art.@virtual? "none": createdLWH(art.Painting.lenght_mm, art.Painting.width_mm, art.Painting.height_mm)%></i></p>
+                        <p class="mb-1">Stock Remain: <i><%= art.@virtual? "none": art.Painting.quantity + "" %></i></p>
                         <p class="mb-1">Weight: <i><%= art.Painting == null? "none" : art.Painting.weight_g + " g" %></i></p>
                         <hr />
                         <p class="lead font-weight-bold">Description</p>

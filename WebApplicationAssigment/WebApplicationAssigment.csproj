@@ -347,10 +347,7 @@
     <Content Include="pages\main\Home.aspx" />
     <Content Include="pages\Payment\CheckOut.aspx" />
     <Content Include="pages\Payment\CreditAndDebit.aspx" />
-    <Content Include="pages\Payment\DeliveryInformation.aspx" />
     <Content Include="pages\Payment\OnlineBanking.aspx" />
-    <Content Include="pages\Payment\PaymentFailed.aspx" />
-    <Content Include="pages\Payment\PaymentSuccess.aspx" />
     <Content Include="pages\Payment\Paypal.aspx" />
     <Content Include="pages\Payment\SelectMethod.aspx" />
     <Content Include="pages\Payment\PublicBank.aspx" />
@@ -432,6 +429,8 @@
       <DependentUpon>ArtistSigniture.ashx</DependentUpon>
     </Compile>
     <Compile Include="commons\Constant.cs" />
+    <Compile Include="commons\DeliveryChainUI.cs" />
+    <Compile Include="commons\DynamicSitePrvider.cs" />
     <Compile Include="commons\Functions.cs" />
     <Compile Include="commons\handler\UpdatesHeaderNavigations.ashx.cs">
       <DependentUpon>UpdatesHeaderNavigations.ashx</DependentUpon>
@@ -440,6 +439,7 @@
     <Compile Include="commons\MapApiConstant.cs" />
     <Compile Include="commons\MapApiProvider.cs" />
     <Compile Include="commons\Notifications.cs" />
+    <Compile Include="commons\SendMail.cs" />
     <Compile Include="commons\UserProfilePicture.ashx.cs">
       <DependentUpon>UserProfilePicture.ashx</DependentUpon>
     </Compile>
@@ -461,6 +461,18 @@
     <Compile Include="modal\aspnet_Membership.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="modal\aspnet_Membership_GetPasswordWithFormat_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\aspnet_Membership_GetPassword_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\aspnet_Membership_GetUserByName_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\aspnet_Membership_GetUserByUserId_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="modal\aspnet_Paths.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -473,10 +485,22 @@
     <Compile Include="modal\aspnet_Profile.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="modal\aspnet_Profile_GetProperties_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="modal\aspnet_Roles.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="modal\aspnet_SchemaVersions.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="modal\aspnet_Users.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\aspnet_UsersInRoles_RemoveUsersFromRoles_Result.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\aspnet_WebEvent_Events.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="modal\avw_AdminUsers.cs">
@@ -518,6 +542,9 @@
     <Compile Include="modal\DeliveryStatu.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="modal\Page.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="modal\Painting.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -543,6 +570,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="modal\Staff.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="modal\UserAddress.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="modal\UserExtension.cs">
@@ -671,30 +701,6 @@
     </Compile>
     <Compile Include="pages\main\Artist\widget\title.ascx.designer.cs">
       <DependentUpon>title.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="modal\aspnet_Membership_GetPasswordWithFormat_Result.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\aspnet_Membership_GetPassword_Result.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\aspnet_Membership_GetUserByName_Result.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\aspnet_Membership_GetUserByUserId_Result.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\aspnet_Profile_GetProperties_Result.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\aspnet_SchemaVersions.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\aspnet_UsersInRoles_RemoveUsersFromRoles_Result.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="modal\aspnet_WebEvent_Events.cs">
-      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="modal\Model.Context.cs">
       <AutoGen>True</AutoGen>
@@ -945,33 +951,12 @@
     <Compile Include="pages\Payment\CreditAndDebit.aspx.designer.cs">
       <DependentUpon>CreditAndDebit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="pages\Payment\DeliveryInformation.aspx.cs">
-      <DependentUpon>DeliveryInformation.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\Payment\DeliveryInformation.aspx.designer.cs">
-      <DependentUpon>DeliveryInformation.aspx</DependentUpon>
-    </Compile>
     <Compile Include="pages\Payment\OnlineBanking.aspx.cs">
       <DependentUpon>OnlineBanking.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="pages\Payment\OnlineBanking.aspx.designer.cs">
       <DependentUpon>OnlineBanking.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="pages\Payment\PaymentFailed.aspx.cs">
-      <DependentUpon>PaymentFailed.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\Payment\PaymentFailed.aspx.designer.cs">
-      <DependentUpon>PaymentFailed.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="pages\Payment\PaymentSuccess.aspx.cs">
-      <DependentUpon>PaymentSuccess.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\Payment\PaymentSuccess.aspx.designer.cs">
-      <DependentUpon>PaymentSuccess.aspx</DependentUpon>
     </Compile>
     <Compile Include="pages\Payment\Paypal.aspx.cs">
       <DependentUpon>Paypal.aspx</DependentUpon>

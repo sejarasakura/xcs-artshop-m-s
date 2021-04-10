@@ -42,15 +42,6 @@ namespace WebApplicationAssigment.pages.Payment
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator008;
 
         /// <summary>
-        /// RegularExpressionValidator008 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RegularExpressionValidator RegularExpressionValidator008;
-
-        /// <summary>
         /// CardPass control.
         /// </summary>
         /// <remarks>

@@ -36,6 +36,13 @@ namespace WebApplicationAssigment.pages.main.ArtShop
                 Response: Response, 
                 quantity: quan);
         }
+
+        protected string createdLWH(int l, int w, int h)
+        {
+            {
+                return l + " mm * " + w + " mm * " + h + " mm ";
+            }
+        }
     }
 
 

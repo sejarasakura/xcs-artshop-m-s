@@ -17,7 +17,7 @@ namespace WebApplicationAssigment.modal
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UserExtension()
         {
-            this.Addresses = new HashSet<Address>();
+            this.UserAddresses = new HashSet<UserAddress>();
         }
     
         public System.Guid UserId { get; set; }
@@ -28,6 +28,6 @@ namespace WebApplicationAssigment.modal
     
         public virtual aspnet_Users aspnet_Users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Address> Addresses { get; set; }
+        public virtual ICollection<UserAddress> UserAddresses { get; set; }
     }
 }

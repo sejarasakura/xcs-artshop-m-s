@@ -8,6 +8,7 @@
                 ID="Emails"
                 class="form-control"
                 ValidationGroup="ProfileGeneral"
+                 ReadOnly="true"
                 placeholder="Emails" />
             <asp:RequiredFieldValidator runat="server"
                 ControlToValidate="Emails"
@@ -74,83 +75,18 @@
         </div>
 
     </div>
-
-    <div class="form-group">
-        <!--Birthday Date-->
-        <div class="row">
-            <div class="col-xs-12 col-sm-4">
-                Birthday Date
-            </div>
-            <div class="col-xs-12 col-sm-8">
-                <asp:TextBox
-                    type="date"
-                    CssClass="form-control"
-                    ID="birthdayDate"
-                    ValidationGroup="ProfileGeneral"
-                    placeholder="Birthday Date"
-                    runat="server" />
-            </div>
-        </div>
-    </div>
-
-    <hr>
+    <hr />
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-6">
-            <asp:TextBox
-                runat="server"
-                ID="Question"
-                class="form-control input"
+            
+        <asp:Button 
+            Class="btn btn-warning pull-right" 
+            Style="margin-right: 20px;" 
+            ID="Button2" 
+            runat="server" 
+            Text="Updates"  
                 ValidationGroup="ProfileGeneral"
-                placeholder="Security Question" />
-            <asp:RequiredFieldValidator runat="server"
-                ControlToValidate="Question"
-                ToolTip="Security Question is a required field."
-                ID="QuestionRequired"
-                CssClass="text-danger"
-                ErrorMessage="Security Question is a required field.">
-               <b>* Security Question is a required field.</b>
-            </asp:RequiredFieldValidator>
-
-            <script>
-                var input = document.getElementById("<%= Question.ClientID%>");
-
-                // Show label but insert value into the input:
-                var comboplete = new Awesomplete(input, {
-                    list: SketchConstant.SECURITY_QUESTIONS,
-                    minChars: 0
-                });
-
-                Awesomplete.$('#<%= Question.ClientID%>').addEventListener("click", function () {
-                    if (comboplete.ul.childNodes.length === 0) {
-                        comboplete.minChars = 0;
-                        comboplete.evaluate();
-                    }
-                    else if (comboplete.ul.hasAttribute('hidden')) {
-                        comboplete.open();
-                    }
-                    else {
-                        comboplete.close();
-                    }
-                });
-            </script>
-        </div>
-        <div class="col-xs-12 col-sm-6 col-md-6">
-            <asp:TextBox
-                runat="server"
-                ID="Answer"
-                class="form-control input"
-                TextMode="Password"
-                ValidationGroup="ProfileGeneral"
-                placeholder="Answer" />
-            <asp:RequiredFieldValidator runat="server"
-                ControlToValidate="Answer"
-                ToolTip="Security Answer is a required field."
-                ID="AnswerRequired"
-                CssClass="text-danger"
-                ValidationGroup="ProfileGeneral"
-                ErrorMessage="Security Answer is a required field.">
-                <b>* Security Answer is a required field.</b>
-            </asp:RequiredFieldValidator>
+            OnClick="Button2_Click" />
         </div>
     </div>
 
