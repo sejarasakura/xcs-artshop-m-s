@@ -22,8 +22,8 @@
                         </div>
                         <div class="col-sm-6 text-right">
                             <h5>
-                                <span class="label <%# convert_css_class((PaymentStatu)Eval("payment_status")) %>" style="border-radius: 30px">
-                                    <%# convert_user_role((PaymentStatu)Eval("payment_status")) %>
+                                <span class="label <%# convert_css_class((Guid)Eval("payment_status")) %>" style="border-radius: 30px">
+                                    <%# convert_user_role((Guid)Eval("payment_status")) %>
                                 </span>
                             </h5>
                         </div>
@@ -75,7 +75,7 @@
                                 Text="Make Payment"
                                 runat="server"
                                 ID="PaymentBtn"
-                                NavigateUrl='<%# "Payment.aspx?order=" + Eval("id") %>'
+                                NavigateUrl='<%# "~/pages/Payment/SelectMethod.aspx?id=" + Eval("id") %>'
                                 Enabled='true'
                                 Visible='true' />
                             <%-- Cancle Order --%>
@@ -98,7 +98,7 @@
         
         <asp:SqlDataSource ID="SqlDataSource2" runat="server"
             ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
-            SelectCommand="SELECT * FROM [Payment] WHERE ([UserId] = @user_id) ORDER BY add_date DESC;">
+            SelectCommand="SELECT * FROM [Payment] WHERE ([UserId] = @user_id) ORDER BY payment_date DESC;">
         </asp:SqlDataSource>
     </div>
 

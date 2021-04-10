@@ -15,13 +15,13 @@ namespace WebApplicationAssigment.pages.Payment
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
-        private int paymentId;
+        private Guid paymentId;
         protected PublicBank bank;
         protected modal.Payment payments;
         protected void Page_Load(object sender, EventArgs e)
         {
             Functions.checkValidPayment(Request.QueryString["id"]);
-            paymentId = int.Parse(Request.QueryString["id"]);
+            paymentId = Guid.Parse(Request.QueryString["id"]);
             if (Session[Constant.ACCOUNT_SESSION] == null)
             {
                 Response.Redirect("~");

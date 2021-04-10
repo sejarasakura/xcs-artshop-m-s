@@ -4,7 +4,12 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebApplicationAssigment.commons;
 using WebApplicationAssigment.modal;
+using System.Data.Entity.Migrations;
+using Microsoft.EntityFrameworkCore;
+using System.Data.Entity.Validation;
+
 
 namespace WebApplicationAssigment.pages.main.Authentication.Widget
 {
@@ -13,6 +18,11 @@ namespace WebApplicationAssigment.pages.main.Authentication.Widget
         public System.Guid loginUser;
         protected void Page_Load(object sender, EventArgs e)
         {
+            using (ArtShopEntities db = new ArtShopEntities())
+            {
+                loginUser = (Guid)Functions.getLoginUser().ProviderUserKey;
+                putData(db.aspnet_Users.Find(loginUser));
+            }
         }
 
         protected void setAccesbility()
@@ -22,7 +32,23 @@ namespace WebApplicationAssigment.pages.main.Authentication.Widget
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-
+            using (ArtShopEntities db = new ArtShopEntities())
+            {
+                try
+                {
+                    updatesData(db);
+                    db.SaveChanges();
+                    Functions.EnqueueNewNotifications(new Notifications(
+                        Notifications.SUCCESS_TYPE,
+                        "Updates completed", "Your informations is up to date"));
+                }
+                catch (Exception ex)
+                {
+                    Functions.EnqueueNewNotifications(new Notifications(
+                        Notifications.ERROR_TYPE,
+                        "Updates fail", ex.Message));
+                }
+            }
         }
 
         protected void updatesData(ArtShopEntities db)
@@ -35,6 +61,9 @@ namespace WebApplicationAssigment.pages.main.Authentication.Widget
                 ux.gender = "Male";
             else
                 ux.gender = "Female";
+
+            db.aspnet_Membership.AddOrUpdate(am);
+            db.UserExtensions.AddOrUpdate(ux);
         }
         protected void putData(modal.aspnet_Users user)
         {
@@ -47,8 +76,6 @@ namespace WebApplicationAssigment.pages.main.Authentication.Widget
             }else{
                 this.radioFemale.Checked = true;
             }
-            this.Question.Text = user.aspnet_Membership.PasswordQuestion;
-            this.Answer.Text = user.aspnet_Membership.PasswordAnswer;
         }
     }
 }

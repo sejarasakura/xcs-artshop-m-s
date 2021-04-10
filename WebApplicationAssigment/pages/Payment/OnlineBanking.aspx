@@ -41,15 +41,6 @@
                                 ID="RequiredFieldValidator008"
                                 ControlToValidate="CardName"
                                 ErrorMessage="Please enter valid username!" />
-                            <asp:RegularExpressionValidator
-                                ValidationGroup="CARD"
-                                ForeColor="Red"
-                                Display="Dynamic"
-                                ControlToValidate="CardName"
-                                ID="RegularExpressionValidator008"
-                                ValidationExpression="[a-zA-Z ]{0,20}$"
-                                runat="server"
-                                ErrorMessage="The full name only accept max 20 word and must be character only" />
                         </div>
                     </div>
                 </div>

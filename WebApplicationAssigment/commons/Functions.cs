@@ -286,12 +286,13 @@ namespace WebApplicationAssigment.commons
 
         public static bool checkValidPayment(String param)
         {
-            int id;
-            if (HttpContext.Current.Request.QueryString["id"] == null) { 
+            Guid id;
+            if (param == null) { 
                 HttpContext.Current.Response.Redirect("~/pages/Payment/PaymentInvalid.aspx");
                 return false;
             }
-            if (!int.TryParse(HttpContext.Current.Request.QueryString["id"], out id))
+            id = Guid.Parse(param);
+            if (id == null)
             {
                 HttpContext.Current.Response.Redirect("~/pages/Payment/PaymentInvalid.aspx");
                 return false;

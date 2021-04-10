@@ -116,9 +116,9 @@ public class DynamicSiteMapProvider : StaticSiteMapProvider
                 AddNode(
                     new SiteMapNode(this,
                     pay.id + "-payment",
-                    PAGE_DIR + "Payment.aspx?order=" + pay.id,
-                    String.Format("#{0:D10}", pay.id),
-                    String.Format("#{0:D10}", pay.id)),
+                    PAGE_DIR + "Payment.aspx?order=" + pay.id.ToString(),
+                    pay.id.ToString(),
+                    pay.id.ToString()),
                     siteMapNode);
         }
     }

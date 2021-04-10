@@ -14,12 +14,12 @@ namespace WebApplicationAssigment.pages.Payment
 {
     public partial class Paypal : System.Web.UI.Page
     {
-        private int paymentId;
+        private Guid paymentId;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             Functions.checkValidPayment(Request.QueryString["id"]);
-            paymentId = int.Parse(Request.QueryString["id"]);
+            paymentId = Guid.Parse(Request.QueryString["id"]);
         }
         protected modal.PayPal getData()
         {
@@ -96,6 +96,7 @@ namespace WebApplicationAssigment.pages.Payment
                 {
                     db.SaveChanges();
                     Functions.EnqueueNewNotifications(new Notifications(
+                        2,
                         Notifications.SUCCESS_TYPE,
                         "Payment sucessfull!!",
                         "you have complete the payment with your paypal account: " + database.paypal_id + ""));
@@ -104,6 +105,7 @@ namespace WebApplicationAssigment.pages.Payment
                 catch (Exception ex)
                 {
                     Functions.EnqueueNewNotifications(new Notifications(
+                        2,
                         Notifications.ERROR_TYPE,
                         "Payment Failed!!",
                         "you have following exception : " + ex.Message + " !!"));

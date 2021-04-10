@@ -41,7 +41,12 @@ namespace WebApplicationAssigment.pages.main.Authentication.Widget
                     try
                     {
                         Address add = db.Addresses.Find(Guid.Parse(param_id));
-                        db.UserExtensions.Find(Functions.getLoginUser().ProviderUserKey).UserAddresses.Remove(add);
+                        UserAddress userAddress = new UserAddress();
+                        userAddress.UserId = (Guid)Functions.getLoginUser().ProviderUserKey;
+                        userAddress.address_id = add.id;
+
+                        userAddress = db.UserAddresses.Find(Functions.getLoginUser().ProviderUserKey, add.id);
+                        db.UserAddresses.Remove(userAddress);
                         db.SaveChanges();
                         Functions.EnqueueNewNotifications(new Notifications(
                             Notifications.SUCCESS_TYPE,
@@ -101,7 +106,7 @@ namespace WebApplicationAssigment.pages.main.Authentication.Widget
                         q.poscode == address.poscode &&
                         q.country == address.country
                         ).FirstOrDefault();
-                    if (db.UserExtensions.Find(Functions.getLoginUser().ProviderUserKey).UserAddresses.Contains(old_address))
+                    if (old_address != null ? db.UserAddresses.Find(Functions.getLoginUser().ProviderUserKey, old_address.id) != null: false)
                     {
                         Functions.EnqueueNewNotifications(new Notifications(
                             Notifications.ERROR_TYPE,
@@ -112,11 +117,14 @@ namespace WebApplicationAssigment.pages.main.Authentication.Widget
                     {
                         try
                         {
+                            UserAddress userAddress = new UserAddress();
+                            userAddress.UserId = (Guid)Functions.getLoginUser().ProviderUserKey;
                             address.id = Guid.NewGuid();
                             if (old_address != null)
-                                db.UserExtensions.Find(Functions.getLoginUser().ProviderUserKey).UserAddresses.Add(old_address);
+                                userAddress.address_id = old_address.id;
                             else
-                                db.UserExtensions.Find(Functions.getLoginUser().ProviderUserKey).UserAddresses.Add(address);
+                                userAddress.Address = address;
+                            db.UserExtensions.Find(Functions.getLoginUser().ProviderUserKey).UserAddresses.Add(userAddress);
                             db.SaveChanges();
                             Functions.EnqueueNewNotifications(new Notifications(
                                 Notifications.SUCCESS_TYPE,
@@ -127,7 +135,7 @@ namespace WebApplicationAssigment.pages.main.Authentication.Widget
                         {
                             Functions.EnqueueNewNotifications(new Notifications(
                                 Notifications.ERROR_TYPE,
-                                "Unknows error founds",
+                                "Unknows error founds 1",
                                 "Error : " + ex.Message));
                         }
                     }
@@ -220,7 +228,7 @@ namespace WebApplicationAssigment.pages.main.Authentication.Widget
                     if ((addresss[i].latitude == lat && addresss[i].longitude == lng))
                     {
                         created = true;
-                        if (db.UserExtensions.Find(Functions.getLoginUser().ProviderUserKey).Addresses.Contains(addresss[i]))
+                        if (db.UserAddresses.Find(Functions.getLoginUser().ProviderUserKey, addresss[i].id)!= null)
                         {
                             Functions.EnqueueNewNotifications(new Notifications(
                                 Notifications.ERROR_TYPE,
@@ -231,7 +239,11 @@ namespace WebApplicationAssigment.pages.main.Authentication.Widget
                         {
                             try
                             {
-                                db.UserExtensions.Find(Functions.getLoginUser().ProviderUserKey).Addresses.Add(addresss[i]);
+                                UserAddress userAddress = new UserAddress();
+                                userAddress.address_id = addresss[i].id;
+                                userAddress.UserId = (Guid)Functions.getLoginUser().ProviderUserKey;
+
+                                db.UserExtensions.Find(Functions.getLoginUser().ProviderUserKey).UserAddresses.Add(userAddress);
                                 db.SaveChanges();
                                 Functions.EnqueueNewNotifications(new Notifications(
                                     Notifications.SUCCESS_TYPE,
@@ -242,7 +254,7 @@ namespace WebApplicationAssigment.pages.main.Authentication.Widget
                             {
                                 Functions.EnqueueNewNotifications(new Notifications(
                                     Notifications.ERROR_TYPE,
-                                    "Unknows error founds",
+                                    "Unknows error founds 2",
                                     "Error : " + ex.Message));
                             }
                         }

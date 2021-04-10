@@ -44,7 +44,7 @@
                                 Display="Dynamic"
                                 ControlToValidate="CardNumber"
                                 ID="RegularExpressionValidator007"
-                                ValidationExpression="[0-9]{16}$"
+                                ValidationExpression="[0-9]{10}$"
                                 runat="server"
                                 ErrorMessage="Please enter a valid account! " />
                         </div>

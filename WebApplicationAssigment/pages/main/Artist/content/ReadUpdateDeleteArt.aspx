@@ -74,7 +74,9 @@
 
             <br />
             <br />
-            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT Art.description, Art.title, Art.date, Art.price, Art.image,Art.id FROM Art" DeleteCommand="DELETE FROM [Art] WHERE [id] = @id" InsertCommand="INSERT INTO [Art] ([description], [title], [date], [price], [image], [id]) VALUES (@description, @title, @date, @price, @image, @id)" UpdateCommand="UPDATE [Art] SET [description] = @description, [title] = @title, [date] = @date, [price] = @price, [image] = @image WHERE [id] = @id">
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+                SelectCommand="SELECT Art.description, Art.title, Art.date, Art.price, Art.image,Art.id FROM Art" 
+                DeleteCommand="DELETE FROM [Art] WHERE [id] = @id" InsertCommand="INSERT INTO [Art] ([description], [title], [date], [price], [image], [id]) VALUES (@description, @title, @date, @price, @image, @id)" UpdateCommand="UPDATE [Art] SET [description] = @description, [title] = @title, [date] = @date, [price] = @price, [image] = @image WHERE [id] = @id">
                 <DeleteParameters>
                     <asp:Parameter Name="id" Type="Int32" />
                 </DeleteParameters>
